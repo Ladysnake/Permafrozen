@@ -1,0 +1,28 @@
+{
+
+  "itemGroup.permafrozen": "Permafrozen",
+
+  "block.permafrozen.frozen_debris": "Frozen Debris",
+  "block.permafrozen.cobalt_ore": "Cobalt Ore",
+  "block.permafrozen.tanzanite_block": "Tanzanite Block",
+  "block.permafrozen.tungsten_block": "Tungsten Block",
+  "block.permafrozen.hertzstone": "Hertzstone",
+  "block.permafrozen.hertzstone_slab": "Hertzstone Slab",
+  "block.permafrozen.hertzstone_stairs": "Hertzstone Stairs",
+  "block.permafrozen.polished_hertzstone": "Polished Hertzstone",
+  "block.permafrozen.polished_hertzstone_slab": "Polished Hertzstone Slab",
+  "block.permafrozen.polished_hertzstone_stairs": "Polished Hertzstone Stairs",
+  "block.permafrozen.polished_hertzstone_button": "Polished Hertzstone Button",
+  "block.permafrozen.polished_hertzstone_pressure_plate": "Polished Hertzstone Pressure Plate",
+  "block.permafrozen.polished_hertzstone_bricks": "Polished Hertzstone Bricks",
+  "block.permafrozen.polished_hertzstone_brick_slab": "Polished Hertzstone Brick Slab",
+  "block.permafrozen.polished_hertzstone_brick_stairs": "Polished Hertzstone Brick Stairs",
+  "block.permafrozen.chiseled_hertzstone_bricks": "Chiseled Hertzstone Bricks",
+  "block.permafrozen.gilded_hertzstone": "Gilded Hertzstone",
+
+  "item.permafrozen.frozen_scraps": "Frozen Scraps",
+  "item.permafrozen.cobalt_ingot": "Cobalt Ingot",
+  "item.permafrozen.chillorite_ingot": "Chillorite Ingot",
+  "item.permafrozen.tungsten_ingot": "Tungsten Ingot",
+  "item.permafrozen.tungsten_nugget": "Tungsten Nugget"
+}

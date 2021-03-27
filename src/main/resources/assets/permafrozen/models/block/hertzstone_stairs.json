@@ -1,0 +1,8 @@
+{
+  "parent": "block/stairs",
+  "textures": {
+    "bottom": "permafrozen:block/hertzstone_top",
+    "top": "permafrozen:block/hertzstone_top",
+    "side": "permafrozen:block/hertzstone"
+  }
+}

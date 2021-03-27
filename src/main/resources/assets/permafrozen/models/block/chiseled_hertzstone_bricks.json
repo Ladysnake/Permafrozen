@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "up": "permafrozen:block/chiseled_hertzstone_bricks_top",
+        "north": "permafrozen:block/chiseled_hertzstone_bricks",
+        "south": "permafrozen:block/chiseled_hertzstone_bricks",
+        "east": "permafrozen:block/chiseled_hertzstone_bricks",
+        "west": "permafrozen:block/chiseled_hertzstone_bricks",
+        "down": "permafrozen:block/chiseled_hertzstone_bricks_top",
+        "particle": "permafrozen:block/chiseled_hertzstone_bricks"
+    }
+}

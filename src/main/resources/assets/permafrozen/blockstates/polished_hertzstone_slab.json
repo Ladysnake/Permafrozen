@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "permafrozen:block/polished_hertzstone_slab" },
+    "type=top": { "model": "permafrozen:block/polished_hertzstone_slab_top" },
+    "type=double": { "model": "permafrozen:block/polished_hertzstone" }
+  }
+}

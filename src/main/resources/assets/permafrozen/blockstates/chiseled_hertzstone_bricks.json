@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "":  {
+        "model": "permafrozen:block/chiseled_hertzstone_bricks"
+    }
+  }
+}

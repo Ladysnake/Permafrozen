@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "up": "permafrozen:block/gilded_hertzstone",
+        "north": "permafrozen:block/gilded_hertzstone",
+        "south": "permafrozen:block/gilded_hertzstone",
+        "east": "permafrozen:block/gilded_hertzstone",
+        "west": "permafrozen:block/gilded_hertzstone",
+        "down": "permafrozen:block/gilded_hertzstone",
+        "particle": "permafrozen:block/gilded_hertzstone"
+    }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "permafrozen:tungsten_ingot"
+    }
+  ],
+  "result": {
+    "item": "permafrozen:tungsten_nugget",
+    "count": 9
+  }
+}

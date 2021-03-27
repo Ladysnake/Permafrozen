@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "up": "permafrozen:block/block_of_tanzanite",
+        "north": "permafrozen:block/block_of_tanzanite",
+        "south": "permafrozen:block/block_of_tanzanite",
+        "east": "permafrozen:block/block_of_tanzanite",
+        "west": "permafrozen:block/block_of_tanzanite",
+        "down": "permafrozen:block/block_of_tanzanite",
+        "particle": "permafrozen:block/block_of_tanzanite"
+    }
+}

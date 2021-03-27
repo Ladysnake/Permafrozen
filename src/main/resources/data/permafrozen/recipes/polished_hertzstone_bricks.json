@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "11",
+    "11"
+  ],
+  "key": {
+    "1": {
+      "item": "permafrozen:polished_hertzstone"
+    }
+  },
+  "result": {
+    "item": "permafrozen:polished_hertzstone_bricks",
+    "count": 4
+  }
+}
