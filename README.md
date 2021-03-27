@@ -6,7 +6,7 @@ Welcome to the Permafrozen! this mod adds tons of dragons small and big!
 
 # Licensing
 
-This mod is "all rights reserved" meaning that assets/code arent meant to be stolen, reposted or repurposed, however there are a few exceptions regarding asset and code reuse.
+-This mod is "all rights reserved" meaning that assets/code arent meant to be stolen, reposted or repurposed. however there are a few exceptions regarding asset and code reuse.
 
 -Disclaimer
 
