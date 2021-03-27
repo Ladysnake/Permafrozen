@@ -17,7 +17,7 @@ If you contribute to this project (that being assets,code etc) those assets and 
 
 -Make resource packs for private use (if you want a public resource pack just contact us and we will advertise) 
 
--Referernce our code for your own mods (doesnt mean steal our code means you can use it as a reference for your own code)
+-Reference our code for your own mods (doesnt mean steal our code means you can use it as a reference for your own code)
 -Fork or modify the code
 
 -Submit pull requests
