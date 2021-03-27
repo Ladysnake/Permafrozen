@@ -14,10 +14,11 @@ public class ItemRegistry {
 
     // Declare all items in the mod
     public static final Item FROZEN_SCRAPS = new FrozenScraps();
-    public static final Item COBALT_INGOT = new CobaltIngot();
     public static final Item CHILLORITE_INGOT = new ChilloriteIngot();
+    public static final Item COBALT_INGOT = new CobaltIngot();
     public static final Item TUNGSTEN_INGOT = new TungstenIngot();
     public static final Item TUNGSTEN_NUGGET = new TungstenNugget();
+    public static final Item CHILLORITE_SWORD = new ChilloriteSword();
 
     @SubscribeEvent
     public static void onItemsRegistration(final RegistryEvent.Register<Item> e) {
