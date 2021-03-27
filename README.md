@@ -18,7 +18,7 @@ Welcome to the Permafrozen! this mod adds tons of dragons small and big!
 
 -Make resource packs for private use (if you want to make a public resource pack just contact us and we will advertise) 
 
--Reference our code for your own mods (doesnt mean steal our code means you can use it as a reference for your own code)
+-Reference our code for your own mods (does'nt mean steal our code means you can use it as a reference for your own code)
 
 -Fork or modify the code
 
