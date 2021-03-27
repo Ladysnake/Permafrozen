@@ -14,22 +14,29 @@ import java.lang.reflect.Field;
 
 public class BlockRegistry {
 
-    // Declare all block in the mod
+    // Declare all blocks in the mod
     public static final Block FROZEN_DEBRIS = new FrozenDebris();
     public static final Block COBALT_ORE = new CobaltOre();
     public static final Block TANZANITE_BLOCK = new TanzaniteBlock();
     public static final Block TUNGSTEN_BLOCK = new TungstenBlock();
+
     public static final Block HERTZSTONE = new Hertzstone();
     public static final Block HERTZSTONE_SLAB = new HertzstoneSlab();
     public static final Block HERTZSTONE_STAIRS = new HertzstoneStairs(() -> HERTZSTONE.getDefaultState()); // idk dont ask
+    public static final Block HERTZSTONE_WALL = new HertzstoneWall();
+
     public static final Block POLISHED_HERTZSTONE = new PolishedHertzstone();
     public static final Block POLISHED_HERTZSTONE_SLAB = new PolishedHertzstoneSlab();
     public static final Block POLISHED_HERTZSTONE_STAIRS = new PolishedHertzstoneStairs(() -> POLISHED_HERTZSTONE.getDefaultState());
+    public static final Block POLISHED_HERTZSTONE_WALL = new PolishedHertzstoneWall();
     public static final Block POLISHED_HERTZSTONE_BUTTON = new PolishedHertzstoneButton();
     public static final Block POLISHED_HERTZSTONE_PRESSURE_PLATE = new PolishedHertzstonePressurePlate();
+
     public static final Block POLISHED_HERTZSTONE_BRICKS = new PolishedHertzstoneBricks();
     public static final Block POLISHED_HERTZSTONE_BRICK_SLAB = new PolishedHertzstoneBrickSlab();
     public static final Block POLISHED_HERTZSTONE_BRICK_STAIRS = new PolishedHertzstoneBrickStairs(() -> POLISHED_HERTZSTONE_BRICKS.getDefaultState());
+    public static final Block POLISHED_HERTZSTONE_BRICK_WALL = new PolishedHertzstoneBrickWall();
+
     public static final Block CHISELED_HERTZSTONE_BRICKS = new ChiseledHertzstoneBricks();
     public static final Block GILDED_HERTZSTONE = new GildedHertzstone();
 
