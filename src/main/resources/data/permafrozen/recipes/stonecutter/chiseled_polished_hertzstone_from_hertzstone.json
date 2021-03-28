@@ -5,9 +5,7 @@
     "item": "permafrozen:hertzstone"
   },
 
-  "result": {
-    "item": "permafrozen:polished_hertzstone",
-    "count": 1
-  }
+  "result": "permafrozen:chiseled_polished_hertzstone",
+  "count": 1
 
 }

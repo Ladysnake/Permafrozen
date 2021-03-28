@@ -3,7 +3,6 @@ package permafrozen.registry;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import permafrozen.Permafrozen;
@@ -37,7 +36,7 @@ public class BlockRegistry {
     public static final Block POLISHED_HERTZSTONE_BRICK_STAIRS = new PolishedHertzstoneBrickStairs(() -> POLISHED_HERTZSTONE_BRICKS.getDefaultState());
     public static final Block POLISHED_HERTZSTONE_BRICK_WALL = new PolishedHertzstoneBrickWall();
 
-    public static final Block CHISELED_HERTZSTONE_BRICKS = new ChiseledHertzstoneBricks();
+    public static final Block CHISELED_POLISHED_HERTZSTONE = new ChiseledPolishedHertzstone();
     public static final Block GILDED_HERTZSTONE = new GildedHertzstone();
 
     @SubscribeEvent

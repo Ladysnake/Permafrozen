@@ -6,9 +6,9 @@ import net.minecraft.block.material.Material;
 import net.minecraftforge.common.ToolType;
 import permafrozen.Permafrozen;
 
-public class ChiseledHertzstoneBricks extends Block {
+public class ChiseledPolishedHertzstone extends Block {
 
-    public ChiseledHertzstoneBricks() {
+    public ChiseledPolishedHertzstone() {
 
         super(Properties
                 .create(Material.ROCK)
@@ -18,7 +18,7 @@ public class ChiseledHertzstoneBricks extends Block {
                 .sound(SoundType.STONE)
         );
 
-        setRegistryName(Permafrozen.MODID, "chiseled_hertzstone_bricks");
+        setRegistryName(Permafrozen.MODID, "chiseled_polished_hertzstone");
 
     }
 
