@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:stonecutting",
+
+  "ingredient": {
+    "item": "permafrozen:hertzstone"
+  },
+
+  "result": "permafrozen:hertzstone_slab",
+  "count": 2
+
+}

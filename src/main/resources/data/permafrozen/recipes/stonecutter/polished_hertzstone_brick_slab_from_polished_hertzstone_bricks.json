@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:stonecutting",
+
+  "ingredient": {
+    "item": "permafrozen:polished_hertzstone_bricks"
+  },
+
+  "result": "permafrozen:polished_hertzstone_brick_slab",
+  "count": 2
+
+}
