@@ -20,7 +20,7 @@ public class BlockRegistry {
     public static final Block WULFRUM_BLOCK = new WulfrumBlock().setRegistryName("wulfrum_block");
     public static final Block TANZANITE_BLOCK = new TanzaniteBlock().setRegistryName("tanzanite_block");
     public static final Block FROZEN_DEBRIS = new FrozenDebris().setRegistryName("frozen_debris");
-    //public static final Block CHILLORITE_BLOCK = new ChilloriteBlock().setRegistryName("chillorite_block");
+    public static final Block CHILLORITE_BLOCK = new ChilloriteBlock().setRegistryName("chillorite_block");
 
     public static final Block HERTZSTONE = new Hertzstone().setRegistryName("hertzstone");
     public static final Block HERTZSTONE_SLAB = new HertzstoneSlab().setRegistryName("hertzstone_slab");
