@@ -5,7 +5,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.ToolType;
-import permafrozen.Permafrozen;
 
 public class GildedHertzstone extends Block {
 
@@ -17,6 +16,7 @@ public class GildedHertzstone extends Block {
                 .harvestTool(ToolType.PICKAXE)
                 .harvestLevel(1)
                 .sound(SoundType.STONE)
+                .setRequiresTool()
         );
 
     }

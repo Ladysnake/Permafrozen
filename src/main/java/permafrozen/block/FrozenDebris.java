@@ -4,7 +4,6 @@ import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.ToolType;
-import permafrozen.Permafrozen;
 
 public class FrozenDebris extends RotatedPillarBlock {
 
@@ -16,6 +15,7 @@ public class FrozenDebris extends RotatedPillarBlock {
                 .harvestTool(ToolType.PICKAXE)
                 .harvestLevel(3)
                 .sound(SoundType.ANCIENT_DEBRIS)
+                .setRequiresTool()
         );
 
     }

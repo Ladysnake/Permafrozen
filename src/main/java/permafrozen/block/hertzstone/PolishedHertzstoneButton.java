@@ -3,7 +3,6 @@ package permafrozen.block.hertzstone;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import permafrozen.Permafrozen;
 import permafrozen.util.PermafrozenButton;
 
 public class PolishedHertzstoneButton extends PermafrozenButton {

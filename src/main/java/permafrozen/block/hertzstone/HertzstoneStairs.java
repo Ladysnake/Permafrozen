@@ -18,6 +18,7 @@ public class HertzstoneStairs extends StairsBlock {
                 .harvestTool(ToolType.PICKAXE)
                 .harvestLevel(1)
                 .sound(SoundType.STONE)
+                .setRequiresTool()
         );
 
     }

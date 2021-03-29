@@ -5,7 +5,6 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.StairsBlock;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.ToolType;
-import permafrozen.Permafrozen;
 
 import java.util.function.Supplier;
 
@@ -19,6 +18,7 @@ public class PolishedHertzstoneStairs extends StairsBlock {
                 .harvestTool(ToolType.PICKAXE)
                 .harvestLevel(1)
                 .sound(SoundType.STONE)
+                .setRequiresTool()
         );
 
     }
