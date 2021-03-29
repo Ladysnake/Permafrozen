@@ -44,10 +44,13 @@
   "item.permafrozen.cobalt_pickaxe": "Cobalt Pickaxe",
   "item.permafrozen.cobalt_axe": "Cobalt Axe",
   "item.permafrozen.cobalt_shovel": "Cobalt Shovel",
+  "item.permafrozen.cobalt_hoe": "Cobalt Hoe",
 
   "item.permafrozen.chillorite_sword": "Chillorite Sword",
   "item.permafrozen.chillorite_pickaxe": "Chillorite Pickaxe",
   "item.permafrozen.chillorite_axe": "Chillorite Axe",
-  "item.permafrozen.chillorite_shovel": "Chillorite Shovel"
+  "item.permafrozen.chillorite_shovel": "Chillorite Shovel",
+  "item.permafrozen.chillorite_hoe": "Chillorite Hoe"
+
 
 }
