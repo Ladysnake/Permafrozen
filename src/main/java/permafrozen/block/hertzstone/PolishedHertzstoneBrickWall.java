@@ -1,14 +1,14 @@
-package permafrozen.block;
+package permafrozen.block.hertzstone;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
+import net.minecraft.block.WallBlock;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.ToolType;
 import permafrozen.Permafrozen;
 
-public class ChiseledPolishedHertzstone extends Block {
+public class PolishedHertzstoneBrickWall extends WallBlock {
 
-    public ChiseledPolishedHertzstone() {
+    public PolishedHertzstoneBrickWall() {
 
         super(Properties
                 .create(Material.ROCK)
@@ -17,8 +17,6 @@ public class ChiseledPolishedHertzstone extends Block {
                 .harvestLevel(1)
                 .sound(SoundType.STONE)
         );
-
-        setRegistryName(Permafrozen.MODID, "chiseled_polished_hertzstone");
 
     }
 

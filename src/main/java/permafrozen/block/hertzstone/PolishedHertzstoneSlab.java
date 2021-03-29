@@ -1,4 +1,4 @@
-package permafrozen.block;
+package permafrozen.block.hertzstone;
 
 import net.minecraft.block.SlabBlock;
 import net.minecraft.block.SoundType;
@@ -6,9 +6,9 @@ import net.minecraft.block.material.Material;
 import net.minecraftforge.common.ToolType;
 import permafrozen.Permafrozen;
 
-public class PolishedHertzstoneBrickSlab extends SlabBlock {
+public class PolishedHertzstoneSlab extends SlabBlock {
 
-    public PolishedHertzstoneBrickSlab() {
+    public PolishedHertzstoneSlab() {
 
         super(Properties
                 .create(Material.ROCK)
@@ -17,8 +17,6 @@ public class PolishedHertzstoneBrickSlab extends SlabBlock {
                 .harvestLevel(1)
                 .sound(SoundType.STONE)
         );
-
-        setRegistryName(Permafrozen.MODID, "polished_hertzstone_brick_slab");
 
     }
 

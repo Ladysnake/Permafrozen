@@ -18,8 +18,6 @@ public class CobaltOre extends Block {
                         .sound(SoundType.STONE)
         );
 
-        setRegistryName(Permafrozen.MODID, "cobalt_ore");
-
     }
 
 }

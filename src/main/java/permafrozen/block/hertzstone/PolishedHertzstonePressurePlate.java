@@ -1,4 +1,4 @@
-package permafrozen.block;
+package permafrozen.block.hertzstone;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.PressurePlateBlock;
@@ -16,8 +16,6 @@ public class PolishedHertzstonePressurePlate extends PressurePlateBlock {
                 .hardnessAndResistance(0.5F)
                 .sound(SoundType.STONE)
         );
-
-        setRegistryName(Permafrozen.MODID, "polished_hertzstone_pressure_plate");
 
     }
 

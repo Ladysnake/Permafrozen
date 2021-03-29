@@ -1,4 +1,4 @@
-package permafrozen.block;
+package permafrozen.block.hertzstone;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -7,9 +7,9 @@ import net.minecraft.block.material.Material;
 import net.minecraftforge.common.ToolType;
 import permafrozen.Permafrozen;
 
-public class Hertzstone extends Block {
+public class GildedHertzstone extends Block {
 
-    public Hertzstone() {
+    public GildedHertzstone() {
 
         super(AbstractBlock.Properties
                 .create(Material.ROCK)
@@ -18,8 +18,6 @@ public class Hertzstone extends Block {
                 .harvestLevel(1)
                 .sound(SoundType.STONE)
         );
-
-        setRegistryName(Permafrozen.MODID, "hertzstone");
 
     }
 

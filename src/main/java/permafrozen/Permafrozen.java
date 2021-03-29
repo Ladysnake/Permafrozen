@@ -22,12 +22,7 @@ public class Permafrozen {
 
     public static final String MODID = "permafrozen";
     public static final String MOD_NAME = "Permafrozen";
-    public static final ItemGroupRegistry ITEM_GROUP = new ItemGroupRegistry("permafrozen", () -> ModItems.chillorite_ingot);
-
-    @ObjectHolder(Permafrozen.MODID)
-    public static class ModItems {
-        public static final Item chillorite_ingot = null;
-    }
+    public static final ItemGroupRegistry ITEM_GROUP = new ItemGroupRegistry("permafrozen", () -> ItemRegistry.CHILLORITE_INGOT);
 
 
     public Permafrozen() {

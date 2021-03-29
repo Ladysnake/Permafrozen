@@ -18,7 +18,5 @@ public class FrozenDebris extends RotatedPillarBlock {
                 .sound(SoundType.ANCIENT_DEBRIS)
         );
 
-        setRegistryName(Permafrozen.MODID, "frozen_debris");
-
     }
 }

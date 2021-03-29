@@ -18,8 +18,6 @@ public class CobaltBlock extends Block {
                 .sound(SoundType.METAL)
         );
 
-        setRegistryName(Permafrozen.MODID, "cobalt_block");
-
     }
 
 }

@@ -7,6 +7,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import permafrozen.Permafrozen;
 import permafrozen.block.*;
+import permafrozen.block.hertzstone.*;
 
 import java.lang.reflect.Field;
 
@@ -14,31 +15,31 @@ import java.lang.reflect.Field;
 public class BlockRegistry {
 
     // Declare all blocks in the mod
-    public static final Block COBALT_ORE = new CobaltOre();
-    public static final Block COBALT_BLOCK = new CobaltBlock();
-    public static final Block WULFRUM_BLOCK = new WulfrumBlock();
-    public static final Block TANZANITE_BLOCK = new TanzaniteBlock();
-    public static final Block FROZEN_DEBRIS = new FrozenDebris();
+    public static final Block COBALT_ORE = new CobaltOre().setRegistryName("cobalt_ore");
+    public static final Block COBALT_BLOCK = new CobaltBlock().setRegistryName("cobalt_block");
+    public static final Block WULFRUM_BLOCK = new WulfrumBlock().setRegistryName("wulfrum_block");
+    public static final Block TANZANITE_BLOCK = new TanzaniteBlock().setRegistryName("tanzanite_block");
+    public static final Block FROZEN_DEBRIS = new FrozenDebris().setRegistryName("frozen_debris");
+    //public static final Block CHILLORITE_BLOCK = new ChilloriteBlock().setRegistryName("chillorite_block");
 
-    public static final Block HERTZSTONE = new Hertzstone();
-    public static final Block HERTZSTONE_SLAB = new HertzstoneSlab();
-    public static final Block HERTZSTONE_STAIRS = new HertzstoneStairs(() -> HERTZSTONE.getDefaultState()); // idk dont ask
-    public static final Block HERTZSTONE_WALL = new HertzstoneWall();
+    public static final Block HERTZSTONE = new Hertzstone().setRegistryName("hertzstone");
+    public static final Block HERTZSTONE_SLAB = new HertzstoneSlab().setRegistryName("hertzstone_slab");
+    public static final Block HERTZSTONE_STAIRS = new HertzstoneStairs(() -> HERTZSTONE.getDefaultState()).setRegistryName("hertzstone_stairs"); // idk dont ask
+    public static final Block HERTZSTONE_WALL = new HertzstoneWall().setRegistryName("hertzstone_wall");
 
-    public static final Block POLISHED_HERTZSTONE = new PolishedHertzstone();
-    public static final Block POLISHED_HERTZSTONE_SLAB = new PolishedHertzstoneSlab();
-    public static final Block POLISHED_HERTZSTONE_STAIRS = new PolishedHertzstoneStairs(() -> POLISHED_HERTZSTONE.getDefaultState());
-    public static final Block POLISHED_HERTZSTONE_WALL = new PolishedHertzstoneWall();
-    public static final Block POLISHED_HERTZSTONE_BUTTON = new PolishedHertzstoneButton();
-    public static final Block POLISHED_HERTZSTONE_PRESSURE_PLATE = new PolishedHertzstonePressurePlate();
+    public static final Block POLISHED_HERTZSTONE = new PolishedHertzstone().setRegistryName("polished_hertzstone");
+    public static final Block POLISHED_HERTZSTONE_SLAB = new PolishedHertzstoneSlab().setRegistryName(Permafrozen.MODID, "polished_hertzstone_slab");
+    public static final Block POLISHED_HERTZSTONE_STAIRS = new PolishedHertzstoneStairs(() -> POLISHED_HERTZSTONE.getDefaultState()).setRegistryName("polished_hertzstone_stairs");
+    public static final Block POLISHED_HERTZSTONE_WALL = new PolishedHertzstoneWall().setRegistryName(Permafrozen.MODID, "polished_hertzstone_wall");
+    public static final Block POLISHED_HERTZSTONE_BUTTON = new PolishedHertzstoneButton().setRegistryName(Permafrozen.MODID, "polished_hertzstone_button");
+    public static final Block POLISHED_HERTZSTONE_PRESSURE_PLATE = new PolishedHertzstonePressurePlate().setRegistryName(Permafrozen.MODID, "polished_hertzstone_pressure_plate");
+    public static final Block POLISHED_HERTZSTONE_BRICKS = new PolishedHertzstoneBricks().setRegistryName(Permafrozen.MODID, "polished_hertzstone_bricks");
+    public static final Block POLISHED_HERTZSTONE_BRICK_SLAB = new PolishedHertzstoneBrickSlab().setRegistryName(Permafrozen.MODID, "polished_hertzstone_brick_slab");
+    public static final Block POLISHED_HERTZSTONE_BRICK_STAIRS = new PolishedHertzstoneBrickStairs(() -> POLISHED_HERTZSTONE_BRICKS.getDefaultState()).setRegistryName(Permafrozen.MODID, "polished_hertzstone_brick_stairs");
+    public static final Block POLISHED_HERTZSTONE_BRICK_WALL = new PolishedHertzstoneBrickWall().setRegistryName(Permafrozen.MODID, "polished_hertzstone_brick_wall");
 
-    public static final Block POLISHED_HERTZSTONE_BRICKS = new PolishedHertzstoneBricks();
-    public static final Block POLISHED_HERTZSTONE_BRICK_SLAB = new PolishedHertzstoneBrickSlab();
-    public static final Block POLISHED_HERTZSTONE_BRICK_STAIRS = new PolishedHertzstoneBrickStairs(() -> POLISHED_HERTZSTONE_BRICKS.getDefaultState());
-    public static final Block POLISHED_HERTZSTONE_BRICK_WALL = new PolishedHertzstoneBrickWall();
-
-    public static final Block CHISELED_POLISHED_HERTZSTONE = new ChiseledPolishedHertzstone();
-    public static final Block GILDED_HERTZSTONE = new GildedHertzstone();
+    public static final Block CHISELED_POLISHED_HERTZSTONE = new ChiseledPolishedHertzstone().setRegistryName(Permafrozen.MODID, "chiseled_polished_hertzstone");
+    public static final Block GILDED_HERTZSTONE = new GildedHertzstone().setRegistryName(Permafrozen.MODID, "gilded_hertzstone");
 
     @SubscribeEvent
     public static void onBlocksRegistration(final RegistryEvent.Register<Block> e) {

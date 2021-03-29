@@ -18,8 +18,6 @@ public class WulfrumBlock extends Block {
                         .sound(SoundType.METAL)
         );
 
-        setRegistryName(Permafrozen.MODID, "wulfrum_block");
-
     }
 
 }

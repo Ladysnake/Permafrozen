@@ -1,4 +1,4 @@
-package permafrozen.block;
+package permafrozen.block.hertzstone;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
@@ -20,8 +20,6 @@ public class PolishedHertzstoneBrickStairs extends StairsBlock {
                 .harvestLevel(1)
                 .sound(SoundType.STONE)
         );
-
-        setRegistryName(Permafrozen.MODID, "polished_hertzstone_brick_stairs");
 
     }
 

@@ -18,8 +18,6 @@ public class TanzaniteBlock extends Block {
                         .sound(SoundType.METAL)
         );
 
-        setRegistryName(Permafrozen.MODID, "tanzanite_block");
-
     }
 
 }
