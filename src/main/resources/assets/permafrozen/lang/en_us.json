@@ -35,17 +35,22 @@
   "item.permafrozen.cobalt_nugget": "Cobalt Nugget",
   "item.permafrozen.cobalt_ingot": "Cobalt Ingot",
 
-  "item.permafrozen.frozen_scraps": "Frozen Scraps",
-  "item.permafrozen.chillorite_ingot": "Chillorite Ingot",
-
-  "item.permafrozen.wulfrum_ingot": "Wulfrum Ingot",
-  "item.permafrozen.wulfrum_nugget": "Wulfrum Nugget",
-
   "item.permafrozen.cobalt_sword": "Cobalt Sword",
   "item.permafrozen.cobalt_pickaxe": "Cobalt Pickaxe",
   "item.permafrozen.cobalt_axe": "Cobalt Axe",
   "item.permafrozen.cobalt_shovel": "Cobalt Shovel",
   "item.permafrozen.cobalt_hoe": "Cobalt Hoe",
+
+  "item.permafrozen.cobalt_helmet": "Cobalt Helmet",
+  "item.permafrozen.cobalt_chestplate": "Cobalt Chestplate",
+  "item.permafrozen.cobalt_leggings": "Cobalt Leggings",
+  "item.permafrozen.cobalt_boots": "Cobalt Boots",
+
+  "item.permafrozen.wulfrum_ingot": "Wulfrum Ingot",
+  "item.permafrozen.wulfrum_nugget": "Wulfrum Nugget",
+
+  "item.permafrozen.frozen_scraps": "Frozen Scraps",
+  "item.permafrozen.chillorite_ingot": "Chillorite Ingot",
 
   "item.permafrozen.chillorite_sword": "Chillorite Sword",
   "item.permafrozen.chillorite_pickaxe": "Chillorite Pickaxe",

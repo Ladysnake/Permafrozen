@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "1#1",
+    "1#1"
+  ],
+  "key": {
+    "1": {
+      "item": "permafrozen:cobalt_ingot"
+    },
+    "#": {
+      "item": "minecraft:air"
+    }
+  },
+  "result": {
+    "item": "permafrozen:cobalt_boots",
+    "count": 1
+  }
+}
