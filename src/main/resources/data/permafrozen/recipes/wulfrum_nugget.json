@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "permafrozen:tungsten_block"
+      "item": "permafrozen:wulfrum_ingot"
     }
   ],
   "result": {
-    "item": "permafrozen:tungsten_ingot",
+    "item": "permafrozen:wulfrum_nugget",
     "count": 9
   }
 }

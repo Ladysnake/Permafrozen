@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "permafrozen:cobalt_block"
+    }
+  ],
+  "result": {
+    "item": "permafrozen:cobalt_ingot",
+    "count": 9
+  }
+}

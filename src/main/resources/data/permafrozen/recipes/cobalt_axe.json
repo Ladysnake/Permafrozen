@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "11",
+    "12",
+    "#2"
+  ],
+  "key": {
+    "1": {
+      "item": "permafrozen:cobalt_ingot"
+    },
+    "2": {
+      "item": "minecraft:stick"
+    },
+    "#": {
+      "item": "minecraft:air"
+    }
+  },
+  "result": {
+    "item": "permafrozen:cobalt_axe",
+    "count": 1
+  }
+}

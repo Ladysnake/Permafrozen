@@ -1,15 +1,14 @@
-package permafrozen.item;
+package permafrozen.item.cobalt;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import permafrozen.Permafrozen;
 
-public class TungstenIngot extends Item {
+public class CobaltIngot extends Item {
 
-    public TungstenIngot() {
+    public CobaltIngot() {
 
         super(new Item.Properties().group(Permafrozen.ITEM_GROUP));
-        setRegistryName("tungsten_ingot");
 
     }
 

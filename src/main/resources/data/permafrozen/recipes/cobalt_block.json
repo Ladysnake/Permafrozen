@@ -7,11 +7,11 @@
   ],
   "key": {
     "1": {
-      "item": "permafrozen:tungsten_nugget"
+      "item": "permafrozen:cobalt_ingot"
     }
   },
   "result": {
-    "item": "permafrozen:tungsten_ingot",
+    "item": "permafrozen:cobalt_block",
     "count": 1
   }
 }

@@ -6,9 +6,9 @@ import net.minecraft.block.material.Material;
 import net.minecraftforge.common.ToolType;
 import permafrozen.Permafrozen;
 
-public class TungstenBlock extends Block {
+public class WulfrumBlock extends Block {
 
-    public TungstenBlock() {
+    public WulfrumBlock() {
 
         super(Properties
                         .create(Material.IRON)
@@ -18,7 +18,7 @@ public class TungstenBlock extends Block {
                         .sound(SoundType.METAL)
         );
 
-        setRegistryName(Permafrozen.MODID, "tungsten_block");
+        setRegistryName(Permafrozen.MODID, "wulfrum_block");
 
     }
 

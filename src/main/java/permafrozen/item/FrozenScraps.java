@@ -9,7 +9,6 @@ public class FrozenScraps extends Item {
     public FrozenScraps() {
 
         super(new Item.Properties().group(Permafrozen.ITEM_GROUP));
-        setRegistryName("frozen_scraps");
 
     }
 

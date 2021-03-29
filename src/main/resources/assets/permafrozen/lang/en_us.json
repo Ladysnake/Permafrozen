@@ -3,30 +3,51 @@
   "itemGroup.permafrozen": "Permafrozen",
 
   "block.permafrozen.frozen_debris": "Frozen Debris",
+
   "block.permafrozen.cobalt_ore": "Cobalt Ore",
+  "block.permafrozen.cobalt_block": "Cobalt Block",
+
+  "block.permafrozen.wulfrum_block": "Wulfrum Block",
+
   "block.permafrozen.tanzanite_block": "Tanzanite Block",
-  "block.permafrozen.tungsten_block": "Tungsten Block",
+
   "block.permafrozen.hertzstone": "Hertzstone",
   "block.permafrozen.hertzstone_slab": "Hertzstone Slab",
   "block.permafrozen.hertzstone_stairs": "Hertzstone Stairs",
   "block.permafrozen.hertzstone_wall": "Hertzstone Wall",
+
   "block.permafrozen.polished_hertzstone": "Polished Hertzstone",
   "block.permafrozen.polished_hertzstone_slab": "Polished Hertzstone Slab",
   "block.permafrozen.polished_hertzstone_stairs": "Polished Hertzstone Stairs",
   "block.permafrozen.polished_hertzstone_wall": "Polished Hertzstone Wall",
   "block.permafrozen.polished_hertzstone_button": "Polished Hertzstone Button",
   "block.permafrozen.polished_hertzstone_pressure_plate": "Polished Hertzstone Pressure Plate",
+
   "block.permafrozen.polished_hertzstone_bricks": "Polished Hertzstone Bricks",
   "block.permafrozen.polished_hertzstone_brick_slab": "Polished Hertzstone Brick Slab",
   "block.permafrozen.polished_hertzstone_brick_stairs": "Polished Hertzstone Brick Stairs",
   "block.permafrozen.polished_hertzstone_brick_wall": "Polished Hertzstone Brick Wall",
+
   "block.permafrozen.chiseled_polished_hertzstone": "Chiseled Polished Hertzstone",
   "block.permafrozen.gilded_hertzstone": "Gilded Hertzstone",
 
-  "item.permafrozen.frozen_scraps": "Frozen Scraps",
+  "item.permafrozen.cobalt_nugget": "Cobalt Nugget",
   "item.permafrozen.cobalt_ingot": "Cobalt Ingot",
+
+  "item.permafrozen.frozen_scraps": "Frozen Scraps",
   "item.permafrozen.chillorite_ingot": "Chillorite Ingot",
-  "item.permafrozen.tungsten_ingot": "Tungsten Ingot",
-  "item.permafrozen.tungsten_nugget": "Tungsten Nugget",
-  "item.permafrozen.chillorite_sword": "Chillorite Sword"
+
+  "item.permafrozen.wulfrum_ingot": "Wulfrum Ingot",
+  "item.permafrozen.wulfrum_nugget": "Wulfrum Nugget",
+
+  "item.permafrozen.cobalt_sword": "Cobalt Sword",
+  "item.permafrozen.cobalt_pickaxe": "Cobalt Pickaxe",
+  "item.permafrozen.cobalt_axe": "Cobalt Axe",
+  "item.permafrozen.cobalt_shovel": "Cobalt Shovel",
+
+  "item.permafrozen.chillorite_sword": "Chillorite Sword",
+  "item.permafrozen.chillorite_pickaxe": "Chillorite Pickaxe",
+  "item.permafrozen.chillorite_axe": "Chillorite Axe",
+  "item.permafrozen.chillorite_shovel": "Chillorite Shovel"
+
 }

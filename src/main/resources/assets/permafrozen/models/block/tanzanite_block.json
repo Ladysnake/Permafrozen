@@ -1,12 +1,12 @@
 {
     "parent": "block/cube",
     "textures": {
-        "up": "permafrozen:block/block_of_tanzanite",
-        "north": "permafrozen:block/block_of_tanzanite",
-        "south": "permafrozen:block/block_of_tanzanite",
-        "east": "permafrozen:block/block_of_tanzanite",
-        "west": "permafrozen:block/block_of_tanzanite",
-        "down": "permafrozen:block/block_of_tanzanite",
-        "particle": "permafrozen:block/block_of_tanzanite"
+        "up": "permafrozen:block/tanzanite_block",
+        "north": "permafrozen:block/tanzanite_block",
+        "south": "permafrozen:block/tanzanite_block",
+        "east": "permafrozen:block/tanzanite_block",
+        "west": "permafrozen:block/tanzanite_block",
+        "down": "permafrozen:block/tanzanite_block",
+        "particle": "permafrozen:block/tanzanite_block"
     }
 }

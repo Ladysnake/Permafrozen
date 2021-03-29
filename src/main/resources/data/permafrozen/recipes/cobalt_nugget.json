@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "permafrozen:tungsten_ingot"
+      "item": "permafrozen:cobalt_ingot"
     }
   ],
   "result": {
-    "item": "permafrozen:tungsten_nugget",
+    "item": "permafrozen:cobalt_nugget",
     "count": 9
   }
 }
