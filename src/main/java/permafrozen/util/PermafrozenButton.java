@@ -9,12 +9,9 @@ import java.util.function.BooleanSupplier;
 
 public class PermafrozenButton extends AbstractButtonBlock {
 
-    private BooleanSupplier enabledSupplier = () -> true;
-
     protected PermafrozenButton(boolean isWooden, Properties properties) {
         super(isWooden, properties);
     }
-
 
     @Nonnull
     @Override
