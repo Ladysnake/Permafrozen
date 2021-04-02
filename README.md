@@ -5,6 +5,9 @@ Welcome to the Permafrozen! this mod adds tons of dragons small and big!
 
 
 # Credits 
+
+-ZedZedMango_
+
 -Coolrexx
 
 -SuPaChiKen
