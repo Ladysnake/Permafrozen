@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "up": "permafrozen:block/wulfram_block",
+        "north": "permafrozen:block/wulfram_block",
+        "south": "permafrozen:block/wulfram_block",
+        "east": "permafrozen:block/wulfram_block",
+        "west": "permafrozen:block/wulfram_block",
+        "down": "permafrozen:block/wulfram_block",
+        "particle": "permafrozen:block/wulfram_block"
+    }
+}

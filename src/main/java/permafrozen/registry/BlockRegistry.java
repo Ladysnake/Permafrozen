@@ -17,9 +17,11 @@ public class BlockRegistry {
     // Declare all blocks in the mod
     public static final Block COBALT_ORE = new CobaltOre().setRegistryName("cobalt_ore");
     public static final Block COBALT_BLOCK = new CobaltBlock().setRegistryName("cobalt_block");
-    public static final Block WULFRUM_BLOCK = new WulfrumBlock().setRegistryName("wulfrum_block");
-    public static final Block TANZANITE_BLOCK = new TanzaniteBlock().setRegistryName("tanzanite_block");
+
+    public static final Block WULFRAM_ORE = new WulframOre().setRegistryName("wulfram_ore");
+    public static final Block WULFRAM_BLOCK = new WulframBlock().setRegistryName("wulfram_block");
     public static final Block FROZEN_DEBRIS = new FrozenDebris().setRegistryName("frozen_debris");
+
     public static final Block CHILLORITE_BLOCK = new ChilloriteBlock().setRegistryName("chillorite_block");
 
     public static final Block HERTZSTONE = new Hertzstone().setRegistryName("hertzstone");

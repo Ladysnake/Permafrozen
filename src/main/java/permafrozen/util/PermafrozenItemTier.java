@@ -11,11 +11,8 @@ import java.util.function.Supplier;
 
 public enum PermafrozenItemTier implements IItemTier {
 
-    WULFRUM(2, 250, 6.0F, 2.0F, 14, () -> {
-        return Ingredient.fromItems(new IItemProvider[]{ItemRegistry.WULFRUM_INGOT});
-    }),
-    TANZANITE(3, 1561, 8.0F, 3.0F, 10, () -> {
-        return Ingredient.fromItems(new IItemProvider[]{Items.DIAMOND});
+    WULFRAM(2, 250, 6.0F, 2.0F, 14, () -> {
+        return Ingredient.fromItems(new IItemProvider[]{ItemRegistry.WULFRAM_INGOT});
     }),
     COBALT(0, 190, 12.0F, 0.0F, 22, () -> {
         return Ingredient.fromItems(new IItemProvider[]{ItemRegistry.COBALT_INGOT});

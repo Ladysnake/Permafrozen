@@ -46,25 +46,10 @@ minecraft {
                 workingDirectory project.file('run')
 
                 // Recommended logging data for a userdev environment
-                property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+                //property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
 
                 // Recommended logging level for the console
-                property 'forge.logging.console.level', 'debug'
-
-                mods {
-                    permafrozen {
-                        source sourceSets.main
-                    }
-                }
-            }
-            clientfewerconsolemessages {			// does not currently work!
-                workingDirectory project.file('run')
-
-                // Recommended logging data for a userdev environment
-                property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-
-                // Recommended logging level for the console
-                property 'forge.logging.console.level', 'warn'
+                //property 'forge.logging.console.level', 'debug'
 
                 mods {
                     permafrozen {
@@ -116,7 +101,8 @@ dependencies {
     // Specify the version of Minecraft to use, If this is any group other then 'net.minecraft' it is assumed
     // that the dep is a ForgeGradle 'patcher' dependency. And it's patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
-    minecraft 'net.minecraftforge:forge:1.16.4-35.1.0'
+    minecraft 'net.minecraftforge:forge:1.16.5-36.1.0'
+    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.16.5:3.0.19')
 
     // You may put jars on which you depend on in ./libs or you may define them like so..
     // compile "some.group:artifact:version:classifier"
@@ -136,6 +122,10 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
+}
+
+repositories{
+    maven { url 'https://repo.repsy.io/mvn/gandiber/geckolib' }
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..

@@ -1,47 +1,54 @@
 package permafrozen;
 
-import net.minecraft.block.Blocks;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.ObjectHolder;
 import permafrozen.registry.BlockRegistry;
+import permafrozen.registry.EntityRegistry;
 import permafrozen.registry.ItemGroupRegistry;
 import permafrozen.registry.ItemRegistry;
+import permafrozen.util.DataSerializers;
+import software.bernie.geckolib3.GeckoLib;
 
-@Mod(Permafrozen.MODID)
+// this mess should tell you exactly my skill level for modding
+@Mod(Permafrozen.MOD_ID)
 public class Permafrozen {
 
-    public static final String MODID = "permafrozen";
+    public static final String MOD_ID = "permafrozen";
     public static final String MOD_NAME = "Permafrozen";
     public static final ItemGroupRegistry ITEM_GROUP = new ItemGroupRegistry("permafrozen", () -> ItemRegistry.CHILLORITE_INGOT);
 
 
     public Permafrozen() {
 
+        GeckoLib.initialize();
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        modEventBus.addListener(this::setup);
 
-        registerCommonEvents(modEventBus);
+        modEventBus.register(BlockRegistry.class);
+        modEventBus.register(ItemRegistry.class);
+        modEventBus.register(EntityRegistry.class);
+        DataSerializers.SERIALIZERS.register(modEventBus); //get consistency later
 
-        //DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> modEventBus.addListener(EventPriority.LOWEST, this::registerClientEvents));
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> modEventBus.addListener(EventPriority.LOWEST, this::setupClient));
+
     }
 
-    public void registerCommonEvents(IEventBus eventBus) {
-        eventBus.register(BlockRegistry.class);
-        eventBus.register(ItemRegistry.class);
+    private void setup(final FMLCommonSetupEvent event) {
+
+        event.enqueueWork(() -> {
+            EntityRegistry.setAttributes();
+        });
     }
 
-    public void registerClientEvents(IEventBus eventBus) {
 
-
+    private void setupClient(final FMLClientSetupEvent event) {
+        EntityRegistry.registerRenderers();
     }
 
 }

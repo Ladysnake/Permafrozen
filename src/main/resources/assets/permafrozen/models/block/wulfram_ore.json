@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+       "up": "permafrozen:block/wulfram_ore",
+       "north": "permafrozen:block/wulfram_ore",
+       "south": "permafrozen:block/wulfram_ore",
+       "east": "permafrozen:block/wulfram_ore",
+       "west": "permafrozen:block/wulfram_ore",
+       "down": "permafrozen:block/wulfram_ore",
+       "particle": "permafrozen:block/wulfram_ore"
+    }
+}

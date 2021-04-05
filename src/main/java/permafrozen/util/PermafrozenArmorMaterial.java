@@ -19,14 +19,11 @@ public enum PermafrozenArmorMaterial implements IArmorMaterial {
     LEATHER("leather", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> {
         return Ingredient.fromItems(new IItemProvider[]{Items.LEATHER});
     }),
-    WULFRUM("wulfrum", 15, new int[]{2, 5, 6, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
-        return Ingredient.fromItems(new IItemProvider[]{ItemRegistry.WULFRUM_INGOT});
+    WULFRAM("wulfram", 15, new int[]{2, 5, 6, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
+        return Ingredient.fromItems(new IItemProvider[]{ItemRegistry.WULFRAM_INGOT});
     }),
     COBALT("cobalt", 10, new int[]{1, 3, 5, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F, 0.0F, () -> {
         return Ingredient.fromItems(new IItemProvider[]{ItemRegistry.COBALT_INGOT});
-    }),
-    TANZANITE("tanzanite", 33, new int[]{3, 6, 8, 3}, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F, 0.0F, () -> {
-        return Ingredient.fromItems(new IItemProvider[]{Items.DIAMOND});
     }),
     CHILLORITE("chillorite", 38, new int[]{3, 6, 8, 3}, 15, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 3.0F, 0.1F, () -> {
         return Ingredient.fromItems(new IItemProvider[]{ItemRegistry.CHILLORITE_INGOT});
