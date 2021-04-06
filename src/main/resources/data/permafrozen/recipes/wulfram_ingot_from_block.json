@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "permafrozen:wulfrum_block"
+      "item": "permafrozen:wulfram_block"
     }
   ],
   "result": {
-    "item": "permafrozen:wulfrum_ingot",
+    "item": "permafrozen:wulfram_ingot",
     "count": 9
   }
 }

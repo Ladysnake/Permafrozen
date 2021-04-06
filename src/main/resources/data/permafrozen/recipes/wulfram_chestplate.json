@@ -7,14 +7,14 @@
   ],
   "key": {
     "1": {
-      "item": "permafrozen:cobalt_ingot"
+      "item": "permafrozen:wulfram_ingot"
     },
     "#": {
       "item": "minecraft:air"
     }
   },
   "result": {
-    "item": "permafrozen:cobalt_chestplate",
+    "item": "permafrozen:wulfram_chestplate",
     "count": 1
   }
 }

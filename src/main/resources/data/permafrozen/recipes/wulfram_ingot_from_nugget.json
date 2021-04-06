@@ -7,11 +7,11 @@
   ],
   "key": {
     "1": {
-      "item": "permafrozen:wulfrum_nugget"
+      "item": "permafrozen:wulfram_nugget"
     }
   },
   "result": {
-    "item": "permafrozen:wulfrum_ingot",
+    "item": "permafrozen:wulfram_ingot",
     "count": 1
   }
 }
