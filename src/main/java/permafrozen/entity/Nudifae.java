@@ -36,6 +36,11 @@ public class Nudifae extends TameableEntity implements IAnimatable {
     public static final DataParameter<NudifaeType> TYPE = EntityDataManager.createKey(Nudifae.class, DataSerializers.NUDIFAE_TYPE);
     private AnimationFactory factory = new AnimationFactory(this);
 
+    public static AnimationBuilder IDLE = new AnimationBuilder().addAnimation("sleep"); // :3 until anim is done
+    public static AnimationBuilder FLOAT = new AnimationBuilder().addAnimation("float");
+    public static AnimationBuilder WALK = new AnimationBuilder().addAnimation("walk");
+    public static AnimationBuilder SWIM = new AnimationBuilder().addAnimation("swim");
+
     public Nudifae(EntityType<? extends Nudifae> type, World worldIn) {
         super(type, worldIn);
         this.experienceValue = 0;
@@ -83,7 +88,13 @@ public class Nudifae extends TameableEntity implements IAnimatable {
     // Animation things
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         //String animname = event.getController().getCurrentAnimation() != null ? event.getController().getCurrentAnimation().animationName : "";
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("idle"));
+        boolean isInWater = isInWater();
+        boolean isMoving = isInWater ? !(limbSwingAmount > -0.02) || !(limbSwingAmount < 0.02) : !(limbSwingAmount > -0.10F) || !(limbSwingAmount < 0.10F);
+        AnimationBuilder anim = isInWater ? FLOAT : IDLE;
+        if (isMoving) {
+            anim = isInWater ? SWIM : WALK;
+        }
+        event.getController().setAnimation(anim);
         return PlayState.CONTINUE;
     }
 
@@ -102,12 +113,13 @@ public class Nudifae extends TameableEntity implements IAnimatable {
 
     // AI
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, new SwimGoal(this));
+        //this.goalSelector.addGoal(1, new SwimGoal(this));
         //this.goalSelector.addGoal(3, new TemptGoal(this, 1.0D, Ingredient.fromItems(new ItemStack(new ResourceLocation("minecraft", "coral_blocks"))), false));
-        this.goalSelector.addGoal(5, new RandomWalkingGoal(this, 1.0D));
+        this.goalSelector.addGoal(5, new RandomSwimmingGoal(this, 1.0D, 10));
         this.goalSelector.addGoal(5, new LookRandomlyGoal(this));
         this.goalSelector.addGoal(6, new FollowOwnerGoal(this, 1.0D, 10.0F, 5.0F, false));
         this.goalSelector.addGoal(10, new BreedGoal(this, 0.8D));
+        this.goalSelector.addGoal(11, new RandomWalkingGoal(this, 1.0D));
         this.goalSelector.addGoal(12, new LookAtGoal(this, PlayerEntity.class, 10.0F));
 
     }
