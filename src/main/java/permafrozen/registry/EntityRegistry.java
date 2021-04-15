@@ -7,17 +7,21 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import permafrozen.Permafrozen;
 import permafrozen.entity.Nudifae;
+import permafrozen.entity.fish.LunarKoi;
+import permafrozen.entity.fish.lunarkoi.LunarKoiRenderer;
 import permafrozen.entity.nudifae.NudifaeRenderer;
 
 @Mod.EventBusSubscriber(modid = Permafrozen.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class EntityRegistry {
 
     public static final EntityType<Nudifae> NUDIFAE = registerEntity(EntityType.Builder.create(Nudifae::new, EntityClassification.WATER_CREATURE), "nudifae");
+    public static final EntityType<LunarKoi> LUNAR_KOI = registerEntity(EntityType.Builder.create(LunarKoi::new, EntityClassification.WATER_CREATURE), "lunar_koi");
 
 
     private static final EntityType registerEntity(EntityType.Builder builder, String entityName) {
@@ -25,15 +29,18 @@ public class EntityRegistry {
         return (EntityType) builder.build(entityName).setRegistryName(nameLoc);
     }
 
-    public static void setAttributes() {
+    @SubscribeEvent
+    public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
 
-        GlobalEntityTypeAttributes.put(NUDIFAE, Nudifae.getAttributes().create());
+        event.put(NUDIFAE, Nudifae.getAttributes().create());
+        event.put(LUNAR_KOI, LunarKoi.getAttributes().create());
 
     }
 
     public static void registerRenderers() {
 
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.NUDIFAE, NudifaeRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.LUNAR_KOI, LunarKoiRenderer::new);
 
     }
 

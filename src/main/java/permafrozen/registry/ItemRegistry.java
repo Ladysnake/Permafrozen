@@ -18,6 +18,10 @@ public class ItemRegistry {
     // Declare all items in the mod
     public static final Item NUDIFAE_SPAWN_EGG = new NudifaeSpawnEgg().setRegistryName("nudifae_spawn_egg");
 
+    public static final Item LUNAR_KOI = new LunarKoiItem().setRegistryName("lunar_koi");
+    public static final Item LUNAR_KOI_BUCKET = new LunarKoiBucket().setRegistryName("lunar_koi_bucket");
+
+
     public static final Item WULFRAM_INGOT = new WulframIngot().setRegistryName("wulfram_ingot");
     public static final Item WULFRAM_NUGGET = new WulframNugget().setRegistryName("wulfram_nugget");
     public static final Item WULFRAM_SWORD = new WulframSword().setRegistryName("wulfram_sword");

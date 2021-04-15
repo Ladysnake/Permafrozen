@@ -28,7 +28,7 @@ public class Permafrozen {
 
         GeckoLib.initialize();
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        modEventBus.addListener(this::setup);
+        //modEventBus.addListener(this::setup);
 
         modEventBus.register(BlockRegistry.class);
         modEventBus.register(ItemRegistry.class);
@@ -42,7 +42,7 @@ public class Permafrozen {
     private void setup(final FMLCommonSetupEvent event) {
 
         event.enqueueWork(() -> {
-            EntityRegistry.setAttributes();
+            //EntityRegistry.setAttributes();
         });
     }
 
