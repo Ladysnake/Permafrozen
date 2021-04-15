@@ -72,3 +72,13 @@ Minecraft By Example - a collection of simple working examples of the important 
 #    versionRange="[1.16.4,1.17)"
 #    ordering="NONE"
 #    side="BOTH"
+
+[[dependencies.permafrozen]] #optional
+    # the modid of the dependency
+    modId="geckolib3" #mandatory
+    # Does this dependency have to exist - if not, ordering below must be specified
+    mandatory=true #mandatory
+    # The version range of the dependency
+    versionRange="[3.0.30,)" #mandatory
+    # Side this dependency is applied on - BOTH, CLIENT or SERVER
+    side="BOTH"

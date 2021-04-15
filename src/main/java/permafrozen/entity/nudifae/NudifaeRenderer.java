@@ -36,7 +36,7 @@ public class NudifaeRenderer extends GeoEntityRenderer<Nudifae> {
     @Override
     public ResourceLocation getEntityTexture(Nudifae nudifae) {
 
-        return new ResourceLocation(Permafrozen.MOD_ID, String.format("textures/entity/nudifae/nudifae_%s.png", nudifae.getNudifaeType().id));
+        return this.getTextureLocation(nudifae);
 
     }
 

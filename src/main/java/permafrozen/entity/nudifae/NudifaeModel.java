@@ -17,7 +17,7 @@ public class NudifaeModel extends AnimatedGeoModel<Nudifae> {
 	@Override
 	public ResourceLocation getTextureLocation(Nudifae nudifae) {
 
-		return null;
+		return new ResourceLocation(Permafrozen.MOD_ID, String.format("textures/entity/nudifae/nudifae_%s.png", nudifae.getNudifaeType().id));
 
 	}
 
