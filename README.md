@@ -35,7 +35,7 @@ Welcome to the Permafrozen! this mod adds tons of dragons small and big!
 
 #Disclaimer
 
--If you contribute to this project (that being assets,code etc) those assets and code then belong to us if you do have issues with this, contact Mango_#5986 on discord and we will sort it out if something is out of order.
+-If you contribute to this project (that being assets,code etc) those assets and code then belong to us if you do have issues with this, contact MangoShorty_#5986 on discord and we will sort it out if something is out of order.
 
 # You CAN
 
