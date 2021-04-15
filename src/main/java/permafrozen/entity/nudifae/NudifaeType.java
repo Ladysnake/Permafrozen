@@ -16,6 +16,7 @@ public enum NudifaeType {
 
     @Nullable
     private final Biome.Category biomeCategory = Biome.Category.OCEAN;
+
     public final int id;
     public final int weight;
 
