@@ -1,13 +1,10 @@
 package permafrozen.registry;
 
-import net.minecraft.entity.EntityType;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
-import net.minecraft.item.SpawnEggItem;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 
 import net.minecraftforge.fml.RegistryObject;
@@ -32,42 +29,42 @@ public class ItemRegistry {
     // Mob things
     // broken atm; will implement as a bucket laterrrr  public static final RegistryObject<PermafrozenSpawnEgg> NUDIFAE_SPAWN_EGG = createItem("nudifae_spawn_egg", () -> new PermafrozenSpawnEgg(EntityRegistry.NUDIFAE.get(), -1, 1605609));
 
-    public static final RegistryObject<Item> LUNAR_KOI = createItem("lunar_koi", () -> new PermafrozenItem(new Item.Properties().food(Foods.LUNAR_KOI)));
-    public static final RegistryObject<Item> LUNAR_KOI_BUCKET = createItem("lunar_koi_bucket", () -> new PermafrozenMobBucket(EntityRegistry.LUNAR_KOI::get));
+    public static final RegistryObject<Item> LUNAR_KOI           = createItem("lunar_koi", () -> new PermafrozenItem(new Item.Properties().food(Foods.LUNAR_KOI)));
+    public static final RegistryObject<Item> LUNAR_KOI_BUCKET    = createItem("lunar_koi_bucket", () -> new PermafrozenMobBucket(EntityRegistry.LUNAR_KOI::get));
 
     // Wulfram
-    public static final RegistryObject<Item> WULFRAM_INGOT = createItem("wulfram_ingot", PermafrozenItem::new);
-    public static final RegistryObject<Item> WULFRAM_NUGGET = createItem("wulfram_nugget", PermafrozenItem::new);
+    public static final RegistryObject<Item> WULFRAM_INGOT       = createItem("wulfram_ingot", PermafrozenItem::new);
+    public static final RegistryObject<Item> WULFRAM_NUGGET      = createItem("wulfram_nugget", PermafrozenItem::new);
 
-    public static final RegistryObject<Item> WULFRAM_SWORD = createItem("wulfram_sword", () -> new PermafrozenSword(PermafrozenItemTier.WULFRAM));
-    public static final RegistryObject<Item> WULFRAM_PICKAXE = createItem("wulfram_pickaxe", () -> new PermafrozenPickaxe(PermafrozenItemTier.WULFRAM));
-    public static final RegistryObject<Item> WULFRAM_AXE = createItem("wulfram_axe", () -> new PermafrozenAxe(PermafrozenItemTier.WULFRAM));
-    public static final RegistryObject<Item> WULFRAM_SHOVEL = createItem("wulfram_shovel", () -> new PermafrozenShovel(PermafrozenItemTier.WULFRAM));
-    public static final RegistryObject<Item> WULFRAM_HOE = createItem("wulfram_hoe", () -> new PermafrozenHoe(PermafrozenItemTier.WULFRAM));
+    public static final RegistryObject<Item> WULFRAM_SWORD       = createItem("wulfram_sword", () -> new PermafrozenSword(PermafrozenItemTier.WULFRAM));
+    public static final RegistryObject<Item> WULFRAM_PICKAXE     = createItem("wulfram_pickaxe", () -> new PermafrozenPickaxe(PermafrozenItemTier.WULFRAM));
+    public static final RegistryObject<Item> WULFRAM_AXE         = createItem("wulfram_axe", () -> new PermafrozenAxe(PermafrozenItemTier.WULFRAM));
+    public static final RegistryObject<Item> WULFRAM_SHOVEL      = createItem("wulfram_shovel", () -> new PermafrozenShovel(PermafrozenItemTier.WULFRAM));
+    public static final RegistryObject<Item> WULFRAM_HOE         = createItem("wulfram_hoe", () -> new PermafrozenHoe(PermafrozenItemTier.WULFRAM));
 
-    public static final RegistryObject<Item> WULFRAM_HELMET = createItem("wulfram_helmet", () -> new PermafrozenArmor(PermafrozenArmorMaterial.WULFRAM, EquipmentSlotType.HEAD).setArmorTexture("wulfram_layer_1"));
-    public static final RegistryObject<Item> WULFRAM_CHESTPLATE = createItem("wulfram_chestplate", () -> new PermafrozenArmor(PermafrozenArmorMaterial.WULFRAM, EquipmentSlotType.CHEST).setArmorTexture("wulfram_layer_1"));
-    public static final RegistryObject<Item> WULFRAM_LEGS = createItem("wulfram_leggings", () -> new PermafrozenArmor(PermafrozenArmorMaterial.WULFRAM, EquipmentSlotType.LEGS).setArmorTexture("wulfram_layer_2"));
-    public static final RegistryObject<Item> WULFRAM_BOOTS = createItem("wulfram_boots", () -> new PermafrozenArmor(PermafrozenArmorMaterial.WULFRAM, EquipmentSlotType.FEET).setArmorTexture("wulfram_layer_1"));
+    public static final RegistryObject<Item> WULFRAM_HELMET      = createItem("wulfram_helmet", () -> new PermafrozenArmor(PermafrozenArmorMaterial.WULFRAM, EquipmentSlotType.HEAD).setArmorTexture("wulfram_layer_1"));
+    public static final RegistryObject<Item> WULFRAM_CHESTPLATE  = createItem("wulfram_chestplate", () -> new PermafrozenArmor(PermafrozenArmorMaterial.WULFRAM, EquipmentSlotType.CHEST).setArmorTexture("wulfram_layer_1"));
+    public static final RegistryObject<Item> WULFRAM_LEGS        = createItem("wulfram_leggings", () -> new PermafrozenArmor(PermafrozenArmorMaterial.WULFRAM, EquipmentSlotType.LEGS).setArmorTexture("wulfram_layer_2"));
+    public static final RegistryObject<Item> WULFRAM_BOOTS       = createItem("wulfram_boots", () -> new PermafrozenArmor(PermafrozenArmorMaterial.WULFRAM, EquipmentSlotType.FEET).setArmorTexture("wulfram_layer_1"));
 
     // Cryorite
-    public static final RegistryObject<Item> FROZEN_SCRAPS = createItem("frozen_scraps", PermafrozenItem::new);
-    public static final RegistryObject<Item> CRYORITE_INGOT = createItem("cryorite_ingot", PermafrozenItem::new);
+    public static final RegistryObject<Item> FROZEN_SCRAPS       = createItem("frozen_scraps", PermafrozenItem::new);
+    public static final RegistryObject<Item> CRYORITE_INGOT      = createItem("cryorite_ingot", PermafrozenItem::new);
 
-    public static final RegistryObject<Item> CRYORITE_SWORD = createItem("cryorite_sword", () -> new PermafrozenSword(PermafrozenItemTier.CRYORITE));
-    public static final RegistryObject<Item> CRYORITE_PICKAXE = createItem("cryorite_pickaxe", () -> new PermafrozenPickaxe(PermafrozenItemTier.CRYORITE));
-    public static final RegistryObject<Item> CRYORITE_AXE = createItem("cryorite_axe", () -> new PermafrozenAxe(PermafrozenItemTier.CRYORITE));
-    public static final RegistryObject<Item> CRYORITE_SHOVEL = createItem("cryorite_shovel", () -> new PermafrozenShovel(PermafrozenItemTier.CRYORITE));
-    public static final RegistryObject<Item> CRYORITE_HOE = createItem("cryorite_hoe", () -> new PermafrozenHoe(PermafrozenItemTier.CRYORITE));
+    public static final RegistryObject<Item> CRYORITE_SWORD      = createItem("cryorite_sword", () -> new PermafrozenSword(PermafrozenItemTier.CRYORITE));
+    public static final RegistryObject<Item> CRYORITE_PICKAXE    = createItem("cryorite_pickaxe", () -> new PermafrozenPickaxe(PermafrozenItemTier.CRYORITE));
+    public static final RegistryObject<Item> CRYORITE_AXE        = createItem("cryorite_axe", () -> new PermafrozenAxe(PermafrozenItemTier.CRYORITE));
+    public static final RegistryObject<Item> CRYORITE_SHOVEL     = createItem("cryorite_shovel", () -> new PermafrozenShovel(PermafrozenItemTier.CRYORITE));
+    public static final RegistryObject<Item> CRYORITE_HOE        = createItem("cryorite_hoe", () -> new PermafrozenHoe(PermafrozenItemTier.CRYORITE));
 
-    public static final RegistryObject<Item> CRYORITE_HELMET = createItem("cryorite_helmet", () -> new PermafrozenArmor(PermafrozenArmorMaterial.CRYORITE, EquipmentSlotType.HEAD).setArmorTexture("cryorite_layer_1"));
+    public static final RegistryObject<Item> CRYORITE_HELMET     = createItem("cryorite_helmet", () -> new PermafrozenArmor(PermafrozenArmorMaterial.CRYORITE, EquipmentSlotType.HEAD).setArmorTexture("cryorite_layer_1"));
     public static final RegistryObject<Item> CRYORITE_CHESTPLATE = createItem("cryorite_chestplate", () -> new PermafrozenArmor(PermafrozenArmorMaterial.CRYORITE, EquipmentSlotType.CHEST).setArmorTexture("cryorite_layer_1"));
-    public static final RegistryObject<Item> CRYORITE_LEGS = createItem("cryorite_leggings", () -> new PermafrozenArmor(PermafrozenArmorMaterial.CRYORITE, EquipmentSlotType.LEGS).setArmorTexture("cryorite_layer_2"));
-    public static final RegistryObject<Item> CRYORITE_BOOTS = createItem("cryorite_boots", () -> new PermafrozenArmor(PermafrozenArmorMaterial.CRYORITE, EquipmentSlotType.FEET).setArmorTexture("cryorite_layer_1"));
+    public static final RegistryObject<Item> CRYORITE_LEGS       = createItem("cryorite_leggings", () -> new PermafrozenArmor(PermafrozenArmorMaterial.CRYORITE, EquipmentSlotType.LEGS).setArmorTexture("cryorite_layer_2"));
+    public static final RegistryObject<Item> CRYORITE_BOOTS      = createItem("cryorite_boots", () -> new PermafrozenArmor(PermafrozenArmorMaterial.CRYORITE, EquipmentSlotType.FEET).setArmorTexture("cryorite_layer_1"));
 
     // Cobalt
-    public static final RegistryObject<Item> COBALT_NUGGET = createItem("cobalt_nugget", PermafrozenItem::new);
-    public static final RegistryObject<Item> COBALT_INGOT = createItem( "cobalt_ingot", PermafrozenItem::new);
+    public static final RegistryObject<Item> COBALT_NUGGET       = createItem("cobalt_nugget", PermafrozenItem::new);
+    public static final RegistryObject<Item> COBALT_INGOT        = createItem( "cobalt_ingot", PermafrozenItem::new);
 
     public static class Foods {
 

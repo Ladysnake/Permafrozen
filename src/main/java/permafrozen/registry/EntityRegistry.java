@@ -25,7 +25,7 @@ public class EntityRegistry {
     public static final DeferredRegister<EntityType<?>> entityRegister = DeferredRegister.create(ForgeRegistries.ENTITIES, Permafrozen.MOD_ID);
 
 
-    public static final RegistryObject<EntityType<Nudifae>> NUDIFAE = createLivingEntity("nudifae", Nudifae::new, EntityClassification.WATER_CREATURE);
+    public static final RegistryObject<EntityType<Nudifae>> NUDIFAE    = createLivingEntity("nudifae", Nudifae::new, EntityClassification.WATER_CREATURE);
     public static final RegistryObject<EntityType<LunarKoi>> LUNAR_KOI = createLivingEntity("lunar_koi", LunarKoi::new, EntityClassification.WATER_CREATURE);
 
 

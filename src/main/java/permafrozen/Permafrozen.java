@@ -10,7 +10,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import permafrozen.registry.BlockRegistry;
 import permafrozen.registry.EntityRegistry;
-import permafrozen.registry.ItemGroupRegistry;
+import permafrozen.util.PermafrozenItemGroup;
 import permafrozen.registry.ItemRegistry;
 import permafrozen.util.PermafrozenDataSerializers;
 import software.bernie.geckolib3.GeckoLib;
@@ -21,7 +21,7 @@ public class Permafrozen {
 
     public static final String MOD_ID = "permafrozen";
     public static final String MOD_NAME = "Permafrozen";
-    public static final ItemGroupRegistry ITEM_GROUP = new ItemGroupRegistry("permafrozen", () -> ItemRegistry.CRYORITE_INGOT.get());
+    public static final PermafrozenItemGroup ITEM_GROUP = new PermafrozenItemGroup("permafrozen", ItemRegistry.CRYORITE_INGOT::get);
 
 
     public Permafrozen() {
