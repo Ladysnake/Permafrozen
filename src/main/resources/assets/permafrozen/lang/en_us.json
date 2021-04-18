@@ -63,6 +63,11 @@
   "item.permafrozen.cryorite_pickaxe": "Cryorite Pickaxe",
   "item.permafrozen.cryorite_axe": "Cryorite Axe",
   "item.permafrozen.cryorite_shovel": "Cryorite Shovel",
-  "item.permafrozen.cryorite_hoe": "Cryorite Hoe"
+  "item.permafrozen.cryorite_hoe": "Cryorite Hoe",
+
+  "item.permafrozen.cryorite_helmet": "Cryorite Helmet",
+  "item.permafrozen.cryorite_chestplate": "Cryorite Chestplate",
+  "item.permafrozen.cryorite_leggings": "Cryorite Leggings",
+  "item.permafrozen.cryorite_boots": "Cryorite Boots"
 
 }
