@@ -20,13 +20,13 @@ public enum PermafrozenArmorMaterial implements IArmorMaterial {
         return Ingredient.fromItems(new IItemProvider[]{Items.LEATHER});
     }),
     WULFRAM("wulfram", 15, new int[]{2, 5, 6, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
-        return Ingredient.fromItems(new IItemProvider[]{ItemRegistry.WULFRAM_INGOT});
+        return Ingredient.fromItems(new IItemProvider[]{ItemRegistry.WULFRAM_INGOT.get()});
     }),
     COBALT("cobalt", 10, new int[]{1, 3, 5, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F, 0.0F, () -> {
-        return Ingredient.fromItems(new IItemProvider[]{ItemRegistry.COBALT_INGOT});
+        return Ingredient.fromItems(new IItemProvider[]{ItemRegistry.COBALT_INGOT.get()});
     }),
-    CHILLORITE("chillorite", 38, new int[]{3, 6, 8, 3}, 15, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 3.0F, 0.1F, () -> {
-        return Ingredient.fromItems(new IItemProvider[]{ItemRegistry.CHILLORITE_INGOT});
+    CRYORITE("chillorite", 38, new int[]{3, 6, 8, 3}, 15, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 3.0F, 0.1F, () -> {
+        return Ingredient.fromItems(new IItemProvider[]{ItemRegistry.CRYORITE_INGOT.get()});
     });
 
     private static final int[] MAX_DAMAGE_ARRAY = new int[]{13, 15, 16, 11};

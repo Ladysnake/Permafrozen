@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "permafrozen:cobalt_ingot"
+    },
+    {
+      "item": "permafrozen:cobalt_ingot"
+    },
+    {
+      "item": "permafrozen:cobalt_ingot"
+    },
+    {
+      "item": "permafrozen:cobalt_ingot"
+    },
+    {
+      "item": "permafrozen:frozen_scraps"
+    },
+    {
+      "item": "permafrozen:frozen_scraps"
+    },
+    {
+      "item": "permafrozen:frozen_scraps"
+    },
+    {
+      "item": "permafrozen:frozen_scraps"
+    }
+  ],
+  "result":
+  {
+    "item": "permafrozen:cryorite_ingot",
+    "count": 1
+  }
+}

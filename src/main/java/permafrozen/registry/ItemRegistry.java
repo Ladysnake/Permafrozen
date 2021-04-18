@@ -1,73 +1,92 @@
 package permafrozen.registry;
 
+import net.minecraft.entity.EntityType;
 import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.Food;
 import net.minecraft.item.Item;
+import net.minecraft.item.SpawnEggItem;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 
+import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import permafrozen.Permafrozen;
 import permafrozen.item.*;
-import permafrozen.item.wulfram.*;
-import permafrozen.item.cobalt.*;
-import permafrozen.item.chillorite.*;
+import permafrozen.item.tools.*;
 import permafrozen.util.PermafrozenArmorMaterial;
+import permafrozen.util.PermafrozenItemTier;
 
-import java.lang.reflect.Field;
+import java.util.function.Supplier;
 
+@Mod.EventBusSubscriber(modid = Permafrozen.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ItemRegistry {
 
+    public static final DeferredRegister<Item> itemRegister = DeferredRegister.create(ForgeRegistries.ITEMS, Permafrozen.MOD_ID);
+
     // Declare all items in the mod
-    public static final Item NUDIFAE_SPAWN_EGG = new NudifaeSpawnEgg().setRegistryName("nudifae_spawn_egg");
+    // broken atm; will implement as a bucket laterrrr  public static final RegistryObject<PermafrozenSpawnEgg> NUDIFAE_SPAWN_EGG = createItem("nudifae_spawn_egg", () -> new PermafrozenSpawnEgg(EntityRegistry.NUDIFAE.get(), -1, 1605609));
 
-    public static final Item LUNAR_KOI = new LunarKoiItem().setRegistryName("lunar_koi");
-    public static final Item LUNAR_KOI_BUCKET = new LunarKoiBucket().setRegistryName("lunar_koi_bucket");
+    public static final RegistryObject<Item> LUNAR_KOI = createItem("lunar_koi", () -> new PermafrozenItem(new Item.Properties().food(Foods.LUNAR_KOI)));
+    public static final RegistryObject<Item> LUNAR_KOI_BUCKET = createItem("lunar_koi_bucket", () -> new PermafrozenMobBucket(EntityRegistry.LUNAR_KOI::get));
 
 
-    public static final Item WULFRAM_INGOT = new WulframIngot().setRegistryName("wulfram_ingot");
-    public static final Item WULFRAM_NUGGET = new WulframNugget().setRegistryName("wulfram_nugget");
-    public static final Item WULFRAM_SWORD = new WulframSword().setRegistryName("wulfram_sword");
-    public static final Item WULFRAM_PICKAXE = new WulframPickaxe().setRegistryName("wulfram_pickaxe");
-    public static final Item WULFRAM_AXE = new WulframAxe().setRegistryName("wulfram_axe");
-    public static final Item WULFRAM_SHOVEL = new WulframShovel().setRegistryName("wulfram_shovel");
-    public static final Item WULFRAM_HOE = new WulframShovel().setRegistryName("wulfram_hoe");
-    public static final Item WULFRAM_HELMET = new WulframArmor(PermafrozenArmorMaterial.WULFRAM, EquipmentSlotType.HEAD).setArmorTexture("wulfram_layer_1").setRegistryName("wulfram_helmet");
-    public static final Item WULFRAM_CHESTPLATE = new WulframArmor(PermafrozenArmorMaterial.WULFRAM, EquipmentSlotType.CHEST).setArmorTexture("wulfram_layer_1").setRegistryName("wulfram_chestplate");
-    public static final Item WULFRAM_LEGS = new WulframArmor(PermafrozenArmorMaterial.WULFRAM, EquipmentSlotType.LEGS).setArmorTexture("wulfram_layer_2").setRegistryName("wulfram_leggings");
-    public static final Item WULFRAM_BOOTS = new WulframArmor(PermafrozenArmorMaterial.WULFRAM, EquipmentSlotType.FEET).setArmorTexture("wulfram_layer_1").setRegistryName("wulfram_boots");
+    public static final RegistryObject<Item> WULFRAM_INGOT = createItem("wulfram_ingot", PermafrozenItem::new);
+    public static final RegistryObject<Item> WULFRAM_NUGGET = createItem("wulfram_nugget", PermafrozenItem::new);
+    public static final RegistryObject<Item> WULFRAM_SWORD = createItem("wulfram_sword", () -> new PermafrozenSword(PermafrozenItemTier.WULFRAM));
+    public static final RegistryObject<Item> WULFRAM_PICKAXE = createItem("wulfram_pickaxe", () -> new PermafrozenPickaxe(PermafrozenItemTier.WULFRAM));
+    public static final RegistryObject<Item> WULFRAM_AXE = createItem("wulfram_axe", () -> new PermafrozenAxe(PermafrozenItemTier.WULFRAM));
+    public static final RegistryObject<Item> WULFRAM_SHOVEL = createItem("wulfram_shovel", () -> new PermafrozenShovel(PermafrozenItemTier.WULFRAM));
+    public static final RegistryObject<Item> WULFRAM_HOE = createItem("wulfram_hoe", () -> new PermafrozenHoe(PermafrozenItemTier.WULFRAM));
+    public static final RegistryObject<Item> WULFRAM_HELMET = createItem("wulfram_helmet", () -> new PermafrozenArmor(PermafrozenArmorMaterial.WULFRAM, EquipmentSlotType.HEAD).setArmorTexture("wulfram_layer_1"));
+    public static final RegistryObject<Item> WULFRAM_CHESTPLATE = createItem("wulfram_chestplate", () -> new PermafrozenArmor(PermafrozenArmorMaterial.WULFRAM, EquipmentSlotType.CHEST).setArmorTexture("wulfram_layer_1"));
+    public static final RegistryObject<Item> WULFRAM_LEGS = createItem("wulfram_leggings", () -> new PermafrozenArmor(PermafrozenArmorMaterial.WULFRAM, EquipmentSlotType.LEGS).setArmorTexture("wulfram_layer_2"));
+    public static final RegistryObject<Item> WULFRAM_BOOTS = createItem("wulfram_boots", () -> new PermafrozenArmor(PermafrozenArmorMaterial.WULFRAM, EquipmentSlotType.FEET).setArmorTexture("wulfram_layer_1"));
 
-    public static final Item FROZEN_SCRAPS = new FrozenScraps().setRegistryName("frozen_scraps");
-    public static final Item CHILLORITE_INGOT = new ChilloriteIngot().setRegistryName("chillorite_ingot");
-    public static final Item CHILLORITE_SWORD = new ChilloriteSword().setRegistryName("chillorite_sword");
-    public static final Item CHILLORITE_PICKAXE = new ChilloritePickaxe().setRegistryName("chillorite_pickaxe");
-    public static final Item CHILLORITE_AXE = new ChilloriteAxe().setRegistryName("chillorite_axe");
-    public static final Item CHILLORITE_SHOVEL = new ChilloriteShovel().setRegistryName("chillorite_shovel");
-    public static final Item CHILLORITE_HOE = new ChilloriteShovel().setRegistryName("chillorite_hoe");
+    public static final RegistryObject<Item> FROZEN_SCRAPS = createItem("frozen_scraps", PermafrozenItem::new);
+    public static final RegistryObject<Item> CRYORITE_INGOT = createItem("cryorite_ingot", PermafrozenItem::new);
+    public static final RegistryObject<Item> CRYORITE_SWORD = createItem("cryorite_sword", () -> new PermafrozenSword(PermafrozenItemTier.CRYORITE));
+    public static final RegistryObject<Item> CRYORITE_PICKAXE = createItem("cryorite_pickaxe", () -> new PermafrozenPickaxe(PermafrozenItemTier.CRYORITE));
+    public static final RegistryObject<Item> CRYORITE_AXE = createItem("cryorite_axe", () -> new PermafrozenAxe(PermafrozenItemTier.CRYORITE));
+    public static final RegistryObject<Item> CRYORITE_SHOVEL = createItem("cryorite_shovel", () -> new PermafrozenShovel(PermafrozenItemTier.CRYORITE));
+    public static final RegistryObject<Item> CRYORITE_HOE = createItem("cryorite_hoe", () -> new PermafrozenHoe(PermafrozenItemTier.CRYORITE));
 
-    public static final Item COBALT_NUGGET = new CobaltNugget().setRegistryName("cobalt_nugget");
-    public static final Item COBALT_INGOT = new CobaltIngot().setRegistryName("cobalt_ingot");
+    public static final RegistryObject<Item> COBALT_NUGGET = createItem("cobalt_nugget", PermafrozenItem::new);
+    public static final RegistryObject<Item> COBALT_INGOT = createItem( "cobalt_ingot", PermafrozenItem::new);
 
-    @SubscribeEvent
-    public static void onItemsRegistration(final RegistryEvent.Register<Item> e) {
+    public static class Foods {
 
-        try {
-
-            // Go through declared vars, check if they're items, then register
-            for (Field f : ItemRegistry.class.getDeclaredFields()) {
-
-                Object obj = f.get(null);
-                if (obj instanceof Item) {
-
-                    e.getRegistry().register((Item) obj);
-
-                }
-
-            }
-
-        } catch (IllegalAccessException err) {
-
-            throw new RuntimeException(err);
-
-        }
+        public static final Food LUNAR_KOI = new Food.Builder().hunger(3).saturation(0.1F).effect(() -> new EffectInstance(Effects.NAUSEA, 1200, 255), 1.0F).build();
 
     }
+
+    // Make things a lil bit prettier
+    public static <I extends Item> RegistryObject<I> createItem(String name, Supplier<? extends I> supplier) {
+
+        return itemRegister.register(name, supplier);
+
+    }
+
+    public static void register(IEventBus eventBus) {
+
+        itemRegister.register(eventBus);
+
+    }
+
+    /*@SuppressWarnings("unchecked")
+    private void registerSpawnEggs(RegistryEvent.Register<EntityType<?>> event) {
+        if (!this.spawnEggs.isEmpty()) {
+            try {
+                Map<EntityType<?>, SpawnEggItem> map = (Map<EntityType<?>, SpawnEggItem>) EGGS_FIELD.get(null);
+                this.spawnEggs.forEach(egg -> map.put(egg.getType(null), egg));
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+    }*/
+
 
 }

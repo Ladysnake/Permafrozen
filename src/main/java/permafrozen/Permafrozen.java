@@ -12,7 +12,7 @@ import permafrozen.registry.BlockRegistry;
 import permafrozen.registry.EntityRegistry;
 import permafrozen.registry.ItemGroupRegistry;
 import permafrozen.registry.ItemRegistry;
-import permafrozen.util.DataSerializers;
+import permafrozen.util.PermafrozenDataSerializers;
 import software.bernie.geckolib3.GeckoLib;
 
 // this mess should tell you exactly my skill level for modding
@@ -21,21 +21,23 @@ public class Permafrozen {
 
     public static final String MOD_ID = "permafrozen";
     public static final String MOD_NAME = "Permafrozen";
-    public static final ItemGroupRegistry ITEM_GROUP = new ItemGroupRegistry("permafrozen", () -> ItemRegistry.CHILLORITE_INGOT);
+    public static final ItemGroupRegistry ITEM_GROUP = new ItemGroupRegistry("permafrozen", () -> ItemRegistry.CRYORITE_INGOT.get());
 
 
     public Permafrozen() {
 
         GeckoLib.initialize();
+
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
         //modEventBus.addListener(this::setup);
-
-        modEventBus.register(BlockRegistry.class);
-        modEventBus.register(ItemRegistry.class);
-        modEventBus.register(EntityRegistry.class);
-        DataSerializers.SERIALIZERS.register(modEventBus); //get consistency later
-
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> modEventBus.addListener(EventPriority.LOWEST, this::setupClient));
+
+        // Register all the things
+        BlockRegistry.register(modEventBus);
+        ItemRegistry.register(modEventBus);
+        EntityRegistry.register(modEventBus);
+        PermafrozenDataSerializers.register(modEventBus);
 
     }
 
@@ -48,7 +50,9 @@ public class Permafrozen {
 
 
     private void setupClient(final FMLClientSetupEvent event) {
+
         EntityRegistry.registerRenderers();
+
     }
 
 }

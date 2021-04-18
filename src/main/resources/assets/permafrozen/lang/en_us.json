@@ -10,7 +10,7 @@
   "item.permafrozen.lunar_koi_bucket": "Bucket of Lunar Koi",
 
   "block.permafrozen.frozen_debris": "Frozen Debris",
-  "block.permafrozen.chillorite_block": "Chillorite Block",
+  "block.permafrozen.cryorite_block": "Cryorite Block",
 
   "block.permafrozen.cobalt_ore": "Cobalt Ore",
   "block.permafrozen.cobalt_block": "Cobalt Block",
@@ -57,13 +57,12 @@
   "item.permafrozen.wulfram_boots": "Wulfram Boots",
 
   "item.permafrozen.frozen_scraps": "Frozen Scraps",
-  "item.permafrozen.chillorite_ingot": "Chillorite Ingot",
+  "item.permafrozen.cryorite_ingot": "Cryorite Ingot",
 
-  "item.permafrozen.chillorite_sword": "Chillorite Sword",
-  "item.permafrozen.chillorite_pickaxe": "Chillorite Pickaxe",
-  "item.permafrozen.chillorite_axe": "Chillorite Axe",
-  "item.permafrozen.chillorite_shovel": "Chillorite Shovel",
-  "item.permafrozen.chillorite_hoe": "Chillorite Hoe"
-
+  "item.permafrozen.cryorite_sword": "Cryorite Sword",
+  "item.permafrozen.cryorite_pickaxe": "Cryorite Pickaxe",
+  "item.permafrozen.cryorite_axe": "Cryorite Axe",
+  "item.permafrozen.cryorite_shovel": "Cryorite Shovel",
+  "item.permafrozen.cryorite_hoe": "Cryorite Hoe"
 
 }

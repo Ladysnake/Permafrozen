@@ -23,7 +23,7 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import permafrozen.entity.nudifae.NudifaeType;
-import permafrozen.util.DataSerializers;
+import permafrozen.util.PermafrozenDataSerializers;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -40,7 +40,7 @@ import static net.minecraft.entity.ai.attributes.Attributes.*;
 
 public class Nudifae extends TameableEntity implements IAnimatable {
 
-    public static final DataParameter<NudifaeType> TYPE = EntityDataManager.createKey(Nudifae.class, DataSerializers.NUDIFAE_TYPE);
+    public static final DataParameter<NudifaeType> TYPE = EntityDataManager.createKey(Nudifae.class, PermafrozenDataSerializers.NUDIFAE_TYPE);
     private AnimationFactory factory = new AnimationFactory(this);
 
     public static AnimationBuilder IDLE = new AnimationBuilder().addAnimation("idle");

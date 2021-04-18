@@ -12,13 +12,13 @@ import java.util.function.Supplier;
 public enum PermafrozenItemTier implements IItemTier {
 
     WULFRAM(2, 250, 6.0F, 2.0F, 14, () -> {
-        return Ingredient.fromItems(new IItemProvider[]{ItemRegistry.WULFRAM_INGOT});
+        return Ingredient.fromItems(new IItemProvider[]{ItemRegistry.WULFRAM_INGOT.get()});
     }),
     COBALT(0, 190, 12.0F, 0.0F, 22, () -> {
-        return Ingredient.fromItems(new IItemProvider[]{ItemRegistry.COBALT_INGOT});
+        return Ingredient.fromItems(new IItemProvider[]{ItemRegistry.COBALT_INGOT.get()});
     }),
-    CHILLORITE(4, 2200, 9.0F, 4.0F, 15, () -> {
-        return Ingredient.fromItems(new IItemProvider[]{ItemRegistry.CHILLORITE_INGOT});
+    CRYORITE(4, 2200, 9.0F, 4.0F, 15, () -> {
+        return Ingredient.fromItems(new IItemProvider[]{ItemRegistry.CRYORITE_INGOT.get()});
     });
 
     private final int harvestLevel;

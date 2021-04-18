@@ -1,16 +1,18 @@
 package permafrozen.registry;
 
-import java.lang.reflect.Field;
-
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 import permafrozen.Permafrozen;
 import permafrozen.entity.Nudifae;
 import permafrozen.entity.fish.LunarKoi;
@@ -20,48 +22,36 @@ import permafrozen.entity.nudifae.NudifaeRenderer;
 @Mod.EventBusSubscriber(modid = Permafrozen.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class EntityRegistry {
 
-    public static final EntityType<Nudifae> NUDIFAE = registerEntity(EntityType.Builder.create(Nudifae::new, EntityClassification.WATER_CREATURE), "nudifae");
-    public static final EntityType<LunarKoi> LUNAR_KOI = registerEntity(EntityType.Builder.create(LunarKoi::new, EntityClassification.WATER_CREATURE), "lunar_koi");
+    public static final DeferredRegister<EntityType<?>> entityRegister = DeferredRegister.create(ForgeRegistries.ENTITIES, Permafrozen.MOD_ID);
 
 
-    private static final EntityType registerEntity(EntityType.Builder builder, String entityName) {
-        ResourceLocation nameLoc = new ResourceLocation(Permafrozen.MOD_ID, entityName);
-        return (EntityType) builder.build(entityName).setRegistryName(nameLoc);
+    public static final RegistryObject<EntityType<Nudifae>> NUDIFAE = createLivingEntity("nudifae", Nudifae::new, EntityClassification.WATER_CREATURE);
+    public static final RegistryObject<EntityType<LunarKoi>> LUNAR_KOI = createLivingEntity("lunar_koi", LunarKoi::new, EntityClassification.WATER_CREATURE);
+
+
+    public static <E extends LivingEntity> RegistryObject createLivingEntity(String name,  EntityType.IFactory<E> factory, EntityClassification classification) {
+        return entityRegister.register(name, () -> EntityType.Builder.create(factory, classification).build(new ResourceLocation(Permafrozen.MOD_ID + name).toString()));
     }
 
     @SubscribeEvent
     public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
 
-        event.put(NUDIFAE, Nudifae.getAttributes().create());
-        event.put(LUNAR_KOI, LunarKoi.getAttributes().create());
+        event.put(NUDIFAE.get(), Nudifae.getAttributes().create());
+        event.put(LUNAR_KOI.get(), LunarKoi.getAttributes().create());
 
     }
 
     public static void registerRenderers() {
 
-        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.NUDIFAE, NudifaeRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.LUNAR_KOI, LunarKoiRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.NUDIFAE.get(), NudifaeRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.LUNAR_KOI.get(), LunarKoiRenderer::new);
 
     }
 
 
-    @SubscribeEvent
-    public static void registerEntities(RegistryEvent.Register<EntityType<?>> event) {
-        try {
-            for (Field f : EntityRegistry.class.getDeclaredFields()) {
-                Object obj = f.get(null);
-                if (obj instanceof EntityType) {
-                    event.getRegistry().register((EntityType) obj);
-                } else if (obj instanceof EntityType[]) {
-                    for (EntityType type : (EntityType[]) obj) {
-                        event.getRegistry().register(type);
+    public static void register(IEventBus eventBus) {
 
-                    }
-                }
-            }
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
+        entityRegister.register(eventBus);
 
     }
 

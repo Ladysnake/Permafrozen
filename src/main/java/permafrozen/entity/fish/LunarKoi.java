@@ -34,7 +34,7 @@ public class LunarKoi extends AbstractFishEntity implements IAnimatable {
     }
 
     protected ItemStack getFishBucket() {
-        return new ItemStack(ItemRegistry.LUNAR_KOI_BUCKET);
+        return new ItemStack(ItemRegistry.LUNAR_KOI_BUCKET.get());
     }
 
     protected SoundEvent getAmbientSound() {
