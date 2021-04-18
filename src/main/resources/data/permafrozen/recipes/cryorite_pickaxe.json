@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "permafrozen:wulfram_pickaxe"
+  },
+  "addition": {
+    "item": "permafrozen:cryorite_ingot"
+  },
+  "result": {
+    "item": "permafrozen:cryorite_pickaxe"
+  }
+}
