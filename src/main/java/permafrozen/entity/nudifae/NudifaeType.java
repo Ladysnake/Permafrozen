@@ -13,7 +13,8 @@ public enum NudifaeType {
     PINK(1, 30),
     PURPLE(2, 25),
     GREEN(3, 10),
-    ALBINO(4, 1);
+    ALBINO(4, 1),
+    MELANISTIC(5, 1);
 
     @Nullable
     private final Biome.Category biomeCategory = Biome.Category.OCEAN;

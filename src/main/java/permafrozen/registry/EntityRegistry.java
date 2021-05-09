@@ -15,7 +15,9 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import permafrozen.Permafrozen;
 import permafrozen.entity.Nudifae;
+import permafrozen.entity.fish.FatFish;
 import permafrozen.entity.fish.LunarKoi;
+import permafrozen.entity.fish.fatfish.FatFishRenderer;
 import permafrozen.entity.fish.lunarkoi.LunarKoiRenderer;
 import permafrozen.entity.nudifae.NudifaeRenderer;
 
@@ -27,7 +29,7 @@ public class EntityRegistry {
 
     public static final RegistryObject<EntityType<Nudifae>> NUDIFAE    = createLivingEntity("nudifae", Nudifae::new, EntityClassification.WATER_CREATURE);
     public static final RegistryObject<EntityType<LunarKoi>> LUNAR_KOI = createLivingEntity("lunar_koi", LunarKoi::new, EntityClassification.WATER_CREATURE);
-
+    public static final RegistryObject<EntityType<FatFish>> FATFISH    = createLivingEntity("fatfish", FatFish::new, EntityClassification.WATER_CREATURE);
 
     public static <E extends LivingEntity> RegistryObject createLivingEntity(String name,  EntityType.IFactory<E> factory, EntityClassification classification) {
         return entityRegister.register(name, () -> EntityType.Builder.create(factory, classification).build(new ResourceLocation(Permafrozen.MOD_ID + name).toString()));
@@ -38,6 +40,7 @@ public class EntityRegistry {
 
         event.put(NUDIFAE.get(), Nudifae.getAttributes().create());
         event.put(LUNAR_KOI.get(), LunarKoi.getAttributes().create());
+        event.put(FATFISH.get(), FatFish.getAttributes().create());
 
     }
 
@@ -45,6 +48,7 @@ public class EntityRegistry {
 
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.NUDIFAE.get(), NudifaeRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.LUNAR_KOI.get(), LunarKoiRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.FATFISH.get(), FatFishRenderer::new);
 
     }
 
