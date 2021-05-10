@@ -32,6 +32,9 @@ public class ItemRegistry {
     public static final RegistryObject<Item> LUNAR_KOI           = createItem("lunar_koi", () -> new PermafrozenItem(new Item.Properties().food(Foods.LUNAR_KOI)));
     public static final RegistryObject<Item> LUNAR_KOI_BUCKET    = createItem("lunar_koi_bucket", () -> new PermafrozenMobBucket(EntityRegistry.LUNAR_KOI::get));
 
+    public static final RegistryObject<Item> FATFISH           = createItem("fatfish", () -> new PermafrozenItem(new Item.Properties().food(Foods.FATFISH)));
+    public static final RegistryObject<Item> FATFISH_BUCKET    = createItem("fatfish_bucket", () -> new PermafrozenMobBucket(EntityRegistry.FATFISH::get));
+
     // Wulfram
     public static final RegistryObject<Item> WULFRAM_INGOT       = createItem("wulfram_ingot", PermafrozenItem::new);
     public static final RegistryObject<Item> WULFRAM_NUGGET      = createItem("wulfram_nugget", PermafrozenItem::new);
@@ -69,6 +72,7 @@ public class ItemRegistry {
     public static class Foods {
 
         public static final Food LUNAR_KOI = new Food.Builder().hunger(3).saturation(0.1F).effect(() -> new EffectInstance(Effects.NAUSEA, 1200, 255), 1.0F).build();
+        public static final Food FATFISH = new Food.Builder().hunger(4).saturation(0.4F).build();
 
     }
 

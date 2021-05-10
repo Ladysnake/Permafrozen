@@ -59,7 +59,7 @@ public class LunarKoi extends AbstractFishEntity implements IAnimatable {
     }
     @Override
     public EntitySize getSize(Pose poseIn) {
-        return new EntitySize(1.0F, 0.8F, true);
+        return new EntitySize(1.0F, 0.4F, true);
     }
 
     public static AttributeModifierMap.MutableAttribute getAttributes() {

@@ -54,20 +54,16 @@ public class FatFish extends AbstractGroupFishEntity implements IAnimatable {
         return SoundEvents.ENTITY_COD_FLOP;
     }
 
-    protected void registerGoals() {
-        super.registerGoals();
-        //this.goalSelector.addGoal(5, new RunAwayGoal(this));
-    }
     @Override
     public EntitySize getSize(Pose poseIn) {
-        return new EntitySize(1.0F, 0.8F, true);
+        return new EntitySize(0.4F, 0.2F, true);
     }
 
     public static AttributeModifierMap.MutableAttribute getAttributes() {
 
         return MobEntity.func_233666_p_()
                 .createMutableAttribute(MAX_HEALTH, 4)
-                .createMutableAttribute(MOVEMENT_SPEED, 0.2);
+                .createMutableAttribute(MOVEMENT_SPEED, 0.285);
 
     }
 

@@ -2,12 +2,18 @@
 
   "itemGroup.permafrozen": "Permafrozen",
 
+
   "entity.permafrozen.nudifae": "Nudibranch Fae",
   "item.permafrozen.nudifae_spawn_egg": "Nudibranch Fae Spawn Egg",
 
   "entity.permafrozen.lunar_koi": "Lunar Koi",
   "item.permafrozen.lunar_koi": "Lunar Koi",
   "item.permafrozen.lunar_koi_bucket": "Bucket of Lunar Koi",
+
+  "entity.permafrozen.fatfish": "Fatfish",
+  "item.permafrozen.fatfish": "Fatfish",
+  "item.permafrozen.fatfish_bucket": "Bucket of Fatfish",
+
 
   "block.permafrozen.frozen_debris": "Frozen Debris",
   "block.permafrozen.cryorite_block": "Cryorite Block",
@@ -18,7 +24,6 @@
   "block.permafrozen.wulfram_ore": "Wulfram Ore",
   "block.permafrozen.wulfram_block": "Wulfram Block",
 
-  "block.permafrozen.tanzanite_block": "Tanzanite Block",
 
   "block.permafrozen.hertzstone": "Hertzstone",
   "block.permafrozen.hertzstone_slab": "Hertzstone Slab",
@@ -40,8 +45,10 @@
   "block.permafrozen.chiseled_polished_hertzstone": "Chiseled Polished Hertzstone",
   "block.permafrozen.gilded_hertzstone": "Gilded Hertzstone",
 
+
   "item.permafrozen.cobalt_nugget": "Cobalt Nugget",
   "item.permafrozen.cobalt_ingot": "Cobalt Ingot",
+
 
   "item.permafrozen.wulfram_ingot": "Wulfram Ingot",
   "item.permafrozen.wulfram_nugget": "Wulfram Nugget",
@@ -56,6 +63,7 @@
   "item.permafrozen.wulfram_chestplate": "Wulfram Chestplate",
   "item.permafrozen.wulfram_leggings": "Wulfram Leggings",
   "item.permafrozen.wulfram_boots": "Wulfram Boots",
+
 
   "item.permafrozen.frozen_scraps": "Frozen Scraps",
   "item.permafrozen.cryorite_ingot": "Cryorite Ingot",
