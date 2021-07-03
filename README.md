@@ -1,66 +1,9 @@
-# Permafrozen-Forge
+# Fabric Example Mod
 
+## Setup
 
-Welcome to the Permafrozen! this mod adds tons of dragons small and big!
+For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
 
+## License
 
-# Credits 
-
--ZedZedMango_
-
--Coolrexx
-
--SuPaChiKen
-
--BlackbirdAntlion
-
--Spqark
-
--_T_
-
--Spinoyonyx
-
--Vakypanda
-
--3847575
-
--Tazz_Strife
-
--The Dark gamer
-
-
-# Licensing
-
--This mod is "all rights reserved" meaning that assets/code arent meant to be stolen, reposted or repurposed. however there are a few exceptions regarding asset and code reuse.
-
-#Disclaimer
-
--If you contribute to this project (that being assets,code etc) those assets and code then belong to us if you do have issues with this, contact MangoShorty_#5986 on discord and we will sort it out if something is out of order.
-
-# You CAN
-
--Modify our code for private use 
-
--Make resource packs for private use (if you want to make a public resource pack just contact us and we will advertise) 
-
--Reference our code for your own mods (doesn't mean steal our code means you can use it as a reference for your own code)
-
--Fork the mod
-
--Submit pull requests
-
--Use the mod in Modpacks without permission 
-
-# You CANNOT
-
--Redistribute our code and advertise it as your own
-
--Use more than 50+% of our code without credit
-
--Cannot advertise our project as something else such as Modloader,game etc
- 
--Advertise the mod as your own 
-
--Have a closed source mod but use our code
-
-
+This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
