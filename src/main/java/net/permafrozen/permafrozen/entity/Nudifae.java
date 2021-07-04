@@ -11,6 +11,7 @@ import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -40,16 +41,15 @@ public class Nudifae extends TameableEntity implements IAnimatable {
     public static final TrackedData<NudifaeType> TYPE = DataTracker.registerData(Nudifae.class, PermafrozenDataHandlers.NUDIFAE_TYPE);
     private final AnimationFactory factory = new AnimationFactory(this);
 
-    public static AnimationBuilder IDLE = new AnimationBuilder().addAnimation("idle");
-    public static AnimationBuilder FLOAT = new AnimationBuilder().addAnimation("float");
+    public static final AnimationBuilder IDLE = new AnimationBuilder().addAnimation("idle");
+    public static final AnimationBuilder FLOAT = new AnimationBuilder().addAnimation("float");
     public static AnimationBuilder SLEEP = new AnimationBuilder().addAnimation("sleep");
-    public static AnimationBuilder WALK = new AnimationBuilder().addAnimation("walk");
-    public static AnimationBuilder SWIM = new AnimationBuilder().addAnimation("swim");
+    public static final AnimationBuilder WALK = new AnimationBuilder().addAnimation("walk");
+    public static final AnimationBuilder SWIM = new AnimationBuilder().addAnimation("swim");
 
-    public Nudifae(EntityType<? extends Nudifae> type, World world) {
-
+    public Nudifae(EntityType<? extends TameableEntity> type, World world) {
         super(type, world);
-        moveControl = new AquaticMoveControl(this, 0, 0, 0.285f, 0.285f, true);
+        this.moveControl = new AquaticMoveControl(this, 0, 0, 0.285f, 0.285f, true);
         this.setPathfindingPenalty(PathNodeType.WATER, 0.0F);
 
         this.experiencePoints = 0;
@@ -57,7 +57,7 @@ public class Nudifae extends TameableEntity implements IAnimatable {
     }
 
     public static DefaultAttributeContainer.Builder createAttributes() {
-        return TameableEntity.createLivingAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 10).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.285f).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2);
+        return MobEntity.createLivingAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 10).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.285f).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2).add(EntityAttributes.GENERIC_FOLLOW_RANGE, 32);
     }
 
 
@@ -116,8 +116,7 @@ public class Nudifae extends TameableEntity implements IAnimatable {
 
     @Override
     public void registerControllers(AnimationData animationData) {
-        AnimationController controller = new AnimationController(this, "controller", 2, this::predicate);
-        animationData.addAnimationController(controller);
+        animationData.addAnimationController(new AnimationController(this, "controller", 2, this::predicate));
     }
 
     @Override
@@ -130,7 +129,6 @@ public class Nudifae extends TameableEntity implements IAnimatable {
         this.goalSelector.add(1, new SwimGoal(this));
         this.goalSelector.add(3, new Nudifae.PlayerTemptGoal(this, 1.0D));
         this.goalSelector.add(5, new LookAroundGoal(this));
-        this.goalSelector.add(6, new FollowOwnerGoal(this, 1.0D, 10.0F, 5.0F, false));
         this.goalSelector.add(10, new AnimalMateGoal(this, 0.8D));
         this.goalSelector.add(11, new Nudifae.WanderGoal(this, 1.0D));
         this.goalSelector.add(12, new WanderAroundFarGoal(this, 1.0D));
@@ -141,6 +139,7 @@ public class Nudifae extends TameableEntity implements IAnimatable {
 
     @Override
     protected EntityNavigation createNavigation(World world) {
+        super.createNavigation(world);
         return new Nudifae.Navigation(this, world);
     }
 
@@ -156,6 +155,7 @@ public class Nudifae extends TameableEntity implements IAnimatable {
 
     @Override
     protected void initDataTracker() {
+
         super.initDataTracker();
         this.dataTracker.startTracking(TYPE, NudifaeType.BLUE);
 
@@ -163,7 +163,6 @@ public class Nudifae extends TameableEntity implements IAnimatable {
 
     @Override
     public void writeCustomDataToNbt(NbtCompound compound) {
-
         super.writeCustomDataToNbt(compound);
         compound.putInt("NudifaeType", this.getNudifaeType().id);
 
@@ -171,7 +170,6 @@ public class Nudifae extends TameableEntity implements IAnimatable {
 
     @Override
     public void readCustomDataFromNbt(NbtCompound compound) {
-
         super.readCustomDataFromNbt(compound);
         this.setNudifaeType(NudifaeType.getTypeById(compound.getInt("NudifaeType")));
 
