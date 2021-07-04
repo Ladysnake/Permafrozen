@@ -12,6 +12,7 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.passive.FishEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -87,7 +88,7 @@ public class Nudifae extends TameableEntity implements IAnimatable {
     @Nullable
     @Override
     public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
-        Nudifae child = PermafrozenEntities.NUDIFAE.create(world);
+        Nudifae child = (Nudifae) PermafrozenEntities.NUDIFAE.create(world);
         if (child != null) {
             child.initialize(world, world.getLocalDifficulty(getBlockPos()), SpawnReason.BREEDING, null, null);
             UUID owner = getOwnerUuid();
@@ -119,6 +120,7 @@ public class Nudifae extends TameableEntity implements IAnimatable {
         animationData.addAnimationController(new AnimationController(this, "controller", 2, this::predicate));
     }
 
+
     @Override
     public AnimationFactory getFactory() {
         return factory;
@@ -126,13 +128,13 @@ public class Nudifae extends TameableEntity implements IAnimatable {
 
     @Override
     protected void initGoals() {
-        this.goalSelector.add(1, new SwimGoal(this));
         this.goalSelector.add(3, new Nudifae.PlayerTemptGoal(this, 1.0D));
         this.goalSelector.add(5, new LookAroundGoal(this));
         this.goalSelector.add(10, new AnimalMateGoal(this, 0.8D));
         this.goalSelector.add(11, new Nudifae.WanderGoal(this, 1.0D));
         this.goalSelector.add(12, new WanderAroundFarGoal(this, 1.0D));
         this.goalSelector.add(12, new LookAtEntityGoal(this, PlayerEntity.class, 10.0F));
+        this.goalSelector.add(2, new SwimAroundGoal(this, 1.0D, 40));
 
     }
 
@@ -145,10 +147,11 @@ public class Nudifae extends TameableEntity implements IAnimatable {
 
 
     // Data stuff
-    static class NudifaeData implements EntityData {
+    static class NudifaeData extends PassiveData implements EntityData {
         public final int typeData;
 
         public NudifaeData(int type) {
+            super(type);
             this.typeData = type;
         }
     }

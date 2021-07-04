@@ -22,8 +22,8 @@ public class NudifaeModel extends AnimatedGeoModel<Nudifae> {
 
     @Override
     public Identifier getTextureLocation(Nudifae nudifae) {
-
-        return new Identifier(Permafrozen.MOD_ID, String.format("textures/entity/nudifae/nudifae_%s.png", nudifae.getNudifaeType().id));
+        int i = nudifae.getNudifaeType().id;
+        return new Identifier(Permafrozen.MOD_ID, String.format("textures/entity/nudifae_" + i + ".png", nudifae.getNudifaeType().id));
 
     }
 
