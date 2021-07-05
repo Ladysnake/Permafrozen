@@ -1,4 +1,4 @@
-package net.permafrozen.permafrozen.entity;
+package net.permafrozen.permafrozen.entity.nudifae;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityData;
@@ -12,7 +12,6 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.entity.passive.FishEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -25,7 +24,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
-import net.permafrozen.permafrozen.entity.nudifae.NudifaeType;
+import net.permafrozen.permafrozen.entity.PermafrozenEntities;
 import net.permafrozen.permafrozen.pain.PermafrozenDataHandlers;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;

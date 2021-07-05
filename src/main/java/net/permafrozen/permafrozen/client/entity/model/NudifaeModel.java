@@ -4,7 +4,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.util.Identifier;
 import net.permafrozen.permafrozen.Permafrozen;
-import net.permafrozen.permafrozen.entity.Nudifae;
+import net.permafrozen.permafrozen.entity.nudifae.Nudifae;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
