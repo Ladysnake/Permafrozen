@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "permafrozen:block/fir_wood"
+    },
+    "axis=z": {
+      "model": "permafrozen:block/fir_wood",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "permafrozen:block/fir_wood",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

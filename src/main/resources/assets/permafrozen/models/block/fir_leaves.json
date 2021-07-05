@@ -1,0 +1,6 @@
+{
+  "parent": "block/leaves",
+  "textures": {
+    "all": "permafrozen:block/fir_leaves"
+  }
+}
