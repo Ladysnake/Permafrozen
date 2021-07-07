@@ -8,7 +8,27 @@
   "item.permafrozen.lunar_koi_bucket": "Lunar Koi Bucket",
   "item.permafrozen.fatfish": "Fatfish",
   "item.permafrozen.fatfish_bucket": "Fatfish Bucket",
-  "item.permafrozen.nudifae_spawn_egg": "Nudifae Spawn Egg"
+  "item.permafrozen.nudifae_spawn_egg": "Nudifae Spawn Egg",
+
+  "block.permafrozen.fir_log": "Fir Log",
+  "block.permafrozen.stripped_fir_log": "Stripped Fir Log",
+  "block.permafrozen.stripped_fir_wood": "Stripped Fir Wood",
+  "block.permafrozen.fir_wood": "Fir Wood",
+  "block.permafrozen.fir_leaves": "Fir Leaves",
+  "block.permafrozen.fir_sapling": "Fir Sapling",
+  "block.permafrozen.potted_fir_sapling": "Potted Fir Sapling",
+  "block.permafrozen.fir_planks": "Fir Planks",
+  "block.permafrozen.fir_stairs": "Fir Stairs",
+  "block.permafrozen.fir_slab": "Fir Slab",
+  "block.permafrozen.fir_sign": "Fir Sign",
+  "block.permafrozen.fir_button": "Fir Button",
+  "block.permafrozen.fir_pressure_plate": "Fir Pressure Plate",
+  "block.permafrozen.fir_fence": "Fir Fence",
+  "block.permafrozen.fir_fence_gate": "Fir Fence Gate",
+  "block.permafrozen.fir_door": "Fir Door",
+  "block.permafrozen.fir_trapdoor": "Fir Trapdoor",
+  "item.permafrozen.fir_boat": "Fir Boat",
+  "entity.permafrozen.fir_boat": "Fir Boat"
 
 
 }

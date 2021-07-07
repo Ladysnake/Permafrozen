@@ -31,6 +31,7 @@ processResources {
 	filesMatching("fabric.mod.json") {
 		expand "version": project.version
 	}
+	rename '(.+).accesswidener', 'META-INF/$1.aww'
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -78,4 +79,7 @@ publishing {
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
 	}
+}
+minecraft {
+	accessWidener = file("src/main/resources/permafrozen.accesswidener")
 }

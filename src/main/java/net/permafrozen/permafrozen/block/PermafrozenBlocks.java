@@ -15,6 +15,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
 import net.permafrozen.permafrozen.Permafrozen;
+import net.permafrozen.permafrozen.pain.SignTypeHelper;
 import net.permafrozen.permafrozen.worldgen.tree.FirSaplingGenerator;
 
 import java.util.LinkedHashMap;
@@ -23,6 +24,7 @@ import java.util.Map;
 public class PermafrozenBlocks {
     private static final Map<Block, Identifier> BLOCKS = new LinkedHashMap<>();
     private static final Map<Item, Identifier> ITEMS = new LinkedHashMap<>();
+    public static final SignType FIR_ST = SignTypeHelper.register(new MojangWHYSignType("fir"));
     public static final Block FIR_PLANKS = create("fir_planks", new Block(AbstractBlock.Settings.of(Material.WOOD, MapColor.SPRUCE_BROWN).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)), ItemGroup.BUILDING_BLOCKS);
     public static final Block FIR_LOG = create("fir_log", createLogBlock(MapColor.SPRUCE_BROWN, MapColor.BROWN), ItemGroup.BUILDING_BLOCKS);
     public static final Block FIR_SAPLING = create("fir_sapling", new MojangWHYSaplingBlock(new FirSaplingGenerator(), AbstractBlock.Settings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS)), ItemGroup.BUILDING_BLOCKS);
@@ -30,7 +32,7 @@ public class PermafrozenBlocks {
     public static final Block STRIPPED_FIR_WOOD = create("stripped_fir_wood", new PillarBlock(AbstractBlock.Settings.of(Material.WOOD, MapColor.SPRUCE_BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD)), ItemGroup.BUILDING_BLOCKS);
     public static final Block FIR_WOOD = create("fir_wood", new PillarBlock(AbstractBlock.Settings.of(Material.WOOD, MapColor.SPRUCE_BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD)), ItemGroup.BUILDING_BLOCKS);
     public static final Block FIR_LEAVES = create("fir_leaves", createLeavesBlock(BlockSoundGroup.GRASS), ItemGroup.BUILDING_BLOCKS);
-    public static final Block FIR_SIGN = create("fir_sign", new SignBlock(AbstractBlock.Settings.of(Material.WOOD, FIR_LOG.getDefaultMapColor()).noCollision().strength(1.0F).sounds(BlockSoundGroup.WOOD), SignType.SPRUCE), ItemGroup.BUILDING_BLOCKS);
+    //public static final Block FIR_SIGN = create("fir_sign", new SignBlock(AbstractBlock.Settings.of(Material.WOOD, FIR_LOG.getDefaultMapColor()).noCollision().strength(1.0F).sounds(BlockSoundGroup.WOOD), FIR_ST), ItemGroup.BUILDING_BLOCKS);
     public static final Block FIR_PRESSURE_PLATE = create("fir_pressure_plate", new MojangWHYPressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, AbstractBlock.Settings.of(Material.WOOD, FIR_PLANKS.getDefaultMapColor()).noCollision().strength(0.5F).sounds(BlockSoundGroup.WOOD)), ItemGroup.BUILDING_BLOCKS);
     public static final Block FIR_TRAPDOOR = create("fir_trapdoor", new MojangWHYTrapdoorBlock(AbstractBlock.Settings.of(Material.WOOD, MapColor.SPRUCE_BROWN).strength(3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque().allowsSpawning(PermafrozenBlocks::never)), ItemGroup.BUILDING_BLOCKS);
     public static final Block FIR_FENCE_GATE= create("fir_fence_gate", new FenceGateBlock(AbstractBlock.Settings.of(Material.WOOD, FIR_PLANKS.getDefaultMapColor()).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)), ItemGroup.BUILDING_BLOCKS);
@@ -40,6 +42,7 @@ public class PermafrozenBlocks {
     public static final Block POTTED_FIR_SAPLING = create("potted_fir_sapling", new FlowerPotBlock(FIR_SAPLING, AbstractBlock.Settings.of(Material.DECORATION).breakInstantly().nonOpaque()), ItemGroup.BUILDING_BLOCKS);
     public static final Block FIR_BUTTON = create("fir_button", new MojangWHYWoodenButtonBlock(AbstractBlock.Settings.of(Material.DECORATION).noCollision().strength(0.5F).sounds(BlockSoundGroup.WOOD)), ItemGroup.BUILDING_BLOCKS);
     public static final Block FIR_DOOR = create("fir_door", new MojangWHYDoorBlock(AbstractBlock.Settings.of(Material.WOOD, FIR_PLANKS.getDefaultMapColor()).strength(3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()), ItemGroup.BUILDING_BLOCKS);
+
 
     private static boolean never(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) {
         return false;

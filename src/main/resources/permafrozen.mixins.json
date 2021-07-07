@@ -4,7 +4,8 @@
   "package": "net.permafrozen.permafrozen.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-
+    "LayerAccessor",
+    "SignTypeMixin"
   ],
   "client": [
   ],

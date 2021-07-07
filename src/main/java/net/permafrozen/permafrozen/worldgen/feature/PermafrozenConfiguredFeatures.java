@@ -7,6 +7,8 @@ import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.gen.decorator.CountExtraDecoratorConfig;
+import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.MegaPineFoliagePlacer;
@@ -32,6 +34,18 @@ public class PermafrozenConfiguredFeatures {
         CONFIGURED_STUFF.put(feature, new Identifier(Permafrozen.MOD_ID, id));
         return feature;
     }
+    public static final ConfiguredFeature<?, ?> TREES_FIR = register(
+            "trees_" + "fir",
+            Feature.RANDOM_SELECTOR.configure(
+                    new RandomFeatureConfig(
+                            ImmutableList.of(MEGA_FIR.withChance(0.1F), MEGA_FIR_DOS.withChance(0.1F)),
+                            FIR
+                    )
+            )
+                    .decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP)
+                    .decorate(Decorator.COUNT_EXTRA.configure(new CountExtraDecoratorConfig(10, 0.1F, 1)))
+    );
+
     public static void commenceForth() {
         CONFIGURED_STUFF.keySet().forEach(configuredFeature -> Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, CONFIGURED_STUFF.get(configuredFeature), configuredFeature));
     }
