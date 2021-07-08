@@ -1,4 +1,5 @@
 {
+  "item.permafrozen.cryotite_ingot": "Cryorite Ingot",
   "item.permafrozen.cryorite_axe": "Cryorite Axe",
   "item.permafrozen.cryorite_hoe": "Cryorite Hoe",
   "item.permafrozen.cryorite_pickaxe": "Cryorite Pickaxe",
@@ -9,6 +10,7 @@
   "item.permafrozen.fatfish": "Fatfish",
   "item.permafrozen.fatfish_bucket": "Fatfish Bucket",
   "item.permafrozen.nudifae_spawn_egg": "Nudifae Spawn Egg",
+
 
   "block.permafrozen.fir_log": "Fir Log",
   "block.permafrozen.stripped_fir_log": "Stripped Fir Log",

@@ -17,6 +17,9 @@ public class PermafrozenItems {
     public static final Item CRYORITE_INGOT = create("cryorite_ingot", new Item( new Item.Settings().group(ItemGroup.MISC)));
     public static final Item CRYORITE_SWORD = create("cryorite_sword", new SwordItem(PermafrozenMaterials.CRYORITE, 5, -2.4f, new Item.Settings().group(ItemGroup.COMBAT)));
     public static final Item CRYORITE_SHOVEL = create("cryorite_shovel", new ShovelItem(PermafrozenMaterials.CRYORITE, 2.5f, -3, new Item.Settings().group(ItemGroup.TOOLS)));
+    public static final Item CRYORITE_AXE = create("cryorite_axe", new PermafrozenAxeItem(PermafrozenMaterials.CRYORITE, 6.5f, -3, new Item.Settings().group(ItemGroup.TOOLS)));
+    public static final Item CRYORITE_PICKAXE = create("cryorite_pickaxe", new PermafrozenPickaxeItem(PermafrozenMaterials.CRYORITE, 3, -3, new Item.Settings().group(ItemGroup.TOOLS)));
+    public static final Item CRYORITE_HOE = create("cryorite_hoe", new PermafrozenHoeItem(PermafrozenMaterials.CRYORITE, -2, 0, new Item.Settings().group(ItemGroup.TOOLS)));
     public static final Item NUDIFAE_SPAWN_EGG = create("nudifae_spawn_egg", new SpawnEggItem(PermafrozenEntities.NUDIFAE, 0xb3e5fc, 0x0090ea, (new Item.Settings()).group(ItemGroup.MISC)));
     public static final Item LUNAR_KOI_BUCKET = create("lunar_koi_bucket", new EntityBucketItem(PermafrozenEntities.LUNAR_KOI, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, new Item.Settings().group(ItemGroup.MISC)));
     public static final Item LUNAR_KOI = create("lunar_koi", new Item((new Item.Settings()).group(ItemGroup.FOOD).food(FoodComponents.SALMON)));
