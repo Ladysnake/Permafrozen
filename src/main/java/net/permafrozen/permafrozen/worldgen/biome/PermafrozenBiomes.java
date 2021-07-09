@@ -42,12 +42,13 @@ public class PermafrozenBiomes {
         DefaultBiomeFeatures.addDefaultLakes(generationSettings);
         DefaultBiomeFeatures.addSprings(generationSettings);
 
+
         return new Biome.Builder()
                 .precipitation(Biome.Precipitation.SNOW)
-                .category(Biome.Category.FOREST)
+                .category(Biome.Category.TAIGA)
                 .depth(0.1F)
                 .scale(0.2F)
-                .temperature(0.8F)
+                .temperature(0.0F)
                 .downfall(0.6F)
                 .effects(new BiomeEffects.Builder()
                         .waterColor(4159204)

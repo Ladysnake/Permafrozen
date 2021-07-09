@@ -1,3 +1,4 @@
 accessWidener v1 named
 
 extendable      class     net/minecraft/world/gen/feature/ConfiguredFeatures$Decorators
+accessible field net/minecraft/block/entity/CampfireBlockEntity itemsBeingCooked Lnet/minecraft/util/collection/DefaultedList;

@@ -5,6 +5,7 @@ import net.permafrozen.permafrozen.block.PermafrozenBlocks;
 import net.permafrozen.permafrozen.entity.PermafrozenEntities;
 import net.permafrozen.permafrozen.item.PermafrozenItems;
 import net.fabricmc.api.ModInitializer;
+import net.permafrozen.permafrozen.mob_effect.PermafrozenEffects;
 import net.permafrozen.permafrozen.worldgen.biome.PermafrozenBiomes;
 import net.permafrozen.permafrozen.worldgen.feature.PermafrozenConfiguredFeatures;
 import software.bernie.geckolib3.GeckoLib;
@@ -20,6 +21,7 @@ public class Permafrozen implements ModInitializer {
 		PermafrozenBlocks.innit();
 		PermafrozenConfiguredFeatures.commenceForth();
 		PermafrozenBiomes.innit();
+		PermafrozenEffects.innit();
 	}
 
 }

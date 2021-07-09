@@ -1,5 +1,7 @@
 package net.permafrozen.permafrozen.item;
 
+import net.minecraft.block.SweetBerryBushBlock;
+import net.minecraft.block.entity.CampfireBlockEntity;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
 import net.minecraft.sound.SoundEvents;
@@ -25,6 +27,7 @@ public class PermafrozenItems {
     public static final Item LUNAR_KOI = create("lunar_koi", new Item((new Item.Settings()).group(ItemGroup.FOOD).food(FoodComponents.SALMON)));
     public static final Item FAT_FUCK_BUCKET = create("fatfish_bucket", new EntityBucketItem(PermafrozenEntities.FAT_FUCK, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, new Item.Settings().group(ItemGroup.MISC)));
     public static final Item FAT_FUCK = create("fatfish", new Item((new Item.Settings()).group(ItemGroup.FOOD).food(FoodComponents.COD)));
+    public static final Item FIR_PINECONE = create("fir_cone", new Item( new Item.Settings().group(ItemGroup.DECORATIONS)));
     //why the fuck is axe & pickaxe protected mojang
     private static <T extends Item> T create(String name, T item) {
         ITEMS.put(item, new Identifier(Permafrozen.MOD_ID, name));
