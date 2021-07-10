@@ -1,0 +1,17 @@
+{
+  "type": "crafting_shaped",
+  "group": "bark",
+  "pattern": [
+	"##",
+	"##"
+  ],
+  "key": {
+	"#": {
+	  "item": "permafrozen:fir_log"
+	}
+  },
+  "result": {
+	"item": "permafrozen:fir_wood",
+	"count": 3
+  }
+}

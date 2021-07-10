@@ -1,0 +1,32 @@
+{
+  "parent": "recipes/root",
+  "rewards": {
+	"recipes": [
+	  "permafrozen:fir_planks"
+	]
+  },
+  "criteria": {
+	"has_item": {
+	  "trigger": "inventory_changed",
+	  "conditions": {
+		"items": [
+		  {
+			"tag": "permafrozen:fir_logs"
+		  }
+		]
+	  }
+	},
+	"has_the_recipe": {
+	  "trigger": "recipe_unlocked",
+	  "conditions": {
+		"recipe": "permafrozen:fir_planks"
+	  }
+	}
+  },
+  "requirements": [
+	[
+	  "has_item",
+	  "has_the_recipe"
+	]
+  ]
+}

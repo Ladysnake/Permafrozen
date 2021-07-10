@@ -1,0 +1,13 @@
+{
+  "type": "crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+	{
+	  "tag": "permafrozen:fir_logs"
+	}
+  ],
+  "result": {
+	"item": "permafrozen:fir_planks",
+	"count": 4
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "crafting_shaped",
+  "group": "sign",
+  "pattern": [
+	"###",
+	"###",
+	" X "
+  ],
+  "key": {
+	"#": {
+	  "item": "permafrozen:fir_planks"
+	},
+	"X": {
+	  "item": "stick"
+	}
+  },
+  "result": {
+	"item": "permafrozen:fir_sign",
+	"count": 3
+  }
+}

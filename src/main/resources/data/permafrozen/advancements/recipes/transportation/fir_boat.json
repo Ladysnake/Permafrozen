@@ -1,0 +1,28 @@
+{
+  "parent": "recipes/root",
+  "rewards": {
+	"recipes": [
+	  "permafrozen:fir_boat"
+	]
+  },
+  "criteria": {
+	"in_water": {
+	  "trigger": "enter_block",
+	  "conditions": {
+		"block": "water"
+	  }
+	},
+	"has_the_recipe": {
+	  "trigger": "recipe_unlocked",
+	  "conditions": {
+		"recipe": "permafrozen:fir_boat"
+	  }
+	}
+  },
+  "requirements": [
+	[
+	  "in_water",
+	  "has_the_recipe"
+	]
+  ]
+}
