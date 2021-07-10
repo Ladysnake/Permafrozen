@@ -28,10 +28,14 @@ dependencies {
 processResources {
 	inputs.property "version", project.version
 
-	filesMatching("fabric.mod.json") {
+	from(sourceSets.main.resources.srcDirs) {
+		include "fabric.mod.json"
 		expand "version": project.version
 	}
-	rename '(.+).accesswidener', 'META-INF/$1.aww'
+
+	from(sourceSets.main.resources.srcDirs) {
+		exclude "fabric.mod.json"
+	}
 }
 
 tasks.withType(JavaCompile).configureEach {

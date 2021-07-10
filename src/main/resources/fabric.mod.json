@@ -28,7 +28,7 @@
   "mixins": [
     "permafrozen.mixins.json"
   ],
-  "accessWidener": "META-INF/permafrozen.aww",
+  "accessWidener": "permafrozen.accesswidener",
 
   "depends": {
     "fabricloader": ">=0.11.3",
