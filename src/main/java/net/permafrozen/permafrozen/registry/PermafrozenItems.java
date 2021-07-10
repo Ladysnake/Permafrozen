@@ -1,4 +1,4 @@
-package net.permafrozen.permafrozen.item;
+package net.permafrozen.permafrozen.registry;
 
 import com.terraformersmc.terraform.boat.TerraformBoatItem;
 import net.minecraft.fluid.Fluids;
@@ -7,8 +7,9 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.permafrozen.permafrozen.Permafrozen;
-import net.permafrozen.permafrozen.block.PermafrozenBlocks;
-import net.permafrozen.permafrozen.entity.PermafrozenEntities;
+import net.permafrozen.permafrozen.item.PermafrozenAxeItem;
+import net.permafrozen.permafrozen.item.PermafrozenHoeItem;
+import net.permafrozen.permafrozen.item.PermafrozenPickaxeItem;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -24,7 +25,7 @@ public class PermafrozenItems {
 	public static final Item CRYORITE_HOE = create("cryorite_hoe", new PermafrozenHoeItem(PermafrozenMaterials.CRYORITE, -2, 0, new Item.Settings().group(Permafrozen.GROUP)));
 	public static final Item LUNAR_KOI_BUCKET = create("lunar_koi_bucket", new EntityBucketItem(PermafrozenEntities.LUNAR_KOI, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, new Item.Settings().group(Permafrozen.GROUP)));
 	public static final Item LUNAR_KOI = create("lunar_koi", new Item((new Item.Settings()).group(Permafrozen.GROUP).food(FoodComponents.SALMON)));
-	public static final Item FAT_FUCK_BUCKET = create("fatfish_bucket", new EntityBucketItem(PermafrozenEntities.FATFISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, new Item.Settings().group(Permafrozen.GROUP)));
+	public static final Item FATFISH_BUCKET = create("fatfish_bucket", new EntityBucketItem(PermafrozenEntities.FATFISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, new Item.Settings().group(Permafrozen.GROUP)));
 	public static final Item FATFISH = create("fatfish", new Item((new Item.Settings()).group(Permafrozen.GROUP).food(FoodComponents.COD)));
 	public static final Item FIR_PINECONE = create("fir_cone", new Item(new Item.Settings().group(Permafrozen.GROUP)));
 	public static final Item FIR_DOOR_ITEM = create("fir_door", new TallBlockItem(PermafrozenBlocks.FIR_DOOR, new Item.Settings().group(Permafrozen.GROUP)));

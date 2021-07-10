@@ -9,7 +9,7 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.permafrozen.permafrozen.client.entity.model.NudifaeEntityModel;
-import net.permafrozen.permafrozen.entity.nudifae.NudifaeEntity;
+import net.permafrozen.permafrozen.entity.living.NudifaeEntity;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 @Environment(EnvType.CLIENT)

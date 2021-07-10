@@ -1,4 +1,4 @@
-package net.permafrozen.permafrozen.item;
+package net.permafrozen.permafrozen.registry;
 
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;

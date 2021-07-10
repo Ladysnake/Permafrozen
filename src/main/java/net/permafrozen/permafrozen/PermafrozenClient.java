@@ -11,11 +11,11 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.render.entity.BoatEntityRenderer;
 import net.minecraft.client.util.SpriteIdentifier;
-import net.permafrozen.permafrozen.block.PermafrozenBlocks;
 import net.permafrozen.permafrozen.client.entity.render.FatfishEntityRenderer;
 import net.permafrozen.permafrozen.client.entity.render.LunarKoiEntityRenderer;
 import net.permafrozen.permafrozen.client.entity.render.NudifaeEntityRenderer;
-import net.permafrozen.permafrozen.entity.PermafrozenEntities;
+import net.permafrozen.permafrozen.registry.PermafrozenBlocks;
+import net.permafrozen.permafrozen.registry.PermafrozenEntities;
 
 public class PermafrozenClient implements ClientModInitializer {
 	@Override
@@ -26,10 +26,10 @@ public class PermafrozenClient implements ClientModInitializer {
 		EntityRendererRegistry.INSTANCE.register(PermafrozenEntities.FATFISH, FatfishEntityRenderer::new);
 		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), PermafrozenBlocks.FIR_SAPLING, PermafrozenBlocks.POTTED_FIR_SAPLING, PermafrozenBlocks.FIR_TRAPDOOR);
 		SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, PermafrozenBlocks.FIR_SIGN.getTexture()));
-		colours();
+		initColors();
 	}
 	
-	private void colours() {
+	private void initColors() {
 		ColorProviderRegistry.BLOCK.register((block, pos, world, layer) -> FoliageColors.getSpruceColor(), PermafrozenBlocks.FIR_LEAVES);
 		ColorProviderRegistry.ITEM.register((item, layer) -> GrassColors.getColor(0.5D, 1.0D), PermafrozenBlocks.FIR_LEAVES);
 	}

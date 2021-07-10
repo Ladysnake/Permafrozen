@@ -1,4 +1,4 @@
-package net.permafrozen.permafrozen.mob_effect;
+package net.permafrozen.permafrozen.statuseffect;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.pathing.Path;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class FragrantStatusEffect extends StatusEffect {
-	protected FragrantStatusEffect(StatusEffectType type, int color) {
+	public FragrantStatusEffect(StatusEffectType type, int color) {
 		super(type, color);
 	}
 	

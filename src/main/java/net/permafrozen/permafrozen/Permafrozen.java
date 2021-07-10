@@ -5,11 +5,7 @@ import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import net.permafrozen.permafrozen.block.PermafrozenBlocks;
-import net.permafrozen.permafrozen.entity.PermafrozenEntities;
-import net.permafrozen.permafrozen.item.PermafrozenItems;
-import net.permafrozen.permafrozen.mob_effect.PermafrozenEffects;
-import net.permafrozen.permafrozen.worldgen.biome.PermafrozenBiomes;
+import net.permafrozen.permafrozen.registry.*;
 import net.permafrozen.permafrozen.worldgen.feature.PermafrozenConfiguredFeatures;
 import software.bernie.geckolib3.GeckoLib;
 
@@ -26,6 +22,6 @@ public class Permafrozen implements ModInitializer {
 		PermafrozenItems.init();
 		PermafrozenConfiguredFeatures.init();
 		PermafrozenBiomes.init();
-		PermafrozenEffects.init();
+		PermafrozenStatusEffects.init();
 	}
 }

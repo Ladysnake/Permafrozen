@@ -20,6 +20,7 @@ import net.minecraft.world.biome.source.BiomeLayerSampler;
 import net.minecraft.world.biome.source.BiomeSource;
 import net.permafrozen.permafrozen.Permafrozen;
 import net.permafrozen.permafrozen.mixin.LayerAccessor;
+import net.permafrozen.permafrozen.registry.PermafrozenBiomes;
 
 import java.util.List;
 import java.util.function.LongFunction;

@@ -1,4 +1,4 @@
-package net.permafrozen.permafrozen.entity.nudifae;
+package net.permafrozen.permafrozen.entity.living;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityData;
@@ -11,6 +11,7 @@ import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.TameableEntity;
@@ -20,30 +21,30 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.tag.Tag;
+import net.minecraft.util.Util;
+import net.minecraft.util.collection.WeightedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
-import net.permafrozen.permafrozen.entity.PermafrozenEntities;
-import net.permafrozen.permafrozen.pain.PermafrozenDataHandlers;
+import net.permafrozen.permafrozen.registry.PermafrozenEntities;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
 import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.UUID;
 
 public class NudifaeEntity extends TameableEntity implements IAnimatable {
-	public static final TrackedData<NudifaeType> TYPE = DataTracker.registerData(NudifaeEntity.class, PermafrozenDataHandlers.NUDIFAE_TYPE);
+	public static final TrackedData<Integer> TYPE = DataTracker.registerData(NudifaeEntity.class, TrackedDataHandlerRegistry.INTEGER);
 	private final AnimationFactory factory = new AnimationFactory(this);
 	
 	public static final AnimationBuilder IDLE = new AnimationBuilder().addAnimation("idle");
 	public static final AnimationBuilder FLOAT = new AnimationBuilder().addAnimation("float");
-	public static AnimationBuilder SLEEP = new AnimationBuilder().addAnimation("sleep");
+	public static final AnimationBuilder SLEEP = new AnimationBuilder().addAnimation("sleep");
 	public static final AnimationBuilder WALK = new AnimationBuilder().addAnimation("walk");
 	public static final AnimationBuilder SWIM = new AnimationBuilder().addAnimation("swim");
 	
@@ -58,24 +59,10 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable {
 		return MobEntity.createLivingAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 10).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.285f).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2).add(EntityAttributes.GENERIC_FOLLOW_RANGE, 32);
 	}
 	
-	public NudifaeType getNudifaeType() {
-		return this.dataTracker.get(TYPE);
-	}
-	
-	public void setNudifaeType(NudifaeType type) {
-		this.dataTracker.set(TYPE, type);
-	}
-	
 	@Override
 	public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityTag) {
-		int type = NudifaeType.getRandom().id;
-		if (entityData instanceof NudifaeEntity.NudifaeData) {
-			type = ((NudifaeEntity.NudifaeData) entityData).typeData;
-		}
-		else {
-			entityData = new NudifaeEntity.NudifaeData(type);
-		}
-		this.setNudifaeType(NudifaeType.getTypeById(type));
+		WeightedList<Integer> possibleRarityTypes = Util.make(new WeightedList<>(), list -> list.add(0, 35).add(1, 30).add(2, 25).add(3, 10).add(4, 1).add(5, 1));
+		dataTracker.set(TYPE, possibleRarityTypes.shuffle().stream().findFirst().orElse(0));
 		return super.initialize(world, difficulty, spawnReason, entityData, entityTag);
 	}
 	
@@ -90,32 +77,9 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable {
 				child.setOwnerUuid(owner);
 				child.setTamed(true);
 			}
-			int type = NudifaeType.getRandom().id;
-			child.setNudifaeType(NudifaeType.getTypeById(type));
-			
+			child.dataTracker.set(TYPE, random.nextBoolean() ? dataTracker.get(TYPE) : entity.getDataTracker().get(TYPE));
 		}
 		return child;
-	}
-	
-	private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-		boolean isInWater = isInsideWaterOrBubbleColumn();
-		boolean isMoving = isInWater ? !(handSwingProgress > -0.02) || !(handSwingProgress < 0.02) : !(handSwingProgress > -0.10F) || !(handSwingProgress < 0.10F);
-		AnimationBuilder anime = isInWater ? FLOAT : IDLE;
-		if (isMoving) {
-			anime = isInWater ? SWIM : WALK;
-		}
-		event.getController().setAnimation(anime);
-		return PlayState.CONTINUE;
-	}
-	
-	@Override
-	public void registerControllers(AnimationData animationData) {
-		animationData.addAnimationController(new AnimationController<>(this, "controller", 2, this::predicate));
-	}
-	
-	@Override
-	public AnimationFactory getFactory() {
-		return factory;
 	}
 	
 	@Override
@@ -127,7 +91,6 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable {
 		this.goalSelector.add(12, new WanderAroundFarGoal(this, 1.0D));
 		this.goalSelector.add(12, new LookAtEntityGoal(this, PlayerEntity.class, 10.0F));
 		this.goalSelector.add(2, new SwimAroundGoal(this, 1.0D, 40));
-		
 	}
 	
 	@Override
@@ -136,32 +99,41 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable {
 		return new NudifaeEntity.Navigation(this, world);
 	}
 	
-	// Data stuff
-	static class NudifaeData extends PassiveData implements EntityData {
-		public final int typeData;
-		
-		public NudifaeData(int type) {
-			super(type);
-			this.typeData = type;
-		}
-	}
-	
 	@Override
 	protected void initDataTracker() {
 		super.initDataTracker();
-		this.dataTracker.startTracking(TYPE, NudifaeType.BLUE);
+		this.dataTracker.startTracking(TYPE, 0);
 	}
 	
 	@Override
 	public void writeCustomDataToNbt(NbtCompound compound) {
 		super.writeCustomDataToNbt(compound);
-		compound.putInt("NudifaeType", this.getNudifaeType().id);
+		compound.putInt("NudifaeType", dataTracker.get(TYPE));
 	}
 	
 	@Override
 	public void readCustomDataFromNbt(NbtCompound compound) {
 		super.readCustomDataFromNbt(compound);
-		this.setNudifaeType(NudifaeType.getTypeById(compound.getInt("NudifaeType")));
+		dataTracker.set(TYPE, compound.getInt("NudifaeType"));
+	}
+	
+	@Override
+	public void registerControllers(AnimationData animationData) {
+		animationData.addAnimationController(new AnimationController<>(this, "controller", 2, animationEvent -> {
+			boolean isInWater = isInsideWaterOrBubbleColumn();
+			boolean isMoving = isInWater ? !(handSwingProgress > -0.02) || !(handSwingProgress < 0.02) : !(handSwingProgress > -0.10F) || !(handSwingProgress < 0.10F);
+			AnimationBuilder anime = isInWater ? FLOAT : IDLE;
+			if (isMoving) {
+				anime = isInWater ? SWIM : WALK;
+			}
+			animationEvent.getController().setAnimation(anime);
+			return PlayState.CONTINUE;
+		}));
+	}
+	
+	@Override
+	public AnimationFactory getFactory() {
+		return factory;
 	}
 	
 	@Override
@@ -170,13 +142,17 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable {
 	}
 	
 	@Override
+	public boolean canBreatheInWater() {
+		return true;
+	}
+	
+	@Override
 	public boolean isPushedByFluids() {
 		return false;
 	}
 	
-	@Override
-	public boolean canBreatheInWater() {
-		return true;
+	public static int getTypes() {
+		return 6;
 	}
 	
 	static class Navigation extends SwimNavigation {

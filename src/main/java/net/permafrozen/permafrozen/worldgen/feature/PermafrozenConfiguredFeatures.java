@@ -18,7 +18,7 @@ import net.minecraft.world.gen.treedecorator.AlterGroundTreeDecorator;
 import net.minecraft.world.gen.trunk.GiantTrunkPlacer;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 import net.permafrozen.permafrozen.Permafrozen;
-import net.permafrozen.permafrozen.block.PermafrozenBlocks;
+import net.permafrozen.permafrozen.registry.PermafrozenBlocks;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

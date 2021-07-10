@@ -1,4 +1,4 @@
-package net.permafrozen.permafrozen.entity;
+package net.permafrozen.permafrozen.registry;
 
 import com.terraformersmc.terraform.boat.TerraformBoat;
 import com.terraformersmc.terraform.boat.TerraformBoatEntity;
@@ -9,11 +9,9 @@ import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.permafrozen.permafrozen.Permafrozen;
-import net.permafrozen.permafrozen.block.PermafrozenBlocks;
-import net.permafrozen.permafrozen.entity.nudifae.NudifaeEntity;
-import net.permafrozen.permafrozen.entity.phishe.FatfishEntity;
-import net.permafrozen.permafrozen.entity.phishe.LunarKoiEntity;
-import net.permafrozen.permafrozen.item.PermafrozenItems;
+import net.permafrozen.permafrozen.entity.living.FatfishEntity;
+import net.permafrozen.permafrozen.entity.living.LunarKoiEntity;
+import net.permafrozen.permafrozen.entity.living.NudifaeEntity;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

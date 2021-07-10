@@ -1,4 +1,4 @@
-package net.permafrozen.permafrozen.worldgen.biome;
+package net.permafrozen.permafrozen.registry;
 
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.util.Identifier;
@@ -13,6 +13,7 @@ import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilders;
 import net.permafrozen.permafrozen.Permafrozen;
+import net.permafrozen.permafrozen.worldgen.biome.PermafrozenBiomeSource;
 import net.permafrozen.permafrozen.worldgen.feature.PermafrozenBiomeFeatures;
 
 public class PermafrozenBiomes {
@@ -35,8 +36,6 @@ public class PermafrozenBiomes {
 		DefaultBiomeFeatures.addLargeFerns(generationSettings);
 		DefaultBiomeFeatures.addDefaultLakes(generationSettings);
 		DefaultBiomeFeatures.addSprings(generationSettings);
-		
-		
 		return new Biome.Builder().precipitation(Biome.Precipitation.SNOW).category(Biome.Category.TAIGA).depth(0.1F).scale(0.2F).temperature(0.0F).downfall(0.6F).effects(new BiomeEffects.Builder().waterColor(4159204).waterFogColor(329011).fogColor(12638463).skyColor(getSkyColor(0.6F)).moodSound(BiomeMoodSound.CAVE).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).build();
 	}
 	
