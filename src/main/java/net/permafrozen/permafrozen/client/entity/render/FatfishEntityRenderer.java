@@ -10,23 +10,23 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3f;
-import net.permafrozen.permafrozen.client.entity.model.FatfishModel;
-import net.permafrozen.permafrozen.entity.phishe.Fatfish;
+import net.permafrozen.permafrozen.client.entity.model.FatfishEntityModel;
+import net.permafrozen.permafrozen.entity.phishe.FatfishEntity;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 @Environment(EnvType.CLIENT)
-public class FatfishRenderer extends GeoEntityRenderer<Fatfish> {
-	public FatfishRenderer(EntityRendererFactory.Context ctx) {
-		super(ctx, new FatfishModel());
+public class FatfishEntityRenderer extends GeoEntityRenderer<FatfishEntity> {
+	public FatfishEntityRenderer(EntityRendererFactory.Context ctx) {
+		super(ctx, new FatfishEntityModel());
 	}
 	
 	@Override
-	public RenderLayer getRenderType(Fatfish animatable, float partialTicks, MatrixStack stack, VertexConsumerProvider renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn, Identifier textureLocation) {
+	public RenderLayer getRenderType(FatfishEntity animatable, float partialTicks, MatrixStack stack, VertexConsumerProvider renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn, Identifier textureLocation) {
 		return RenderLayer.getEntityTranslucent(getTextureLocation(animatable));
 	}
 	
 	@Override
-	protected void applyRotations(Fatfish fish, MatrixStack matrixStack, float ageInTicks, float rotationYaw, float partialTicks) {
+	protected void applyRotations(FatfishEntity fish, MatrixStack matrixStack, float ageInTicks, float rotationYaw, float partialTicks) {
 		super.applyRotations(fish, matrixStack, ageInTicks, rotationYaw, partialTicks);
 		float f = 4.3F * MathHelper.sin(0.6F * ageInTicks);
 		matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(f));

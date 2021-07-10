@@ -4,23 +4,23 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.util.Identifier;
 import net.permafrozen.permafrozen.Permafrozen;
-import net.permafrozen.permafrozen.entity.phishe.LunarKoi;
+import net.permafrozen.permafrozen.entity.phishe.LunarKoiEntity;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 @Environment(EnvType.CLIENT)
-public class LunarKoiModel extends AnimatedGeoModel<LunarKoi> {
+public class LunarKoiEntityModel extends AnimatedGeoModel<LunarKoiEntity> {
 	@Override
-	public Identifier getModelLocation(LunarKoi koi) {
+	public Identifier getModelLocation(LunarKoiEntity koi) {
 		return new Identifier(Permafrozen.MOD_ID, "geo/koi.geo.json");
 	}
 	
 	@Override
-	public Identifier getTextureLocation(LunarKoi koi) {
+	public Identifier getTextureLocation(LunarKoiEntity koi) {
 		return new Identifier(Permafrozen.MOD_ID, "textures/entity/lunar_koi.png");
 	}
 	
 	@Override
-	public Identifier getAnimationFileLocation(LunarKoi koi) {
+	public Identifier getAnimationFileLocation(LunarKoiEntity koi) {
 		return new Identifier(Permafrozen.MOD_ID, "animations/koi.animation.json");
 	}
 }

@@ -4,32 +4,32 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.util.Identifier;
 import net.permafrozen.permafrozen.Permafrozen;
-import net.permafrozen.permafrozen.entity.nudifae.Nudifae;
+import net.permafrozen.permafrozen.entity.nudifae.NudifaeEntity;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @Environment(EnvType.CLIENT)
-public class NudifaeModel extends AnimatedGeoModel<Nudifae> {
+public class NudifaeEntityModel extends AnimatedGeoModel<NudifaeEntity> {
 	@Override
-	public Identifier getModelLocation(Nudifae nudifae) {
+	public Identifier getModelLocation(NudifaeEntity nudifaeEntity) {
 		return new Identifier(Permafrozen.MOD_ID, "geo/nudifae.geo.json");
 	}
 	
 	@Override
-	public Identifier getTextureLocation(Nudifae nudifae) {
-		int i = nudifae.getNudifaeType().id;
-		return new Identifier(Permafrozen.MOD_ID, String.format("textures/entity/nudifae_" + i + ".png", nudifae.getNudifaeType().id));
+	public Identifier getTextureLocation(NudifaeEntity nudifaeEntity) {
+		int i = nudifaeEntity.getNudifaeType().id;
+		return new Identifier(Permafrozen.MOD_ID, String.format("textures/entity/nudifae_" + i + ".png", nudifaeEntity.getNudifaeType().id));
 	}
 	
 	@Override
-	public Identifier getAnimationFileLocation(Nudifae nudifae) {
+	public Identifier getAnimationFileLocation(NudifaeEntity nudifaeEntity) {
 		return new Identifier(Permafrozen.MOD_ID, "animations/nudifae.animation.json");
 	}
 	
 	@Override
-	public void setLivingAnimations(Nudifae entity, Integer uniqueID, AnimationEvent customPredicate) {
+	public void setLivingAnimations(NudifaeEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 		IBone head = this.getAnimationProcessor().getBone("head");
 		

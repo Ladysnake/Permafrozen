@@ -37,8 +37,8 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.UUID;
 
-public class Nudifae extends TameableEntity implements IAnimatable {
-	public static final TrackedData<NudifaeType> TYPE = DataTracker.registerData(Nudifae.class, PermafrozenDataHandlers.NUDIFAE_TYPE);
+public class NudifaeEntity extends TameableEntity implements IAnimatable {
+	public static final TrackedData<NudifaeType> TYPE = DataTracker.registerData(NudifaeEntity.class, PermafrozenDataHandlers.NUDIFAE_TYPE);
 	private final AnimationFactory factory = new AnimationFactory(this);
 	
 	public static final AnimationBuilder IDLE = new AnimationBuilder().addAnimation("idle");
@@ -47,7 +47,7 @@ public class Nudifae extends TameableEntity implements IAnimatable {
 	public static final AnimationBuilder WALK = new AnimationBuilder().addAnimation("walk");
 	public static final AnimationBuilder SWIM = new AnimationBuilder().addAnimation("swim");
 	
-	public Nudifae(EntityType<? extends TameableEntity> type, World world) {
+	public NudifaeEntity(EntityType<? extends TameableEntity> type, World world) {
 		super(type, world);
 		this.moveControl = new AquaticMoveControl(this, 0, 0, 0.285f, 0.285f, true);
 		this.setPathfindingPenalty(PathNodeType.WATER, 0.0F);
@@ -69,11 +69,11 @@ public class Nudifae extends TameableEntity implements IAnimatable {
 	@Override
 	public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityTag) {
 		int type = NudifaeType.getRandom().id;
-		if (entityData instanceof Nudifae.NudifaeData) {
-			type = ((Nudifae.NudifaeData) entityData).typeData;
+		if (entityData instanceof NudifaeEntity.NudifaeData) {
+			type = ((NudifaeEntity.NudifaeData) entityData).typeData;
 		}
 		else {
-			entityData = new Nudifae.NudifaeData(type);
+			entityData = new NudifaeEntity.NudifaeData(type);
 		}
 		this.setNudifaeType(NudifaeType.getTypeById(type));
 		return super.initialize(world, difficulty, spawnReason, entityData, entityTag);
@@ -82,7 +82,7 @@ public class Nudifae extends TameableEntity implements IAnimatable {
 	@Nullable
 	@Override
 	public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
-		Nudifae child = PermafrozenEntities.NUDIFAE.create(world);
+		NudifaeEntity child = PermafrozenEntities.NUDIFAE.create(world);
 		if (child != null) {
 			child.initialize(world, world.getLocalDifficulty(getBlockPos()), SpawnReason.BREEDING, null, null);
 			UUID owner = getOwnerUuid();
@@ -120,10 +120,10 @@ public class Nudifae extends TameableEntity implements IAnimatable {
 	
 	@Override
 	protected void initGoals() {
-		this.goalSelector.add(3, new Nudifae.PlayerTemptGoal(this, 1.0D));
+		this.goalSelector.add(3, new NudifaeEntity.PlayerTemptGoal(this, 1.0D));
 		this.goalSelector.add(5, new LookAroundGoal(this));
 		this.goalSelector.add(10, new AnimalMateGoal(this, 0.8D));
-		this.goalSelector.add(11, new Nudifae.WanderGoal(this, 1.0D));
+		this.goalSelector.add(11, new NudifaeEntity.WanderGoal(this, 1.0D));
 		this.goalSelector.add(12, new WanderAroundFarGoal(this, 1.0D));
 		this.goalSelector.add(12, new LookAtEntityGoal(this, PlayerEntity.class, 10.0F));
 		this.goalSelector.add(2, new SwimAroundGoal(this, 1.0D, 40));
@@ -133,7 +133,7 @@ public class Nudifae extends TameableEntity implements IAnimatable {
 	@Override
 	protected EntityNavigation createNavigation(World world) {
 		super.createNavigation(world);
-		return new Nudifae.Navigation(this, world);
+		return new NudifaeEntity.Navigation(this, world);
 	}
 	
 	// Data stuff
@@ -180,8 +180,8 @@ public class Nudifae extends TameableEntity implements IAnimatable {
 	}
 	
 	static class Navigation extends SwimNavigation {
-		Navigation(Nudifae nudifae, World world) {
-			super(nudifae, world);
+		Navigation(NudifaeEntity nudifaeEntity, World world) {
+			super(nudifaeEntity, world);
 		}
 		
 		protected boolean isAtValidPosition() {
@@ -199,26 +199,26 @@ public class Nudifae extends TameableEntity implements IAnimatable {
 	}
 	
 	static class WanderGoal extends WanderAroundFarGoal {
-		private final Nudifae nudifae;
+		private final NudifaeEntity nudifaeEntity;
 		
-		private WanderGoal(Nudifae nudifae, double speedIn) {
-			super(nudifae, speedIn);
-			this.nudifae = nudifae;
+		private WanderGoal(NudifaeEntity nudifaeEntity, double speedIn) {
+			super(nudifaeEntity, speedIn);
+			this.nudifaeEntity = nudifaeEntity;
 		}
 		
 		public boolean shouldContinue() {
-			return !this.nudifae.isInsideWaterOrBubbleColumn() && super.shouldContinue();
+			return !this.nudifaeEntity.isInsideWaterOrBubbleColumn() && super.shouldContinue();
 		}
 	}
 	
 	static class PlayerTemptGoal extends Goal {
-		private final Nudifae nudifae;
+		private final NudifaeEntity nudifaeEntity;
 		private final double speed;
 		private PlayerEntity tempter;
 		private final Tag<Block> temptItems;
 		
-		PlayerTemptGoal(Nudifae nudifae, double speedIn) {
-			this.nudifae = nudifae;
+		PlayerTemptGoal(NudifaeEntity nudifaeEntity, double speedIn) {
+			this.nudifaeEntity = nudifaeEntity;
 			this.speed = speedIn;
 			this.temptItems = BlockTags.CORAL_BLOCKS;
 		}
@@ -230,7 +230,7 @@ public class Nudifae extends TameableEntity implements IAnimatable {
 		
 		@Override
 		public boolean canStart() {
-			this.tempter = this.nudifae.world.getClosestPlayer(this.nudifae, 30);
+			this.tempter = this.nudifaeEntity.world.getClosestPlayer(this.nudifaeEntity, 30);
 			if (this.tempter == null) {
 				return false;
 			}
@@ -241,18 +241,18 @@ public class Nudifae extends TameableEntity implements IAnimatable {
 		
 		@Override
 		public void tick() {
-			this.nudifae.getLookControl().lookAt(this.tempter, (float) (this.nudifae.getLookYawSpeed() + 20), (float) this.nudifae.getLookPitchSpeed());
-			if (this.nudifae.squaredDistanceTo(this.tempter) < 6.25D) {
-				this.nudifae.getNavigation().recalculatePath();
+			this.nudifaeEntity.getLookControl().lookAt(this.tempter, (float) (this.nudifaeEntity.getLookYawSpeed() + 20), (float) this.nudifaeEntity.getLookPitchSpeed());
+			if (this.nudifaeEntity.squaredDistanceTo(this.tempter) < 6.25D) {
+				this.nudifaeEntity.getNavigation().recalculatePath();
 			}
 			else {
-				this.nudifae.getNavigation().startMovingTo(this.tempter, this.speed);
+				this.nudifaeEntity.getNavigation().startMovingTo(this.tempter, this.speed);
 			}
 		}
 		
 		public void resetGoal() {
 			this.tempter = null;
-			this.nudifae.getNavigation().recalculatePath();
+			this.nudifaeEntity.getNavigation().recalculatePath();
 		}
 		
 		private boolean isTemptedBy(ItemStack item) {
