@@ -84,13 +84,13 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable {
 	
 	@Override
 	protected void initGoals() {
-		this.goalSelector.add(3, new NudifaeEntity.PlayerTemptGoal(this, 1.0D));
-		this.goalSelector.add(5, new LookAroundGoal(this));
-		this.goalSelector.add(10, new AnimalMateGoal(this, 0.8D));
-		this.goalSelector.add(11, new NudifaeEntity.WanderGoal(this, 1.0D));
-		this.goalSelector.add(12, new WanderAroundFarGoal(this, 1.0D));
-		this.goalSelector.add(12, new LookAtEntityGoal(this, PlayerEntity.class, 10.0F));
-		this.goalSelector.add(2, new SwimAroundGoal(this, 1.0D, 40));
+		this.goalSelector.add(0, new NudifaeEntity.PlayerTemptGoal(this, 1.0D));
+		this.goalSelector.add(1, new LookAroundGoal(this));
+		this.goalSelector.add(2, new AnimalMateGoal(this, 0.8D));
+		this.goalSelector.add(3, new NudifaeEntity.WanderGoal(this, 1.0D));
+		this.goalSelector.add(4, new WanderAroundFarGoal(this, 1.0D));
+		this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 10.0F));
+		this.goalSelector.add(0, new SwimAroundGoal(this, 1.0D, 40));
 	}
 	
 	@Override
