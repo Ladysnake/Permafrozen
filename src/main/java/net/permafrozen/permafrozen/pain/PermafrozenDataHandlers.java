@@ -7,21 +7,21 @@ import net.permafrozen.permafrozen.entity.nudifae.NudifaeType;
 import static net.minecraft.entity.data.TrackedDataHandlerRegistry.register;
 
 public class PermafrozenDataHandlers {
-    public static final TrackedDataHandler<NudifaeType> NUDIFAE_TYPE = new TrackedDataHandler<>() {
-        public void write(PacketByteBuf packetByteBuf, NudifaeType nudifaeType) {
-            packetByteBuf.writeEnumConstant(nudifaeType);
-        }
-    
-        public NudifaeType read(PacketByteBuf packetByteBuf) {
-            return packetByteBuf.readEnumConstant(NudifaeType.class);
-        }
-    
-        public NudifaeType copy(NudifaeType flonshed) {
-            return flonshed;
-        }
-    };
-
-    static {
-        register(NUDIFAE_TYPE);
-    }
+	public static final TrackedDataHandler<NudifaeType> NUDIFAE_TYPE = new TrackedDataHandler<>() {
+		public void write(PacketByteBuf packetByteBuf, NudifaeType nudifaeType) {
+			packetByteBuf.writeEnumConstant(nudifaeType);
+		}
+		
+		public NudifaeType read(PacketByteBuf packetByteBuf) {
+			return packetByteBuf.readEnumConstant(NudifaeType.class);
+		}
+		
+		public NudifaeType copy(NudifaeType flonshed) {
+			return flonshed;
+		}
+	};
+	
+	static {
+		register(NUDIFAE_TYPE);
+	}
 }

@@ -1,8 +1,7 @@
 {
   "variants": {
-    "":
-    {
-      "model": "permafrozen:block/fir_planks"
-    }
+	"": {
+	  "model": "permafrozen:block/fir_planks"
+	}
   }
 }

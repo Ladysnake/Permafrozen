@@ -9,16 +9,13 @@ import org.spongepowered.asm.mixin.Shadow;
 import java.util.Set;
 
 @Mixin(SignType.class)
-public class SignTypeMixin implements SignTypeHelper
-{
-
-    @Shadow
-    @Final
-    private static Set<SignType> VALUES;
-
-    @Override
-    public Set<SignType> pf_getTypes()
-    {
-        return VALUES;
-    }
+public class SignTypeMixin implements SignTypeHelper {
+	@Shadow
+	@Final
+	private static Set<SignType> VALUES;
+	
+	@Override
+	public Set<SignType> pf_getTypes() {
+		return VALUES;
+	}
 }

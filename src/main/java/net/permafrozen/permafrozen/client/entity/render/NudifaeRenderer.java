@@ -14,28 +14,23 @@ import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 @Environment(EnvType.CLIENT)
 public class NudifaeRenderer extends GeoEntityRenderer<Nudifae> {
-
-    public NudifaeRenderer(EntityRendererFactory.Context context) {
-
-        super(context, new NudifaeModel());
-        this.shadowRadius = 0.3F;
-
-    }
-
-    public void render(Nudifae nudifae, float entityYaw, float partialTicks, MatrixStack stack, VertexConsumerProvider provider, int packedLightIn) {
-        super.render(nudifae, entityYaw, partialTicks, stack, provider, packedLightIn);
-
-    }
-
-    @Override
-    public RenderLayer getRenderType(Nudifae animatable, float partialTicks, MatrixStack stack, VertexConsumerProvider renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn, Identifier textureLocation) {
-        return RenderLayer.getEntityTranslucent(this.getTexture(animatable));
-    }
-
-    public Identifier getTexture(Nudifae nudifae) {
-
-        return this.getTextureLocation(nudifae);
-
-    }
-
+	public NudifaeRenderer(EntityRendererFactory.Context context) {
+		super(context, new NudifaeModel());
+		this.shadowRadius = 0.3F;
+	}
+	
+	@Override
+	public void render(Nudifae nudifae, float entityYaw, float partialTicks, MatrixStack stack, VertexConsumerProvider provider, int packedLightIn) {
+		super.render(nudifae, entityYaw, partialTicks, stack, provider, packedLightIn);
+	}
+	
+	@Override
+	public RenderLayer getRenderType(Nudifae animatable, float partialTicks, MatrixStack stack, VertexConsumerProvider renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn, Identifier textureLocation) {
+		return RenderLayer.getEntityTranslucent(this.getTexture(animatable));
+	}
+	
+	@Override
+	public Identifier getTexture(Nudifae nudifae) {
+		return this.getTextureLocation(nudifae);
+	}
 }

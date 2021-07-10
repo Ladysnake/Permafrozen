@@ -28,39 +28,33 @@ import java.util.Objects;
 
 @Mixin(CampfireBlockEntity.class)
 public class CampfireBlockEntityMixin extends BlockEntity implements Clearable {
-
-    @Mutable
-    @Shadow
-    @Final
-    public final DefaultedList<ItemStack> itemsBeingCooked;
-
-    public CampfireBlockEntityMixin(BlockEntityType<?> type, BlockPos pos, BlockState state) {
-        super(type, pos, state);
-        this.itemsBeingCooked = DefaultedList.ofSize(4, ItemStack.EMPTY);
-    }
-
-    @Inject( method = "litServerTick", at = @At("TAIL"))
-    private static void litServerTick(World world, BlockPos pos, BlockState state, CampfireBlockEntity campfire, CallbackInfo ci) {
-        for(int i = 0; i < campfire.itemsBeingCooked.size(); ++i) {
-            ItemStack itemStack = campfire.itemsBeingCooked.get(i);
-            if (!itemStack.isEmpty() && itemStack.getItem().equals(PermafrozenItems.FIR_PINECONE)) {
-                List<LivingEntity> entities = Objects.requireNonNull(campfire.getWorld()).getEntitiesByClass(
-                        LivingEntity.class,
-                        new Box(
-                                pos.getX() - 3, pos.getY() - 3, pos.getZ() - 3,
-                                pos.getX() + 3, pos.getY() + 3, pos.getZ() + 3
-                        ), (LivingEntity) -> true
-                );
-                for (LivingEntity nearbyEntity : entities) {
-                    if (nearbyEntity instanceof PlayerEntity) {
-                        nearbyEntity.addStatusEffect( new StatusEffectInstance(PermafrozenEffects.FRAGRANT, 1000, 0));
-                    }
-                }
-            }
-        }
-    }
-    @Override
-    public void clear() {
-        this.itemsBeingCooked.clear();
-    }
+	@Mutable
+	@Shadow
+	@Final
+	public final DefaultedList<ItemStack> itemsBeingCooked;
+	
+	public CampfireBlockEntityMixin(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+		super(type, pos, state);
+		this.itemsBeingCooked = DefaultedList.ofSize(4, ItemStack.EMPTY);
+	}
+	
+	@Inject(method = "litServerTick", at = @At("TAIL"))
+	private static void litServerTick(World world, BlockPos pos, BlockState state, CampfireBlockEntity campfire, CallbackInfo ci) {
+		for (int i = 0; i < campfire.itemsBeingCooked.size(); ++i) {
+			ItemStack itemStack = campfire.itemsBeingCooked.get(i);
+			if (!itemStack.isEmpty() && itemStack.getItem().equals(PermafrozenItems.FIR_PINECONE)) {
+				List<LivingEntity> entities = Objects.requireNonNull(campfire.getWorld()).getEntitiesByClass(LivingEntity.class, new Box(pos.getX() - 3, pos.getY() - 3, pos.getZ() - 3, pos.getX() + 3, pos.getY() + 3, pos.getZ() + 3), (LivingEntity) -> true);
+				for (LivingEntity nearbyEntity : entities) {
+					if (nearbyEntity instanceof PlayerEntity) {
+						nearbyEntity.addStatusEffect(new StatusEffectInstance(PermafrozenEffects.FRAGRANT, 1000, 0));
+					}
+				}
+			}
+		}
+	}
+	
+	@Override
+	public void clear() {
+		this.itemsBeingCooked.clear();
+	}
 }

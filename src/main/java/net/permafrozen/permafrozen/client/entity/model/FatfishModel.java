@@ -9,26 +9,18 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 @Environment(EnvType.CLIENT)
 public class FatfishModel extends AnimatedGeoModel<Fatfish> {
-
-
-    @Override
-    public Identifier getModelLocation(Fatfish fishe) {
-
-        return new Identifier(Permafrozen.MOD_ID, "geo/fatfish.geo.json");
-
-    }
-    @Override
-    public Identifier getTextureLocation(Fatfish fishe) {
-
-        return new Identifier(Permafrozen.MOD_ID, "textures/entity/fatfish.png");
-
-    }
-
-    @Override
-    public Identifier getAnimationFileLocation(Fatfish fishe) {
-
-        return new Identifier(Permafrozen.MOD_ID, "animations/fatfish.animation.json");
-
-    }
-
+	@Override
+	public Identifier getModelLocation(Fatfish fishe) {
+		return new Identifier(Permafrozen.MOD_ID, "geo/fatfish.geo.json");
+	}
+	
+	@Override
+	public Identifier getTextureLocation(Fatfish fishe) {
+		return new Identifier(Permafrozen.MOD_ID, "textures/entity/fatfish.png");
+	}
+	
+	@Override
+	public Identifier getAnimationFileLocation(Fatfish fishe) {
+		return new Identifier(Permafrozen.MOD_ID, "animations/fatfish.animation.json");
+	}
 }

@@ -1,7 +1,13 @@
 {
   "variants": {
-    "type=bottom": { "model": "permafrozen:block/fir_slab" },
-    "type=top": { "model": "permafrozen:block/fir_slab_top" },
-    "type=double": { "model": "permafrozen:block/fir_planks" }
+	"type=bottom": {
+	  "model": "permafrozen:block/fir_slab"
+	},
+	"type=top": {
+	  "model": "permafrozen:block/fir_slab_top"
+	},
+	"type=double": {
+	  "model": "permafrozen:block/fir_planks"
+	}
   }
 }

@@ -21,13 +21,13 @@ public class Permafrozen implements ModInitializer {
 	
 	@Override
 	public void onInitialize() {
-		PermafrozenItems.innit();
+		PermafrozenItems.init();
 		GeckoLib.initialize();
 		PermafrozenEntities.init();
-		PermafrozenBlocks.innit();
-		PermafrozenConfiguredFeatures.commenceForth();
-		PermafrozenBiomes.innit();
-		PermafrozenEffects.innit();
+		PermafrozenBlocks.init();
+		PermafrozenConfiguredFeatures.init();
+		PermafrozenBiomes.init();
+		PermafrozenEffects.init();
 	}
-
+	
 }

@@ -1,10 +1,9 @@
 {
   "replace": false,
   "values": [
-    "permafrozen:fir_log",
-    "permafrozen:fir_wood",
-    "permafrozen:stripped_fir_log",
-    "permafrozen:stripped_fir_wood"
-
+	"permafrozen:fir_log",
+	"permafrozen:fir_wood",
+	"permafrozen:stripped_fir_log",
+	"permafrozen:stripped_fir_wood"
   ]
 }

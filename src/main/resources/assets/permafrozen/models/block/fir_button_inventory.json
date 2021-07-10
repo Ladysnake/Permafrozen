@@ -1,6 +1,6 @@
 {
   "parent": "block/button_inventory",
   "textures": {
-  "texture": "permafrozen:block/fir_planks"
+	"texture": "permafrozen:block/fir_planks"
   }
 }

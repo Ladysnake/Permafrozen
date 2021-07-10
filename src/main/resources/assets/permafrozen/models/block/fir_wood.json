@@ -1,7 +1,7 @@
 {
   "parent": "block/cube_column",
   "textures": {
-    "end": "permafrozen:block/fir_log",
-    "side": "permafrozen:block/fir_log"
+	"end": "permafrozen:block/fir_log",
+	"side": "permafrozen:block/fir_log"
   }
 }

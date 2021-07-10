@@ -1,6 +1,6 @@
 {
   "parent": "block/fence_side",
   "textures": {
-    "texture": "permafrozen:block/fir_planks"
+	"texture": "permafrozen:block/fir_planks"
   }
 }

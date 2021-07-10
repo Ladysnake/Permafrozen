@@ -16,34 +16,22 @@ import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 @Environment(EnvType.CLIENT)
 public class FatfishRenderer extends GeoEntityRenderer<Fatfish> {
-
-
-    public FatfishRenderer(EntityRendererFactory.Context ctx) {
-        super(ctx, new FatfishModel());
-    }
-
-    public Identifier getEntityTexture(Fatfish entity) {
-
-        return this.getTextureLocation(entity);
-
-    }
-
-    @Override
-    public RenderLayer getRenderType(Fatfish animatable, float partialTicks, MatrixStack stack, VertexConsumerProvider renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn, Identifier textureLocation) {
-
-        return RenderLayer.getEntityTranslucent(this.getEntityTexture(animatable));
-
-    }
-
-    @Override
-    protected void applyRotations(Fatfish fish, MatrixStack matrixStack, float ageInTicks, float rotationYaw, float partialTicks) {
-        super.applyRotations(fish, matrixStack, ageInTicks, rotationYaw, partialTicks);
-        float f = 4.3F * MathHelper.sin(0.6F * ageInTicks);
-        matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(f));
-        if (!fish.isInsideWaterOrBubbleColumn()) {
-            matrixStack.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(90.0F));
-        }
-    }
-
-
+	public FatfishRenderer(EntityRendererFactory.Context ctx) {
+		super(ctx, new FatfishModel());
+	}
+	
+	@Override
+	public RenderLayer getRenderType(Fatfish animatable, float partialTicks, MatrixStack stack, VertexConsumerProvider renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn, Identifier textureLocation) {
+		return RenderLayer.getEntityTranslucent(getTextureLocation(animatable));
+	}
+	
+	@Override
+	protected void applyRotations(Fatfish fish, MatrixStack matrixStack, float ageInTicks, float rotationYaw, float partialTicks) {
+		super.applyRotations(fish, matrixStack, ageInTicks, rotationYaw, partialTicks);
+		float f = 4.3F * MathHelper.sin(0.6F * ageInTicks);
+		matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(f));
+		if (!fish.isInsideWaterOrBubbleColumn()) {
+			matrixStack.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(90.0F));
+		}
+	}
 }

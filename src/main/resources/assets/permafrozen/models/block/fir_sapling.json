@@ -1,6 +1,6 @@
 {
   "parent": "block/cross",
   "textures": {
-    "cross": "permafrozen:block/fir_sapling"
+	"cross": "permafrozen:block/fir_sapling"
   }
 }

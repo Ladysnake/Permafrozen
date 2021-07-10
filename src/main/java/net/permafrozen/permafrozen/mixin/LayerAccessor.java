@@ -7,7 +7,6 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin(BiomeLayerSampler.class)
 public interface LayerAccessor {
-
-    @Accessor("sampler")
-    CachingLayerSampler getSampler();
+	@Accessor("sampler")
+	CachingLayerSampler getSampler();
 }

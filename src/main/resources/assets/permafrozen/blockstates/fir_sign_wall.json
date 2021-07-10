@@ -1,7 +1,7 @@
 {
   "variants": {
-    "": {
-      "model": "permafrozen:block/fir_sign"
-    }
+	"": {
+	  "model": "permafrozen:block/fir_sign"
+	}
   }
 }

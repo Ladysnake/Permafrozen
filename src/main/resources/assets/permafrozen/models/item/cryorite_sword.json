@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "permafrozen:item/cryorite_sword"
+	"layer0": "permafrozen:item/cryorite_sword"
   }
 }

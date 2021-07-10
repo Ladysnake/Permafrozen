@@ -4,7 +4,7 @@ import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.ToolMaterial;
 
 public class PermafrozenPickaxeItem extends PickaxeItem {
-    protected PermafrozenPickaxeItem(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
-        super(material, attackDamage, attackSpeed, settings);
-    }
+	protected PermafrozenPickaxeItem(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
+		super(material, attackDamage, attackSpeed, settings);
+	}
 }
