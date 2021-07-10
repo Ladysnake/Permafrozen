@@ -1,6 +1,5 @@
 package net.permafrozen.permafrozen.worldgen.biome;
 
-import net.minecraft.entity.SpawnGroup;
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
@@ -11,12 +10,9 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
-import net.minecraft.world.biome.source.VanillaLayeredBiomeSource;
-import net.minecraft.world.gen.feature.ConfiguredFeatures;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilders;
 import net.permafrozen.permafrozen.Permafrozen;
-import net.permafrozen.permafrozen.entity.PermafrozenEntities;
 import net.permafrozen.permafrozen.worldgen.feature.PermafrozenBiomeFeatures;
 
 public class PermafrozenBiomes {

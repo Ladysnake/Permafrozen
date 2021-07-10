@@ -1,6 +1,5 @@
 package net.permafrozen.permafrozen.pain;
 
-import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.data.TrackedDataHandler;
 import net.minecraft.network.PacketByteBuf;
 import net.permafrozen.permafrozen.entity.nudifae.NudifaeType;

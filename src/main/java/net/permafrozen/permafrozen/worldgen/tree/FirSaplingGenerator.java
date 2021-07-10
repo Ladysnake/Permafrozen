@@ -2,7 +2,6 @@ package net.permafrozen.permafrozen.worldgen.tree;
 
 import net.minecraft.block.sapling.LargeTreeSaplingGenerator;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.ConfiguredFeatures;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.permafrozen.permafrozen.worldgen.feature.PermafrozenConfiguredFeatures;
 import org.jetbrains.annotations.Nullable;

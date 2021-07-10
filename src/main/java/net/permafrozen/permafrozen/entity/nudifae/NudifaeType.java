@@ -5,8 +5,6 @@ import net.minecraft.util.collection.WeightedList;
 import net.minecraft.world.biome.Biome;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Random;
-
 public enum NudifaeType {
     BLUE(0, 35),
     PINK(1, 30),

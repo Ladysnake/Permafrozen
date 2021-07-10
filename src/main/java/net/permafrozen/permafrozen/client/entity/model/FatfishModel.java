@@ -5,7 +5,6 @@ import net.fabricmc.api.Environment;
 import net.minecraft.util.Identifier;
 import net.permafrozen.permafrozen.Permafrozen;
 import net.permafrozen.permafrozen.entity.phishe.Fatfish;
-import net.permafrozen.permafrozen.entity.phishe.LunarKoi;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 @Environment(EnvType.CLIENT)

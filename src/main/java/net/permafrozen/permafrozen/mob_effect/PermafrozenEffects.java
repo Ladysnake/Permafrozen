@@ -2,7 +2,6 @@ package net.permafrozen.permafrozen.mob_effect;
 
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectType;
-import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.permafrozen.permafrozen.Permafrozen;

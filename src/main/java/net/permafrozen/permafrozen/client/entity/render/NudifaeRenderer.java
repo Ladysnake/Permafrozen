@@ -10,7 +10,6 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.permafrozen.permafrozen.client.entity.model.NudifaeModel;
 import net.permafrozen.permafrozen.entity.nudifae.Nudifae;
-import net.permafrozen.permafrozen.entity.phishe.LunarKoi;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 @Environment(EnvType.CLIENT)

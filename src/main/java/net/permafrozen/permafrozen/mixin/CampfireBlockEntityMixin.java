@@ -1,24 +1,17 @@
 package net.permafrozen.permafrozen.mixin;
 
-import net.fabricmc.loader.util.sat4j.core.ReadOnlyVec;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.CampfireBlockEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.Inventory;
-import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.recipe.RecipeType;
 import net.minecraft.util.Clearable;
-import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.permafrozen.permafrozen.item.PermafrozenItems;
 import net.permafrozen.permafrozen.mob_effect.PermafrozenEffects;

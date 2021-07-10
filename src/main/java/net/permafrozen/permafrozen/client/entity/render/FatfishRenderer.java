@@ -12,7 +12,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3f;
 import net.permafrozen.permafrozen.client.entity.model.FatfishModel;
 import net.permafrozen.permafrozen.entity.phishe.Fatfish;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 @Environment(EnvType.CLIENT)
