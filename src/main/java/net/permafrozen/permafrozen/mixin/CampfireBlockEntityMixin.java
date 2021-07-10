@@ -49,7 +49,7 @@ public class CampfireBlockEntityMixin extends BlockEntity implements Clearable {
     @Inject( method = "litServerTick", at = @At("TAIL"))
     private static void litServerTick(World world, BlockPos pos, BlockState state, CampfireBlockEntity campfire, CallbackInfo ci) {
         for(int i = 0; i < campfire.itemsBeingCooked.size(); ++i) {
-            ItemStack itemStack = (ItemStack)campfire.itemsBeingCooked.get(i);
+            ItemStack itemStack = campfire.itemsBeingCooked.get(i);
             if (!itemStack.isEmpty() && itemStack.getItem().equals(PermafrozenItems.FIR_PINECONE)) {
                 List<LivingEntity> entities = Objects.requireNonNull(campfire.getWorld()).getEntitiesByClass(
                         LivingEntity.class,

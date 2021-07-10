@@ -10,7 +10,6 @@ import net.minecraft.world.gen.ChunkRandom;
 import java.util.stream.IntStream;
 
 public class PermafrozenBiomeLayer implements InitLayer {
-
     private final Registry<Biome> dynamicRegistry;
     private static OctaveSimplexNoiseSampler perlinGen;
 

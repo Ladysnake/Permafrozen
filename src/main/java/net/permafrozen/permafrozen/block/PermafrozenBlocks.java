@@ -1,6 +1,5 @@
 package net.permafrozen.permafrozen.block;
 
-
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
@@ -60,9 +59,8 @@ public class PermafrozenBlocks {
     private static Boolean canSpawnOnLeaves(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) {
         return type == EntityType.OCELOT || type == EntityType.PARROT;
     }
-    private static <T extends Block> T create(String name, T block) {
+    private static <T extends Block> void create(String name, T block) {
         BLOCKS.put(block, new Identifier(Permafrozen.MOD_ID, name));
-        return block;
     }
     private static <B extends Block> B create(String name, B block, ItemGroup tab) {
         return create(name, block, new BlockItem(block, new Item.Settings().group(tab)));

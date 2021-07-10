@@ -26,24 +26,14 @@ import java.util.List;
 import java.util.function.LongFunction;
 
 public class PermafrozenBiomeSource extends BiomeSource {
-    public static final Codec<PermafrozenBiomeSource> CODEC = RecordCodecBuilder.create((instance) -> {
-        return instance.group(Codec.LONG.fieldOf("seed").stable().forGetter((permafrozenBiomeSource) -> {
-            return permafrozenBiomeSource.seed;
-        }),  RegistryLookupCodec.of(Registry.BIOME_KEY).forGetter((permafrozenBiomeSource) -> {
-            return permafrozenBiomeSource.biomeRegistry;
-        })).apply(instance, instance.stable(PermafrozenBiomeSource::new));
-    });
+    public static final Codec<PermafrozenBiomeSource> CODEC = RecordCodecBuilder.create((instance) -> instance.group(Codec.LONG.fieldOf("seed").stable().forGetter((permafrozenBiomeSource) -> permafrozenBiomeSource.seed),  RegistryLookupCodec.of(Registry.BIOME_KEY).forGetter((permafrozenBiomeSource) -> permafrozenBiomeSource.biomeRegistry)).apply(instance, instance.stable(PermafrozenBiomeSource::new)));
     private final BiomeLayerSampler biomeSampler;
     private static final List<RegistryKey<Biome>> PERMAFROZEN_BIOMES;
     private final long seed;
     private final Registry<Biome> biomeRegistry;
 
     public PermafrozenBiomeSource(long seed, Registry<Biome> biomeRegistry) {
-        super(PERMAFROZEN_BIOMES.stream().map((key) -> {
-            return () -> {
-                return (Biome)biomeRegistry.getOrThrow(key);
-            };
-        }));
+        super(PERMAFROZEN_BIOMES.stream().map((key) -> () -> (Biome)biomeRegistry.getOrThrow(key)));
         this.seed = seed;
         this.biomeRegistry = biomeRegistry;
         this.biomeSampler = buildWorldProcedure(seed, 3, biomeRegistry);
@@ -96,7 +86,7 @@ public class PermafrozenBiomeSource extends BiomeSource {
         LayerFactory<T> layerFactory = parent;
 
         for(int i = 0; i < count; ++i) {
-            layerFactory = layer.create((LayerSampleContext)contextProvider.apply(seed + (long)i), layerFactory);
+            layerFactory = layer.create(contextProvider.apply(seed + (long)i), layerFactory);
         }
 
         return layerFactory;

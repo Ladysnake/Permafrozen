@@ -21,10 +21,9 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 public class Fatfish extends SchoolingFishEntity implements IAnimatable {
-
-    public static AnimationBuilder FLOP = new AnimationBuilder().addAnimation("flop");
-    public static AnimationBuilder SWIM = new AnimationBuilder().addAnimation("swim");
-    private AnimationFactory factory = new AnimationFactory(this);
+    public static final AnimationBuilder FLOP = new AnimationBuilder().addAnimation("flop");
+    public static final AnimationBuilder SWIM = new AnimationBuilder().addAnimation("swim");
+    private final AnimationFactory factory = new AnimationFactory(this);
 
     public Fatfish(EntityType<? extends SchoolingFishEntity> entityType, World world) {
         super(entityType, world);
@@ -62,10 +61,7 @@ public class Fatfish extends SchoolingFishEntity implements IAnimatable {
 
     @Override
     public void registerControllers(AnimationData animationData) {
-
-        AnimationController controller = new AnimationController(this, "controller", 2, this::predicate);
-        animationData.addAnimationController(controller);
-
+        animationData.addAnimationController(new AnimationController<>(this, "controller", 2, this::predicate));
     }
 
     @Override

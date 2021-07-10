@@ -22,10 +22,9 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 public class LunarKoi extends FishEntity implements IAnimatable {
-
-    public static AnimationBuilder FLOP = new AnimationBuilder().addAnimation("flop");
-    public static AnimationBuilder SWIM = new AnimationBuilder().addAnimation("swim");
-    private AnimationFactory factory = new AnimationFactory(this);
+    public static final AnimationBuilder FLOP = new AnimationBuilder().addAnimation("flop");
+    public static final AnimationBuilder SWIM = new AnimationBuilder().addAnimation("swim");
+    private final AnimationFactory factory = new AnimationFactory(this);
 
     public LunarKoi(EntityType<? extends FishEntity> entityType, World world) {
         super(entityType, world);
@@ -58,8 +57,7 @@ public class LunarKoi extends FishEntity implements IAnimatable {
     protected void initGoals() {
         super.initGoals();
     }
-
-
+    
     // Animation things
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         boolean isInWater = isInsideWaterOrBubbleColumn();
@@ -70,8 +68,7 @@ public class LunarKoi extends FishEntity implements IAnimatable {
 
     @Override
     public void registerControllers(AnimationData animationData) {
-        AnimationController controller = new AnimationController(this, "controller", 2, this::predicate);
-        animationData.addAnimationController(controller);
+        animationData.addAnimationController(new AnimationController<>(this, "controller", 2, this::predicate));
     }
 
     @Override

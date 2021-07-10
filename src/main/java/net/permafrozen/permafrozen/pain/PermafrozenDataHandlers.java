@@ -8,15 +8,15 @@ import net.permafrozen.permafrozen.entity.nudifae.NudifaeType;
 import static net.minecraft.entity.data.TrackedDataHandlerRegistry.register;
 
 public class PermafrozenDataHandlers {
-    public static final TrackedDataHandler<NudifaeType> NUDIFAE_TYPE = new TrackedDataHandler<NudifaeType>() {
+    public static final TrackedDataHandler<NudifaeType> NUDIFAE_TYPE = new TrackedDataHandler<>() {
         public void write(PacketByteBuf packetByteBuf, NudifaeType nudifaeType) {
             packetByteBuf.writeEnumConstant(nudifaeType);
         }
-
+    
         public NudifaeType read(PacketByteBuf packetByteBuf) {
-            return (NudifaeType) packetByteBuf.readEnumConstant(NudifaeType.class);
+            return packetByteBuf.readEnumConstant(NudifaeType.class);
         }
-
+    
         public NudifaeType copy(NudifaeType flonshed) {
             return flonshed;
         }

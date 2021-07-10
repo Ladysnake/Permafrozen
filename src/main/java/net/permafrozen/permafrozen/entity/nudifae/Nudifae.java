@@ -87,7 +87,7 @@ public class Nudifae extends TameableEntity implements IAnimatable {
     @Nullable
     @Override
     public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
-        Nudifae child = (Nudifae) PermafrozenEntities.NUDIFAE.create(world);
+        Nudifae child = PermafrozenEntities.NUDIFAE.create(world);
         if (child != null) {
             child.initialize(world, world.getLocalDifficulty(getBlockPos()), SpawnReason.BREEDING, null, null);
             UUID owner = getOwnerUuid();
@@ -116,7 +116,7 @@ public class Nudifae extends TameableEntity implements IAnimatable {
 
     @Override
     public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController(this, "controller", 2, this::predicate));
+        animationData.addAnimationController(new AnimationController<>(this, "controller", 2, this::predicate));
     }
 
 
