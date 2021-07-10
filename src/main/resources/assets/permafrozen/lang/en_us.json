@@ -10,8 +10,10 @@
   "item.permafrozen.lunar_koi_bucket": "Lunar Koi Bucket",
   "item.permafrozen.fatfish": "Fatfish",
   "item.permafrozen.fatfish_bucket": "Fatfish Bucket",
-  "item.permafrozen.nudifae_spawn_egg": "Nudifae Spawn Egg",
   "item.permafrozen.fir_cone": "Fir Pinecone",
+  "item.permafrozen.nudifae_spawn_egg": "Nudifae Spawn Egg",
+  "item.permafrozen.lunar_koi_spawn_egg": "Lunar Koi Spawn Egg",
+  "item.permafrozen.fatfish_spawn_egg": "Fatfish Spawn Egg",
   "effect.permafrozen.fragrant": "Fragrance",
   "block.permafrozen.fir_log": "Fir Log",
   "block.permafrozen.stripped_fir_log": "Stripped Fir Log",
@@ -31,5 +33,8 @@
   "block.permafrozen.fir_door": "Fir Door",
   "block.permafrozen.fir_trapdoor": "Fir Trapdoor",
   "item.permafrozen.fir_boat": "Fir Boat",
-  "entity.permafrozen.fir_boat": "Fir Boat"
+  "entity.permafrozen.fir_boat": "Fir Boat",
+  "entity.permafrozen.nudifae": "Nudifae",
+  "entity.permafrozen.lunar_koi": "Lunar Koi",
+  "entity.permafrozen.fatfish": "Fatfish"
 }
