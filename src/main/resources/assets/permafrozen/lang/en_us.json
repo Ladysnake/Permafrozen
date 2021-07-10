@@ -1,5 +1,6 @@
 {
-  "item.permafrozen.cryotite_ingot": "Cryorite Ingot",
+  "itemGroup.permafrozen.permafrozen": "Permafrozen",
+  "item.permafrozen.cryorite_ingot": "Cryorite Ingot",
   "item.permafrozen.cryorite_axe": "Cryorite Axe",
   "item.permafrozen.cryorite_hoe": "Cryorite Hoe",
   "item.permafrozen.cryorite_pickaxe": "Cryorite Pickaxe",
@@ -13,7 +14,6 @@
   "item.permafrozen.fir_cone": "Fir Pinecone",
 
   "effect.permafrozen.fragrant": "Fragrance",
-
 
   "block.permafrozen.fir_log": "Fir Log",
   "block.permafrozen.stripped_fir_log": "Stripped Fir Log",
@@ -34,6 +34,4 @@
   "block.permafrozen.fir_trapdoor": "Fir Trapdoor",
   "item.permafrozen.fir_boat": "Fir Boat",
   "entity.permafrozen.fir_boat": "Fir Boat"
-
-
 }
