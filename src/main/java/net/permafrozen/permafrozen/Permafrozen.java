@@ -13,7 +13,6 @@ import net.permafrozen.permafrozen.worldgen.biome.PermafrozenBiomes;
 import net.permafrozen.permafrozen.worldgen.feature.PermafrozenConfiguredFeatures;
 import software.bernie.geckolib3.GeckoLib;
 
-
 public class Permafrozen implements ModInitializer {
 	public static final String MOD_ID = "permafrozen";
 	
@@ -21,13 +20,12 @@ public class Permafrozen implements ModInitializer {
 	
 	@Override
 	public void onInitialize() {
-		PermafrozenItems.init();
 		GeckoLib.initialize();
 		PermafrozenEntities.init();
 		PermafrozenBlocks.init();
+		PermafrozenItems.init();
 		PermafrozenConfiguredFeatures.init();
 		PermafrozenBiomes.init();
 		PermafrozenEffects.init();
 	}
-	
 }

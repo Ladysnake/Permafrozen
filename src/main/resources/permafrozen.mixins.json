@@ -4,9 +4,9 @@
   "package": "net.permafrozen.permafrozen.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+	"BlocksAccessor",
 	"CampfireBlockEntityMixin",
-	"LayerAccessor",
-	"SignTypeMixin"
+	"LayerAccessor"
   ],
   "client": [
   ],
