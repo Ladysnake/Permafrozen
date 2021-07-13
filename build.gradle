@@ -14,7 +14,7 @@ repositories {
     maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
     maven {
         name "terraform wood api"
-        url "https://maven.terraformersmc.com"
+        url "https://maven.kotlindiscord.com/repository/terraformers/"
     }
 }
 
@@ -40,6 +40,7 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         exclude "fabric.mod.json"
     }
+    duplicatesStrategy = 'include'
 }
 
 tasks.withType(JavaCompile).configureEach {

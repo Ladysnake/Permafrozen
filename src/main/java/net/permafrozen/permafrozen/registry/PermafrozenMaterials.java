@@ -1,16 +1,20 @@
 package net.permafrozen.permafrozen.registry;
 
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.ToolMaterials;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.util.Lazy;
 
 import java.util.function.Supplier;
 
 public enum PermafrozenMaterials implements ToolMaterial {
-	CRYORITE(1, 240, 6.0F, 2.0F, 14, () -> {
+	CRYORITE(4, 2020, 8.0F, 4.0F, 18, () -> {
 		return Ingredient.ofItems(PermafrozenItems.CRYORITE_INGOT);
+	}),
+	WULFRAM(2, 280, 5.9F, 2.0F, 14, () -> {
+		return Ingredient.ofItems(PermafrozenItems.WULFRAM_INGOT);
 	});
-	
+
 	private final int miningLevel;
 	private final int itemDurability;
 	private final float miningSpeed;
