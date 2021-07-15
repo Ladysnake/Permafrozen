@@ -52,5 +52,8 @@
   "entity.permafrozen.nudifae": "Nudifae",
   "entity.permafrozen.aurora_fae": "Aurora Fae",
   "entity.permafrozen.lunar_koi": "Lunar Koi",
-  "entity.permafrozen.fatfish": "Fatfish"
+  "entity.permafrozen.fatfish": "Fatfish",
+  "permafrozen.subtitles.entity.aurora_fae.ambient": "Aurora Fae chirps",
+  "permafrozen.subtitles.entity.aurora_fae.hurt": "Aurora Fae hurts",
+  "permafrozen.subtitles.entity.aurora_fae.death": "Aurora Fae dies"
 }

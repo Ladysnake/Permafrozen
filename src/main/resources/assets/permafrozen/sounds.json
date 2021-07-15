@@ -1,0 +1,20 @@
+{
+  "entity.aurora_fae.ambient": {
+	"sounds": [
+	  "permafrozen:mob/aurora_fae/ambient",
+	  "permafrozen:mob/aurora_fae/ambient1"
+	],
+	"subtitle": "permafrozen.subtitles.entity.aurora_fae.ambient"
+  },
+  "entity.aurora_fae.hurt": {
+	"sounds": [
+	  "permafrozen:mob/aurora_fae/hurt"
+	],
+	"subtitle": "permafrozen.subtitles.entity.aurora_fae.hurt"
+  },
+  "entity.aurora_fae.death": {
+	"sounds": [
+	],
+	"subtitle": "permafrozen.subtitles.entity.aurora_fae.death"
+  }
+}
