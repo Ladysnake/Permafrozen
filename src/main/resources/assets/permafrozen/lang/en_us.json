@@ -29,6 +29,7 @@
   "item.permafrozen.nudifae_spawn_egg": "Nudifae Spawn Egg",
   "item.permafrozen.lunar_koi_spawn_egg": "Lunar Koi Spawn Egg",
   "item.permafrozen.fatfish_spawn_egg": "Fatfish Spawn Egg",
+  "item.permafrozen.aurora_fae_spawn_egg": "Aurora Fae Spawn Egg",
   "effect.permafrozen.fragrant": "Fragrance",
   "block.permafrozen.fir_log": "Fir Log",
   "block.permafrozen.stripped_fir_log": "Stripped Fir Log",
@@ -49,6 +50,7 @@
   "block.permafrozen.fir_trapdoor": "Fir Trapdoor",
   "entity.permafrozen.fir_boat": "Fir Boat",
   "entity.permafrozen.nudifae": "Nudifae",
+  "entity.permafrozen.aurora_fae": "Aurora Fae",
   "entity.permafrozen.lunar_koi": "Lunar Koi",
   "entity.permafrozen.fatfish": "Fatfish"
 }

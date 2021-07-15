@@ -48,6 +48,7 @@ public class PermafrozenItems {
 	public static final Item NUDIFAE_SPAWN_EGG = create("nudifae_spawn_egg", new SpawnEggItem(PermafrozenEntities.NUDIFAE, 0xb3e5fc, 0x0090ea, (new Item.Settings()).group(Permafrozen.GROUP)));
 	public static final Item LUNAR_KOI_SPAWN_EGG = create("lunar_koi_spawn_egg", new SpawnEggItem(PermafrozenEntities.LUNAR_KOI, 0x25dbe4, 0xdefafc, (new Item.Settings()).group(Permafrozen.GROUP)));
 	public static final Item FATFISH_SPAWN_EGG = create("fatfish_spawn_egg", new SpawnEggItem(PermafrozenEntities.FATFISH, 0x58705f, 0x655b7c, (new Item.Settings()).group(Permafrozen.GROUP)));
+	public static final Item AURORA_FAE_SPAWN_EGG = create("aurora_fae_spawn_egg", new SpawnEggItem(PermafrozenEntities.AURORA_FAE, 0x1de9b6, 0xd400f9, (new Item.Settings()).group(Permafrozen.GROUP)));
 	public static final Item WULFRAM_HELMET = create( "wulfram_helmet", new ArmorItem(WULFRAM_ARMOR_MATERIAL, EquipmentSlot.HEAD, new Item.Settings().group(Permafrozen.GROUP)));
 	public static final Item WULFRAM_CHESTPLATE = create( "wulfram_chestplate", new ArmorItem(WULFRAM_ARMOR_MATERIAL, EquipmentSlot.CHEST, new Item.Settings().group(Permafrozen.GROUP)));
 	public static final Item WULFRAM_LEGGINGS = create( "wulfram_leggings", new ArmorItem(WULFRAM_ARMOR_MATERIAL, EquipmentSlot.LEGS, new Item.Settings().group(Permafrozen.GROUP)));
