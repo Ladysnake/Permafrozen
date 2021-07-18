@@ -12,7 +12,9 @@ import net.minecraft.item.Item;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.gen.feature.ConfiguredFeatures;
 import net.permafrozen.permafrozen.Permafrozen;
+import net.permafrozen.permafrozen.block.util.PermafrozenPlantBlock;
 import net.permafrozen.permafrozen.block.util.PermafrozenSaplingBlock;
 import net.permafrozen.permafrozen.mixin.BlocksAccessor;
 import net.permafrozen.permafrozen.worldgen.tree.FirSaplingGenerator;
@@ -45,7 +47,10 @@ public class PermafrozenBlocks {
 	private static final Identifier FIR_SIGN_TEXTURE = new Identifier(Permafrozen.MOD_ID, "entity/sign/fir");
 	public static final TerraformSignBlock FIR_SIGN = create("fir_sign", new TerraformSignBlock(FIR_SIGN_TEXTURE, copyOf(Blocks.OAK_SIGN)), false);
 	public static final Block FIR_WALL_SIGN = create("fir_wall_sign", new TerraformWallSignBlock(FIR_SIGN_TEXTURE, copyOf(Blocks.OAK_WALL_SIGN)), false);
-	
+	public static final Block SPECTRAL_CAP = create("spectral_cap", new PermafrozenPlantBlock(AbstractBlock.Settings.of(Material.PLANT, MapColor.LAPIS_BLUE).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).luminance((state) -> {
+		return 9;
+	})), true);
+
 	private static <T extends Block> T create(String name, T block, boolean createItem) {
 		BLOCKS.put(block, new Identifier(Permafrozen.MOD_ID, name));
 		if (createItem) {

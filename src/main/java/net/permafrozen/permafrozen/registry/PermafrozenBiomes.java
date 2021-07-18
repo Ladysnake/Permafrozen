@@ -33,6 +33,7 @@ public class PermafrozenBiomes {
 		DefaultBiomeFeatures.addForestGrass(generationSettings);
 		DefaultBiomeFeatures.addMossyRocks(generationSettings);
 		PermafrozenBiomeFeatures.addFirTrees(generationSettings);
+		PermafrozenBiomeFeatures.addSpectralCaps(generationSettings);
 		DefaultBiomeFeatures.addLargeFerns(generationSettings);
 		DefaultBiomeFeatures.addDefaultLakes(generationSettings);
 		DefaultBiomeFeatures.addSprings(generationSettings);

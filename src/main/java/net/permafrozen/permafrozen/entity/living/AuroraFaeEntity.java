@@ -25,7 +25,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -35,9 +34,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
+import net.permafrozen.permafrozen.registry.PermafrozenBlocks;
 import net.permafrozen.permafrozen.registry.PermafrozenEntities;
 import net.permafrozen.permafrozen.registry.PermafrozenItems;
-import net.permafrozen.permafrozen.registry.PermafrozenSoundEvents;
+import net.permafrozen.permafrozen.registry.PermafrozenStatusEffects;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -109,13 +109,13 @@ public class AuroraFaeEntity extends TameableEntity implements Flutterer, IAnima
 
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
         ItemStack itemStack = player.getStackInHand(hand);
-        if (!this.isTamed() && isBreedingItem(player.getStackInHand(hand))) {
+        if (!this.isTamed() && isBreedingItem(player.getStackInHand(hand)) && player.hasStatusEffect(PermafrozenStatusEffects.FRAGRANT) ) {
             if (!player.getAbilities().creativeMode) {
                 itemStack.decrement(1);
             }
 
             if (!this.isSilent()) {
-                this.world.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_GENERIC_EAT, this.getSoundCategory(), 1.0F, 1.0F + (this.random.nextFloat() - this.random.nextFloat()) * 0.2F);
+                this.world.playSound((PlayerEntity)null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_GENERIC_EAT, this.getSoundCategory(), 1.0F, 1.0F + (this.random.nextFloat() - this.random.nextFloat()) * 0.2F);
             }
 
             if (!this.world.isClient) {
@@ -163,28 +163,10 @@ public class AuroraFaeEntity extends TameableEntity implements Flutterer, IAnima
         birdNavigation.setCanEnterOpenDoors(true);
         return birdNavigation;
     }
-    
-    @Nullable
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return PermafrozenSoundEvents.ENTITY_AURORA_FAE_AMBIENT;
-    }
-    
-    @Nullable
-    @Override
-    protected SoundEvent getHurtSound(DamageSource source) {
-        return PermafrozenSoundEvents.ENTITY_AURORA_FAE_HURT;
-    }
-    
-    @Nullable
-    @Override
-    protected SoundEvent getDeathSound() {
-        return PermafrozenSoundEvents.ENTITY_AURORA_FAE_DEATH;
-    }
-    
+
     @Override
     public boolean isBreedingItem(ItemStack stack) {
-        return stack.getItem() == PermafrozenItems.FIR_PINECONE;
+        return stack.getItem() == PermafrozenBlocks.SPECTRAL_CAP.asItem();
     }
 
     @Override
