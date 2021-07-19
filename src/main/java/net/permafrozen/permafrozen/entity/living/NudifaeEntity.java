@@ -3,6 +3,7 @@ package net.permafrozen.permafrozen.entity.living;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.MovementType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.control.AquaticMoveControl;
 import net.minecraft.entity.ai.goal.*;
@@ -22,13 +23,13 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.Util;
-import net.permafrozen.permafrozen.registry.PermafrozenEntities;
 import net.minecraft.util.collection.WeightedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
-
+import net.permafrozen.permafrozen.registry.PermafrozenEntities;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -150,6 +151,21 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable {
 	@Override
 	public boolean isPushedByFluids() {
 		return false;
+	}
+	
+	@Override
+	public void travel(Vec3d movementInput) {
+		if (this.canMoveVoluntarily() && this.isTouchingWater()) {
+			this.updateVelocity(this.getMovementSpeed(), movementInput);
+			this.move(MovementType.SELF, this.getVelocity());
+			this.setVelocity(this.getVelocity().multiply(0.9D));
+			if (this.getTarget() == null) {
+				this.setVelocity(this.getVelocity().add(0.0D, -0.005D, 0.0D));
+			}
+		}
+		else {
+			super.travel(movementInput);
+		}
 	}
 	
 	public static int getTypes() {
