@@ -15,6 +15,7 @@ import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilders;
 import net.permafrozen.permafrozen.Permafrozen;
 import net.permafrozen.permafrozen.entity.living.AuroraFaeEntity;
 import net.permafrozen.permafrozen.worldgen.biome.PermafrozenBiomeSource;
+import net.permafrozen.permafrozen.worldgen.biome.PermafrozenSurfaceBuilders;
 import net.permafrozen.permafrozen.worldgen.feature.PermafrozenBiomeFeatures;
 
 public class PermafrozenBiomes {
@@ -47,14 +48,14 @@ public class PermafrozenBiomes {
 		SpawnSettings.Builder spawnSettings = new SpawnSettings.Builder();
 		spawnSettings.spawn(SpawnGroup.WATER_CREATURE, new SpawnSettings.SpawnEntry(PermafrozenEntities.NUDIFAE, 2, 1, 2)).spawn(SpawnGroup.WATER_AMBIENT, new SpawnSettings.SpawnEntry(PermafrozenEntities.FATFISH, 8, 1, 4)).spawn(SpawnGroup.WATER_AMBIENT, new SpawnSettings.SpawnEntry(PermafrozenEntities.LUNAR_KOI, 3, 0, 2)).spawnCost(PermafrozenEntities.LUNAR_KOI, 0.8D, 0.32D).spawnCost(PermafrozenEntities.FATFISH, 0.6D, 0.32D).spawnCost(PermafrozenEntities.NUDIFAE, 1.0D, 0.64D);
 		GenerationSettings.Builder generationSettings = new GenerationSettings.Builder();
-		generationSettings.surfaceBuilder(ConfiguredSurfaceBuilders.FROZEN_OCEAN);
+		generationSettings.surfaceBuilder(PermafrozenSurfaceBuilders.GLACIAL_OCEAN);
 		DefaultBiomeFeatures.addOceanCarvers(generationSettings);
 		DefaultBiomeFeatures.addBlueIce(generationSettings);
 		DefaultBiomeFeatures.addIcebergs(generationSettings);
 		PermafrozenBiomeFeatures.addWaterLakes(generationSettings);
 		DefaultBiomeFeatures.addSprings(generationSettings);
 		DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);
-		return new Biome.Builder().precipitation(Biome.Precipitation.SNOW).category(Biome.Category.OCEAN).depth(-1.8F).scale(0.2F).temperature(0.0F).downfall(0.6F).effects(new BiomeEffects.Builder().waterColor(4159204).waterFogColor(329011).fogColor(12638463).skyColor(getSkyColor(0.6F)).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).build();
+		return new Biome.Builder().precipitation(Biome.Precipitation.SNOW).category(Biome.Category.OCEAN).depth(-1.8F).scale(0.2F).temperature(0.0F).downfall(0.6F).effects(new BiomeEffects.Builder().waterColor(0x45ADF2).waterFogColor(0x041633).fogColor(12638463).skyColor(getSkyColor(0.6F)).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).build();
 	}
 	
 	private static int getSkyColor(float temperature) {

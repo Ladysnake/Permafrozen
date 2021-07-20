@@ -44,6 +44,7 @@ public class PermafrozenBlocks {
 	public static final Block FIR_BUTTON = create("fir_button", new TerraformButtonBlock(copyOf(Blocks.OAK_BUTTON)), true);
 	public static final Block FIR_TRAPDOOR = create("fir_trapdoor", new TerraformTrapdoorBlock(copyOf(Blocks.OAK_TRAPDOOR)), true);
 	public static final Block FIR_DOOR = create("fir_door", new TerraformDoorBlock(copyOf(Blocks.OAK_DOOR)), false);
+	public static final Block SAPPHIRE_SAND = create("sapphire_sand", new GravelBlock(copyOf(Blocks.GRAVEL)), true);
 	private static final Identifier FIR_SIGN_TEXTURE = new Identifier(Permafrozen.MOD_ID, "entity/sign/fir");
 	public static final TerraformSignBlock FIR_SIGN = create("fir_sign", new TerraformSignBlock(FIR_SIGN_TEXTURE, copyOf(Blocks.OAK_SIGN)), false);
 	public static final Block FIR_WALL_SIGN = create("fir_wall_sign", new TerraformWallSignBlock(FIR_SIGN_TEXTURE, copyOf(Blocks.OAK_WALL_SIGN)), false);
