@@ -93,6 +93,7 @@ public class PermafrozenBiomeSource extends BiomeSource {
 	}
 	
 	public static final Identifier BOREAS = new Identifier(Permafrozen.MOD_ID, "boreal_forest");
+	public static final Identifier GLACIAS = new Identifier(Permafrozen.MOD_ID, "glacial_ocean");
 	
 	@Override
 	@Environment(EnvType.CLIENT)

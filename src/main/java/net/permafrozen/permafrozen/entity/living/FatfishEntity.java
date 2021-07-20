@@ -45,7 +45,12 @@ public class FatfishEntity extends SchoolingFishEntity implements IAnimatable {
 	protected SoundEvent getDeathSound() {
 		return SoundEvents.ENTITY_COD_DEATH;
 	}
-	
+
+	@Override
+	public int getMaxGroupSize() {
+		return 8;
+	}
+
 	@Override
 	protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
 		return SoundEvents.ENTITY_COD_HURT;

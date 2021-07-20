@@ -48,7 +48,7 @@ public class PermafrozenBlocks {
 	public static final TerraformSignBlock FIR_SIGN = create("fir_sign", new TerraformSignBlock(FIR_SIGN_TEXTURE, copyOf(Blocks.OAK_SIGN)), false);
 	public static final Block FIR_WALL_SIGN = create("fir_wall_sign", new TerraformWallSignBlock(FIR_SIGN_TEXTURE, copyOf(Blocks.OAK_WALL_SIGN)), false);
 	public static final Block SPECTRAL_CAP = create("spectral_cap", new PermafrozenPlantBlock(AbstractBlock.Settings.of(Material.PLANT, MapColor.LAPIS_BLUE).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).luminance((state) -> {
-		return 9;
+		return 11;
 	})), true);
 
 	private static <T extends Block> T create(String name, T block, boolean createItem) {
