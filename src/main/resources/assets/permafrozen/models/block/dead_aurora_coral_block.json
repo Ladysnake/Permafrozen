@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "permafrozen:block/dead_aurora_coral_block"
+  }
+}

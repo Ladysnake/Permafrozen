@@ -58,7 +58,10 @@ public class PermafrozenBlocks {
 	public static final Block LARGE_PRISMARINE_BUD = create( "large_prismarine_bud", new PrismarineCrystalClusterBlock(5, 3, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().breakByTool(FabricToolTags.PICKAXES).requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 9)), true);
 	public static final Block MEDIUM_PRISMARINE_BUD = create( "medium_prismarine_bud", new PrismarineCrystalClusterBlock(4, 3, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().breakByTool(FabricToolTags.PICKAXES).requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 7)), true);
 	public static final Block SMALL_PRISMARINE_BUD = create( "small_prismarine_bud", new PrismarineCrystalClusterBlock(3, 4, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().breakByTool(FabricToolTags.PICKAXES).requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 5)), true);
-	public static final Block BUDDING_PRISMARINE = create( "budding_prismarine", new PrismarineCrystalBlock(AbstractBlock.Settings.of(Material.AMETHYST).ticksRandomly().strength(1.5F).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().luminance((blockState) -> 15)), true);
+	public static final Block BUDDING_PRISMARINE = create( "budding_prismarine", new PrismarineCrystalBlock(AbstractBlock.Settings.of(Material.AMETHYST).ticksRandomly().strength(1.5F).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().luminance((blockState) -> 14)), true);
+	public static final Block DEAD_AURORA_CORAL_BLOCK = create("dead_aurora_coral_block", new PermafrozenDeadCoralBlock(AbstractBlock.Settings.of(Material.STONE)), true);
+	public static final Block AURORA_CORAL_BLOCK = create("aurora_coral_block", new CoralBlockBlock(DEAD_AURORA_CORAL_BLOCK, AbstractBlock.Settings.of(Material.STONE, MapColor.PURPLE).requiresTool().strength(1.5F, 6.0F).sounds(BlockSoundGroup.CORAL).luminance((blockState) -> 15)), true);
+
 
 	private static <T extends Block> T create(String name, T block, boolean createItem) {
 		BLOCKS.put(block, new Identifier(Permafrozen.MOD_ID, name));

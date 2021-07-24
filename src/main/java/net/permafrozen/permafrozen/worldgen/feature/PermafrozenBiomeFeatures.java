@@ -17,4 +17,7 @@ public class PermafrozenBiomeFeatures {
 	public static void addPrismarineCrystals(GenerationSettings.Builder builder) {
 		builder.feature(GenerationStep.Feature.SURFACE_STRUCTURES, PermafrozenConfiguredFeatures.PRISMARINE_SPIKE);
 	}
+	public static void addAuroraCoral(GenerationSettings.Builder builder) {
+		builder.feature(GenerationStep.Feature.SURFACE_STRUCTURES, PermafrozenConfiguredFeatures.AURORA_CORAL);
+	}
 }
