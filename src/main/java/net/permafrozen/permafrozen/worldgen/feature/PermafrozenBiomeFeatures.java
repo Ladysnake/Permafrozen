@@ -14,4 +14,7 @@ public class PermafrozenBiomeFeatures {
 	public static void addWaterLakes(GenerationSettings.Builder builder) {
 		builder.feature(GenerationStep.Feature.LAKES, ConfiguredFeatures.LAKE_WATER);
 	}
+	public static void addPrismarineCrystals(GenerationSettings.Builder builder) {
+		builder.feature(GenerationStep.Feature.SURFACE_STRUCTURES, PermafrozenConfiguredFeatures.PRISMARINE_SPIKE);
+	}
 }

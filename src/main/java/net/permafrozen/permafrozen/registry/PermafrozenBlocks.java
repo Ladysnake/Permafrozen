@@ -3,19 +3,21 @@ package net.permafrozen.permafrozen.registry;
 import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
 import com.terraformersmc.terraform.wood.block.*;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.world.gen.feature.ConfiguredFeatures;
 import net.permafrozen.permafrozen.Permafrozen;
-import net.permafrozen.permafrozen.block.util.PermafrozenPlantBlock;
-import net.permafrozen.permafrozen.block.util.PermafrozenSaplingBlock;
+import net.permafrozen.permafrozen.block.PrismarineCrystalBlock;
+import net.permafrozen.permafrozen.block.PrismarineCrystalClusterBlock;
+import net.permafrozen.permafrozen.block.util.*;
 import net.permafrozen.permafrozen.mixin.BlocksAccessor;
 import net.permafrozen.permafrozen.worldgen.tree.FirSaplingGenerator;
 
@@ -51,6 +53,12 @@ public class PermafrozenBlocks {
 	public static final Block SPECTRAL_CAP = create("spectral_cap", new PermafrozenPlantBlock(AbstractBlock.Settings.of(Material.PLANT, MapColor.LAPIS_BLUE).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).luminance((state) -> {
 		return 11;
 	})), true);
+	public static final Block GLACIAL_KELP = create("glacial_kelp", new PermafrozenKelpPlantBlock(copyOf(Blocks.KELP_PLANT)), true);
+	public static final Block PRISMARINE_CLUSTER = create( "prismarine_cluster", new PrismarineCrystalClusterBlock(7, 3, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().breakByTool(FabricToolTags.PICKAXES).requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 12)), true);
+	public static final Block LARGE_PRISMARINE_BUD = create( "large_prismarine_bud", new PrismarineCrystalClusterBlock(5, 3, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().breakByTool(FabricToolTags.PICKAXES).requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 9)), true);
+	public static final Block MEDIUM_PRISMARINE_BUD = create( "medium_prismarine_bud", new PrismarineCrystalClusterBlock(4, 3, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().breakByTool(FabricToolTags.PICKAXES).requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 7)), true);
+	public static final Block SMALL_PRISMARINE_BUD = create( "small_prismarine_bud", new PrismarineCrystalClusterBlock(3, 4, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().breakByTool(FabricToolTags.PICKAXES).requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 5)), true);
+	public static final Block BUDDING_PRISMARINE = create( "budding_prismarine", new PrismarineCrystalBlock(AbstractBlock.Settings.of(Material.AMETHYST).ticksRandomly().strength(1.5F).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().luminance((blockState) -> 15)), true);
 
 	private static <T extends Block> T create(String name, T block, boolean createItem) {
 		BLOCKS.put(block, new Identifier(Permafrozen.MOD_ID, name));

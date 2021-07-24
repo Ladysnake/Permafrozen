@@ -24,7 +24,7 @@ public class PermafrozenBiomeLayer implements InitLayer {
 	@Override
 	public int sample(LayerRandomnessSource noise, int x, int z) {
 		double perlinNoise = perlinGen.sample(x * 0.055D, z * 0.055D, false);
-		if (perlinNoise > 0.08) {
+		if (perlinNoise > 0.06) {
 			return this.dynamicRegistry.getRawId(this.dynamicRegistry.get(PermafrozenBiomeSource.BOREAS));
 		} else {
 			return this.dynamicRegistry.getRawId(this.dynamicRegistry.get(PermafrozenBiomeSource.GLACIAS));

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "permafrozen:block/medium_prismarine_bud"
+  }
+}

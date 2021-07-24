@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "permafrozen:block/prismarine_cluster",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "permafrozen:block/prismarine_cluster",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "permafrozen:block/prismarine_cluster",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "permafrozen:block/prismarine_cluster",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "permafrozen:block/prismarine_cluster"
+    },
+    "facing=west": {
+      "model": "permafrozen:block/prismarine_cluster",
+      "x": 90,
+      "y": 270
+    }
+  }
+}
