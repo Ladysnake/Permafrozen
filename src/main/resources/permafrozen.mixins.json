@@ -6,7 +6,9 @@
   "mixins": [
 	"BlocksAccessor",
 	"CampfireBlockEntityMixin",
-	"LayerAccessor"
+	"LayerAccessor",
+	"TerraformBoatItemMixin",
+	"TerraformBoatTypeImplMixin"
   ],
   "client": [
   ],

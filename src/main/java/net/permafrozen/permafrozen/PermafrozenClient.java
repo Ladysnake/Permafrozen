@@ -1,5 +1,6 @@
 package net.permafrozen.permafrozen;
 
+import com.terraformersmc.terraform.boat.api.client.TerraformBoatClientHelper;
 import com.terraformersmc.terraform.sign.SpriteIdentifierRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -9,8 +10,8 @@ import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.TexturedRenderLayers;
-import net.minecraft.client.render.entity.BoatEntityRenderer;
 import net.minecraft.client.util.SpriteIdentifier;
+import net.minecraft.util.Identifier;
 import net.permafrozen.permafrozen.client.entity.render.AuroraFaeRenderer;
 import net.permafrozen.permafrozen.client.entity.render.FatfishEntityRenderer;
 import net.permafrozen.permafrozen.client.entity.render.LunarKoiEntityRenderer;
@@ -21,7 +22,7 @@ import net.permafrozen.permafrozen.registry.PermafrozenEntities;
 public class PermafrozenClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
-		EntityRendererRegistry.INSTANCE.register(PermafrozenEntities.FIR_BOAT, BoatEntityRenderer::new);
+		TerraformBoatClientHelper.registerModelLayer(new Identifier(Permafrozen.MOD_ID, "fir"));
 		EntityRendererRegistry.INSTANCE.register(PermafrozenEntities.NUDIFAE, NudifaeEntityRenderer::new);
 		EntityRendererRegistry.INSTANCE.register(PermafrozenEntities.LUNAR_KOI, LunarKoiEntityRenderer::new);
 		EntityRendererRegistry.INSTANCE.register(PermafrozenEntities.FATFISH, FatfishEntityRenderer::new);

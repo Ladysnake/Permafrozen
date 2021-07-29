@@ -1,21 +1,22 @@
 package net.permafrozen.permafrozen.registry;
 
-import com.terraformersmc.terraform.boat.TerraformBoatItem;
+import com.terraformersmc.terraform.boat.api.TerraformBoatType;
+import com.terraformersmc.terraform.boat.api.TerraformBoatTypeRegistry;
+import com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
-import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.permafrozen.permafrozen.Permafrozen;
-import net.permafrozen.permafrozen.item.PermafrozenArmorMaterial;
 import net.permafrozen.permafrozen.item.PermafrozenAxeItem;
 import net.permafrozen.permafrozen.item.PermafrozenHoeItem;
 import net.permafrozen.permafrozen.item.PermafrozenPickaxeItem;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.function.Supplier;
 
 import static net.permafrozen.permafrozen.registry.PermafrozenArmorMaterials.CRYORITE_ARMOR_MATERIAL;
 import static net.permafrozen.permafrozen.registry.PermafrozenArmorMaterials.WULFRAM_ARMOR_MATERIAL;
@@ -44,7 +45,7 @@ public class PermafrozenItems {
 	public static final Item FIR_PINECONE = create("fir_cone", new Item(new Item.Settings().group(Permafrozen.GROUP)));
 	public static final Item FIR_DOOR_ITEM = create("fir_door", new TallBlockItem(PermafrozenBlocks.FIR_DOOR, new Item.Settings().group(Permafrozen.GROUP)));
 	public static final Item FIR_SIGN_ITEM = create("fir_sign", new SignItem(new Item.Settings().group(Permafrozen.GROUP).maxCount(16), PermafrozenBlocks.FIR_SIGN, PermafrozenBlocks.FIR_WALL_SIGN));
-	public static final TerraformBoatItem FIR_BOAT = create("fir_boat", new TerraformBoatItem(() -> PermafrozenEntities.FIR_BOAT, new Item.Settings().group(Permafrozen.GROUP).maxCount(1)));
+	public static final Item FIR_BOAT = TerraformBoatItemHelper.registerBoatItem(new Identifier(Permafrozen.MOD_ID, "fir_boat"), PermafrozenItems.registerFirBoatType(), Permafrozen.GROUP);
 	public static final Item NUDIFAE_SPAWN_EGG = create("nudifae_spawn_egg", new SpawnEggItem(PermafrozenEntities.NUDIFAE, 0xb3e5fc, 0x0090ea, (new Item.Settings()).group(Permafrozen.GROUP)));
 	public static final Item LUNAR_KOI_SPAWN_EGG = create("lunar_koi_spawn_egg", new SpawnEggItem(PermafrozenEntities.LUNAR_KOI, 0x25dbe4, 0xdefafc, (new Item.Settings()).group(Permafrozen.GROUP)));
 	public static final Item FATFISH_SPAWN_EGG = create("fatfish_spawn_egg", new SpawnEggItem(PermafrozenEntities.FATFISH, 0x58705f, 0x655b7c, (new Item.Settings()).group(Permafrozen.GROUP)));
@@ -57,8 +58,13 @@ public class PermafrozenItems {
 	public static final Item CRYORITE_CHESTPLATE = create( "cryorite_chestplate", new ArmorItem(CRYORITE_ARMOR_MATERIAL, EquipmentSlot.CHEST, new Item.Settings().group(Permafrozen.GROUP)));
 	public static final Item CRYORITE_LEGGINGS = create( "cryorite_leggings", new ArmorItem(CRYORITE_ARMOR_MATERIAL, EquipmentSlot.LEGS, new Item.Settings().group(Permafrozen.GROUP)));
 	public static final Item CRYORITE_BOOTS = create( "cryorite_boots", new ArmorItem(CRYORITE_ARMOR_MATERIAL, EquipmentSlot.FEET, new Item.Settings().group(Permafrozen.GROUP)));
-
-
+	
+	private static Supplier<TerraformBoatType> registerFirBoatType() {
+		TerraformBoatType type = new TerraformBoatType.Builder().item(PermafrozenItems.FIR_BOAT).build();
+		Registry.register(TerraformBoatTypeRegistry.INSTANCE, new Identifier(Permafrozen.MOD_ID, "fir"), type);
+		return () -> type;
+	}
+	
 	private static <T extends Item> T create(String name, T item) {
 		ITEMS.put(item, new Identifier(Permafrozen.MOD_ID, name));
 		return item;
