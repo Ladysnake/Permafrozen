@@ -12,7 +12,7 @@ import software.bernie.geckolib3.GeckoLib;
 public class Permafrozen implements ModInitializer {
 	public static final String MOD_ID = "permafrozen";
 	
-	public static final ItemGroup GROUP = FabricItemGroupBuilder.build(new Identifier(MOD_ID, MOD_ID), () -> new ItemStack(PermafrozenItems.LUNAR_KOI));
+	public static final ItemGroup PERMAFROZEN_GROUP = FabricItemGroupBuilder.build(new Identifier(MOD_ID, MOD_ID), () -> new ItemStack(PermafrozenItems.LUNAR_KOI));
 	
 	@Override
 	public void onInitialize() {
@@ -20,6 +20,7 @@ public class Permafrozen implements ModInitializer {
 		PermafrozenEntities.init();
 		PermafrozenBlocks.init();
 		PermafrozenItems.init();
+		PermafrozenBoatTypes.init();
 		PermafrozenConfiguredFeatures.init();
 		PermafrozenBiomes.init();
 		PermafrozenStatusEffects.init();
