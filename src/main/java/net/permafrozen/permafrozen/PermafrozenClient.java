@@ -1,8 +1,13 @@
 package net.permafrozen.permafrozen;
 
+import com.mojang.serialization.Codec;
 import com.terraformersmc.terraform.sign.SpriteIdentifierRegistry;
+import ladysnake.satin.api.event.ShaderEffectRenderCallback;
+import ladysnake.satin.api.managed.ManagedShaderEffect;
+import ladysnake.satin.api.managed.ShaderEffectManager;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.client.color.world.FoliageColors;
@@ -11,14 +16,22 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.render.entity.BoatEntityRenderer;
 import net.minecraft.client.util.SpriteIdentifier;
+import net.minecraft.particle.ParticleType;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 import net.permafrozen.permafrozen.client.entity.render.AuroraFaeRenderer;
 import net.permafrozen.permafrozen.client.entity.render.FatfishEntityRenderer;
 import net.permafrozen.permafrozen.client.entity.render.LunarKoiEntityRenderer;
 import net.permafrozen.permafrozen.client.entity.render.NudifaeEntityRenderer;
+import net.permafrozen.permafrozen.client.particle.aurora.AuroraParticle;
+import net.permafrozen.permafrozen.client.particle.aurora.AuroraParticleEffect;
 import net.permafrozen.permafrozen.registry.PermafrozenBlocks;
 import net.permafrozen.permafrozen.registry.PermafrozenEntities;
 
 public class PermafrozenClient implements ClientModInitializer {
+	private static final ManagedShaderEffect AURORA_SHADER = ShaderEffectManager.getInstance()
+			.manage(new Identifier("permafrozen", "shaders/post/aurora.json"));
+	public static ParticleType<AuroraParticleEffect> AURORA_SMOL;
 	@Override
 	public void onInitializeClient() {
 		EntityRendererRegistry.INSTANCE.register(PermafrozenEntities.FIR_BOAT, BoatEntityRenderer::new);
@@ -29,6 +42,17 @@ public class PermafrozenClient implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), PermafrozenBlocks.FIR_SAPLING, PermafrozenBlocks.POTTED_FIR_SAPLING, PermafrozenBlocks.FIR_TRAPDOOR, PermafrozenBlocks.SPECTRAL_CAP, PermafrozenBlocks.PRISMARINE_CLUSTER, PermafrozenBlocks.SMALL_PRISMARINE_BUD, PermafrozenBlocks.MEDIUM_PRISMARINE_BUD, PermafrozenBlocks.LARGE_PRISMARINE_BUD);
 		SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, PermafrozenBlocks.FIR_SIGN.getTexture()));
 		initColors();
+		initParticles();
+	}
+
+	private void initParticles() {
+		AURORA_SMOL = Registry.register(Registry.PARTICLE_TYPE, "permafrozen:aurora", new ParticleType<AuroraParticleEffect>(true, AuroraParticleEffect.PARAMETERS_FACTORY) {
+			@Override
+			public Codec<AuroraParticleEffect> getCodec() {
+				return AuroraParticleEffect.CODEC;
+			}
+		});
+		ParticleFactoryRegistry.getInstance().register(PermafrozenClient.AURORA_SMOL, AuroraParticle.Factory::new);
 	}
 	
 	private void initColors() {

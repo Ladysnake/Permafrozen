@@ -16,6 +16,13 @@ repositories {
         name "terraform wood api"
         url "https://maven.kotlindiscord.com/repository/terraformers/"
     }
+    maven {
+        name = 'Ladysnake Mods'
+        url = 'https://ladysnake.jfrog.io/artifactory/mods'
+        content {
+            includeGroup 'io.github.ladysnake'
+        }
+    }
 }
 
 dependencies {
@@ -26,6 +33,8 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     modImplementation "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
     include "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
+    modApi "io.github.ladysnake:satin:${satin_version}"
+    include "io.github.ladysnake:satin:${satin_version}"
     modImplementation "software.bernie.geckolib:geckolib-fabric-1.17:${project.geckolib_version}"
 }
 

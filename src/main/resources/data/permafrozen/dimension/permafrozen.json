@@ -16,7 +16,7 @@
 	  "deepslate_enabled": true,
 	  "ore_veins_enabled": false,
 	  "default_block": {
-		"Name": "minecraft:stone"
+		"Name": "permafrozen:shiverslate"
 	  },
 	  "default_fluid": {
 		"Name": "minecraft:water",
