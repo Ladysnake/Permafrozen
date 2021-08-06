@@ -23,9 +23,7 @@ import java.util.Map;
 
 public class PermafrozenEntities {
 	private static final Map<EntityType<?>, Identifier> ENTITY_TYPES = new LinkedHashMap<>();
-	
-	public static final EntityType<TerraformBoatEntity> FIR_BOAT = createEntity("fir_boat", FabricEntityTypeBuilder.<TerraformBoatEntity>create(SpawnGroup.MISC, (type, world) -> new TerraformBoatEntity(type, world, new TerraformBoat(PermafrozenItems.FIR_BOAT, PermafrozenBlocks.FIR_PLANKS.asItem(), new Identifier(Permafrozen.MOD_ID, "textures/entity/boat/fir_boat.png")))).dimensions(EntityType.BOAT.getDimensions()).build());
-	
+
 	public static final EntityType<NudifaeEntity> NUDIFAE = createEntity("nudifae", NudifaeEntity.createAttributes(), FabricEntityTypeBuilder.create(SpawnGroup.WATER_CREATURE, NudifaeEntity::new).dimensions(EntityDimensions.fixed(0.5F, 0.4F)).build());
 	public static final EntityType<LunarKoiEntity> LUNAR_KOI = createEntity("lunar_koi", LunarKoiEntity.createAttributes(), FabricEntityTypeBuilder.create(SpawnGroup.WATER_CREATURE, LunarKoiEntity::new).dimensions(EntityDimensions.fixed(1.0F, 0.4F)).build());
 	public static final EntityType<FatfishEntity> FATFISH = createEntity("fatfish", FatfishEntity.createAttributes(), FabricEntityTypeBuilder.create(SpawnGroup.WATER_CREATURE, FatfishEntity::new).dimensions(EntityDimensions.fixed(0.4F, 0.2F)).build());
@@ -35,7 +33,7 @@ public class PermafrozenEntities {
 		ENTITY_TYPES.put(type, new Identifier(Permafrozen.MOD_ID, name));
 		return type;
 	}
-	
+
 	private static <T extends LivingEntity> EntityType<T> createEntity(String name, DefaultAttributeContainer.Builder attributes, EntityType<T> type) {
 		FabricDefaultAttributeRegistry.register(type, attributes);
 		ENTITY_TYPES.put(type, new Identifier(Permafrozen.MOD_ID, name));

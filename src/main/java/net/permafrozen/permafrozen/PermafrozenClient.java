@@ -1,5 +1,6 @@
 package net.permafrozen.permafrozen;
 
+import com.terraformersmc.terraform.boat.api.client.TerraformBoatClientHelper;
 import com.mojang.serialization.Codec;
 import com.terraformersmc.terraform.sign.SpriteIdentifierRegistry;
 import ladysnake.satin.api.event.ShaderEffectRenderCallback;
@@ -14,8 +15,8 @@ import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.TexturedRenderLayers;
-import net.minecraft.client.render.entity.BoatEntityRenderer;
 import net.minecraft.client.util.SpriteIdentifier;
+import net.minecraft.util.Identifier;
 import net.minecraft.particle.ParticleType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -34,7 +35,7 @@ public class PermafrozenClient implements ClientModInitializer {
 	public static ParticleType<AuroraParticleEffect> AURORA_SMOL;
 	@Override
 	public void onInitializeClient() {
-		EntityRendererRegistry.INSTANCE.register(PermafrozenEntities.FIR_BOAT, BoatEntityRenderer::new);
+		TerraformBoatClientHelper.registerModelLayer(new Identifier(Permafrozen.MOD_ID, "fir"));
 		EntityRendererRegistry.INSTANCE.register(PermafrozenEntities.NUDIFAE, NudifaeEntityRenderer::new);
 		EntityRendererRegistry.INSTANCE.register(PermafrozenEntities.LUNAR_KOI, LunarKoiEntityRenderer::new);
 		EntityRendererRegistry.INSTANCE.register(PermafrozenEntities.FATFISH, FatfishEntityRenderer::new);
