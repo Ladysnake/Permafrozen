@@ -1,7 +1,7 @@
 package net.permafrozen.permafrozen;
 
-import com.terraformersmc.terraform.boat.api.client.TerraformBoatClientHelper;
 import com.mojang.serialization.Codec;
+import com.terraformersmc.terraform.boat.api.client.TerraformBoatClientHelper;
 import com.terraformersmc.terraform.sign.SpriteIdentifierRegistry;
 import ladysnake.satin.api.event.ShaderEffectRenderCallback;
 import ladysnake.satin.api.managed.ManagedShaderEffect;

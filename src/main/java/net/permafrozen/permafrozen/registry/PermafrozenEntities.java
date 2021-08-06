@@ -1,7 +1,6 @@
 package net.permafrozen.permafrozen.registry;
 
-import com.terraformersmc.terraform.boat.TerraformBoat;
-import com.terraformersmc.terraform.boat.TerraformBoatEntity;
+
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
