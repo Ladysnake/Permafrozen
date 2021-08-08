@@ -25,6 +25,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -34,10 +35,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
-import net.permafrozen.permafrozen.registry.PermafrozenBlocks;
-import net.permafrozen.permafrozen.registry.PermafrozenEntities;
-import net.permafrozen.permafrozen.registry.PermafrozenItems;
-import net.permafrozen.permafrozen.registry.PermafrozenStatusEffects;
+import net.permafrozen.permafrozen.registry.*;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -50,7 +48,6 @@ import java.util.List;
 import java.util.UUID;
 
 public class AuroraFaeEntity extends TameableEntity implements Flutterer, IAnimatable {
-
     public static final TrackedData<Integer> TYPE = DataTracker.registerData(NudifaeEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private final AnimationFactory factory = new AnimationFactory(this);
 
@@ -65,7 +62,7 @@ public class AuroraFaeEntity extends TameableEntity implements Flutterer, IAnima
     }
 
     public static DefaultAttributeContainer.Builder createFaeAttributes() {
-        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D).add(EntityAttributes.GENERIC_FLYING_SPEED, 0.7D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.25D).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 8);
+        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D).add(EntityAttributes.GENERIC_FLYING_SPEED, 1.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.25D).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 8);
     }
 
     @Override
@@ -115,7 +112,7 @@ public class AuroraFaeEntity extends TameableEntity implements Flutterer, IAnima
             }
 
             if (!this.isSilent()) {
-                this.world.playSound((PlayerEntity)null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_GENERIC_EAT, this.getSoundCategory(), 1.0F, 1.0F + (this.random.nextFloat() - this.random.nextFloat()) * 0.2F);
+                this.world.playSound((PlayerEntity)null, this.getX(), this.getY(), this.getZ(), PermafrozenSoundEvents.ENTITY_AURORA_FAE_AMBIENT, this.getSoundCategory(), 1.0F, 1.0F + (this.random.nextFloat() - this.random.nextFloat()) * 0.2F);
             }
 
             if (!this.world.isClient) {
@@ -137,6 +134,22 @@ public class AuroraFaeEntity extends TameableEntity implements Flutterer, IAnima
         } else {
             return super.interactMob(player, hand);
         }
+    }
+
+    @Override
+    public SoundEvent getAmbientSound() {
+        return PermafrozenSoundEvents.ENTITY_AURORA_FAE_AMBIENT;
+    }
+
+    @Override
+    public SoundEvent getDeathSound() {
+        return PermafrozenSoundEvents.ENTITY_AURORA_FAE_DEATH;
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getHurtSound(DamageSource source) {
+        return PermafrozenSoundEvents.ENTITY_AURORA_FAE_HURT;
     }
 
     @Override

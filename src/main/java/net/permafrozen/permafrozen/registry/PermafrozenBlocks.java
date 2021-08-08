@@ -15,7 +15,6 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.permafrozen.permafrozen.Permafrozen;
-import net.permafrozen.permafrozen.block.AuroraApexAltarBlock;
 import net.permafrozen.permafrozen.block.PrismarineCrystalBlock;
 import net.permafrozen.permafrozen.block.PrismarineCrystalClusterBlock;
 import net.permafrozen.permafrozen.block.util.PermafrozenDeadCoralBlock;
@@ -53,8 +52,7 @@ public class PermafrozenBlocks {
 	public static final Block SAPPHIRE_SAND = create("sapphire_sand", new GravelBlock(copyOf(Blocks.GRAVEL)), true);
 	public static final Block SHIVERSLATE = create("shiverslate", new Block(copyOf(Blocks.DEEPSLATE)), true);
 	public static final Block SHIVERSLATE_BRICKS = create("shiverslate_bricks", new Block(copyOf(Blocks.DEEPSLATE_BRICKS)), true);
-	public static final Block CHISELLED_SHIVERSLATE_BRICKS = create("shiverslate_bricks", new Block(copyOf(Blocks.DEEPSLATE_BRICKS)), true);
-	public static final Block TEST_AURORA = create("test", new AuroraApexAltarBlock(copyOf(Blocks.DEEPSLATE)), true);
+	public static final Block CHISELLED_SHIVERSLATE_BRICKS = create("chiselled_shiverslate_bricks", new Block(copyOf(Blocks.DEEPSLATE_BRICKS)), true);
 	private static final Identifier FIR_SIGN_TEXTURE = new Identifier(Permafrozen.MOD_ID, "entity/sign/fir");
 	public static final TerraformSignBlock FIR_SIGN = create("fir_sign", new TerraformSignBlock(FIR_SIGN_TEXTURE, copyOf(Blocks.OAK_SIGN)), false);
 	public static final Block FIR_WALL_SIGN = create("fir_wall_sign", new TerraformWallSignBlock(FIR_SIGN_TEXTURE, copyOf(Blocks.OAK_WALL_SIGN)), false);

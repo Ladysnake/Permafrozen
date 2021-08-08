@@ -52,7 +52,8 @@ public class PermafrozenItems {
 	public static final Item CRYORITE_CHESTPLATE = create("cryorite_chestplate", new ArmorItem(CRYORITE_ARMOR_MATERIAL, EquipmentSlot.CHEST, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
 	public static final Item CRYORITE_LEGGINGS = create("cryorite_leggings", new ArmorItem(CRYORITE_ARMOR_MATERIAL, EquipmentSlot.LEGS, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
 	public static final Item CRYORITE_BOOTS = create("cryorite_boots", new ArmorItem(CRYORITE_ARMOR_MATERIAL, EquipmentSlot.FEET, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
-	
+	public static final Item PUFFBOO_FEATHER = create("puffboo_feather", new Item((new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP)));
+
 	private static <T extends Item> T create(String name, T item) {
 		ITEMS.put(item, new Identifier(Permafrozen.MOD_ID, name));
 		return item;
