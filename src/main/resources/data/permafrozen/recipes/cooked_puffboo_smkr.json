@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+	"item": "permafrozen:raw_puffboo"
+  },
+  "result": "permafrozen:raw_puffboo",
+  "experience": 0.35,
+  "cookingtime": 600
+}
