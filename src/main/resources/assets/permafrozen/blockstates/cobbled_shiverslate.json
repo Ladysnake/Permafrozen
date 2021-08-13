@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "permafrozen:block/cobbled_shiverslate"
+      },
+      {
+        "model": "permafrozen:block/cobbled_shiverslate_1"
+      }
+    ]
+  }
+}

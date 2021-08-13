@@ -1,5 +1,6 @@
 {
   "itemGroup.permafrozen.permafrozen": "Permafrozen",
+
   "item.permafrozen.cryorite_ingot": "Cryorite Ingot",
   "item.permafrozen.cryorite_axe": "Cryorite Axe",
   "item.permafrozen.cryorite_hoe": "Cryorite Hoe",
@@ -35,7 +36,9 @@
   "item.permafrozen.fatfish_spawn_egg": "Fatfish Spawn Egg",
   "item.permafrozen.aurora_fae_spawn_egg": "Aurora Fae Spawn Egg",
   "item.permafrozen.puffboo_spawn_egg": "Puffboo Spawn Egg",
+
   "effect.permafrozen.fragrant": "Fragrance",
+
   "block.permafrozen.sapphire_sand": "Sapphire Sand",
   "block.permafrozen.fir_log": "Fir Log",
   "block.permafrozen.stripped_fir_log": "Stripped Fir Log",
@@ -62,14 +65,17 @@
   "block.permafrozen.medium_prismarine_bud": "Medium Prismarine Bud",
   "block.permafrozen.small_prismarine_bud": "Small Prismarine Bud",
   "block.permafrozen.shiverslate": "Shiverslate",
+  "block.permafrozen.cobbled_shiverslate": "Cobbled Shiverslate",
   "block.permafrozen.shiverslate_bricks": "Shiverslate Bricks",
   "block.permafrozen.aurora_coral_block": "Aurora Coral Block",
   "block.permafrozen.dead_aurora_coral_block": "Dead Aurora Coral Block",
+
   "entity.permafrozen.fir_boat": "Fir Boat",
   "entity.permafrozen.nudifae": "Nudifae",
   "entity.permafrozen.aurora_fae": "Aurora Fae",
   "entity.permafrozen.lunar_koi": "Lunar Koi",
   "entity.permafrozen.fatfish": "Fatfish",
+
   "permafrozen.subtitles.entity.aurora_fae.ambient": "Aurora Fae chirps",
   "permafro,zen.subtitles.entity.aurora_fae.hurt": "Aurora Fae hurts",
   "permafrozen.subtitles.entity.aurora_fae.death": "Aurora Fae dies",

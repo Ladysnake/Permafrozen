@@ -1,8 +1,20 @@
 {
   "variants": {
     "": [
-      { "model": "permafrozen:block/shiverslate_0" },
-      { "model": "permafrozen:block/shiverslate_1" }
+      {
+        "model": "permafrozen:block/shiverslate"
+      },
+      {
+        "model": "permafrozen:block/shiverslate_mirrored"
+      },
+      {
+        "model": "permafrozen:block/shiverslate",
+        "y": 180
+      },
+      {
+        "model": "permafrozen:block/shiverslate_mirrored",
+        "y": 180
+      }
     ]
   }
 }
