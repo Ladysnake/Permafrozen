@@ -2,6 +2,16 @@
   "replace": false,
   "values": [
     "permafrozen:shiverslate",
-    "permafrozen:cobbled_shiverslate"
+    "permafrozen:cobbled_shiverslate",
+    "permafrozen:sapphire_sandstone",
+    "permafrozen:chiseled_sapphire_sandstone",
+    "permafrozen:sapphire_sandstone_slab",
+    "permafrozen:sapphire_sandstone_wall",
+    "permafrozen:sapphire_sandstone_stairs",
+    "permafrozen:cut_sapphire_sandstone",
+    "permafrozen:cut_sapphire_sandstone_slab",
+    "permafrozen:smooth_sapphire_sandstone",
+    "permafrozen:smooth_sapphire_sandstone_slab",
+    "permafrozen:smooth_sapphire_sandstone_stairs"
   ]
 }

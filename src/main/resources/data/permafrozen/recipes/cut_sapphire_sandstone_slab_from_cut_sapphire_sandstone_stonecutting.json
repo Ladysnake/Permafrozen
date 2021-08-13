@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "permafrozen:cut_sapphire_sandstone"
+  },
+  "result": "permafrozen:cut_sapphire_sandstone_slab",
+  "count": 2
+}

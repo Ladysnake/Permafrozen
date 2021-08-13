@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "permafrozen:smooth_sapphire_sandstone_slab_from_smooth_sapphire_sandstone_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_smooth_sapphire_sandstone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "permafrozen:smooth_sapphire_sandstone"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "permafrozen:smooth_sapphire_sandstone_slab_from_smooth_sapphire_sandstone_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_smooth_sapphire_sandstone",
+      "has_the_recipe"
+    ]
+  ]
+}

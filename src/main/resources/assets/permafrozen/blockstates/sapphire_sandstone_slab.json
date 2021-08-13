@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "permafrozen:block/sapphire_sandstone_slab"
+    },
+    "type=double": {
+      "model": "permafrozen:block/sapphire_sandstone"
+    },
+    "type=top": {
+      "model": "permafrozen:block/sapphire_sandstone_slab_top"
+    }
+  }
+}

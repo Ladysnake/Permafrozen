@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "permafrozen:sapphire_sandstone_slab"
+    ]
+  },
+  "criteria": {
+    "has_sapphire_sandstone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "permafrozen:sapphire_sandstone"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "permafrozen:sapphire_sandstone_slab"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_sapphire_sandstone",
+      "has_the_recipe"
+    ]
+  ]
+}

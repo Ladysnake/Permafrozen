@@ -49,21 +49,36 @@ public class PermafrozenBlocks {
 	public static final Block FIR_BUTTON = create("fir_button", new TerraformButtonBlock(copyOf(Blocks.OAK_BUTTON)), true);
 	public static final Block FIR_TRAPDOOR = create("fir_trapdoor", new TerraformTrapdoorBlock(copyOf(Blocks.OAK_TRAPDOOR)), true);
 	public static final Block FIR_DOOR = create("fir_door", new TerraformDoorBlock(copyOf(Blocks.OAK_DOOR)), false);
-	public static final Block SAPPHIRE_SAND = create("sapphire_sand", new GravelBlock(copyOf(Blocks.GRAVEL)), true);
+	private static final Identifier FIR_SIGN_TEXTURE = new Identifier(Permafrozen.MOD_ID, "entity/sign/fir");
+	public static final TerraformSignBlock FIR_SIGN = create("fir_sign", new TerraformSignBlock(FIR_SIGN_TEXTURE, copyOf(Blocks.OAK_SIGN)), false);
+	public static final Block FIR_WALL_SIGN = create("fir_wall_sign", new TerraformWallSignBlock(FIR_SIGN_TEXTURE, copyOf(Blocks.OAK_WALL_SIGN)), false);
+
+	public static final Block SAPPHIRE_SAND = create("sapphire_sand", new GravelBlock(copyOf(Blocks.SAND)), true);
+	public static final Block SAPPHIRE_SANDSTONE = create("sapphire_sandstone", new Block(copyOf(Blocks.SANDSTONE)), true);
+	public static final Block CHISELED_SAPPHIRE_SANDSTONE = create("chiseled_sapphire_sandstone", new Block(copyOf(Blocks.CHISELED_SANDSTONE)), true);
+	public static final Block SAPPHIRE_SANDSTONE_WALL = create("sapphire_sandstone_wall", new WallBlock(copyOf(Blocks.SANDSTONE_WALL)), true);
+	public static final Block SAPPHIRE_SANDSTONE_SLAB = create("sapphire_sandstone_slab", new SlabBlock(copyOf(Blocks.SANDSTONE_SLAB)), true);
+	public static final Block SAPPHIRE_SANDSTONE_STAIRS = create("sapphire_sandstone_stairs", new TerraformStairsBlock(SAPPHIRE_SANDSTONE, copyOf(Blocks.SANDSTONE_STAIRS)), true);
+	public static final Block CUT_SAPPHIRE_SANDSTONE = create("cut_sapphire_sandstone", new Block(copyOf(Blocks.CUT_SANDSTONE)), true);
+	public static final Block CUT_SAPPHIRE_SANDSTONE_SLAB = create("cut_sapphire_sandstone_slab", new SlabBlock(copyOf(Blocks.CUT_SANDSTONE_SLAB)), true);
+	public static final Block SMOOTH_SAPPHIRE_SANDSTONE = create("smooth_sapphire_sandstone", new Block(copyOf(Blocks.SMOOTH_SANDSTONE)), true);
+	public static final Block SMOOTH_SAPPHIRE_SANDSTONE_SLAB = create("smooth_sapphire_sandstone_slab", new SlabBlock(copyOf(Blocks.SMOOTH_SANDSTONE_SLAB)), true);
+	public static final Block SMOOTH_SAPPHIRE_SANDSTONE_STAIRS = create("smooth_sapphire_sandstone_stairs", new TerraformStairsBlock(SMOOTH_SAPPHIRE_SANDSTONE, copyOf(Blocks.SMOOTH_SANDSTONE_STAIRS)), true);
+
 	public static final Block SHIVERSLATE = create("shiverslate", new Block(copyOf(Blocks.DEEPSLATE)), true);
 	public static final Block COBBLED_SHIVERSLATE = create("cobbled_shiverslate", new Block(copyOf(Blocks.COBBLED_DEEPSLATE)), true);
 	public static final Block SHIVERSLATE_BRICKS = create("shiverslate_bricks", new Block(copyOf(Blocks.DEEPSLATE_BRICKS)), true);
 	public static final Block CHISELLED_SHIVERSLATE_BRICKS = create("chiselled_shiverslate_bricks", new Block(copyOf(Blocks.DEEPSLATE_BRICKS)), true);
-	private static final Identifier FIR_SIGN_TEXTURE = new Identifier(Permafrozen.MOD_ID, "entity/sign/fir");
-	public static final TerraformSignBlock FIR_SIGN = create("fir_sign", new TerraformSignBlock(FIR_SIGN_TEXTURE, copyOf(Blocks.OAK_SIGN)), false);
-	public static final Block FIR_WALL_SIGN = create("fir_wall_sign", new TerraformWallSignBlock(FIR_SIGN_TEXTURE, copyOf(Blocks.OAK_WALL_SIGN)), false);
-	public static final Block SPECTRAL_CAP = create("spectral_cap", new PermafrozenPlantBlock(AbstractBlock.Settings.of(Material.PLANT, MapColor.LAPIS_BLUE).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).luminance((state) -> 11)), true);
+
+    public static final Block SPECTRAL_CAP = create("spectral_cap", new PermafrozenPlantBlock(AbstractBlock.Settings.of(Material.PLANT, MapColor.LAPIS_BLUE).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).luminance((state) -> 11)), true);
 	public static final Block GLACIAL_KELP = create("glacial_kelp", new PermafrozenKelpPlantBlock(copyOf(Blocks.KELP_PLANT)), true);
+
 	public static final Block PRISMARINE_CLUSTER = create("prismarine_cluster", new PrismarineCrystalClusterBlock(7, 3, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().breakByTool(FabricToolTags.PICKAXES).requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 12)), true);
 	public static final Block LARGE_PRISMARINE_BUD = create("large_prismarine_bud", new PrismarineCrystalClusterBlock(5, 3, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().breakByTool(FabricToolTags.PICKAXES).requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 9)), true);
 	public static final Block MEDIUM_PRISMARINE_BUD = create("medium_prismarine_bud", new PrismarineCrystalClusterBlock(4, 3, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().breakByTool(FabricToolTags.PICKAXES).requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 7)), true);
 	public static final Block SMALL_PRISMARINE_BUD = create("small_prismarine_bud", new PrismarineCrystalClusterBlock(3, 4, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().breakByTool(FabricToolTags.PICKAXES).requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 5)), true);
 	public static final Block BUDDING_PRISMARINE = create("budding_prismarine", new PrismarineCrystalBlock(AbstractBlock.Settings.of(Material.AMETHYST).ticksRandomly().strength(1.5F).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().luminance((blockState) -> 14)), true);
+
 	public static final Block DEAD_AURORA_CORAL_BLOCK = create("dead_aurora_coral_block", new PermafrozenDeadCoralBlock(AbstractBlock.Settings.of(Material.STONE)), true);
 	public static final Block AURORA_CORAL_BLOCK = create("aurora_coral_block", new CoralBlockBlock(DEAD_AURORA_CORAL_BLOCK, AbstractBlock.Settings.of(Material.STONE, MapColor.PURPLE).requiresTool().strength(1.5F, 6.0F).sounds(BlockSoundGroup.CORAL).luminance((blockState) -> 15)), true);
 	

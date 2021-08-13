@@ -1,7 +1,22 @@
 {
   "variants": {
-	"": {
-	  "model": "permafrozen:block/sapphire_sand"
-	}
+    "": [
+      {
+        "model": "permafrozen:block/sapphire_sand",
+        "weight": 10
+      },
+      {
+        "model": "permafrozen:block/sapphire_sand_1",
+        "weight": 3
+      },
+      {
+        "model": "permafrozen:block/sapphire_sand_2",
+        "weight": 1
+      },
+      {
+        "model": "permafrozen:block/sapphire_sand_3",
+        "weight": 5
+      }
+    ]
   }
 }

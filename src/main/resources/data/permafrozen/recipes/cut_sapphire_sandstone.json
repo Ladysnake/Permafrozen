@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "permafrozen:sapphire_sandstone"
+    }
+  },
+  "result": {
+    "item": "permafrozen:cut_sapphire_sandstone",
+    "count": 4
+  }
+}

@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_bottom_top",
   "textures": {
-    "top": "permafrozen:block/sapphire_sand",
+    "top": "permafrozen:block/sapphire_sand_3",
     "bottom": "permafrozen:block/sapphire_sand_bottom",
     "side": "permafrozen:block/sapphire_sand_side"
   }

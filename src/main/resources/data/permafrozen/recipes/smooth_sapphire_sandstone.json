@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "permafrozen:sapphire_sandstone"
+  },
+  "result": "permafrozen:smooth_sapphire_sandstone",
+  "experience": 0.1,
+  "cookingtime": 200
+}

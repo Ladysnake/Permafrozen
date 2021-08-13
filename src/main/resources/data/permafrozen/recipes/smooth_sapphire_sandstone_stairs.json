@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "permafrozen:smooth_sapphire_sandstone"
+    }
+  },
+  "result": {
+    "item": "permafrozen:smooth_sapphire_sandstone_stairs",
+    "count": 4
+  }
+}
