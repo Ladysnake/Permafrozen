@@ -1,5 +1,6 @@
 package net.permafrozen.permafrozen.entity.living;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.Flutterer;
 import net.minecraft.entity.ai.control.FlightMoveControl;
@@ -8,6 +9,7 @@ import net.minecraft.entity.ai.pathing.BirdNavigation;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.TameableShoulderEntity;
@@ -15,11 +17,15 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.permafrozen.permafrozen.registry.PermafrozenEntities;
+import net.permafrozen.permafrozen.registry.PermafrozenItems;
+import net.permafrozen.permafrozen.registry.PermafrozenSoundEvents;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -37,7 +43,7 @@ public class PuffbooEntity extends TameableShoulderEntity implements IAnimatable
 
     public PuffbooEntity(EntityType<? extends TameableShoulderEntity> entityType, World world) {
         super(entityType, world);
-        this.moveControl = new FlightMoveControl(this, 10, false);
+        this.moveControl = new FlightMoveControl(this, 15, false);
     }
     public static DefaultAttributeContainer.Builder createBooAttributes() {
         return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D).add(EntityAttributes.GENERIC_FLYING_SPEED, 0.6D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2D).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 1);
@@ -103,15 +109,40 @@ public class PuffbooEntity extends TameableShoulderEntity implements IAnimatable
     }
 
     @Override
+    public SoundEvent getAmbientSound() {
+        return PermafrozenSoundEvents.ENTITY_PUFFBOO_AMBIENT;
+    }
+
+    @Override
+    public SoundEvent getDeathSound() {
+        return PermafrozenSoundEvents.ENTITY_PUFFBOO_DEATH;
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getHurtSound(DamageSource source) {
+        return PermafrozenSoundEvents.ENTITY_PUFFBOO_HURT;
+    }
+
+    @Override
     public boolean isInAir() {
         return !isOnGround();
+    }
+
+    @Override
+    protected void fall(double heightDifference, boolean onGround, BlockState landedState, BlockPos landedPosition) {
+    }
+
+    @Override
+    public boolean handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource) {
+        return false;
     }
 
     @Override
     public void registerControllers(AnimationData animationData) {
         animationData.addAnimationController(new AnimationController<>(this, "controller", 2, animationEvent -> {
             boolean isMoving = isInAir() ? !(handSwingProgress > -0.02) || !(handSwingProgress < 0.02) : !(handSwingProgress > -0.10F) || !(handSwingProgress < 0.10F);
-            AnimationBuilder anime = SIT;
+            AnimationBuilder anime = isInAir() ? FLY :SIT;
             if (isMoving) {
                 anime = isInAir() ? FLY : SIT;
             }
@@ -139,6 +170,6 @@ public class PuffbooEntity extends TameableShoulderEntity implements IAnimatable
 
     @Override
     public boolean isBreedingItem(ItemStack stack) {
-        return stack.isOf(Items.WHEAT_SEEDS);
+        return stack.isOf(PermafrozenItems.FATFISH);
     }
 }

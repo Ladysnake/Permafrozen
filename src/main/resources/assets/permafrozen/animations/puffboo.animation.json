@@ -1,7 +1,7 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.Puffboo.sit": {
+		"sit": {
 			"loop": true,
 			"bones": {
 				"body": {
@@ -76,7 +76,7 @@
 				}
 			}
 		},
-		"animation.Puffboo.fly": {
+		"fly": {
 			"loop": true,
 			"animation_length": 1.04,
 			"bones": {
@@ -386,5 +386,6 @@
 				}
 			}
 		}
-	}
+	},
+	"geckolib_format_version": 2
 }

@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+	{
+	  "rolls": 1,
+	  "entries": [
+		{
+		  "type": "minecraft:item",
+		  "name": "permafrozen:raw_puffboo"
+		}
+	  ]
+	},
+	{
+	  "rolls": 2,
+	  "entries": [
+		{
+		  "type": "minecraft:item",
+		  "name": "permafrozen:puffboo_feather"
+		}
+	  ],
+	  "conditions": [
+		{
+		  "condition": "minecraft:random_chance",
+		  "chance": 0.70
+		}
+	  ]
+	}
+  ]
+}

@@ -3,7 +3,7 @@
   "ingredient": {
 	"item": "permafrozen:raw_puffboo"
   },
-  "result": "permafrozen:raw_puffboo",
+  "result": "permafrozen:cooked_puffboo",
   "experience": 0.35,
   "cookingtime": 600
 }

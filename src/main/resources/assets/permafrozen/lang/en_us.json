@@ -34,6 +34,7 @@
   "item.permafrozen.lunar_koi_spawn_egg": "Lunar Koi Spawn Egg",
   "item.permafrozen.fatfish_spawn_egg": "Fatfish Spawn Egg",
   "item.permafrozen.aurora_fae_spawn_egg": "Aurora Fae Spawn Egg",
+  "item.permafrozen.puffboo_spawn_egg": "Puffboo Spawn Egg",
   "effect.permafrozen.fragrant": "Fragrance",
   "block.permafrozen.sapphire_sand": "Sapphire Sand",
   "block.permafrozen.fir_log": "Fir Log",
@@ -70,6 +71,9 @@
   "entity.permafrozen.lunar_koi": "Lunar Koi",
   "entity.permafrozen.fatfish": "Fatfish",
   "permafrozen.subtitles.entity.aurora_fae.ambient": "Aurora Fae chirps",
-  "permafrozen.subtitles.entity.aurora_fae.hurt": "Aurora Fae hurts",
-  "permafrozen.subtitles.entity.aurora_fae.death": "Aurora Fae dies"
+  "permafro,zen.subtitles.entity.aurora_fae.hurt": "Aurora Fae hurts",
+  "permafrozen.subtitles.entity.aurora_fae.death": "Aurora Fae dies",
+  "permafrozen.subtitles.entity.puffboo.ambient": "Puffboo chirps",
+  "permafrozen.subtitles.entity.puffboo.hurt": "Puffboo cries in alarm",
+  "permafrozen.subtitles.entity.puffboo.death": "Puffboo faces adjudication"
 }

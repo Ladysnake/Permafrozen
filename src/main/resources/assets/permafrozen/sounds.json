@@ -16,5 +16,23 @@
 	"sounds": [
 	],
 	"subtitle": "permafrozen.subtitles.entity.aurora_fae.death"
-  }
+  },
+	"entity.puffboo.ambient": {
+		"sounds": [
+			"permafrozen:mob/puffboo/ambient"
+		],
+		"subtitle": "permafrozen.subtitles.entity.puffboo.ambient"
+	},
+	"entity.puffboo.hurt": {
+		"sounds": [
+			"permafrozen:mob/puffboo/hurt"
+		],
+		"subtitle": "permafrozen.subtitles.entity.puffboo.hurt"
+	},
+	"entity.puffboo.death": {
+		"sounds": [
+			"permafrozen:mob/puffboo/death"
+		],
+		"subtitle": "permafrozen.subtitles.entity.puffboo.death"
+	}
 }

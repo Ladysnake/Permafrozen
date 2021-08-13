@@ -55,6 +55,8 @@ public class PermafrozenItems {
 	public static final Item PUFFBOO_FEATHER = create("puffboo_feather", new Item((new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP)));
 	public static final Item PUFFBOO_MEAT = create("raw_puffboo", new Item((new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP).food(FoodComponents.CHICKEN)));
 	public static final Item COOKED_PUFFBOO_MEAT = create("cooked_puffboo", new Item((new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP).food(FoodComponents.COOKED_CHICKEN)));
+	public static final Item PUFFBOO_SPAWN_EGG = create("puffboo_spawn_egg", new SpawnEggItem(PermafrozenEntities.PUFFBOO, 0x232226, 0xf34f18, (new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP)));
+
 
 	private static <T extends Item> T create(String name, T item) {
 		ITEMS.put(item, new Identifier(Permafrozen.MOD_ID, name));

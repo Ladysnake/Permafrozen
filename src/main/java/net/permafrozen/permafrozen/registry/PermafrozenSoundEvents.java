@@ -14,6 +14,9 @@ public class PermafrozenSoundEvents {
 	public static final SoundEvent ENTITY_AURORA_FAE_AMBIENT = create("entity.aurora_fae.ambient");
 	public static final SoundEvent ENTITY_AURORA_FAE_HURT = create("entity.aurora_fae.hurt");
 	public static final SoundEvent ENTITY_AURORA_FAE_DEATH = create("entity.aurora_fae.death");
+	public static final SoundEvent ENTITY_PUFFBOO_DEATH = create("entity.puffboo.death");
+	public static final SoundEvent ENTITY_PUFFBOO_HURT = create("entity.puffboo.hurt");
+	public static final SoundEvent ENTITY_PUFFBOO_AMBIENT = create("entity.puffboo.ambient");
 	
 	private static SoundEvent create(String name) {
 		Identifier id = new Identifier(Permafrozen.MOD_ID, name);

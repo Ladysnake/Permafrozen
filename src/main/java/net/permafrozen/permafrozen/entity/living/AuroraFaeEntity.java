@@ -135,7 +135,6 @@ public class AuroraFaeEntity extends TameableEntity implements Flutterer, IAnima
             return super.interactMob(player, hand);
         }
     }
-
     @Override
     public SoundEvent getAmbientSound() {
         return PermafrozenSoundEvents.ENTITY_AURORA_FAE_AMBIENT;
@@ -151,6 +150,7 @@ public class AuroraFaeEntity extends TameableEntity implements Flutterer, IAnima
     protected SoundEvent getHurtSound(DamageSource source) {
         return PermafrozenSoundEvents.ENTITY_AURORA_FAE_HURT;
     }
+
 
     @Override
     protected void initGoals() {
