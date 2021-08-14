@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "permafrozen:block/mossy_permafrost_top",
+    "bottom": "permafrozen:block/permafrost",
+    "side": "permafrozen:block/mossy_permafrost"
+  }
+}

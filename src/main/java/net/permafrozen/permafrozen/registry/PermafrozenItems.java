@@ -14,19 +14,13 @@ import net.permafrozen.permafrozen.item.PermafrozenPickaxeItem;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static net.permafrozen.permafrozen.registry.PermafrozenArmorMaterials.CRYORITE_ARMOR_MATERIAL;
 import static net.permafrozen.permafrozen.registry.PermafrozenArmorMaterials.WULFRAM_ARMOR_MATERIAL;
 
+@SuppressWarnings("unused")
 public class PermafrozenItems {
 	private static final Map<Item, Identifier> ITEMS = new LinkedHashMap<>();
 	
 	
-	public static final Item CRYORITE_INGOT = create("cryorite_ingot", new Item(new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
-	public static final Item CRYORITE_SWORD = create("cryorite_sword", new SwordItem(PermafrozenMaterials.CRYORITE, 3, -2.4f, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
-	public static final Item CRYORITE_SHOVEL = create("cryorite_shovel", new ShovelItem(PermafrozenMaterials.CRYORITE, 0.5f, -3, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
-	public static final Item CRYORITE_AXE = create("cryorite_axe", new PermafrozenAxeItem(PermafrozenMaterials.CRYORITE, 4.5f, -3, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
-	public static final Item CRYORITE_PICKAXE = create("cryorite_pickaxe", new PermafrozenPickaxeItem(PermafrozenMaterials.CRYORITE, 1, -3, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
-	public static final Item CRYORITE_HOE = create("cryorite_hoe", new PermafrozenHoeItem(PermafrozenMaterials.CRYORITE, -3, 0, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
 	public static final Item WULFRAM_INGOT = create("wulfram_ingot", new Item(new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
 	public static final Item WULFRAM_SWORD = create("wulfram_sword", new SwordItem(PermafrozenMaterials.WULFRAM, 3, -2.4f, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
 	public static final Item WULFRAM_SHOVEL = create("wulfram_shovel", new ShovelItem(PermafrozenMaterials.WULFRAM, 0.5f, -3, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
@@ -48,10 +42,6 @@ public class PermafrozenItems {
 	public static final Item WULFRAM_CHESTPLATE = create("wulfram_chestplate", new ArmorItem(WULFRAM_ARMOR_MATERIAL, EquipmentSlot.CHEST, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
 	public static final Item WULFRAM_LEGGINGS = create("wulfram_leggings", new ArmorItem(WULFRAM_ARMOR_MATERIAL, EquipmentSlot.LEGS, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
 	public static final Item WULFRAM_BOOTS = create("wulfram_boots", new ArmorItem(WULFRAM_ARMOR_MATERIAL, EquipmentSlot.FEET, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
-	public static final Item CRYORITE_HELMET = create("cryorite_helmet", new ArmorItem(CRYORITE_ARMOR_MATERIAL, EquipmentSlot.HEAD, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
-	public static final Item CRYORITE_CHESTPLATE = create("cryorite_chestplate", new ArmorItem(CRYORITE_ARMOR_MATERIAL, EquipmentSlot.CHEST, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
-	public static final Item CRYORITE_LEGGINGS = create("cryorite_leggings", new ArmorItem(CRYORITE_ARMOR_MATERIAL, EquipmentSlot.LEGS, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
-	public static final Item CRYORITE_BOOTS = create("cryorite_boots", new ArmorItem(CRYORITE_ARMOR_MATERIAL, EquipmentSlot.FEET, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
 	public static final Item PUFFBOO_FEATHER = create("puffboo_feather", new Item((new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP)));
 	public static final Item PUFFBOO_MEAT = create("raw_puffboo", new Item((new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP).food(FoodComponents.CHICKEN)));
 	public static final Item COOKED_PUFFBOO_MEAT = create("cooked_puffboo", new Item((new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP).food(FoodComponents.COOKED_CHICKEN)));

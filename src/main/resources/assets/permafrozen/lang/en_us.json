@@ -1,16 +1,6 @@
 {
   "itemGroup.permafrozen.permafrozen": "Permafrozen",
 
-  "item.permafrozen.cryorite_ingot": "Cryorite Ingot",
-  "item.permafrozen.cryorite_axe": "Cryorite Axe",
-  "item.permafrozen.cryorite_hoe": "Cryorite Hoe",
-  "item.permafrozen.cryorite_pickaxe": "Cryorite Pickaxe",
-  "item.permafrozen.cryorite_shovel": "Cryorite Shovel",
-  "item.permafrozen.cryorite_sword": "Cryorite Sword",
-  "item.permafrozen.cryorite_helmet": "Cryorite Helmet",
-  "item.permafrozen.cryorite_chestplate": "Cryorite Chestplate",
-  "item.permafrozen.cryorite_leggings": "Cryorite Leggings",
-  "item.permafrozen.cryorite_boots": "Cryorite Boots",
   "item.permafrozen.wulfram_ingot": "Wulfram Ingot",
   "item.permafrozen.wulfram_axe": "Wulfram Axe",
   "item.permafrozen.wulfram_hoe": "Wulfram Hoe",
@@ -39,6 +29,8 @@
 
   "effect.permafrozen.fragrant": "Fragrance",
 
+  "block.permafrozen.mossy_permafrost": "Mossy Permafrost",
+  "block.permafrozen.permafrost": "Permafrost",
   "block.permafrozen.sapphire_sand": "Sapphire Sand",
   "block.permafrozen.sapphire_sandstone": "Sapphire Sandstone",
   "block.permafrozen.chiseled_sapphire_sandstone": "Chiseled Sapphire Sandstone",

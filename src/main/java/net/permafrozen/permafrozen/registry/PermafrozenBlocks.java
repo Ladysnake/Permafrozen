@@ -32,7 +32,10 @@ import static net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSetting
 public class PermafrozenBlocks {
 	private static final Map<Block, Identifier> BLOCKS = new LinkedHashMap<>();
 	private static final Map<Item, Identifier> ITEMS = new LinkedHashMap<>();
-	
+
+	public static final Block MOSSY_PERMAFROST = create("mossy_permafrost", new GrassBlock(copyOf(Blocks.GRASS_BLOCK)), true);
+	public static final Block PERMAFROST = create("permafrost", new Block(copyOf(Blocks.DIRT)), true);
+
 	public static final Block STRIPPED_FIR_LOG = create("stripped_fir_log", new PillarBlock(copyOf(Blocks.OAK_LOG)), true);
 	public static final Block STRIPPED_FIR_WOOD = create("stripped_fir_wood", new PillarBlock(copyOf(STRIPPED_FIR_LOG)), true);
 	public static final Block FIR_LOG = create("fir_log", new StrippableLogBlock(() -> STRIPPED_FIR_LOG, MapColor.BROWN, copyOf(STRIPPED_FIR_LOG)), true);
