@@ -1,7 +1,11 @@
 {
   "variants": {
-	"": {
-	  "model": "permafrozen:block/fir_leaves"
-	}
+	  "snowy=false":
+		  {
+			  "model": "permafrozen:block/fir_leaves"
+		  },
+	  "snowy=true": {
+		  "model": "permafrozen:block/fir_leaves_snow"
+	  }
   }
 }
