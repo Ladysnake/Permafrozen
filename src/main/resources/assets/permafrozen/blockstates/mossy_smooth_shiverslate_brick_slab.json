@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "permafrozen:block/mossy_smooth_shiverslate_brick_slab"
+    },
+    "type=double": {
+      "model": "permafrozen:block/mossy_smooth_shiverslate_bricks"
+    },
+    "type=top": {
+      "model": "permafrozen:block/mossy_smooth_shiverslate_brick_slab_top"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "permafrozen:smooth_shiverslate_bricks"
+    }
+  },
+  "result": {
+    "item": "permafrozen:smooth_shiverslate_brick_wall",
+    "count": 6
+  }
+}

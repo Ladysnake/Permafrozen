@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "permafrozen:mossy_cobbled_shiverslate_stairs_from_mossy_cobbled_shiverslate_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_mossy_cobbled_shiverslate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "permafrozen:mossy_cobbled_shiverslate"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "permafrozen:mossy_cobbled_shiverslate_stairs_from_mossy_cobbled_shiverslate_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_mossy_cobbled_shiverslate",
+      "has_the_recipe"
+    ]
+  ]
+}

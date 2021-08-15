@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
-	"permafrozen:sapphire_sandstone_wall"
+	"permafrozen:sapphire_sandstone_wall",
+    "permafrozen:smooth_shiverslate_brick_wall",
+    "permafrozen:mossy_smooth_shiverslate_brick_wall",
+    "permafrozen:cobbled_shiverslate_wall",
+    "permafrozen:mossy_cobbled_shiverslate_wall"
   ]
 }

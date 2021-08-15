@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "permafrozen:block/smooth_shiverslate_bricks"
+  }
+}

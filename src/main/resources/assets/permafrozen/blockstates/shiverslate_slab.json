@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "permafrozen:block/shiverslate_slab"
+    },
+    "type=double": {
+      "model": "permafrozen:block/shiverslate"
+    },
+    "type=top": {
+      "model": "permafrozen:block/shiverslate_slab_top"
+    }
+  }
+}

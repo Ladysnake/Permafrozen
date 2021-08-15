@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "permafrozen:block/smooth_shiverslate",
+    "side": "permafrozen:block/smooth_shiverslate_slab"
+  }
+}

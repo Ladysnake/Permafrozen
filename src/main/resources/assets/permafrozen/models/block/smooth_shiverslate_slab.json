@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "permafrozen:block/smooth_shiverslate",
+    "top": "permafrozen:block/smooth_shiverslate",
+    "side": "permafrozen:block/smooth_shiverslate_slab"
+  }
+}

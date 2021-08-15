@@ -2,6 +2,11 @@
   "replace": false,
   "values": [
 	"permafrozen:sapphire_sandstone_stairs",
-	"permafrozen:smooth_sapphire_sandstone_stairs"
+	"permafrozen:smooth_sapphire_sandstone_stairs",
+    "permafrozen:smooth_shiverslate_brick_stairs",
+    "permafrozen:mossy_smooth_shiverslate_brick_stairs",
+    "permafrozen:cobbled_shiverslate_stairs",
+    "permafrozen:mossy_cobbled_shiverslate_stairs",
+    "permafrozen:shiverslate_stairs"
   ]
 }

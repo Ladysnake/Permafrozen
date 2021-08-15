@@ -1,19 +1,18 @@
 package net.permafrozen.permafrozen.registry;
 
-import net.fabricmc.fabric.api.biome.v1.NetherBiomes;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
-import net.minecraft.world.biome.*;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeEffects;
+import net.minecraft.world.biome.GenerationSettings;
+import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilders;
 import net.permafrozen.permafrozen.Permafrozen;
-import net.permafrozen.permafrozen.entity.living.AuroraFaeEntity;
 import net.permafrozen.permafrozen.worldgen.biome.PermafrozenBiomeSource;
 import net.permafrozen.permafrozen.worldgen.biome.PermafrozenSurfaceBuilders;
 import net.permafrozen.permafrozen.worldgen.feature.PermafrozenBiomeFeatures;

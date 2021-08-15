@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DG",
+    "GD"
+  ],
+  "key": {
+    "D": {
+      "item": "permafrozen:permafrost"
+    },
+    "G": {
+      "item": "permafrozen:cobbled_shiverslate"
+    }
+  },
+  "result": {
+    "item": "permafrozen:coarse_permafrost",
+    "count": 4
+  }
+}

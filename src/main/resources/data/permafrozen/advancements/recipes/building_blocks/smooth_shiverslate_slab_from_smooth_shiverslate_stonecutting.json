@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "permafrozen:smooth_shiverslate_slab_from_smooth_shiverslate_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_smooth_shiverslate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "permafrozen:smooth_shiverslate"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "permafrozen:smooth_shiverslate_slab_from_smooth_shiverslate_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_smooth_shiverslate",
+      "has_the_recipe"
+    ]
+  ]
+}

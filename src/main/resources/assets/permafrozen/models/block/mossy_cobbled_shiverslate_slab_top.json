@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "permafrozen:block/mossy_cobbled_shiverslate",
+    "top": "permafrozen:block/mossy_cobbled_shiverslate",
+    "side": "permafrozen:block/mossy_cobbled_shiverslate"
+  }
+}

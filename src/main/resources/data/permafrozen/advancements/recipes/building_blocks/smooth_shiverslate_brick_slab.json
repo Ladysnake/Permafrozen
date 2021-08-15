@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "permafrozen:smooth_shiverslate_brick_slab"
+    ]
+  },
+  "criteria": {
+    "has_smooth_shiverslate_bricks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "permafrozen:smooth_shiverslate_bricks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "permafrozen:smooth_shiverslate_brick_slab"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_smooth_shiverslate_bricks",
+      "has_the_recipe"
+    ]
+  ]
+}

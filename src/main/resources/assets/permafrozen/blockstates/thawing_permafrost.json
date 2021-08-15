@@ -1,0 +1,7 @@
+{
+  "variants": {
+	"": {
+	  "model": "permafrozen:block/thawing_permafrost"
+	}
+  }
+}

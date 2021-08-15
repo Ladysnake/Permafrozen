@@ -1,7 +1,12 @@
 {
-  "variants": {
-	"": {
-	  "model": "permafrozen:block/permafrost"
+	"variants": {
+		"": [
+			{
+				"model": "permafrozen:block/permafrost"
+			},
+			{
+				"model": "permafrozen:block/permafrost_1"
+			}
+		]
 	}
-  }
 }

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "permafrozen:shiverslate"
+    }
+  ],
+  "result": {
+    "item": "permafrozen:shiverslate_button"
+  }
+}

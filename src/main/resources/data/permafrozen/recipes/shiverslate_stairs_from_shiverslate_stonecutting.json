@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "permafrozen:shiverslate"
+  },
+  "result": "permafrozen:shiverslate_stairs",
+  "count": 1
+}

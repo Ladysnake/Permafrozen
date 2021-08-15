@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "permafrozen:shiverslate_stairs_from_shiverslate_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_shiverslate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "permafrozen:shiverslate"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "permafrozen:shiverslate_stairs_from_shiverslate_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_shiverslate",
+      "has_the_recipe"
+    ]
+  ]
+}

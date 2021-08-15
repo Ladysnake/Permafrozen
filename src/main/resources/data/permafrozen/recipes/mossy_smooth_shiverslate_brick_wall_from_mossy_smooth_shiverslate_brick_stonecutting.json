@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "permafrozen:mossy_smooth_shiverslate_bricks"
+  },
+  "result": "permafrozen:mossy_smooth_shiverslate_brick_wall",
+  "count": 1
+}

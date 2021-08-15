@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "permafrozen:mossy_smooth_shiverslate_brick_wall"
+    ]
+  },
+  "criteria": {
+    "has_mossy_smooth_shiverslate_bricks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "permafrozen:mossy_smooth_shiverslate_bricks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "permafrozen:mossy_smooth_shiverslate_brick_wall"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_mossy_smooth_shiverslate_bricks",
+      "has_the_recipe"
+    ]
+  ]
+}

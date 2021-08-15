@@ -1,7 +1,24 @@
 {
   "variants": {
-	"": {
-	  "model": "permafrozen:block/mossy_permafrost"
-	}
+	  "snowy=false": [
+		  {
+			  "model": "permafrozen:block/mossy_permafrost"
+		  },
+		  {
+			  "model": "permafrozen:block/mossy_permafrost",
+			  "y": 90
+		  },
+		  {
+			  "model": "permafrozen:block/mossy_permafrost",
+			  "y": 180
+		  },
+		  {
+			  "model": "permafrozen:block/mossy_permafrost",
+			  "y": 270
+		  }
+	  ],
+	  "snowy=true": {
+		  "model": "permafrozen:block/mossy_permafrost_snow"
+	  }
   }
 }

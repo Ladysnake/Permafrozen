@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "permafrozen:block/mossy_cobbled_shiverslate_1"
+  }
+}

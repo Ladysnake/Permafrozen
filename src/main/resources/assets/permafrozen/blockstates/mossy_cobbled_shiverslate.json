@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "permafrozen:block/mossy_cobbled_shiverslate"
+      },
+      {
+        "model": "permafrozen:block/mossy_cobbled_shiverslate_1"
+      }
+    ]
+  }
+}

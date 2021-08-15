@@ -15,12 +15,10 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.permafrozen.permafrozen.Permafrozen;
+import net.permafrozen.permafrozen.block.MossyPermafrostBlock;
 import net.permafrozen.permafrozen.block.PrismarineCrystalBlock;
 import net.permafrozen.permafrozen.block.PrismarineCrystalClusterBlock;
-import net.permafrozen.permafrozen.block.util.PermafrozenDeadCoralBlock;
-import net.permafrozen.permafrozen.block.util.PermafrozenKelpPlantBlock;
-import net.permafrozen.permafrozen.block.util.PermafrozenPlantBlock;
-import net.permafrozen.permafrozen.block.util.PermafrozenSaplingBlock;
+import net.permafrozen.permafrozen.block.util.*;
 import net.permafrozen.permafrozen.mixin.BlocksAccessor;
 import net.permafrozen.permafrozen.worldgen.tree.FirSaplingGenerator;
 
@@ -29,12 +27,15 @@ import java.util.Map;
 
 import static net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings.copyOf;
 
+@SuppressWarnings("unused")
 public class PermafrozenBlocks {
 	private static final Map<Block, Identifier> BLOCKS = new LinkedHashMap<>();
 	private static final Map<Item, Identifier> ITEMS = new LinkedHashMap<>();
 
-	public static final Block MOSSY_PERMAFROST = create("mossy_permafrost", new GrassBlock(copyOf(Blocks.GRASS_BLOCK)), true);
+	public static final Block MOSSY_PERMAFROST = create("mossy_permafrost", new MossyPermafrostBlock(copyOf(Blocks.GRASS_BLOCK)), true);
 	public static final Block PERMAFROST = create("permafrost", new Block(copyOf(Blocks.DIRT)), true);
+	public static final Block COARSE_PERMAFROST = create("coarse_permafrost", new Block(copyOf(Blocks.COARSE_DIRT)), true);
+	public static final Block THAWING_PERMAFROST = create("thawing_permafrost", new Block(copyOf(Blocks.CLAY)), true);
 
 	public static final Block STRIPPED_FIR_LOG = create("stripped_fir_log", new PillarBlock(copyOf(Blocks.OAK_LOG)), true);
 	public static final Block STRIPPED_FIR_WOOD = create("stripped_fir_wood", new PillarBlock(copyOf(STRIPPED_FIR_LOG)), true);
@@ -69,9 +70,30 @@ public class PermafrozenBlocks {
 	public static final Block SMOOTH_SAPPHIRE_SANDSTONE_STAIRS = create("smooth_sapphire_sandstone_stairs", new TerraformStairsBlock(SMOOTH_SAPPHIRE_SANDSTONE, copyOf(Blocks.SMOOTH_SANDSTONE_STAIRS)), true);
 
 	public static final Block SHIVERSLATE = create("shiverslate", new Block(copyOf(Blocks.DEEPSLATE)), true);
+	public static final Block SHIVERSLATE_STAIRS = create("shiverslate_stairs", new TerraformStairsBlock(SHIVERSLATE, copyOf(Blocks.DEEPSLATE_BRICK_STAIRS)), true);
+	public static final Block SHIVERSLATE_SLAB = create("shiverslate_slab", new SlabBlock(copyOf(Blocks.DEEPSLATE_BRICK_SLAB)), true);
+	public static final Block SHIVERSLATE_BUTTON = create("shiverslate_button", new PermafrozenStoneButtonBlock(copyOf(Blocks.DEEPSLATE)), true);
+	public static final Block SHIVERSLATE_PRESSURE_PLATE = create("shiverslate_pressure_plate", new TerraformPressurePlateBlock(copyOf(Blocks.DEEPSLATE)), true);
 	public static final Block COBBLED_SHIVERSLATE = create("cobbled_shiverslate", new Block(copyOf(Blocks.COBBLED_DEEPSLATE)), true);
-	public static final Block SHIVERSLATE_BRICKS = create("shiverslate_bricks", new Block(copyOf(Blocks.DEEPSLATE_BRICKS)), true);
-	public static final Block CHISELLED_SHIVERSLATE_BRICKS = create("chiselled_shiverslate_bricks", new Block(copyOf(Blocks.DEEPSLATE_BRICKS)), true);
+	public static final Block COBBLED_SHIVERSLATE_STAIRS = create("cobbled_shiverslate_stairs", new TerraformStairsBlock(COBBLED_SHIVERSLATE, copyOf(Blocks.DEEPSLATE_BRICK_STAIRS)), true);
+	public static final Block COBBLED_SHIVERSLATE_SLAB = create("cobbled_shiverslate_slab", new SlabBlock(copyOf(Blocks.DEEPSLATE_BRICK_SLAB)), true);
+	public static final Block COBBLED_SHIVERSLATE_WALL = create("cobbled_shiverslate_wall", new WallBlock(copyOf(Blocks.DEEPSLATE_BRICK_WALL)), true);
+	public static final Block MOSSY_COBBLED_SHIVERSLATE = create("mossy_cobbled_shiverslate", new Block(copyOf(Blocks.COBBLED_DEEPSLATE)), true);
+	public static final Block MOSSY_COBBLED_SHIVERSLATE_STAIRS = create("mossy_cobbled_shiverslate_stairs", new TerraformStairsBlock(MOSSY_COBBLED_SHIVERSLATE, copyOf(Blocks.DEEPSLATE_BRICK_STAIRS)), true);
+	public static final Block MOSSY_COBBLED_SHIVERSLATE_SLAB = create("mossy_cobbled_shiverslate_slab", new SlabBlock(copyOf(Blocks.DEEPSLATE_BRICK_SLAB)), true);
+	public static final Block MOSSY_COBBLED_SHIVERSLATE_WALL = create("mossy_cobbled_shiverslate_wall", new WallBlock(copyOf(Blocks.DEEPSLATE_BRICK_WALL)), true);
+	public static final Block SMOOTH_SHIVERSLATE = create("smooth_shiverslate", new Block(copyOf(Blocks.DEEPSLATE_BRICKS)), true);
+	public static final Block SMOOTH_SHIVERSLATE_SLAB = create("smooth_shiverslate_slab", new SlabBlock(copyOf(Blocks.DEEPSLATE_BRICK_SLAB)), true);
+	public static final Block SMOOTH_SHIVERSLATE_BRICKS = create("smooth_shiverslate_bricks", new Block(copyOf(Blocks.DEEPSLATE_BRICKS)), true);
+	public static final Block CRACKED_SMOOTH_SHIVERSLATE_BRICKS = create("cracked_smooth_shiverslate_bricks", new Block(copyOf(Blocks.DEEPSLATE_BRICKS)), true);
+	public static final Block CHISELED_SMOOTH_SHIVERSLATE_BRICKS = create("chiseled_smooth_shiverslate_bricks", new Block(copyOf(Blocks.DEEPSLATE_BRICKS)), true);
+	public static final Block SMOOTH_SHIVERSLATE_BRICK_STAIRS = create("smooth_shiverslate_brick_stairs", new TerraformStairsBlock(SMOOTH_SHIVERSLATE_BRICKS, copyOf(Blocks.DEEPSLATE_BRICK_STAIRS)), true);
+	public static final Block SMOOTH_SHIVERSLATE_BRICK_SLAB = create("smooth_shiverslate_brick_slab", new SlabBlock(copyOf(Blocks.DEEPSLATE_BRICK_SLAB)), true);
+	public static final Block SMOOTH_SHIVERSLATE_BRICK_WALL = create("smooth_shiverslate_brick_wall", new WallBlock(copyOf(Blocks.DEEPSLATE_BRICK_WALL)), true);
+	public static final Block MOSSY_SMOOTH_SHIVERSLATE_BRICKS = create("mossy_smooth_shiverslate_bricks", new Block(copyOf(Blocks.DEEPSLATE_BRICKS)), true);
+	public static final Block MOSSY_SMOOTH_SHIVERSLATE_BRICK_STAIRS = create("mossy_smooth_shiverslate_brick_stairs", new TerraformStairsBlock(MOSSY_SMOOTH_SHIVERSLATE_BRICKS, copyOf(Blocks.DEEPSLATE_BRICK_STAIRS)), true);
+	public static final Block MOSSY_SMOOTH_SHIVERSLATE_BRICK_SLAB = create("mossy_smooth_shiverslate_brick_slab", new SlabBlock(copyOf(Blocks.DEEPSLATE_BRICK_SLAB)), true);
+	public static final Block MOSSY_SMOOTH_SHIVERSLATE_BRICK_WALL = create("mossy_smooth_shiverslate_brick_wall", new WallBlock(copyOf(Blocks.DEEPSLATE_BRICK_WALL)), true);
 
     public static final Block SPECTRAL_CAP = create("spectral_cap", new PermafrozenPlantBlock(AbstractBlock.Settings.of(Material.PLANT, MapColor.LAPIS_BLUE).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).luminance((state) -> 11)), true);
 	public static final Block GLACIAL_KELP = create("glacial_kelp", new PermafrozenKelpPlantBlock(copyOf(Blocks.KELP_PLANT)), true);

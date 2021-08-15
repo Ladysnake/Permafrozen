@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "permafrozen:cobbled_shiverslate"
+    }
+  },
+  "result": {
+    "item": "permafrozen:cobbled_shiverslate_slab",
+    "count": 6
+  }
+}

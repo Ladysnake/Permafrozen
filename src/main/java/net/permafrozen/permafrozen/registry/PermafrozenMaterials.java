@@ -1,7 +1,6 @@
 package net.permafrozen.permafrozen.registry;
 
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.item.ToolMaterials;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.util.Lazy;
 

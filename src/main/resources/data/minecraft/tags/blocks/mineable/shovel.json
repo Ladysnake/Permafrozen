@@ -3,6 +3,8 @@
   "values": [
     "permafrozen:sapphire_sand",
     "permafrozen:mossy_permafrost",
+    "permafrozen:thawing_permafrost",
+    "permafrozen:coarse_permafrost",
     "permafrozen:permafrost"
   ]
 }

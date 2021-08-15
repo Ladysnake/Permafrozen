@@ -11,7 +11,6 @@ import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
-import net.permafrozen.permafrozen.block.PrismarineCrystalClusterBlock;
 import net.permafrozen.permafrozen.registry.PermafrozenBlocks;
 
 import java.util.Random;

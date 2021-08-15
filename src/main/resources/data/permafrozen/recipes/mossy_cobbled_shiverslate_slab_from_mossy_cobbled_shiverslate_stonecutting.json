@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "permafrozen:mossy_cobbled_shiverslate"
+  },
+  "result": "permafrozen:mossy_cobbled_shiverslate_slab",
+  "count": 2
+}
