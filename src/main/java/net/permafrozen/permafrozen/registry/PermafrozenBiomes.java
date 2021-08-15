@@ -29,7 +29,7 @@ public class PermafrozenBiomes {
 		SpawnSettings.Builder spawnSettings = new SpawnSettings.Builder();
 		spawnSettings.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(PermafrozenEntities.AURORA_FAE, 1, 0, 2)).spawnCost(PermafrozenEntities.AURORA_FAE, 1.0D, 0.12D);
 		GenerationSettings.Builder generationSettings = new GenerationSettings.Builder();
-		generationSettings.surfaceBuilder(ConfiguredSurfaceBuilders.GRASS);
+		generationSettings.surfaceBuilder(PermafrozenSurfaceBuilders.PERMAFROST);
 		DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);
 		DefaultBiomeFeatures.addSweetBerryBushesSnowy(generationSettings);
 		DefaultBiomeFeatures.addForestGrass(generationSettings);
@@ -68,7 +68,7 @@ public class PermafrozenBiomes {
 		DefaultBiomeFeatures.addSprings(generationSettings);
 		DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);
 		DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);
-		return new Biome.Builder().precipitation(Biome.Precipitation.SNOW).category(Biome.Category.OCEAN).depth(-1.8F).scale(0.2F).temperature(0.0F).downfall(0.6F).effects(new BiomeEffects.Builder().waterColor(0x45ADF2).waterFogColor(0x041633).fogColor(12638463).skyColor(getSkyColor(0.6F)).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).build();
+		return new Biome.Builder().precipitation(Biome.Precipitation.SNOW).category(Biome.Category.OCEAN).depth(-1.8F).scale(0.2F).temperature(-0.2F).downfall(0.6F).effects(new BiomeEffects.Builder().waterColor(0x45ADF2).waterFogColor(0x041633).fogColor(12638463).skyColor(getSkyColor(0.6F)).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).build();
 	}
 	
 	private static int getSkyColor(float temperature) {

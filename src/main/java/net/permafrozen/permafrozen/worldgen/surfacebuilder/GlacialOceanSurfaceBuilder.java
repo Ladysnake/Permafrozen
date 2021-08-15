@@ -1,4 +1,4 @@
-package net.permafrozen.permafrozen.worldgen.biome;
+package net.permafrozen.permafrozen.worldgen.surfacebuilder;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;

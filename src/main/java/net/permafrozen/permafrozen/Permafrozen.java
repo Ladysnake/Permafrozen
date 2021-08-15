@@ -5,12 +5,16 @@ import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.world.World;
 import net.permafrozen.permafrozen.registry.*;
 import net.permafrozen.permafrozen.worldgen.feature.PermafrozenConfiguredFeatures;
 import software.bernie.geckolib3.GeckoLib;
 
 public class Permafrozen implements ModInitializer {
 	public static final String MOD_ID = "permafrozen";
+	public static final RegistryKey<World> WORLD_KEY = RegistryKey.of(Registry.WORLD_KEY, new Identifier(MOD_ID, "permafrozen"));
 	
 	public static final ItemGroup PERMAFROZEN_GROUP = FabricItemGroupBuilder.build(new Identifier(MOD_ID, MOD_ID), () -> new ItemStack(PermafrozenItems.LUNAR_KOI));
 	

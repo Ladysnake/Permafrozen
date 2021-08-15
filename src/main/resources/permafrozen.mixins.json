@@ -4,13 +4,14 @@
   "package": "net.permafrozen.permafrozen.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-	"BlocksAccessor",
-	"CampfireBlockEntityMixin",
-	"LayerAccessor"
+    "BlocksAccessor",
+    "CampfireBlockEntityMixin",
+    "LayerAccessor",
+    "PlayerEntityMixin"
   ],
   "client": [
   ],
   "injectors": {
-	"defaultRequire": 1
+    "defaultRequire": 1
   }
 }

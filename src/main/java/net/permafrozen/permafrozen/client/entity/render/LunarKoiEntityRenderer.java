@@ -31,14 +31,5 @@ public class LunarKoiEntityRenderer extends GeoEntityRenderer<LunarKoiEntity> {
 	public RenderLayer getRenderType(LunarKoiEntity animatable, float partialTicks, MatrixStack stack, VertexConsumerProvider renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn, Identifier textureLocation) {
 		return RenderLayer.getEntityTranslucent(this.getTexture(animatable));
 	}
-	
-	@Override
-	protected void applyRotations(LunarKoiEntity koi, MatrixStack matrixStack, float ageInTicks, float rotationYaw, float partialTicks) {
-		super.applyRotations(koi, matrixStack, ageInTicks, rotationYaw, partialTicks);
-		float f = 4.3F * MathHelper.sin(0.6F * ageInTicks);
-		matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(f));
-		if (!koi.isInsideWaterOrBubbleColumn()) {
-			matrixStack.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(90.0F));
-		}
-	}
+
 }
