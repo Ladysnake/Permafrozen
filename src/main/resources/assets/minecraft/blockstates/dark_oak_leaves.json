@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "snowy=false": {
+      "model": "minecraft:block/dark_oak_leaves"
+    },
+    "snowy=true": {
+      "model": "minecraft:block/dark_oak_leaves_snow"
+    }
+  }
+}

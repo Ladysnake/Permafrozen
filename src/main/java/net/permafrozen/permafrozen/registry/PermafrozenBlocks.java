@@ -19,7 +19,7 @@ import net.permafrozen.permafrozen.block.MossyPermafrostBlock;
 import net.permafrozen.permafrozen.block.PrismarineCrystalBlock;
 import net.permafrozen.permafrozen.block.PrismarineCrystalClusterBlock;
 import net.permafrozen.permafrozen.block.util.*;
-import net.permafrozen.permafrozen.util.Blomcks;
+import net.permafrozen.permafrozen.mixin.BlocksAccessor;
 import net.permafrozen.permafrozen.worldgen.tree.FirSaplingGenerator;
 
 import java.util.LinkedHashMap;
@@ -41,7 +41,7 @@ public class PermafrozenBlocks {
 	public static final Block STRIPPED_FIR_WOOD = create("stripped_fir_wood", new PillarBlock(copyOf(STRIPPED_FIR_LOG)), true);
 	public static final Block FIR_LOG = create("fir_log", new StrippableLogBlock(() -> STRIPPED_FIR_LOG, MapColor.BROWN, copyOf(STRIPPED_FIR_LOG)), true);
 	public static final Block FIR_WOOD = create("fir_wood", new StrippableLogBlock(() -> STRIPPED_FIR_WOOD, MapColor.BROWN, copyOf(STRIPPED_FIR_LOG)), true);
-	public static final Block FIR_LEAVES = create("fir_leaves", Blomcks.createLeavesBlock(BlockSoundGroup.GRASS), true);
+	public static final Block FIR_LEAVES = create("fir_leaves", BlocksAccessor.callCreateLeavesBlock(BlockSoundGroup.GRASS), true);
 	public static final Block FIR_SAPLING = create("fir_sapling", new PermafrozenSaplingBlock(new FirSaplingGenerator(), copyOf(Blocks.OAK_SAPLING)), true);
 	public static final Block POTTED_FIR_SAPLING = create("potted_fir_sapling", new FlowerPotBlock(FIR_SAPLING, copyOf(Blocks.POTTED_OAK_SAPLING)), false);
 	public static final Block FIR_PLANKS = create("fir_planks", new Block(copyOf(Blocks.OAK_PLANKS)), true);

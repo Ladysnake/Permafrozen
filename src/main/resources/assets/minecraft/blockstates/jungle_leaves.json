@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "snowy=false": {
+      "model": "minecraft:block/jungle_leaves"
+    },
+    "snowy=true": {
+      "model": "minecraft:block/jungle_leaves_snow"
+    }
+  }
+}
