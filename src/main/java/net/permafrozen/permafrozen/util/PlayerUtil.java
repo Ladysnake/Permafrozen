@@ -2,9 +2,7 @@ package net.permafrozen.permafrozen.util;
 
 import net.minecraft.block.AbstractFurnaceBlock;
 import net.minecraft.block.TorchBlock;
-import net.minecraft.block.WallTorchBlock;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.mob.ZombieEntity;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 

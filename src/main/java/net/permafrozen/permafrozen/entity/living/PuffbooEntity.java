@@ -10,11 +10,15 @@ import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.PassiveEntity;
-import net.minecraft.entity.passive.TameableShoulderEntity;
+import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -33,19 +37,21 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class PuffbooEntity extends TameableShoulderEntity implements IAnimatable, Flutterer {
+import java.util.Objects;
 
+public class PuffbooEntity extends TameableEntity implements IAnimatable, Flutterer {
+    private static final TrackedData<String> TYPE = DataTracker.registerData(PuffbooEntity.class, TrackedDataHandlerRegistry.STRING);
     private final AnimationFactory factory = new AnimationFactory(this);
 
     public static final AnimationBuilder SIT = new AnimationBuilder().addAnimation("sit");
     public static final AnimationBuilder FLY = new AnimationBuilder().addAnimation("fly");
 
-    public PuffbooEntity(EntityType<? extends TameableShoulderEntity> entityType, World world) {
+    public PuffbooEntity(EntityType<? extends TameableEntity> entityType, World world) {
         super(entityType, world);
         this.moveControl = new FlightMoveControl(this, 15, false);
     }
     public static DefaultAttributeContainer.Builder createBooAttributes() {
-        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D).add(EntityAttributes.GENERIC_FLYING_SPEED, 0.6D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2D).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 1);
+        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D).add(EntityAttributes.GENERIC_FLYING_SPEED, 0.6D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2D).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3);
     }
 
     @Nullable
@@ -57,6 +63,48 @@ public class PuffbooEntity extends TameableShoulderEntity implements IAnimatable
     @Override
     protected boolean hasWings() {
         return true;
+    }
+
+    public Type getPuffbooType() {
+        return Type.valueOf(this.dataTracker.get(TYPE));
+    }
+    public void setPuffbooType(Type type) {
+        this.dataTracker.set(TYPE, type.toString());
+    }
+    protected void initDataTracker() {
+        super.initDataTracker();
+
+        this.dataTracker.startTracking(TYPE, Type.NORMAL.toString());
+    }
+
+    @Override
+    public void readCustomDataFromNbt(NbtCompound tag) {
+        super.readCustomDataFromNbt(tag);
+
+        if (tag.contains("Type")) {
+            this.setPuffbooType(Type.valueOf(tag.getString("Type")));
+        }
+    }
+
+    @Override
+    public void writeCustomDataToNbt(NbtCompound tag) {
+        super.writeCustomDataToNbt(tag);
+
+        tag.putString("Type", this.getPuffbooType().toString());
+    }
+
+    @Override
+    protected void mobTick() {
+        super.mobTick();
+
+        if (this.hasCustomName()) {
+            if (Objects.requireNonNull(this.getCustomName()).getString().equalsIgnoreCase("ranboo") || this.getCustomName().getString().equalsIgnoreCase("gender man") ) {
+                this.setPuffbooType(Type.RANBOO);
+            } else if (this.getCustomName().getString().equalsIgnoreCase("coda") || this.getCustomName().getString().equalsIgnoreCase("chod")) {
+                this.setPuffbooType(Type.CODA);
+            }
+        }
+
     }
 
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
@@ -71,7 +119,7 @@ public class PuffbooEntity extends TameableShoulderEntity implements IAnimatable
             }
 
             if (!this.world.isClient) {
-                if (this.random.nextInt(10) == 0) {
+                if (this.random.nextInt(4) == 0) {
                     this.setOwner(player);
                     this.world.sendEntityStatus(this, (byte)7);
                 } else {
@@ -171,4 +219,11 @@ public class PuffbooEntity extends TameableShoulderEntity implements IAnimatable
     public boolean isBreedingItem(ItemStack stack) {
         return stack.isOf(PermafrozenItems.FATFISH);
     }
+
+    public enum Type {
+        NORMAL,
+        RANBOO,
+        CODA
+    }
+
 }

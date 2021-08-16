@@ -12,13 +12,12 @@ import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @Environment(EnvType.CLIENT)
 public class PuffbooModel extends AnimatedGeoModel<PuffbooEntity> {
-    private static final Identifier TEXTURE_IDENTIFIER = new Identifier(Permafrozen.MOD_ID, "textures/entity/puffboo.png");
     private static final Identifier MODEL_IDENTIFIER = new Identifier(Permafrozen.MOD_ID, "geo/puffboo.geo.json");
     private static final Identifier ANIMATION_IDENTIFIER = new Identifier(Permafrozen.MOD_ID, "animations/puffboo.animation.json");
 
     @Override
     public Identifier getTextureLocation(PuffbooEntity entity) {
-        return TEXTURE_IDENTIFIER;
+        return new Identifier(Permafrozen.MOD_ID, "textures/entity/puffboo_" + entity.getPuffbooType().toString().toLowerCase() + ".png");
     }
 
     @Override
