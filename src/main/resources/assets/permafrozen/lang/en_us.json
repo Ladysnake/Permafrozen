@@ -21,6 +21,7 @@
   "item.permafrozen.puffboo_feather": "Puffboo Feather",
   "item.permafrozen.raw_puffboo": "Raw Puffboo",
   "item.permafrozen.cooked_puffboo": "Cooked Puffboo",
+  "item.permafrozen.nudifae_bucket": "Nudifae Bucket",
   "item.permafrozen.nudifae_spawn_egg": "Nudifae Spawn Egg",
   "item.permafrozen.lunar_koi_spawn_egg": "Lunar Koi Spawn Egg",
   "item.permafrozen.fatfish_spawn_egg": "Fatfish Spawn Egg",
@@ -108,5 +109,8 @@
   "permafrozen.subtitles.entity.aurora_fae.death": "Aurora Fae dies",
   "permafrozen.subtitles.entity.puffboo.ambient": "Puffboo chirps",
   "permafrozen.subtitles.entity.puffboo.hurt": "Puffboo cries in alarm",
-  "permafrozen.subtitles.entity.puffboo.death": "Puffboo faces adjudication"
+  "permafrozen.subtitles.entity.puffboo.death": "Puffboo faces adjudication",
+  "permafrozen.subtitles.entity.nudifae.ambient": "Nudifae noises",
+  "permafrozen.subtitles.entity.nudifae.hurt": "Nudifae emits a cry of pain",
+  "permafrozen.subtitles.entity.nudifae.death": "Nudifae eats a plastic straw"
 }
