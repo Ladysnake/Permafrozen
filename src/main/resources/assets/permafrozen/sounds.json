@@ -1,4 +1,26 @@
 {
+	"entity.nudifae.ambient": {
+		"sounds": [
+			"permafrozen:mob/nudifae/idle1",
+			"permafrozen:mob/nudifae/idle2",
+			"permafrozen:mob/nudifae/idle3"
+		],
+		"subtitle": "permafrozen.subtitles.entity.nudifae.ambient"
+	},
+	"entity.nudifae.hurt": {
+		"sounds": [
+			"permafrozen:mob/nudifae/hurt1",
+			"permafrozen:mob/nudifae/hurt2",
+			"permafrozen:mob/nudifae/hurt3"
+		],
+		"subtitle": "permafrozen.subtitles.entity.nudifae.hurt"
+	},
+	"entity.nudifae.death": {
+		"sounds": [
+			"permafrozen:mob/nudifae/death"
+		],
+		"subtitle": "permafrozen.subtitles.entity.nudifae.death"
+	},
   "entity.aurora_fae.ambient": {
 	"sounds": [
 	  "permafrozen:mob/aurora_fae/ambient",

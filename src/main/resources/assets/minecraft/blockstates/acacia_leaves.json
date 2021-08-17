@@ -1,10 +1,10 @@
 {
   "variants": {
     "snowy=false": {
-      "model": "minecraft:block/acacia_leaves"
+      "model": "block/acacia_leaves"
     },
     "snowy=true": {
-      "model": "minecraft:block/acacia_leaves_snow"
+      "model": "block/acacia_leaves_snow"
     }
   }
 }
