@@ -43,7 +43,7 @@ public class PermafrozenBiomes {
 	}
 	private static Biome createGlacialOcean() {
 		SpawnSettings.Builder spawnSettings = new SpawnSettings.Builder();
-		spawnSettings.spawn(SpawnGroup.WATER_CREATURE, new SpawnSettings.SpawnEntry(PermafrozenEntities.NUDIFAE, 2, 1, 2)).spawn(SpawnGroup.WATER_AMBIENT, new SpawnSettings.SpawnEntry(PermafrozenEntities.FATFISH, 6, 0, 4)).spawn(SpawnGroup.WATER_AMBIENT, new SpawnSettings.SpawnEntry(PermafrozenEntities.LUNAR_KOI, 2, 0, 2)).spawnCost(PermafrozenEntities.LUNAR_KOI, 1.0D, 0.2D).spawnCost(PermafrozenEntities.FATFISH, 1.0D, 0.2D).spawnCost(PermafrozenEntities.NUDIFAE, 1.0D, 0.64D);
+		spawnSettings.spawn(SpawnGroup.WATER_CREATURE, new SpawnSettings.SpawnEntry(PermafrozenEntities.NUDIFAE, 2, 1, 2)).spawn(SpawnGroup.WATER_CREATURE, new SpawnSettings.SpawnEntry(PermafrozenEntities.FATFISH, 6, 0, 4)).spawn(SpawnGroup.WATER_CREATURE, new SpawnSettings.SpawnEntry(PermafrozenEntities.LUNAR_KOI, 2, 0, 4)).spawnCost(PermafrozenEntities.LUNAR_KOI, 1.0D, 0.2D).spawnCost(PermafrozenEntities.FATFISH, 1.0D, 0.2D).spawnCost(PermafrozenEntities.NUDIFAE, 1.0D, 0.64D);
 		GenerationSettings.Builder generationSettings = new GenerationSettings.Builder();
 		generationSettings.surfaceBuilder(PermafrozenSurfaceBuilders.GLACIAL_OCEAN);
 		PermafrozenBiomeFeatures.addPrismarineCrystals(generationSettings);

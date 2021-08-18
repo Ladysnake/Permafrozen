@@ -2,8 +2,7 @@ package net.permafrozen.permafrozen.entity.living;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.brain.Brain;
-import net.minecraft.entity.ai.brain.MemoryModuleType;
+import net.minecraft.entity.ai.control.AquaticLookControl;
 import net.minecraft.entity.ai.control.AquaticMoveControl;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.*;
@@ -14,8 +13,6 @@ import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.entity.passive.AxolotlEntity;
-import net.minecraft.entity.passive.DolphinEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -38,7 +35,6 @@ import net.minecraft.world.World;
 import net.permafrozen.permafrozen.registry.PermafrozenEntities;
 import net.permafrozen.permafrozen.registry.PermafrozenItems;
 import net.permafrozen.permafrozen.registry.PermafrozenSoundEvents;
-import net.permafrozen.permafrozen.registry.PermafrozenStatusEffects;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -62,8 +58,10 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucket
 	
 	public NudifaeEntity(EntityType<? extends TameableEntity> type, World world) {
 		super(type, world);
-		this.moveControl = new AquaticMoveControl(this, 85, 10, 0.1F, 0.5F, false);		this.setPathfindingPenalty(PathNodeType.WATER, 0.0F);
+		this.moveControl = new AquaticMoveControl(this, 85, 20, 0.1F, 0.5F, false);		this.setPathfindingPenalty(PathNodeType.WATER, 0.0F);
+		this.setPathfindingPenalty(PathNodeType.WATER, 0.0F);
 		this.experiencePoints = 0;
+		this.lookControl = new AquaticLookControl(this, 45);
 	}
 
 	public ActionResult interactMob(PlayerEntity player, Hand hand) {
@@ -74,7 +72,7 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucket
 			}
 
 			if (!this.isSilent()) {
-				this.world.playSound((PlayerEntity)null, this.getX(), this.getY(), this.getZ(), PermafrozenSoundEvents.ENTITY_NUDIFAE_AMBIENT, this.getSoundCategory(), 1.0F, 1.0F + (this.random.nextFloat() - this.random.nextFloat()) * 0.2F);
+				this.world.playSound(null, this.getX(), this.getY(), this.getZ(), PermafrozenSoundEvents.ENTITY_NUDIFAE_AMBIENT, this.getSoundCategory(), 1.0F, 1.0F + (this.random.nextFloat() - this.random.nextFloat()) * 0.2F);
 			}
 
 			if (!this.world.isClient) {
@@ -122,8 +120,13 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucket
 	@Override
 	public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityTag) {
 		WeightedList<Integer> possibleRarityTypes = Util.make(new WeightedList<>(), list -> list.add(0, 35).add(1, 30).add(2, 25).add(3, 10).add(4, 1).add(5, 1));
-		dataTracker.set(TYPE, possibleRarityTypes.shuffle().stream().findFirst().orElse(0));
-		return super.initialize(world, difficulty, spawnReason, entityData, entityTag);
+		if (spawnReason == SpawnReason.BUCKET) {
+			return entityData;
+		} else {
+			dataTracker.set(TYPE, possibleRarityTypes.shuffle().stream().findFirst().orElse(0));
+
+			return super.initialize(world, difficulty, spawnReason, entityData, entityTag);
+		}
 	}
 	
 	@Nullable
@@ -333,12 +336,7 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucket
 				this.nudifaeEntity.getNavigation().startMovingTo(this.tempter, this.speed);
 			}
 		}
-		
-		public void reset() {
-			this.tempter = null;
-			this.nudifaeEntity.getNavigation().recalculatePath();
-		}
-		
+
 		private boolean isTemptedBy(ItemStack item) {
 			return this.temptItems.contains(Block.getBlockFromItem(item.getItem()));
 		}

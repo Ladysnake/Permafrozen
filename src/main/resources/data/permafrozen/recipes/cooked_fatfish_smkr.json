@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+	"item": "permafrozen:fatfish"
+  },
+  "result": "permafrozen:cooked_fatfish",
+  "experience": 0.35,
+  "cookingtime": 400
+}

@@ -32,6 +32,7 @@ public class PermafrozenItems {
 	public static final Item LUNAR_KOI = create("lunar_koi", new Item((new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP).food(FoodComponents.SALMON)));
 	public static final Item FATFISH_BUCKET = create("fatfish_bucket", new EntityBucketItem(PermafrozenEntities.FATFISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
 	public static final Item FATFISH = create("fatfish", new Item((new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP).food(FoodComponents.COD)));
+	public static final Item COOKED_FATFISH = create("cooked_fatfish", new Item((new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP).food(FoodComponents.COOKED_COD)));
 	public static final Item FIR_PINECONE = create("fir_cone", new Item(new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
 	public static final Item FIR_DOOR_ITEM = create("fir_door", new TallBlockItem(PermafrozenBlocks.FIR_DOOR, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
 	public static final Item FIR_SIGN_ITEM = create("fir_sign", new SignItem(new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP).maxCount(16), PermafrozenBlocks.FIR_SIGN, PermafrozenBlocks.FIR_WALL_SIGN));

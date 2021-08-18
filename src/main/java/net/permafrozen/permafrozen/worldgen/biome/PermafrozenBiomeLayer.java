@@ -27,10 +27,10 @@ public class PermafrozenBiomeLayer implements InitLayer {
 		if ( perlinNoise > 0.30 ) {
 			return this.dynamicRegistry.getRawId(this.dynamicRegistry.get(PermafrozenBiomeSource.BOREAS));
 		}
-		else if ( perlinNoise > 0.20 && perlinNoise < 0.30 ) {
+		else if (perlinNoise > 0.20 && perlinNoise < 0.30 ) {
 			return this.dynamicRegistry.getRawId(this.dynamicRegistry.get(PermafrozenBiomeSource.BOREAS));
 		}
-		else if  (perlinNoise > 0.10 && perlinNoise < 0.20 ) {
+		else if (perlinNoise > 0.10 && perlinNoise < 0.20 ) {
 			return this.dynamicRegistry.getRawId(this.dynamicRegistry.get(PermafrozenBiomeSource.GLACIAS_SHORES));
 		}
 		else {

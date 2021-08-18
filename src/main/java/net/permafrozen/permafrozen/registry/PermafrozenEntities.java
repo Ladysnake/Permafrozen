@@ -7,6 +7,8 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.Heightmap;
+import net.minecraft.world.biome.SpawnSettings;
 import net.permafrozen.permafrozen.Permafrozen;
 import net.permafrozen.permafrozen.entity.living.*;
 
