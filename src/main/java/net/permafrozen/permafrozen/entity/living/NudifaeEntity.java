@@ -2,7 +2,6 @@ package net.permafrozen.permafrozen.entity.living;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.control.AquaticLookControl;
 import net.minecraft.entity.ai.control.AquaticMoveControl;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.*;
@@ -58,10 +57,8 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucket
 	
 	public NudifaeEntity(EntityType<? extends TameableEntity> type, World world) {
 		super(type, world);
-		this.moveControl = new AquaticMoveControl(this, 85, 20, 0.1F, 0.5F, false);		this.setPathfindingPenalty(PathNodeType.WATER, 0.0F);
+		this.moveControl = new AquaticMoveControl(this, 0, 0, 0.685f, 0.285f, true);
 		this.setPathfindingPenalty(PathNodeType.WATER, 0.0F);
-		this.experiencePoints = 0;
-		this.lookControl = new AquaticLookControl(this, 45);
 	}
 
 	public ActionResult interactMob(PlayerEntity player, Hand hand) {
@@ -155,7 +152,6 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucket
 		this.goalSelector.add(4, new WanderAroundFarGoal(this, 1.0D));
 		this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
 		this.goalSelector.add(0, new SwimAroundGoal(this, 1.0D, 10));
-		this.goalSelector.add(8, new ChaseBoatGoal(this));
 	}
 	
 	@Override
@@ -270,7 +266,7 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucket
 
 	@Override
 	public ItemStack getBucketItem() {
-		return PermafrozenItems.NUDIFAE_BUCKET.getDefaultStack();
+		return new ItemStack(PermafrozenItems.NUDIFAE_BUCKET);
 	}
 
 	@Override
@@ -282,16 +278,16 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucket
 		Navigation(NudifaeEntity nudifaeEntity, World world) {
 			super(nudifaeEntity, world);
 		}
-		
+
 		protected boolean isAtValidPosition() {
 			return true;
 		}
-		
+
 		protected PathNodeNavigator createPathNodeNavigator(int range) {
 			this.nodeMaker = new AmphibiousPathNodeMaker(false);
 			return new PathNodeNavigator(this.nodeMaker, range);
 		}
-		
+
 		public boolean isValidPosition(BlockPos pos) {
 			return !this.world.getBlockState(pos.down()).isAir();
 		}

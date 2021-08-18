@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
 import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.client.render.RenderLayer;
@@ -21,6 +22,7 @@ import net.permafrozen.permafrozen.client.particle.aurora.AuroraParticle;
 import net.permafrozen.permafrozen.client.particle.aurora.AuroraParticleEffect;
 import net.permafrozen.permafrozen.registry.PermafrozenBlocks;
 import net.permafrozen.permafrozen.registry.PermafrozenEntities;
+import net.permafrozen.permafrozen.registry.PermafrozenItems;
 
 public class PermafrozenClient implements ClientModInitializer {
 	public static ParticleType<AuroraParticleEffect> AURORA_SMOL;
@@ -36,6 +38,13 @@ public class PermafrozenClient implements ClientModInitializer {
 		SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, PermafrozenBlocks.FIR_SIGN.getTexture()));
 		initColors();
 		initParticles();
+		FabricModelPredicateProviderRegistry.register(PermafrozenItems.NUDIFAE_BUCKET, new Identifier("type"), (itemStack, clientWorld, livingEntity, q) -> {
+			if (livingEntity == null) {
+				return 0;
+			}
+			assert itemStack.getNbt() != null;
+			return itemStack.getNbt().getInt("type");
+		});
 	}
 
 	private void initParticles() {

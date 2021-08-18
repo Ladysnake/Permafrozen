@@ -197,8 +197,13 @@ public class AuroraFaeEntity extends TameableEntity implements Flutterer, IAnima
     @Override
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityTag) {
         WeightedList<Integer> possibleRarityTypes = Util.make(new WeightedList<>(), list -> list.add(1, 1).add(2, 1));
-        dataTracker.set(TYPE, possibleRarityTypes.shuffle().stream().findFirst().orElse(0));
-        return super.initialize(world, difficulty, spawnReason, entityData, entityTag);
+        if (spawnReason == SpawnReason.BUCKET) {
+            return entityData;
+        } else {
+            dataTracker.set(TYPE, possibleRarityTypes.shuffle().stream().findFirst().orElse(0));
+
+            return super.initialize(world, difficulty, spawnReason, entityData, entityTag);
+        }
     }
     public static int getTypes() {
         return 3;
