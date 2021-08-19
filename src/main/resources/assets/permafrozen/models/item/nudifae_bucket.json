@@ -6,37 +6,37 @@
   "overrides": [
     {
       "predicate": {
-        "type": 0
+        "permafrozen:type": 0
       },
       "model": "permafrozen:item/nudifae_bucket_0"
     },
     {
       "predicate": {
-        "type": 1
+        "permafrozen:type": 1
       },
       "model": "permafrozen:item/nudifae_bucket_1"
     },
     {
       "predicate": {
-        "type": 2
+        "permafrozen:type": 2
       },
       "model": "permafrozen:item/nudifae_bucket_2"
     },
     {
       "predicate": {
-        "type": 3
+        "permafrozen:type": 3
       },
       "model": "permafrozen:item/nudifae_bucket_3"
     },
     {
       "predicate": {
-        "type": 4
+        "permafrozen:type": 4
       },
       "model": "permafrozen:item/nudifae_bucket_4"
     },
     {
       "predicate": {
-        "type": 5
+        "permafrozen:type": 5
       },
       "model": "permafrozen:item/nudifae_bucket_5"
     }

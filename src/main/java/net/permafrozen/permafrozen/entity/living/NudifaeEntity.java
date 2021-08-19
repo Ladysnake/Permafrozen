@@ -1,8 +1,10 @@
 package net.permafrozen.permafrozen.entity.living;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.control.AquaticMoveControl;
+import net.minecraft.entity.ai.control.MoveControl;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -12,6 +14,7 @@ import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.passive.AxolotlEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -27,6 +30,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.Util;
 import net.minecraft.util.collection.WeightedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
@@ -57,7 +61,7 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucket
 	
 	public NudifaeEntity(EntityType<? extends TameableEntity> type, World world) {
 		super(type, world);
-		this.moveControl = new AquaticMoveControl(this, 0, 0, 0.685f, 0.285f, true);
+		this.moveControl = new NudifaeMoveControl(this);
 		this.setPathfindingPenalty(PathNodeType.WATER, 0.0F);
 	}
 
@@ -147,8 +151,8 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucket
 		this.goalSelector.add(0, new NudifaeEntity.PlayerTemptGoal(this, 1.0D));
 		this.goalSelector.add(0, new MoveIntoWaterGoal(this));
 		this.goalSelector.add(1, new LookAroundGoal(this));
-		this.goalSelector.add(1, new FollowOwnerGoal(this, 1.0D, 0.1F, 10.0F, true));
 		this.goalSelector.add(2, new AnimalMateGoal(this, 0.8D));
+		this.goalSelector.add(3, new FollowOwnerGoal((TameableEntity)this, 1.0, 0.1f, 16f, false));
 		this.goalSelector.add(4, new WanderAroundFarGoal(this, 1.0D));
 		this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
 		this.goalSelector.add(0, new SwimAroundGoal(this, 1.0D, 10));
@@ -184,13 +188,12 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucket
 	@Override
 	public void registerControllers(AnimationData animationData) {
 		animationData.addAnimationController(new AnimationController<>(this, "controller", 2, animationEvent -> {
-			boolean isInWater = isInsideWaterOrBubbleColumn();
-			boolean isMoving = isInWater ? !(handSwingProgress > -0.02) || !(handSwingProgress < 0.02) : !(handSwingProgress > -0.10F) || !(handSwingProgress < 0.10F);
-			AnimationBuilder anime = isInWater ? FLOAT : IDLE;
+			boolean isMoving = isInsideWaterOrBubbleColumn() ? !(handSwingProgress > -0.02) || !(handSwingProgress < 0.02) : !(handSwingProgress > -0.10F) || !(handSwingProgress < 0.10F);
+			AnimationBuilder anime = isInsideWaterOrBubbleColumn() ? FLOAT : IDLE;
 			if (isMoving) {
-				anime = isInWater ? SWIM : WALK;
+				anime = isInsideWaterOrBubbleColumn() ? SWIM : WALK;
 			}
-			if(isSitting()) {
+			if (isSitting()) {
 				anime = SLEEP;
 			}
 			animationEvent.getController().setAnimation(anime);
@@ -228,7 +231,7 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucket
 				this.setVelocity(this.getVelocity().add(0.0D, -0.005D, 0.0D));
 			}
 		}
-		else {
+		else  {
 			super.travel(movementInput);
 		}
 	}
@@ -284,11 +287,19 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucket
 		}
 
 		protected PathNodeNavigator createPathNodeNavigator(int range) {
-			this.nodeMaker = new AmphibiousPathNodeMaker(false);
+			this.nodeMaker = new AmphibiousPathNodeMaker(true);
+			this.nodeMaker.setCanOpenDoors(false);
+			this.nodeMaker.setCanEnterOpenDoors(false);
 			return new PathNodeNavigator(this.nodeMaker, range);
 		}
 
 		public boolean isValidPosition(BlockPos pos) {
+			if (this.entity instanceof NudifaeEntity) {
+				NudifaeEntity nudifae = (NudifaeEntity)this.entity;
+				return this.world.getBlockState(pos).isOf(Blocks.WATER);
+
+			}
+
 			return !this.world.getBlockState(pos.down()).isAir();
 		}
 	}
@@ -335,6 +346,49 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucket
 
 		private boolean isTemptedBy(ItemStack item) {
 			return this.temptItems.contains(Block.getBlockFromItem(item.getItem()));
+		}
+	}
+
+	static class NudifaeMoveControl extends MoveControl {
+		private final NudifaeEntity nudifae;
+
+		NudifaeMoveControl(NudifaeEntity nudifae) {
+			super(nudifae);
+			this.nudifae = nudifae;
+		}
+
+		private void updateVelocity() {
+			if (this.nudifae.isTouchingWater()) {
+				this.nudifae.setVelocity(this.nudifae.getVelocity().add(0.0D, 0.005D, 0.0D));
+				this.nudifae.setMovementSpeed(Math.max(this.nudifae.getMovementSpeed() / 2.0F, 0.08F));
+
+
+				if (this.nudifae.isBaby()) {
+					this.nudifae.setMovementSpeed(Math.max(this.nudifae.getMovementSpeed() / 3.0F, 0.06F));
+				}
+			} else if (this.nudifae.onGround) {
+				this.nudifae.setMovementSpeed(Math.max(this.nudifae.getMovementSpeed() / 2.0F, 0.06F));
+			}
+
+		}
+
+		public void tick() {
+			this.updateVelocity();
+			if (this.state == MoveControl.State.MOVE_TO && !this.nudifae.getNavigation().isIdle()) {
+				double d = this.targetX - this.nudifae.getX();
+				double e = this.targetY - this.nudifae.getY();
+				double f = this.targetZ - this.nudifae.getZ();
+				double g = Math.sqrt(d * d + e * e + f * f);
+				e /= g;
+				float h = (float)(MathHelper.atan2(f, d) * 57.2957763671875D) - 90.0F;
+				this.nudifae.setYaw(this.wrapDegrees(this.nudifae.getYaw(), h, 90.0F));
+				this.nudifae.bodyYaw = this.nudifae.getYaw();
+				float i = (float)(this.speed * this.nudifae.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED));
+				this.nudifae.setMovementSpeed(MathHelper.lerp(0.125F, this.nudifae.getMovementSpeed(), i));
+				this.nudifae.setVelocity(this.nudifae.getVelocity().add(0.0D, (double)this.nudifae.getMovementSpeed() * e * 0.1D, 0.0D));
+			} else {
+				this.nudifae.setMovementSpeed(0.0F);
+			}
 		}
 	}
 }

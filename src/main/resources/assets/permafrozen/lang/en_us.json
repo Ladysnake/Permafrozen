@@ -96,8 +96,10 @@
   "block.permafrozen.mossy_cobbled_shiverslate_stairs": "Mossy Cobbled Shiverslate Stairs",
   "block.permafrozen.mossy_cobbled_shiverslate_slab": "Mossy Cobbled Shiverslate Slab",
   "block.permafrozen.mossy_cobbled_shiverslate_wall": "Mossy Cobbled Shiverslate Wall",
-  "block.permafrozen.aurora_coral_block": "Aurora Coral Block",
-  "block.permafrozen.dead_aurora_coral_block": "Dead Aurora Coral Block",
+  "block.permafrozen.prismatic_coral_block": "Prismatic Coral Block",
+  "block.permafrozen.dead_prismatic_coral_block": "Dead Prismatic Coral Block",
+  "block.permafrozen.prismatic_coral": "Prismatic Coral",
+  "block.permafrozen.dead_prismatic_coral": "Dead Prismatic Coral",
 
   "entity.permafrozen.fir_boat": "Fir Boat",
   "entity.permafrozen.nudifae": "Nudifae",
@@ -106,7 +108,7 @@
   "entity.permafrozen.fatfish": "Fatfish",
 
   "permafrozen.subtitles.entity.aurora_fae.ambient": "Aurora Fae chirps",
-  "permafro,zen.subtitles.entity.aurora_fae.hurt": "Aurora Fae hurts",
+  "permafrozen.subtitles.entity.aurora_fae.hurt": "Aurora Fae is hurt",
   "permafrozen.subtitles.entity.aurora_fae.death": "Aurora Fae dies",
   "permafrozen.subtitles.entity.puffboo.ambient": "Puffboo chirps",
   "permafrozen.subtitles.entity.puffboo.hurt": "Puffboo cries in alarm",

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "permafrozen:block/aurora_coral_block"
+    "all": "permafrozen:block/prismatic_coral_block"
   }
 }

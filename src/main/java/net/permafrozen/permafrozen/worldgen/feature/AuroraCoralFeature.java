@@ -27,7 +27,7 @@ public class AuroraCoralFeature extends Feature<DefaultFeatureConfig> {
         Random random = context.getRandom();
         StructureWorldAccess structureWorldAccess = context.getWorld();
         BlockPos blockPos = context.getOrigin();
-        BlockState blockState = PermafrozenBlocks.AURORA_CORAL_BLOCK.getDefaultState();
+        BlockState blockState = PermafrozenBlocks.PRISMATIC_CORAL_BLOCK.getDefaultState();
         return this.generateCoral(structureWorldAccess, random, blockPos, blockState);
     }
 
@@ -54,7 +54,7 @@ public class AuroraCoralFeature extends Feature<DefaultFeatureConfig> {
     protected boolean generateCoralPiece(WorldAccess world, Random random, BlockPos pos, BlockState state) {
         BlockPos blockPos = pos.up();
         BlockState blockState = world.getBlockState(pos);
-        if ((blockState.isOf(Blocks.WATER) || blockState.isOf(PermafrozenBlocks.AURORA_CORAL_BLOCK)) && world.getBlockState(blockPos).isOf(Blocks.WATER)) {
+        if ((blockState.isOf(Blocks.WATER) || blockState.isOf(PermafrozenBlocks.PRISMATIC_CORAL_BLOCK)) && world.getBlockState(blockPos).isOf(Blocks.WATER)) {
             world.setBlockState(pos, state, 3);
             if (random.nextFloat() < 0.25F) {
               //  world.setBlockState(blockPos, ((Block)BlockTags.CORALS.getRandom(random)).getDefaultState(), 2);
