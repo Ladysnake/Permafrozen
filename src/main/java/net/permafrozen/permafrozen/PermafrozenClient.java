@@ -39,7 +39,7 @@ public class PermafrozenClient implements ClientModInitializer {
 		initColors();
 		initParticles();
 
-		FabricModelPredicateProviderRegistry.register(new Identifier(Permafrozen.MOD_ID + ":type"), (itemStack, world, livingEntity, seed) -> itemStack.getOrCreateSubNbt(Permafrozen.MOD_ID).getInt("type"));
+		FabricModelPredicateProviderRegistry.register(PermafrozenItems.NUDIFAE_BUCKET, new Identifier(Permafrozen.MOD_ID + ":type"), (itemStack, world, livingEntity, seed) -> itemStack.getOrCreateNbt().getInt("type"));
 	}
 
 	private void initParticles() {

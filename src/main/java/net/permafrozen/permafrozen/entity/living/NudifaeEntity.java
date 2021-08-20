@@ -3,7 +3,6 @@ package net.permafrozen.permafrozen.entity.living;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.control.AquaticMoveControl;
 import net.minecraft.entity.ai.control.MoveControl;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.*;
@@ -14,7 +13,6 @@ import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.entity.passive.AxolotlEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -35,6 +33,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
+import net.permafrozen.permafrozen.Permafrozen;
 import net.permafrozen.permafrozen.registry.PermafrozenEntities;
 import net.permafrozen.permafrozen.registry.PermafrozenItems;
 import net.permafrozen.permafrozen.registry.PermafrozenSoundEvents;
@@ -59,8 +58,8 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucket
 	public static final AnimationBuilder WALK = new AnimationBuilder().addAnimation("walk");
 	public static final AnimationBuilder SWIM = new AnimationBuilder().addAnimation("swim");
 	
-	public NudifaeEntity(EntityType<? extends TameableEntity> type, World world) {
-		super(type, world);
+	public NudifaeEntity(EntityType<? extends TameableEntity> entityType, World world) {
+		super(entityType, world);
 		this.moveControl = new NudifaeMoveControl(this);
 		this.setPathfindingPenalty(PathNodeType.WATER, 0.0F);
 	}
@@ -93,7 +92,7 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucket
 
 			return ActionResult.success(this.world.isClient);
 		} else {
-			return super.interactMob(player, hand);
+			return (ActionResult)Bucketable.tryBucket(player, hand, this).orElse(super.interactMob(player, hand));
 		}
 	}
 
@@ -152,7 +151,6 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucket
 		this.goalSelector.add(0, new MoveIntoWaterGoal(this));
 		this.goalSelector.add(1, new LookAroundGoal(this));
 		this.goalSelector.add(2, new AnimalMateGoal(this, 0.8D));
-		this.goalSelector.add(3, new FollowOwnerGoal((TameableEntity)this, 1.0, 0.1f, 16f, false));
 		this.goalSelector.add(4, new WanderAroundFarGoal(this, 1.0D));
 		this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
 		this.goalSelector.add(0, new SwimAroundGoal(this, 1.0D, 10));
@@ -256,6 +254,7 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucket
 		NbtCompound nbtCompound = stack.getOrCreateNbt();
 		nbtCompound.putInt("type", this.dataTracker.get(TYPE));
 		nbtCompound.putInt("Age", this.getBreedingAge());
+		stack.getOrCreateSubNbt(Permafrozen.MOD_ID).putInt("type", this.dataTracker.get(TYPE));
 	}
 
 	@Override
