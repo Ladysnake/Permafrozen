@@ -1,10 +1,7 @@
 package net.permafrozen.permafrozen.entity.living;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.EntityData;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.Flutterer;
-import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.control.FlightMoveControl;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
@@ -28,6 +25,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.Util;
 import net.minecraft.util.collection.WeightedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
@@ -43,11 +41,13 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
+import java.util.EnumSet;
 import java.util.UUID;
 
 public class AuroraFaeEntity extends TameableEntity implements Flutterer, IAnimatable {
     public static final TrackedData<Integer> TYPE = DataTracker.registerData(NudifaeEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private final AnimationFactory factory = new AnimationFactory(this);
+    protected static final TrackedData<Byte> AURORA_FAE_FLAGS;
 
     public static final AnimationBuilder IDLE = new AnimationBuilder().addAnimation("idle");
     public static final AnimationBuilder SIT = new AnimationBuilder().addAnimation("sit");
@@ -60,13 +60,14 @@ public class AuroraFaeEntity extends TameableEntity implements Flutterer, IAnima
     }
 
     public static DefaultAttributeContainer.Builder createFaeAttributes() {
-        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D).add(EntityAttributes.GENERIC_FLYING_SPEED, 1.2D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.25D).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 12);
+        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D).add(EntityAttributes.GENERIC_FLYING_SPEED, 2.6).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 1.0D).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 16);
     }
 
     @Override
     protected void initDataTracker() {
         super.initDataTracker();
         this.dataTracker.startTracking(TYPE, 0);
+        this.dataTracker.startTracking(AURORA_FAE_FLAGS, (byte)0);
     }
 
     @Override
@@ -149,17 +150,42 @@ public class AuroraFaeEntity extends TameableEntity implements Flutterer, IAnima
         return PermafrozenSoundEvents.ENTITY_AURORA_FAE_HURT;
     }
 
+    private boolean areFlagsSet(int mask) {
+        int i = (Byte)this.dataTracker.get(AURORA_FAE_FLAGS);
+        return (i & mask) != 0;
+    }
+
+    private void setAuroraFaeFlag(int mask, boolean value) {
+        int i = (Byte)this.dataTracker.get(AURORA_FAE_FLAGS);
+        if (value) {
+            i = i | mask;
+        } else {
+            i = i & ~mask;
+        }
+
+        this.dataTracker.set(AURORA_FAE_FLAGS, (byte)(i & 255));
+    }
+
+    public boolean isCharging() {
+        return this.areFlagsSet(1);
+    }
+
+    public void setCharging(boolean charging) {
+        this.setAuroraFaeFlag(1, charging);
+    }
+
 
     @Override
     protected void initGoals() {
         this.goalSelector.add(0, new SwimGoal(this));
         this.goalSelector.add(1, new SitGoal(this));
-        this.goalSelector.add(2, new MeleeAttackGoal(this, 1, true));
-        this.goalSelector.add(3, new FollowOwnerGoal(this, 1, 10, 2, false));
+        this.goalSelector.add(2, new MeleeAttackGoal(this, 2, true));
+        this.goalSelector.add(3, new FollowOwnerGoal(this, 2, 10, 2, false));
         this.goalSelector.add(4, new AnimalMateGoal(this, 1));
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 1));
         this.goalSelector.add(2, new FlyOntoTreeGoal(this, 1.0D));
         this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8));
+        this.goalSelector.add(2, new AuroraFaeEntity.ChargeTargetGoal());
 
         this.targetSelector.add(0, new TrackOwnerAttackerGoal(this));
         this.targetSelector.add(1, new AttackWithOwnerGoal(this));
@@ -229,4 +255,52 @@ public class AuroraFaeEntity extends TameableEntity implements Flutterer, IAnima
     public AnimationFactory getFactory() {
         return factory;
     }
+
+    private class ChargeTargetGoal extends Goal {
+        public ChargeTargetGoal() {
+            this.setControls(EnumSet.of(Control.MOVE));
+        }
+
+        public boolean canStart() {
+            if (AuroraFaeEntity.this.getTarget() != null && !AuroraFaeEntity.this.getMoveControl().isMoving() && AuroraFaeEntity.this.random.nextInt(7) == 0) {
+                return AuroraFaeEntity.this.squaredDistanceTo(AuroraFaeEntity.this.getTarget()) > 4.0D;
+            } else {
+                return false;
+            }
+        }
+
+        public boolean shouldContinue() {
+            return AuroraFaeEntity.this.getMoveControl().isMoving() && AuroraFaeEntity.this.isCharging() && AuroraFaeEntity.this.getTarget() != null && AuroraFaeEntity.this.getTarget().isAlive();
+        }
+
+        public void start() {
+            LivingEntity livingEntity = AuroraFaeEntity.this.getTarget();
+            Vec3d vec3d = livingEntity.getEyePos();
+            AuroraFaeEntity.this.moveControl.moveTo(vec3d.x, vec3d.y, vec3d.z, 1.0D);
+            AuroraFaeEntity.this.setCharging(true);
+        }
+
+        public void stop() {
+            AuroraFaeEntity.this.setCharging(false);
+        }
+
+        public void tick() {
+            LivingEntity livingEntity = AuroraFaeEntity.this.getTarget();
+            if (AuroraFaeEntity.this.getBoundingBox().intersects(livingEntity.getBoundingBox())) {
+                AuroraFaeEntity.this.tryAttack(livingEntity);
+                AuroraFaeEntity.this.setCharging(false);
+            } else {
+                double d = AuroraFaeEntity.this.squaredDistanceTo(livingEntity);
+                if (d < 9.0D) {
+                    Vec3d vec3d = livingEntity.getEyePos();
+                    AuroraFaeEntity.this.moveControl.moveTo(vec3d.x, vec3d.y, vec3d.z, 1.0D);
+                }
+            }
+
+        }
+    }
+    static {
+        AURORA_FAE_FLAGS = DataTracker.registerData(AuroraFaeEntity.class, TrackedDataHandlerRegistry.BYTE);
+    }
+
 }

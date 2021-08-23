@@ -43,7 +43,7 @@ public class PuffbooEntity extends TameableEntity implements IAnimatable, Flutte
     private static final TrackedData<String> TYPE = DataTracker.registerData(PuffbooEntity.class, TrackedDataHandlerRegistry.STRING);
     private final AnimationFactory factory = new AnimationFactory(this);
 
-    public static final AnimationBuilder SIT = new AnimationBuilder().addAnimation("sit");
+    public static final AnimationBuilder SIT = new AnimationBuilder().addAnimation("idle");
     public static final AnimationBuilder WALK = new AnimationBuilder().addAnimation("walk");
     public static final AnimationBuilder FLY = new AnimationBuilder().addAnimation("fly");
 
@@ -190,7 +190,7 @@ public class PuffbooEntity extends TameableEntity implements IAnimatable, Flutte
     public void registerControllers(AnimationData animationData) {
         animationData.addAnimationController(new AnimationController<>(this, "controller", 2, animationEvent -> {
             boolean isMoving = isInAir() ? !(handSwingProgress > -0.02) || !(handSwingProgress < 0.02) : !(handSwingProgress > -0.10F) || !(handSwingProgress < 0.10F);
-            AnimationBuilder anime = isInAir() ? FLY : WALK;
+            AnimationBuilder anime = isInAir() ? FLY : SIT;
             if (isMoving) {
                 anime = isInAir() ? FLY : WALK;
             }

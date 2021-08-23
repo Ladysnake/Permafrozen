@@ -15,6 +15,8 @@ import net.minecraft.world.explosion.Explosion;
 
 import net.permafrozen.permafrozen.client.particle.aurora.AuroraParticleEffect;
 
+import java.util.Random;
+
 public class AuroraBlasterBlock extends FacingBlock {
     private static final BooleanProperty POWERED = Properties.POWERED;
     public AuroraBlasterBlock(Settings settings) {
@@ -26,9 +28,9 @@ public class AuroraBlasterBlock extends FacingBlock {
         if (!world.isClient) {
             this.tryFire(world, pos, state);
         }
-        if (world.isClient) {
-            this.tryFireClient(world, pos, state);
-        }
+
+        this.tryFireClient(world, pos, state);
+
 
     }
 
@@ -40,9 +42,9 @@ public class AuroraBlasterBlock extends FacingBlock {
         if (!world.isClient) {
             this.tryFire(world, pos, state);
         }
-        if (world.isClient) {
-            this.tryFireClient(world, pos, state);
-        }
+
+        this.tryFireClient(world, pos, state);
+
 
     }
 
@@ -51,12 +53,13 @@ public class AuroraBlasterBlock extends FacingBlock {
             if (!world.isClient && world.getBlockEntity(pos) == null) {
                 this.tryFire(world, pos, state);
             }
-            if (world.isClient) {
-                this.tryFireClient(world, pos, state);
-            }
+
+            this.tryFireClient(world, pos, state);
+
 
         }
     }
+
 
     private void tryFire(World world, BlockPos pos, BlockState state) {
         if (world.isReceivingRedstonePower(pos)) {
@@ -67,24 +70,33 @@ public class AuroraBlasterBlock extends FacingBlock {
         }
     }
     private void tryFireClient(World world, BlockPos pos, BlockState state) {
-        if (world.isReceivingRedstonePower(pos) && world.isClient()) {
-            switch((Direction)state.get(FACING)) {
+        if (state.get(POWERED) && world.isClient()) {
+            switch(state.get(FACING)) {
                 case DOWN:
-
+                    for (int i = 0; i < (96); i++) {
+                        world.addParticle(new AuroraParticleEffect(0.0f, 1.0f, 0.1f, 0.01f, -0.09f, 0.09f), pos.getX() - 0.5, pos.getY() - i, pos.getZ() + 0.5, 0, 1, 0);
+                    }
                 case UP:
                 default:
-                    world.addParticle(new AuroraParticleEffect(0.0f, 1.0f, 0.1f, 0.01f, -0.09f, 0.09f), pos.getX(), pos.getY() + 0.875, pos.getZ() -0.5, 0.1, 0, 0);
-                    world.addParticle(new AuroraParticleEffect(0.0f, 1.0f, 0.1f, 0.01f, -0.09f, 0.09f), pos.getX() - 1, pos.getY() + 0.875, pos.getZ() -0.5, -0.1, 0, 0);
-                    world.addParticle(new AuroraParticleEffect(0.0f, 1.0f, 0.1f, 0.01f, -0.09f, 0.09f), pos.getX() - 0.5, pos.getY() + 0.875, pos.getZ(), 0, 0, 0.1);
-                    world.addParticle(new AuroraParticleEffect(0.0f, 1.0f, 0.1f, 0.01f, -0.09f, 0.09f), pos.getX() - 0.5, pos.getY() + 0.875, pos.getZ() - 1, 0, 0, -0.1);
+                    for (int i = 0; i < (96); i++) {
+                        world.addParticle(new AuroraParticleEffect(0.0f, 1.0f, 0.1f, 0.01f, -0.09f, 0.09f), pos.getX() - 0.5, pos.getY() + i, pos.getZ() + 0.5, 0, 1, 0);
+                    }
                 case NORTH:
-
+                    for (int i = 0; i < (96); i++) {
+                        world.addParticle(new AuroraParticleEffect(0.0f, 1.0f, 0.1f, 0.01f, -0.09f, 0.09f), pos.getX() - 0.5, pos.getY() + 0.5, pos.getZ() - i, 0, 1, 0);
+                    }
                 case SOUTH:
-
+                    for (int i = 0; i < (96); i++) {
+                        world.addParticle(new AuroraParticleEffect(0.0f, 1.0f, 0.1f, 0.01f, -0.09f, 0.09f), pos.getX() - 0.5, pos.getY() + 0.5, pos.getZ() + i, 0, 1, 0);
+                    }
                 case WEST:
-
+                    for (int i = 0; i < (96); i++) {
+                        world.addParticle(new AuroraParticleEffect(0.0f, 1.0f, 0.1f, 0.01f, -0.09f, 0.09f), pos.getX() - i, pos.getY() + 0.5, pos.getZ() + 0.5, 0, 1, 0);
+                    }
                 case EAST:
-
+                    for (int i = 0; i < (96); i++) {
+                        world.addParticle(new AuroraParticleEffect(0.0f, 1.0f, 0.1f, 0.01f, -0.09f, 0.09f), pos.getX() + i, pos.getY() + 0.5, pos.getZ() + 0.5, 0, 1, 0);
+                    }
             }
         }
     }
@@ -104,7 +116,7 @@ public class AuroraBlasterBlock extends FacingBlock {
                 pos2 = pos2.offset(direction);
                 BlockState state = world.getBlockState(pos2);
                 if (!(state.getBlock() instanceof AirBlock) && !(state.getBlock() instanceof FluidBlock)) {
-                    world.createExplosion(null, pos2.getX(), pos2.getY(), pos2.getZ(), 4, Explosion.DestructionType.BREAK);
+                    world.createExplosion(null, pos2.getX() + 0.5, pos2.getY() + 0.5, pos2.getZ() + 0.5, 4, Explosion.DestructionType.BREAK);
                     boom = false;
                 }
             }
