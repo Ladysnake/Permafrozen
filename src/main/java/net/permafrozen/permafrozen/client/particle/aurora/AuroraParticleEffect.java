@@ -16,18 +16,18 @@ import java.util.Locale;
 
 public class AuroraParticleEffect implements ParticleEffect {
     public static final Codec<AuroraParticleEffect> CODEC = RecordCodecBuilder.create((instance) -> {
-        return instance.group(Codec.FLOAT.fieldOf("r").forGetter((wispTrailParticleEffect) -> {
-            return wispTrailParticleEffect.red;
-        }), Codec.FLOAT.fieldOf("g").forGetter((wispTrailParticleEffect) -> {
-            return wispTrailParticleEffect.green;
-        }), Codec.FLOAT.fieldOf("b").forGetter((wispTrailParticleEffect) -> {
-            return wispTrailParticleEffect.blue;
-        }), Codec.FLOAT.fieldOf("re").forGetter((wispTrailParticleEffect) -> {
-            return wispTrailParticleEffect.redEvolution;
-        }), Codec.FLOAT.fieldOf("ge").forGetter((wispTrailParticleEffect) -> {
-            return wispTrailParticleEffect.greenEvolution;
-        }), Codec.FLOAT.fieldOf("be").forGetter((wispTrailParticleEffect) -> {
-            return wispTrailParticleEffect.blueEvolution;
+        return instance.group(Codec.FLOAT.fieldOf("r").forGetter((auroraParticleEffect) -> {
+            return auroraParticleEffect.red;
+        }), Codec.FLOAT.fieldOf("g").forGetter((auroraParticleEffect) -> {
+            return auroraParticleEffect.green;
+        }), Codec.FLOAT.fieldOf("b").forGetter((auroraParticleEffect) -> {
+            return auroraParticleEffect.blue;
+        }), Codec.FLOAT.fieldOf("re").forGetter((auroraParticleEffect) -> {
+            return auroraParticleEffect.redEvolution;
+        }), Codec.FLOAT.fieldOf("ge").forGetter((auroraParticleEffect) -> {
+            return auroraParticleEffect.greenEvolution;
+        }), Codec.FLOAT.fieldOf("be").forGetter((auroraParticleEffect) -> {
+            return auroraParticleEffect.blueEvolution;
         })).apply(instance, AuroraParticleEffect::new);
     });
     public static final ParticleEffect.Factory<AuroraParticleEffect> PARAMETERS_FACTORY = new ParticleEffect.Factory<AuroraParticleEffect>() {

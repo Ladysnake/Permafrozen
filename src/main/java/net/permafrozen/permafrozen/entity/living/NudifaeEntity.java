@@ -61,6 +61,7 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucket
 	public NudifaeEntity(EntityType<? extends TameableEntity> entityType, World world) {
 		super(entityType, world);
 		this.moveControl = new NudifaeMoveControl(this);
+		this.stepHeight = 1.5f;
 		this.setPathfindingPenalty(PathNodeType.WATER, 0.0F);
 	}
 

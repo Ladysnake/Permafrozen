@@ -15,6 +15,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.permafrozen.permafrozen.Permafrozen;
+import net.permafrozen.permafrozen.block.AuroraBlasterBlock;
 import net.permafrozen.permafrozen.block.MossyPermafrostBlock;
 import net.permafrozen.permafrozen.block.PrismarineCrystalBlock;
 import net.permafrozen.permafrozen.block.PrismarineCrystalClusterBlock;
@@ -31,12 +32,12 @@ import static net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSetting
 public class PermafrozenBlocks {
 	private static final Map<Block, Identifier> BLOCKS = new LinkedHashMap<>();
 	private static final Map<Item, Identifier> ITEMS = new LinkedHashMap<>();
-
+//permaforst
 	public static final Block MOSSY_PERMAFROST = create("mossy_permafrost", new MossyPermafrostBlock(copyOf(Blocks.GRASS_BLOCK)), true);
 	public static final Block PERMAFROST = create("permafrost", new Block(copyOf(Blocks.DIRT)), true);
 	public static final Block COARSE_PERMAFROST = create("coarse_permafrost", new Block(copyOf(Blocks.COARSE_DIRT)), true);
 	public static final Block THAWING_PERMAFROST = create("thawing_permafrost", new Block(copyOf(Blocks.CLAY)), true);
-
+//wood
 	public static final Block STRIPPED_FIR_LOG = create("stripped_fir_log", new PillarBlock(copyOf(Blocks.OAK_LOG)), true);
 	public static final Block STRIPPED_FIR_WOOD = create("stripped_fir_wood", new PillarBlock(copyOf(STRIPPED_FIR_LOG)), true);
 	public static final Block FIR_LOG = create("fir_log", new StrippableLogBlock(() -> STRIPPED_FIR_LOG, MapColor.BROWN, copyOf(STRIPPED_FIR_LOG)), true);
@@ -56,7 +57,7 @@ public class PermafrozenBlocks {
 	private static final Identifier FIR_SIGN_TEXTURE = new Identifier(Permafrozen.MOD_ID, "entity/sign/fir");
 	public static final TerraformSignBlock FIR_SIGN = create("fir_sign", new TerraformSignBlock(FIR_SIGN_TEXTURE, copyOf(Blocks.OAK_SIGN)), false);
 	public static final Block FIR_WALL_SIGN = create("fir_wall_sign", new TerraformWallSignBlock(FIR_SIGN_TEXTURE, copyOf(Blocks.OAK_WALL_SIGN)), false);
-
+//snad
 	public static final Block SAPPHIRE_SAND = create("sapphire_sand", new GravelBlock(copyOf(Blocks.SAND)), true);
 	public static final Block SAPPHIRE_SANDSTONE = create("sapphire_sandstone", new Block(copyOf(Blocks.SANDSTONE)), true);
 	public static final Block CHISELED_SAPPHIRE_SANDSTONE = create("chiseled_sapphire_sandstone", new Block(copyOf(Blocks.CHISELED_SANDSTONE)), true);
@@ -68,7 +69,7 @@ public class PermafrozenBlocks {
 	public static final Block SMOOTH_SAPPHIRE_SANDSTONE = create("smooth_sapphire_sandstone", new Block(copyOf(Blocks.SMOOTH_SANDSTONE)), true);
 	public static final Block SMOOTH_SAPPHIRE_SANDSTONE_SLAB = create("smooth_sapphire_sandstone_slab", new SlabBlock(copyOf(Blocks.SMOOTH_SANDSTONE_SLAB)), true);
 	public static final Block SMOOTH_SAPPHIRE_SANDSTONE_STAIRS = create("smooth_sapphire_sandstone_stairs", new TerraformStairsBlock(SMOOTH_SAPPHIRE_SANDSTONE, copyOf(Blocks.SMOOTH_SANDSTONE_STAIRS)), true);
-
+//stone
 	public static final Block SHIVERSLATE = create("shiverslate", new Block(copyOf(Blocks.DEEPSLATE)), true);
 	public static final Block SHIVERSLATE_STAIRS = create("shiverslate_stairs", new TerraformStairsBlock(SHIVERSLATE, copyOf(Blocks.DEEPSLATE_BRICK_STAIRS)), true);
 	public static final Block SHIVERSLATE_SLAB = create("shiverslate_slab", new SlabBlock(copyOf(Blocks.DEEPSLATE_BRICK_SLAB)), true);
@@ -94,16 +95,18 @@ public class PermafrozenBlocks {
 	public static final Block MOSSY_SMOOTH_SHIVERSLATE_BRICK_STAIRS = create("mossy_smooth_shiverslate_brick_stairs", new TerraformStairsBlock(MOSSY_SMOOTH_SHIVERSLATE_BRICKS, copyOf(Blocks.DEEPSLATE_BRICK_STAIRS)), true);
 	public static final Block MOSSY_SMOOTH_SHIVERSLATE_BRICK_SLAB = create("mossy_smooth_shiverslate_brick_slab", new SlabBlock(copyOf(Blocks.DEEPSLATE_BRICK_SLAB)), true);
 	public static final Block MOSSY_SMOOTH_SHIVERSLATE_BRICK_WALL = create("mossy_smooth_shiverslate_brick_wall", new WallBlock(copyOf(Blocks.DEEPSLATE_BRICK_WALL)), true);
-
+//vegetation
     public static final Block SPECTRAL_CAP = create("spectral_cap", new PermafrozenPlantBlock(AbstractBlock.Settings.of(Material.PLANT, MapColor.LAPIS_BLUE).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).luminance((state) -> 11)), true);
 	public static final Block GLACIAL_KELP = create("glacial_kelp", new PermafrozenKelpPlantBlock(copyOf(Blocks.KELP_PLANT)), true);
-
+//crymstals
 	public static final Block PRISMARINE_CLUSTER = create("prismarine_cluster", new PrismarineCrystalClusterBlock(7, 3, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().breakByTool(FabricToolTags.PICKAXES).requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 12)), true);
 	public static final Block LARGE_PRISMARINE_BUD = create("large_prismarine_bud", new PrismarineCrystalClusterBlock(5, 3, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().breakByTool(FabricToolTags.PICKAXES).requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 9)), true);
 	public static final Block MEDIUM_PRISMARINE_BUD = create("medium_prismarine_bud", new PrismarineCrystalClusterBlock(4, 3, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().breakByTool(FabricToolTags.PICKAXES).requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 7)), true);
 	public static final Block SMALL_PRISMARINE_BUD = create("small_prismarine_bud", new PrismarineCrystalClusterBlock(3, 4, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().breakByTool(FabricToolTags.PICKAXES).requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 5)), true);
 	public static final Block BUDDING_PRISMARINE = create("budding_prismarine", new PrismarineCrystalBlock(AbstractBlock.Settings.of(Material.AMETHYST).ticksRandomly().strength(1.5F).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().luminance((blockState) -> 14)), true);
-
+//aurora tech
+	public static final Block AURORA_BLASTER = create("aurora_blaster", new AuroraBlasterBlock(copyOf(Blocks.OBSIDIAN)), true);
+//other shit
 	public static final Block DEAD_PRISMATIC_CORAL_BLOCK = create("dead_prismatic_coral_block", new PermafrozenDeadCoralBlock(AbstractBlock.Settings.of(Material.STONE)), true);
 	public static final Block PRISMATIC_CORAL_BLOCK = create("prismatic_coral_block", new CoralBlockBlock(DEAD_PRISMATIC_CORAL_BLOCK, AbstractBlock.Settings.of(Material.STONE, MapColor.PURPLE).requiresTool().strength(1.5F, 6.0F).sounds(BlockSoundGroup.CORAL).luminance((blockState) -> 8)), true);
 	public static final Block DEAD_PRISMATIC_CORAL = create("dead_prismatic_coral", new PermafrozenDeadCoral(AbstractBlock.Settings.of(Material.STONE)), true);

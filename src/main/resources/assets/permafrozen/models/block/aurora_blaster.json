@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "permafrozen:block/aurora_blaster_top_deactivated",
+    "bottom": "permafrozen:block/aurora_blaster_bottom",
+    "side": "permafrozen:block/aurora_blaster_side_deactivated"
+  }
+}

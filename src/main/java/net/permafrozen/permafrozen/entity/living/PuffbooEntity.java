@@ -44,6 +44,7 @@ public class PuffbooEntity extends TameableEntity implements IAnimatable, Flutte
     private final AnimationFactory factory = new AnimationFactory(this);
 
     public static final AnimationBuilder SIT = new AnimationBuilder().addAnimation("sit");
+    public static final AnimationBuilder WALK = new AnimationBuilder().addAnimation("walk");
     public static final AnimationBuilder FLY = new AnimationBuilder().addAnimation("fly");
 
     public PuffbooEntity(EntityType<? extends TameableEntity> entityType, World world) {
@@ -189,9 +190,9 @@ public class PuffbooEntity extends TameableEntity implements IAnimatable, Flutte
     public void registerControllers(AnimationData animationData) {
         animationData.addAnimationController(new AnimationController<>(this, "controller", 2, animationEvent -> {
             boolean isMoving = isInAir() ? !(handSwingProgress > -0.02) || !(handSwingProgress < 0.02) : !(handSwingProgress > -0.10F) || !(handSwingProgress < 0.10F);
-            AnimationBuilder anime = isInAir() ? FLY :SIT;
+            AnimationBuilder anime = isInAir() ? FLY : WALK;
             if (isMoving) {
-                anime = isInAir() ? FLY : SIT;
+                anime = isInAir() ? FLY : WALK;
             }
             if (isSitting()) {
                 anime = SIT;

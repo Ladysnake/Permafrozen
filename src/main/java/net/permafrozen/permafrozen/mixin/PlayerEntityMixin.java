@@ -29,9 +29,9 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         if (!this.world.isClient && !playerEntity.isCreative() && !playerEntity.isSpectator() && playerEntity.isAlive() && this.getEntityWorld() == Objects.requireNonNull(this.getEntityWorld().getServer()).getWorld(Permafrozen.WORLD_KEY)) {
             ticks++;
             if (ticks >= 20) {
-                if (PlayerUtil.isWarmBlockNearby(playerEntity) ||playerEntity.isOnFire() && temperature < 36) {
+                if (PlayerUtil.isWarmBlockNearby(playerEntity) || playerEntity.isOnFire() && temperature < 36) {
                     temperature++;
-                } else if(playerEntity.world.isSkyVisible(playerEntity.getCameraBlockPos()) && (this.world.getBiome(this.getBlockPos()).getTemperature()) < 0.15) {
+                } else if(playerEntity.world.isSkyVisible(playerEntity.getCameraBlockPos())) {
                     temperature--;
                 } else {
                     if (playerEntity.getRandom().nextInt(200) == 69) {

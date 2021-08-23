@@ -52,7 +52,7 @@ public class AuroraFaeEntity extends TameableEntity implements Flutterer, IAnima
     public static final AnimationBuilder IDLE = new AnimationBuilder().addAnimation("idle");
     public static final AnimationBuilder SIT = new AnimationBuilder().addAnimation("sit");
     public static final AnimationBuilder FLY = new AnimationBuilder().addAnimation("fly");
-    public static final AnimationBuilder FLOAT = new AnimationBuilder().addAnimation("float");
+    public static final AnimationBuilder FLOAT = new AnimationBuilder().addAnimation("hover");
 
     public AuroraFaeEntity(EntityType<? extends TameableEntity> entityType, World world) {
         super(entityType, world);
