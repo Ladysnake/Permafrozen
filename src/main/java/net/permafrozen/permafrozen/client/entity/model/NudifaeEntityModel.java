@@ -14,7 +14,7 @@ import software.bernie.geckolib3.model.provider.data.EntityModelData;
 public class NudifaeEntityModel extends AnimatedGeoModel<NudifaeEntity> {
 	private static Identifier[] TEXTURE_IDENTIFIERS;
 	private static final Identifier MODEL_IDENTIFIER = new Identifier(Permafrozen.MOD_ID, "geo/nudifae.geo.json");
-	private static final Identifier ANIMATION_IDENTIFIER = new Identifier(Permafrozen.MOD_ID, "animations/aurora_fae.animation.json");
+	private static final Identifier ANIMATION_IDENTIFIER = new Identifier(Permafrozen.MOD_ID, "animations/nudifae.animation.json");
 	
 	@Override
 	public Identifier getTextureLocation(NudifaeEntity entity) {
