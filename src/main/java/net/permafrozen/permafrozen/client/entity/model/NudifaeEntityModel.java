@@ -44,5 +44,13 @@ public class NudifaeEntityModel extends AnimatedGeoModel<NudifaeEntity> {
 		EntityModelData extraData = (EntityModelData) customPredicate.getExtraDataOfType(EntityModelData.class).get(0);
 		head.setRotationX((extraData.headPitch + 30) * ((float) Math.PI / 360F));
 		head.setRotationY((extraData.netHeadYaw) * ((float) Math.PI / 500F));
+		if (entity.isBaby()) {
+			IBone root = this.getAnimationProcessor().getBone("body");
+			if (root != null) {
+				root.setScaleX(0.5f);
+				root.setScaleY(0.5f);
+				root.setScaleZ(0.5f);
+			}
+		}
 	}
 }

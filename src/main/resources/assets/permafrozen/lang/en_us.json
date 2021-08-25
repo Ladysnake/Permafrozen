@@ -106,6 +106,8 @@
   "entity.permafrozen.aurora_fae": "Aurora Fae",
   "entity.permafrozen.lunar_koi": "Lunar Koi",
   "entity.permafrozen.fatfish": "Fatfish",
+  "entity.permafrozen.puffboo": "Puffboo",
+  "entity.permafrozen.fiddlesnout": "Fiddlesnout",
 
   "permafrozen.subtitles.entity.aurora_fae.ambient": "Aurora Fae chirps",
   "permafrozen.subtitles.entity.aurora_fae.hurt": "Aurora Fae is hurt",

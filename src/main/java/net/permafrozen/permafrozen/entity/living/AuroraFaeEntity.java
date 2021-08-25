@@ -13,6 +13,7 @@ import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.passive.ParrotEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -124,7 +125,7 @@ public class AuroraFaeEntity extends TameableEntity implements Flutterer, IAnima
             }
 
             return ActionResult.success(this.world.isClient);
-        } else if (!this.isInAir() && this.isTamed() && this.isOwner(player)) {
+        } else if (this.isOnGround() && this.isTamed() && this.isOwner(player)) {
             if (!this.world.isClient) {
                 this.setSitting(!this.isSitting());
             }
@@ -134,6 +135,16 @@ public class AuroraFaeEntity extends TameableEntity implements Flutterer, IAnima
             return super.interactMob(player, hand);
         }
     }
+
+    public boolean damage(DamageSource source, float amount) {
+        if (this.isInvulnerableTo(source)) {
+            return false;
+        } else {
+            this.setSitting(false);
+            return super.damage(source, amount);
+        }
+    }
+
     @Override
     public SoundEvent getAmbientSound() {
         return PermafrozenSoundEvents.ENTITY_AURORA_FAE_AMBIENT;

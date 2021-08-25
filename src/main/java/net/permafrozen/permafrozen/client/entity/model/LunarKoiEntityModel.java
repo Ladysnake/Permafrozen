@@ -2,9 +2,13 @@ package net.permafrozen.permafrozen.client.entity.model;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.model.ModelPart;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.MathHelper;
 import net.permafrozen.permafrozen.Permafrozen;
 import net.permafrozen.permafrozen.entity.living.LunarKoiEntity;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 @Environment(EnvType.CLIENT)
@@ -27,4 +31,16 @@ public class LunarKoiEntityModel extends AnimatedGeoModel<LunarKoiEntity> {
 	public Identifier getAnimationFileLocation(LunarKoiEntity entity) {
 		return ANIMATION_IDENTIFIER;
 	}
+
+	@Override
+	public void setLivingAnimations(LunarKoiEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
+		super.setLivingAnimations(entity, uniqueID, customPredicate);
+		if (entity.isInsideWaterOrBubbleColumn()) {
+			IBone body = this.getAnimationProcessor().getBone("body");
+			if (body != null) {
+				body.setRotationX((float) entity.getVelocity().getY());
+			}
+		}
+	}
+
 }
