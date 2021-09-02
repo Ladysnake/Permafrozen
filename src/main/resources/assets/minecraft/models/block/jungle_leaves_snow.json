@@ -1,6 +1,6 @@
 {   "parent": "block/block",
   "textures": {
-    "particle": "jungle_leaves",
+    "particle": "block/jungle_leaves",
     "bottom": "block/jungle_leaves",
     "top": "block/snow",
     "side": "block/jungle_leaves",

@@ -1,6 +1,6 @@
 {   "parent": "block/block",
   "textures": {
-    "particle": "flowering_azalea_leaves",
+    "particle": "block/flowering_azalea_leaves",
     "bottom": "block/flowering_azalea_leaves",
     "top": "block/snow",
     "side": "block/flowering_azalea_leaves",

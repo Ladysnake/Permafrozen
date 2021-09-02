@@ -1,6 +1,6 @@
 {   "parent": "block/block",
   "textures": {
-    "particle": "birch_leaves",
+    "particle": "block/birch_leaves",
     "bottom": "block/birch_leaves",
     "top": "block/snow",
     "side": "block/birch_leaves",

@@ -4,10 +4,17 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.tag.FluidTags;
 import net.minecraft.tag.ItemTags;
+import net.minecraft.tag.Tag;
 import net.minecraft.world.World;
 import net.permafrozen.permafrozen.Permafrozen;
+import net.permafrozen.permafrozen.registry.PermafrozenBiomes;
+import net.permafrozen.permafrozen.registry.PermafrozenSoundEvents;
 import net.permafrozen.permafrozen.util.PlayerUtil;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -44,6 +51,14 @@ public abstract class PlayerEntityMixin extends LivingEntity {
                 ticks = 0;
             }
         }
+        if(this.world.getBiome(this.getCameraBlockPos()) == PermafrozenBiomes.BOREAL_FOREST) {
+            float pitchModifier = 0.7f;
+            if (playerEntity.isSubmergedIn(FluidTags.WATER)) {
+                pitchModifier = 0.3f;
+            }
+            playerEntity.playSound(PermafrozenSoundEvents.BOREAL_AMBIENCE, SoundCategory.WEATHER, 0.5f, pitchModifier);
+        }
+
 
 
     }

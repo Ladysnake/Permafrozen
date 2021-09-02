@@ -1,6 +1,6 @@
 {   "parent": "block/block",
   "textures": {
-    "particle": "dark_oak_leaves",
+    "particle": "block/dark_oak_leaves",
     "bottom": "block/dark_oak_leaves",
     "top": "block/snow",
     "side": "block/dark_oak_leaves",
