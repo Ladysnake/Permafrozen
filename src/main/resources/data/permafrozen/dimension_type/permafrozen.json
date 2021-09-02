@@ -14,5 +14,6 @@
   "piglin_safe": false,
   "respawn_anchor_works": false,
   "ambient_light": 0.0,
+  "fixed_time": 2300,
   "infiniburn": "minecraft:infiniburn_overworld"
 }
