@@ -57,10 +57,10 @@
 		],
 		"subtitle": "permafrozen.subtitles.entity.puffboo.death"
 	},
-	"biome.boreal.ambient": {
+	"ambient.boreal": {
 		"sounds": [
 			"permafrozen:ambient/boreal_forest"
 		],
-		"subtitle": "permafrozen.subtitles.biome.boreal"
+		"subtitle": "permafrozen.subtitles.ambient.boreal"
 	}
 }
