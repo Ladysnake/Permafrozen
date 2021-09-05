@@ -1,0 +1,13 @@
+{
+  "variants": {
+	"type=bottom": {
+	  "model": "permafrozen:block/deadwood_slab"
+	},
+	"type=top": {
+	  "model": "permafrozen:block/deadwood_slab_top"
+	},
+	"type=double": {
+	  "model": "permafrozen:block/deadwood_planks"
+	}
+  }
+}

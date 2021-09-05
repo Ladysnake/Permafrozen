@@ -18,8 +18,6 @@ import net.permafrozen.permafrozen.worldgen.biome.PermafrozenBiomeSource;
 import net.permafrozen.permafrozen.worldgen.biome.PermafrozenSurfaceBuilders;
 import net.permafrozen.permafrozen.worldgen.feature.PermafrozenBiomeFeatures;
 
-import static net.permafrozen.permafrozen.registry.PermafrozenSoundEvents.BOREAL_MUSIC;
-
 public class PermafrozenBiomes {
 	public static final Biome BOREAL_FOREST = createBorealForest();
 	public static final Biome GLACIAL_OCEAN = createGlacialOcean();
@@ -42,7 +40,7 @@ public class PermafrozenBiomes {
 		DefaultBiomeFeatures.addLargeFerns(generationSettings);
 		PermafrozenBiomeFeatures.addWaterLakes(generationSettings);
 		DefaultBiomeFeatures.addSprings(generationSettings);
-		return new Biome.Builder().precipitation(Biome.Precipitation.SNOW).category(Biome.Category.TAIGA).depth(0.1F).scale(0.2F).temperature(0.0F).downfall(0.6F).effects(new BiomeEffects.Builder().waterColor(4159204).waterFogColor(329011).fogColor(12638463).skyColor(getSkyColor(0.0F)).moodSound(PermafrozenSoundEvents.BOREAL).music(BOREAL_MUSIC).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).build();
+		return new Biome.Builder().precipitation(Biome.Precipitation.SNOW).category(Biome.Category.TAIGA).depth(0.1F).scale(0.2F).temperature(0.0F).downfall(0.6F).effects(new BiomeEffects.Builder().waterColor(4159204).waterFogColor(329011).fogColor(12638463).skyColor(getSkyColor(0.0F)).loopSound(PermafrozenSoundEvents.BOREAL_AMBIENCE).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).build();
 	}
 	private static Biome createGlacialOcean() {
 		SpawnSettings.Builder spawnSettings = new SpawnSettings.Builder();

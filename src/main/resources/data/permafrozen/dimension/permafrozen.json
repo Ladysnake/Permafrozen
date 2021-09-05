@@ -4,7 +4,7 @@
 	"type": "minecraft:noise",
 	"seed": 417361623,
 	"settings": {
-	  "name": "permafrozen:permafrozen",
+	  "name": "permafrozen:the_permafrozen",
 	  "bedrock_roof_position": -1000,
 	  "bedrock_floor_position": 0,
 	  "sea_level": 63,

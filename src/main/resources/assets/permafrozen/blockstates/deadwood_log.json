@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "permafrozen:block/deadwood_log"
+    },
+    "axis=z": {
+      "model": "permafrozen:block/deadwood_log",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "permafrozen:block/deadwood_log",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

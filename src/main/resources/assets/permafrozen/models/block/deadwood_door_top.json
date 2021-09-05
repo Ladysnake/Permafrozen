@@ -1,0 +1,7 @@
+{
+  "parent": "block/door_top",
+  "textures": {
+	"bottom": "permafrozen:block/deadwood_door_bottom",
+	"top": "permafrozen:block/deadwood_door_top"
+  }
+}

@@ -38,6 +38,8 @@ public class PermafrozenBlocks {
 	public static final Block COARSE_PERMAFROST = create("coarse_permafrost", new Block(copyOf(Blocks.COARSE_DIRT)), true);
 	public static final Block THAWING_PERMAFROST = create("thawing_permafrost", new Block(copyOf(Blocks.CLAY)), true);
 //wood
+
+	//fir
 	public static final Block STRIPPED_FIR_LOG = create("stripped_fir_log", new PillarBlock(copyOf(Blocks.OAK_LOG)), true);
 	public static final Block STRIPPED_FIR_WOOD = create("stripped_fir_wood", new PillarBlock(copyOf(STRIPPED_FIR_LOG)), true);
 	public static final Block FIR_LOG = create("fir_log", new StrippableLogBlock(() -> STRIPPED_FIR_LOG, MapColor.BROWN, copyOf(STRIPPED_FIR_LOG)), true);
@@ -57,7 +59,26 @@ public class PermafrozenBlocks {
 	private static final Identifier FIR_SIGN_TEXTURE = new Identifier(Permafrozen.MOD_ID, "entity/sign/fir");
 	public static final TerraformSignBlock FIR_SIGN = create("fir_sign", new TerraformSignBlock(FIR_SIGN_TEXTURE, copyOf(Blocks.OAK_SIGN)), false);
 	public static final Block FIR_WALL_SIGN = create("fir_wall_sign", new TerraformWallSignBlock(FIR_SIGN_TEXTURE, copyOf(Blocks.OAK_WALL_SIGN)), false);
-//snad
+	//deadwood
+	public static final Block STRIPPED_DEADWOOD_LOG = create("stripped_deadwood_log", new PillarBlock(copyOf(Blocks.OAK_LOG)), true);
+	public static final Block STRIPPED_DEADWOOD_WOOD = create("stripped_deadwood_wood", new PillarBlock(copyOf(STRIPPED_FIR_LOG)), true);
+	public static final Block DEADWOOD_LOG = create("deadwood_log", new StrippableLogBlock(() -> STRIPPED_FIR_LOG, MapColor.BROWN, copyOf(STRIPPED_FIR_LOG)), true);
+	public static final Block DEADWOOD_WOOD = create("deadwood_wood", new StrippableLogBlock(() -> STRIPPED_FIR_WOOD, MapColor.BROWN, copyOf(STRIPPED_FIR_LOG)), true);
+	public static final Block DEADWOOD_PLANKS = create("deadwood_planks", new Block(copyOf(Blocks.OAK_PLANKS)), true);
+	public static final Block DEADWOOD_STAIRS = create("deadwood_stairs", new TerraformStairsBlock(FIR_PLANKS, copyOf(Blocks.OAK_STAIRS)), true);
+	public static final Block DEADWOOD_SLAB = create("deadwood_slab", new SlabBlock(copyOf(Blocks.OAK_SLAB)), true);
+	public static final Block DEADWOOD_FENCE = create("deadwood_fence", new FenceBlock(copyOf(Blocks.OAK_FENCE)), true);
+	public static final Block DEADWOOD_FENCE_GATE = create("deadwood_fence_gate", new FenceGateBlock(copyOf(Blocks.OAK_FENCE_GATE)), true);
+	public static final Block DEADWOOD_PRESSURE_PLATE = create("deadwood_pressure_plate", new TerraformPressurePlateBlock(copyOf(Blocks.OAK_PRESSURE_PLATE)), true);
+	public static final Block DEADWOOD_BUTTON = create("deadwood_button", new TerraformButtonBlock(copyOf(Blocks.OAK_BUTTON)), true);
+	public static final Block DEADWOOD_TRAPDOOR = create("deadwood_trapdoor", new TerraformTrapdoorBlock(copyOf(Blocks.OAK_TRAPDOOR)), true);
+	public static final Block DEADWOOD_DOOR = create("deadwood_door", new TerraformDoorBlock(copyOf(Blocks.OAK_DOOR)), false);
+	private static final Identifier DEADWOOD_SIGN_TEXTURE = new Identifier(Permafrozen.MOD_ID, "entity/sign/deadwood");
+	public static final TerraformSignBlock DEADWOOD_SIGN = create("deadwood_sign", new TerraformSignBlock(DEADWOOD_SIGN_TEXTURE, copyOf(Blocks.OAK_SIGN)), false);
+	public static final Block DEADWOOD_WALL_SIGN = create("deadwood_wall_sign", new TerraformWallSignBlock(DEADWOOD_SIGN_TEXTURE, copyOf(Blocks.OAK_WALL_SIGN)), false);
+
+
+	//snad
 	public static final Block SAPPHIRE_SAND = create("sapphire_sand", new GravelBlock(copyOf(Blocks.SAND)), true);
 	public static final Block SAPPHIRE_SANDSTONE = create("sapphire_sandstone", new Block(copyOf(Blocks.SANDSTONE)), true);
 	public static final Block CHISELED_SAPPHIRE_SANDSTONE = create("chiseled_sapphire_sandstone", new Block(copyOf(Blocks.CHISELED_SANDSTONE)), true);

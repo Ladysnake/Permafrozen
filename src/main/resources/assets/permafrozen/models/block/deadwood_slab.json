@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab",
+  "textures": {
+	"bottom": "permafrozen:block/deadwood_planks",
+	"top": "permafrozen:block/deadwood_planks",
+	"side": "permafrozen:block/deadwood_planks"
+  }
+}

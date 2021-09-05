@@ -8,7 +8,8 @@
     "CampfireBlockEntityMixin",
     "LayerAccessor",
     "LeavesBlockMixin",
-    "PlayerEntityMixin"
+    "PlayerEntityMixin",
+    "WorldRendererMixin"
   ],
   "client": [
   ],

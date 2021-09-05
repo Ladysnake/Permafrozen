@@ -1,0 +1,6 @@
+{
+  "parent": "block/fence_inventory",
+  "textures": {
+	"texture": "permafrozen:block/deadwood_planks"
+  }
+}

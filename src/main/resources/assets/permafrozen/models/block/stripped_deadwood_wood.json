@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+	"end": "permafrozen:block/stripped_deadwood_log",
+	"side": "permafrozen:block/stripped_deadwood_log"
+  }
+}

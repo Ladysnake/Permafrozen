@@ -1,0 +1,16 @@
+{
+  "variants": {
+	"axis=y": {
+	  "model": "permafrozen:block/stripped_deadwood_wood"
+	},
+	"axis=z": {
+	  "model": "permafrozen:block/stripped_deadwood_wood",
+	  "x": 90
+	},
+	"axis=x": {
+	  "model": "permafrozen:block/stripped_deadwood_wood",
+	  "x": 90,
+	  "y": 90
+	}
+  }
+}

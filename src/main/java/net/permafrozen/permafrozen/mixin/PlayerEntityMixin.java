@@ -1,5 +1,6 @@
 package net.permafrozen.permafrozen.mixin;
 
+import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
