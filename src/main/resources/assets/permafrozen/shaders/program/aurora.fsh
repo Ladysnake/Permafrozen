@@ -7,7 +7,7 @@
 
 uniform sampler2D DiffuseSampler;
 uniform vec3      iResolution;           // viewport resolution (in pixels)
-uniform float     iTime;                 // shader playback time (in seconds)
+uniform float     STime;                 // shader playback time (in seconds)
 uniform float     iTimeDelta;            // render time (in seconds)
 uniform int       iFrame;                // shader playback frame
 uniform float     DiffuseSamplerTime[4];       // channel playback time (in seconds)
@@ -86,8 +86,7 @@ vec4 aurora(vec3 ro, vec3 rd)
 
 
 
-void main()
-{
+void main() {
     vec2 q = fragCoord.xy / iResolution.xy;
     vec2 p = q - 0.5;
     p.x*=iResolution.x/iResolution.y;

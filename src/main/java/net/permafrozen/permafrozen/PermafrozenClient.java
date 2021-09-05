@@ -3,6 +3,7 @@ package net.permafrozen.permafrozen;
 import com.mojang.serialization.Codec;
 import com.terraformersmc.terraform.boat.api.client.TerraformBoatClientHelper;
 import com.terraformersmc.terraform.sign.SpriteIdentifierRegistry;
+import ladysnake.satin.api.managed.ManagedShaderEffect;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
@@ -26,6 +27,7 @@ import net.permafrozen.permafrozen.registry.PermafrozenItems;
 
 public class PermafrozenClient implements ClientModInitializer {
 	public static ParticleType<AuroraParticleEffect> AURORA_SMOL;
+
 	@Override
 	public void onInitializeClient() {
 		TerraformBoatClientHelper.registerModelLayer(new Identifier(Permafrozen.MOD_ID, "fir"));

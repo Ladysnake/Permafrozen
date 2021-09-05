@@ -14,7 +14,7 @@ import software.bernie.geckolib3.GeckoLib;
 
 public class Permafrozen implements ModInitializer {
 	public static final String MOD_ID = "permafrozen";
-	public static final RegistryKey<World> WORLD_KEY = RegistryKey.of(Registry.WORLD_KEY, new Identifier(MOD_ID, "the_permafrozen"));
+	public static final RegistryKey<World> WORLD_KEY = RegistryKey.of(Registry.WORLD_KEY, new Identifier(MOD_ID, "permafrozen"));
 	
 	public static final ItemGroup PERMAFROZEN_GROUP = FabricItemGroupBuilder.build(new Identifier(MOD_ID, MOD_ID), () -> new ItemStack(PermafrozenItems.LUNAR_KOI));
 	
