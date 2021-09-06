@@ -9,6 +9,7 @@
     "LayerAccessor",
     "LeavesBlockMixin",
     "PlayerEntityMixin",
+    "SnowBlockMixin",
     "WorldRendererMixin"
   ],
   "client": [

@@ -37,6 +37,7 @@ public class PermafrozenBlocks {
 	public static final Block PERMAFROST = create("permafrost", new Block(copyOf(Blocks.DIRT)), true);
 	public static final Block COARSE_PERMAFROST = create("coarse_permafrost", new Block(copyOf(Blocks.COARSE_DIRT)), true);
 	public static final Block THAWING_PERMAFROST = create("thawing_permafrost", new Block(copyOf(Blocks.CLAY)), true);
+
 //wood
 
 	//fir
@@ -117,7 +118,7 @@ public class PermafrozenBlocks {
 	public static final Block MOSSY_SMOOTH_SHIVERSLATE_BRICK_SLAB = create("mossy_smooth_shiverslate_brick_slab", new SlabBlock(copyOf(Blocks.DEEPSLATE_BRICK_SLAB)), true);
 	public static final Block MOSSY_SMOOTH_SHIVERSLATE_BRICK_WALL = create("mossy_smooth_shiverslate_brick_wall", new WallBlock(copyOf(Blocks.DEEPSLATE_BRICK_WALL)), true);
 //vegetation
-    public static final Block SPECTRAL_CAP = create("spectral_cap", new PermafrozenPlantBlock(AbstractBlock.Settings.of(Material.PLANT, MapColor.LAPIS_BLUE).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).luminance((state) -> 11)), true);
+    public static final Block SPECTRAL_CAP = create("spectral_cap", new PermafrozenPlantBlock(AbstractBlock.Settings.of(Material.PLANT, MapColor.LAPIS_BLUE).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).luminance((state) -> 10)), true);
 	public static final Block GLACIAL_KELP = create("glacial_kelp", new PermafrozenKelpPlantBlock(copyOf(Blocks.KELP_PLANT)), true);
 //crymstals
 	public static final Block PRISMARINE_CLUSTER = create("prismarine_cluster", new PrismarineCrystalClusterBlock(7, 3, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().breakByTool(FabricToolTags.PICKAXES).requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 12)), true);
