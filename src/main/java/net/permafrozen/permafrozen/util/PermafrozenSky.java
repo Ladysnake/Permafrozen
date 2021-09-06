@@ -81,8 +81,6 @@ public class PermafrozenSky {
         bufferBuilder.vertex(matrix4f3, -t, 100.0F, t).texture(0.0F, 1.0F).next();
         bufferBuilder.end();
         BufferRenderer.draw(bufferBuilder);
-        bufferBuilder.end();
-        BufferRenderer.draw(bufferBuilder);
         RenderSystem.disableTexture();
         float ab = world.method_23787(tickDelta) * s;
         if (ab > 0.0F) {
