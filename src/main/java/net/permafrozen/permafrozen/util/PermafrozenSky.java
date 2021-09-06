@@ -11,6 +11,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Matrix4f;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Vec3f;
+import net.permafrozen.permafrozen.PermafrozenClient;
 
 public class PermafrozenSky {
     public static void renderPFSky(MatrixStack matrices, Matrix4f matrix4f, float tickDelta, Runnable runnable, ClientWorld world, MinecraftClient client, VertexBuffer lightSkyBuffer, VertexBuffer darkSkyBuffer, VertexBuffer starsBuffer) {
@@ -72,11 +73,14 @@ public class PermafrozenSky {
         matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(world.getSkyAngle(tickDelta) * 360.0F));
         Matrix4f matrix4f3 = matrices.peek().getModel();
         t = 30.0F;
-        bufferBuilder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_TEXTURE);
+        RenderSystem.setShader(PermafrozenClient.AURORA::getProgram);
+        bufferBuilder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION);
         bufferBuilder.vertex(matrix4f3, -t, 100.0F, -t).texture(0.0F, 0.0F).next();
         bufferBuilder.vertex(matrix4f3, t, 100.0F, -t).texture(1.0F, 0.0F).next();
         bufferBuilder.vertex(matrix4f3, t, 100.0F, t).texture(1.0F, 1.0F).next();
         bufferBuilder.vertex(matrix4f3, -t, 100.0F, t).texture(0.0F, 1.0F).next();
+        bufferBuilder.end();
+        BufferRenderer.draw(bufferBuilder);
         bufferBuilder.end();
         BufferRenderer.draw(bufferBuilder);
         RenderSystem.disableTexture();
@@ -106,6 +110,7 @@ public class PermafrozenSky {
         } else {
             RenderSystem.setShaderColor(g, h, i, 1.0F);
         }
+
 
         RenderSystem.enableTexture();
 

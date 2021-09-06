@@ -6,8 +6,11 @@
 #define time iTime
 
 uniform sampler2D DiffuseSampler;
+
+
+uniform vec2      OutSize;
 uniform vec3      iResolution;           // viewport resolution (in pixels)
-uniform float     STime;                 // shader playback time (in seconds)
+uniform float     iTime;                 // shader playback time (in seconds)
 uniform float     iTimeDelta;            // render time (in seconds)
 uniform int       iFrame;                // shader playback frame
 uniform float     DiffuseSamplerTime[4];       // channel playback time (in seconds)
@@ -25,7 +28,6 @@ float tri(in float x){return clamp(abs(fract(x)-.5),0.01,0.49);}
 vec2 tri2(in vec2 p){return vec2(tri(p.x)+tri(p.y),tri(p.y+tri(p.x)));}
 
 float triNoise2d(in vec2 p, float spd)
-
 {
     float z=1.8;
     float z2=2.5;
@@ -84,9 +86,46 @@ vec4 aurora(vec3 ro, vec3 rd)
 }
 
 
+//-------------------Background and Stars--------------------
+
+vec3 nmzHash33(vec3 q)
+{
+    uvec3 p = uvec3(ivec3(q));
+    p = p*uvec3(374761393U, 1103515245U, 668265263U) + p.zxy + p.yzx;
+    p = p.yzx*(p.zxy^(p >> 3U));
+    return vec3(p^(p >> 16U))*(1.0/vec3(0xffffffffU));
+}
+
+vec3 stars(in vec3 p)
+{
+    vec3 c = vec3(0.);
+    float res = iResolution.x*1.;
+
+    for (float i=0.;i<4.;i++)
+    {
+        vec3 q = fract(p*(.15*res))-0.5;
+        vec3 id = floor(p*(.15*res));
+        vec2 rn = nmzHash33(id).xy;
+        float c2 = 1.-smoothstep(0.,.6,length(q));
+        c2 *= step(rn.x,.0005+i*i*0.001);
+        c += c2*(mix(vec3(1.0,0.49,0.1),vec3(0.75,0.9,1.),rn.y)*0.1+0.9);
+        p *= 1.3;
+    }
+    return c*c*.8;
+}
+
+vec3 bg(in vec3 rd)
+{
+    float sd = dot(normalize(vec3(-0.5, -0.6, 0.9)), rd)*0.5+0.5;
+    sd = pow(sd, 5.);
+    vec3 col = mix(vec3(0.05,0.1,0.2), vec3(0.1,0.05,0.2), sd);
+    return col*.63;
+}
+//-----------------------------------------------------------
 
 
-void main() {
+void main()
+{
     vec2 q = fragCoord.xy / iResolution.xy;
     vec2 p = q - 0.5;
     p.x*=iResolution.x/iResolution.y;
@@ -103,11 +142,23 @@ void main() {
     vec3 brd = rd;
     float fade = smoothstep(0.,0.01,abs(brd.y))*0.1+0.9;
 
-    col = rd*fade;
+    col = bg(rd)*fade;
 
     if (rd.y > 0.){
         vec4 aur = smoothstep(0.,1.5,aurora(ro,rd))*fade;
+        col += stars(rd);
         col = col*(1.-aur.a) + aur.rgb;
+    }
+    else //Reflections
+    {
+        rd.y = abs(rd.y);
+        col = bg(rd)*fade*0.6;
+        vec4 aur = smoothstep(0.0,2.5,aurora(ro,rd));
+        col += stars(rd)*0.1;
+        col = col*(1.-aur.a) + aur.rgb;
+        vec3 pos = ro + ((0.5-ro.y)/rd.y)*rd;
+        float nz2 = triNoise2d(pos.xz*vec2(.5,.7), 0.);
+        col += mix(vec3(0.2,0.25,0.5)*0.08,vec3(0.3,0.3,0.5)*0.7, nz2*0.4);
     }
 
     fragColor = vec4(col, 1.);
