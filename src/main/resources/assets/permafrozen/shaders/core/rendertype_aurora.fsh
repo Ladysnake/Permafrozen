@@ -6,7 +6,7 @@
 #define time iTime
 
 uniform sampler2D DiffuseSampler;
-
+uniform sampler2D DepthSampler;
 
 uniform vec2      OutSize;
 uniform vec3      iResolution;           // viewport resolution (in pixels)
@@ -86,6 +86,7 @@ vec4 aurora(vec3 ro, vec3 rd)
 }
 
 
+
 //-------------------Background and Stars--------------------
 
 vec3 nmzHash33(vec3 q)
@@ -136,7 +137,6 @@ void main()
     mo = (mo==vec2(-.5))?mo=vec2(-0.1,0.1):mo;
     mo.x *= iResolution.x/iResolution.y;
     rd.yz *= mm2(mo.y);
-    rd.xz *= mm2(mo.x + sin(time*0.05)*0.2);
 
     vec3 col = vec3(0.);
     vec3 brd = rd;
@@ -144,22 +144,11 @@ void main()
 
     col = bg(rd)*fade;
 
-    if (rd.y > 0.){
-        vec4 aur = smoothstep(0.,1.5,aurora(ro,rd))*fade;
-        col += stars(rd);
-        col = col*(1.-aur.a) + aur.rgb;
-    }
-    else //Reflections
-    {
-        rd.y = abs(rd.y);
-        col = bg(rd)*fade*0.6;
-        vec4 aur = smoothstep(0.0,2.5,aurora(ro,rd));
-        col += stars(rd)*0.1;
-        col = col*(1.-aur.a) + aur.rgb;
-        vec3 pos = ro + ((0.5-ro.y)/rd.y)*rd;
-        float nz2 = triNoise2d(pos.xz*vec2(.5,.7), 0.);
-        col += mix(vec3(0.2,0.25,0.5)*0.08,vec3(0.3,0.3,0.5)*0.7, nz2*0.4);
-    }
 
-    fragColor = vec4(col, 1.);
+    vec4 aur = smoothstep(0.,1.5,aurora(ro,rd))*fade;
+    col += stars(rd);
+    col = col*(1.-aur.a) + aur.rgb;
+
+
+    fragColor = vec4(col, 1.0);
 }
