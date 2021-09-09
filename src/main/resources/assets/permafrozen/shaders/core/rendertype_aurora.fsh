@@ -3,19 +3,20 @@
 // Contact the author for other licensing options
 #version 150
 
-#define time STime
+#define time GameTime
 
 uniform sampler2D DiffuseSampler;
-uniform sampler2D DepthSampler;
 
 uniform vec2      OutSize;
 uniform ivec4     ViewPort;           // viewport resolution (in pixels)
-uniform float     STime;                 // shader playback time (in seconds)
-uniform float     STimeDelta;            // render time (in seconds)
+uniform float     GameTime;                 // shader playback time (in seconds)
+uniform float     TimeDelta;            // render time (in seconds)
 uniform int       iFrame;                // shader playback frame
 uniform vec4      iMouse;                // mouse pixel coords. xy: current (if MLB down), zw: click
 uniform vec4      iDate;                 // (year, month, day, time in seconds)
 uniform float     iSampleRate;           // sound sample rate (i.e., 44100)
+
+in vec2 texCoord;
 
 out vec4 fragColor;
 
@@ -23,6 +24,7 @@ mat2 mm2(in float a){float c = cos(a), s = sin(a);return mat2(c,s,-s,c);}
 mat2 m2 = mat2(0.95534, 0.29552, -0.29552, 0.95534);
 float tri(in float x){return clamp(abs(fract(x)-.5),0.01,0.49);}
 vec2 tri2(in vec2 p){return vec2(tri(p.x)+tri(p.y),tri(p.y+tri(p.x)));}
+vec2 coord = OutSize * texCoord;
 
 float triNoise2d(in vec2 p, float spd)
 {
@@ -56,7 +58,7 @@ vec4 aurora(vec3 ro, vec3 rd)
 
     for(float i=0.;i<50.;i++)
     {
-        float of = 0.006*hash21(gl_FragCoord.xy)*smoothstep(0.,15., i);
+        float of = 0.006*hash21(coord.xy)*smoothstep(0.,15., i);
         float pt = ((.8+pow(i,1.4)*.002)-ro.y)/(rd.y*2.+0.4);
         pt -= of;
         vec3 bpos = ro + pt*rd;
@@ -97,7 +99,7 @@ vec3 nmzHash33(vec3 q)
 vec3 stars(in vec3 p)
 {
     vec3 c = vec3(0.);
-    float res = ViewPort.x*1.;
+    float res = OutSize.x*1.;
 
     for (float i=0.;i<4.;i++)
     {
@@ -124,15 +126,15 @@ vec3 bg(in vec3 rd)
 
 void main()
 {
-    vec2 q = gl_FragCoord.xy / ViewPort.xy;
+    vec2 q = coord.xy / OutSize.xy;
     vec2 p = q - 0.5;
-    p.x*=ViewPort.x/ViewPort.y;
+    p.x *= OutSize.x/OutSize.y;
 
     vec3 ro = vec3(0,0,-6.7);
     vec3 rd = normalize(vec3(p,1.3));
-    vec2 mo = iMouse.xy / ViewPort.xy-.5;
+    vec2 mo = iMouse.xy / OutSize.xy-.5;
     mo = (mo==vec2(-.5))?mo=vec2(-0.1,0.1):mo;
-    mo.x *= ViewPort.x/ViewPort.y;
+    mo.x *= OutSize.x/OutSize.y;
     rd.yz *= mm2(mo.y);
 
     vec3 col = vec3(0.);
