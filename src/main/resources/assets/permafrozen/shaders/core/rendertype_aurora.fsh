@@ -3,23 +3,20 @@
 // Contact the author for other licensing options
 #version 150
 
-#define time iTime
+#define time STime
 
 uniform sampler2D DiffuseSampler;
 uniform sampler2D DepthSampler;
 
 uniform vec2      OutSize;
-uniform vec3      iResolution;           // viewport resolution (in pixels)
-uniform float     iTime;                 // shader playback time (in seconds)
-uniform float     iTimeDelta;            // render time (in seconds)
+uniform ivec4     ViewPort;           // viewport resolution (in pixels)
+uniform float     STime;                 // shader playback time (in seconds)
+uniform float     STimeDelta;            // render time (in seconds)
 uniform int       iFrame;                // shader playback frame
-uniform float     DiffuseSamplerTime[4];       // channel playback time (in seconds)
-uniform vec3      DiffuseSamplerResolution[4]; // channel resolution (in pixels)
 uniform vec4      iMouse;                // mouse pixel coords. xy: current (if MLB down), zw: click
 uniform vec4      iDate;                 // (year, month, day, time in seconds)
 uniform float     iSampleRate;           // sound sample rate (i.e., 44100)
 
-in vec2 fragCoord;
 out vec4 fragColor;
 
 mat2 mm2(in float a){float c = cos(a), s = sin(a);return mat2(c,s,-s,c);}
@@ -100,7 +97,7 @@ vec3 nmzHash33(vec3 q)
 vec3 stars(in vec3 p)
 {
     vec3 c = vec3(0.);
-    float res = iResolution.x*1.;
+    float res = ViewPort.x*1.;
 
     for (float i=0.;i<4.;i++)
     {
@@ -127,15 +124,15 @@ vec3 bg(in vec3 rd)
 
 void main()
 {
-    vec2 q = fragCoord.xy / iResolution.xy;
+    vec2 q = gl_FragCoord.xy / ViewPort.xy;
     vec2 p = q - 0.5;
-    p.x*=iResolution.x/iResolution.y;
+    p.x*=ViewPort.x/ViewPort.y;
 
     vec3 ro = vec3(0,0,-6.7);
     vec3 rd = normalize(vec3(p,1.3));
-    vec2 mo = iMouse.xy / iResolution.xy-.5;
+    vec2 mo = iMouse.xy / ViewPort.xy-.5;
     mo = (mo==vec2(-.5))?mo=vec2(-0.1,0.1):mo;
-    mo.x *= iResolution.x/iResolution.y;
+    mo.x *= ViewPort.x/ViewPort.y;
     rd.yz *= mm2(mo.y);
 
     vec3 col = vec3(0.);
