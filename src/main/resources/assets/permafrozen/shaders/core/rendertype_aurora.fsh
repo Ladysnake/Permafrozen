@@ -10,16 +10,35 @@ uniform sampler2D DiffuseSampler;
 uniform vec2      OutSize;
 uniform ivec4     ViewPort;           // viewport resolution (in pixels)
 uniform float     GameTime;                 // shader playback time (in seconds)
-uniform float     TimeDelta;            // render time (in seconds)
-uniform int       iFrame;                // shader playback frame
 uniform vec4      iMouse;                // mouse pixel coords. xy: current (if MLB down), zw: click
-uniform vec4      iDate;                 // (year, month, day, time in seconds)
-uniform float     iSampleRate;           // sound sample rate (i.e., 44100)
+uniform float     PlayerRotPitch;
+uniform float     PlayerRotYaw;
 
 in vec2 texCoord;
 
 out vec4 fragColor;
 
+
+mat3 rotateX(float theta) {
+    float c = cos(theta);
+    float s = sin(theta);
+    return mat3(
+    vec3(1, 0, 0),
+    vec3(0, c, -s),
+    vec3(0, s, c)
+    );
+}
+
+
+mat3 rotateY(float theta) {
+    float c = cos(theta);
+    float s = sin(theta);
+    return mat3(
+    vec3(c, 0, s),
+    vec3(0, 1, 0),
+    vec3(-s, 0, c)
+    );
+}
 mat2 mm2(in float a){float c = cos(a), s = sin(a);return mat2(c,s,-s,c);}
 mat2 m2 = mat2(0.95534, 0.29552, -0.29552, 0.95534);
 float tri(in float x){return clamp(abs(fract(x)-.5),0.01,0.49);}
@@ -132,10 +151,7 @@ void main()
 
     vec3 ro = vec3(0,0,-6.7);
     vec3 rd = normalize(vec3(p,1.3));
-    vec2 mo = iMouse.xy / OutSize.xy-.5;
-    mo = (mo==vec2(-.5))?mo=vec2(-0.1,0.1):mo;
-    mo.x *= OutSize.x/OutSize.y;
-    rd.yz *= mm2(mo.y);
+    rd *= rotateX(PlayerRotPitch / 180) * rotateY(PlayerRotYaw / 180);
 
     vec3 col = vec3(0.);
     vec3 brd = rd;
