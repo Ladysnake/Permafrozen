@@ -3,13 +3,13 @@
 // Contact the author for other licensing options
 #version 150
 
-#define time GameTime
+#define time Time
 
 uniform sampler2D DiffuseSampler;
 
 uniform vec2      OutSize;
 uniform ivec4     ViewPort;           // viewport resolution (in pixels)
-uniform float     GameTime;                 // shader playback time (in seconds)
+uniform float     Time;                 // shader playback time (in seconds)
 uniform vec4      iMouse;                // mouse pixel coords. xy: current (if MLB down), zw: click
 uniform float     PlayerRotPitch;
 uniform float     PlayerRotYaw;
@@ -151,7 +151,7 @@ void main()
 
     vec3 ro = vec3(0,0,-6.7);
     vec3 rd = normalize(vec3(p,1.3));
-    rd *= rotateX(PlayerRotPitch / 180) * rotateY(PlayerRotYaw / 180);
+    rd *= rotateX(radians(PlayerRotPitch)/radians(90)) * rotateY(radians(PlayerRotYaw)/radians(90));
 
     vec3 col = vec3(0.);
     vec3 brd = rd;
