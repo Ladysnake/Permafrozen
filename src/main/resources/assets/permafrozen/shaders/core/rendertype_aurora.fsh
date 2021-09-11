@@ -7,16 +7,18 @@
 
 uniform sampler2D DiffuseSampler;
 
+
 uniform vec2      OutSize;
 uniform ivec4     ViewPort;           // viewport resolution (in pixels)
 uniform float     Time;                 // shader playback time (in seconds)
 uniform vec4      iMouse;                // mouse pixel coords. xy: current (if MLB down), zw: click
-uniform float     PlayerRotPitch;
-uniform float     PlayerRotYaw;
+
+uniform mat4 InverseTransformMatrix;
 
 in vec2 texCoord;
 
 out vec4 fragColor;
+
 
 
 mat3 rotateX(float theta) {
@@ -39,6 +41,9 @@ mat3 rotateY(float theta) {
     vec3(-s, 0, c)
     );
 }
+vec4 temp = InverseTransformMatrix * vec4(2.0 * texCoord - 1.0, 2.0 * 1.0 - 1.0, 1.0);
+vec3 modelPos = temp.xyz / temp.w;
+
 mat2 mm2(in float a){float c = cos(a), s = sin(a);return mat2(c,s,-s,c);}
 mat2 m2 = mat2(0.95534, 0.29552, -0.29552, 0.95534);
 float tri(in float x){return clamp(abs(fract(x)-.5),0.01,0.49);}
@@ -150,8 +155,7 @@ void main()
     p.x *= OutSize.x/OutSize.y;
 
     vec3 ro = vec3(0,0,-6.7);
-    vec3 rd = normalize(vec3(p,1.3));
-    rd *= rotateX(radians(PlayerRotPitch)/radians(90)) * rotateY(radians(PlayerRotYaw)/radians(90));
+    vec3 rd = normalize(modelPos);
 
     vec3 col = vec3(0.);
     vec3 brd = rd;

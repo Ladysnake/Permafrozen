@@ -5,10 +5,10 @@ import com.terraformersmc.terraform.boat.api.client.TerraformBoatClientHelper;
 import com.terraformersmc.terraform.sign.SpriteIdentifierRegistry;
 import ladysnake.satin.api.event.PostWorldRenderCallback;
 import ladysnake.satin.api.managed.ManagedCoreShader;
-import ladysnake.satin.api.managed.ManagedShaderEffect;
 import ladysnake.satin.api.managed.ShaderEffectManager;
 import ladysnake.satin.api.managed.uniform.Uniform1f;
-import ladysnake.satin.api.managed.uniform.Uniform2f;
+import ladysnake.satin.api.managed.uniform.UniformMat4;
+import ladysnake.satin.api.util.GlMatrices;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -25,6 +25,7 @@ import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.particle.ParticleType;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Matrix4f;
 import net.minecraft.util.registry.Registry;
 import net.permafrozen.permafrozen.client.entity.render.*;
 import net.permafrozen.permafrozen.client.particle.aurora.AuroraParticle;
@@ -37,10 +38,11 @@ public class PermafrozenClient implements ClientModInitializer, ClientTickEvents
 	public static ParticleType<AuroraParticleEffect> AURORA_SMOL;
 	public static final ManagedCoreShader AURORA = ShaderEffectManager.getInstance().manageCoreShader(new Identifier(Permafrozen.MOD_ID, "aurora"));
 	private final Uniform1f uniformGameTime = AURORA.findUniform1f("GameTime");
-	private final Uniform1f uniformPlayerRotPitch = AURORA.findUniform1f("PlayerRotPitch");
-	private final Uniform1f uniformPlayerRotYaw = AURORA.findUniform1f("PlayerRotYaw");
+	private final UniformMat4 uniformInverseTransformMatrix = AURORA.findUniformMat4("InverseTransformMatrix");
 	private int ticks;
 	private boolean renderingEffect;
+
+	private final Matrix4f projectionMatrix = new Matrix4f();
 
 
 	@Override
@@ -98,7 +100,6 @@ public class PermafrozenClient implements ClientModInitializer, ClientTickEvents
 	@Override
 	public void onWorldRendered(Camera camera, float tickDelta, long nanoTime) {
 		uniformGameTime.set((ticks + tickDelta) / 20f);
-		uniformPlayerRotPitch.set(camera.getPitch());
-		uniformPlayerRotYaw.set(camera.getYaw());
+		uniformInverseTransformMatrix.set(GlMatrices.getInverseTransformMatrix(projectionMatrix));
 	}
 }
