@@ -11,10 +11,10 @@ uniform sampler2D DiffuseSampler;
 uniform vec2      OutSize;
 uniform ivec4     ViewPort;           // viewport resolution (in pixels)
 uniform float     Time;                 // shader playback time (in seconds)
-uniform vec4      iMouse;                // mouse pixel coords. xy: current (if MLB down), zw: click
 
-uniform mat4 InverseTransformMatrix;
+uniform mat4      InverseTransformMatrix;
 
+in vec4 vPosition;
 in vec2 texCoord;
 
 out vec4 fragColor;
@@ -155,7 +155,8 @@ void main()
     p.x *= OutSize.x/OutSize.y;
 
     vec3 ro = vec3(0,0,-6.7);
-    vec3 rd = normalize(modelPos);
+   // vec3 rd = normalize(modelPos);
+    vec3 rd = normalize(vPosition.xyz);
 
     vec3 col = vec3(0.);
     vec3 brd = rd;

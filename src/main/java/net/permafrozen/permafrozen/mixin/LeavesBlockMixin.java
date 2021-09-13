@@ -56,6 +56,7 @@ public class LeavesBlockMixin extends Block {
     private static boolean isSnow(BlockState state) {
         return state.isIn(BlockTags.SNOW);
     }
+
     @Inject(at = @At("TAIL"), method = "appendProperties(Lnet/minecraft/state/StateManager$Builder;)V")
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder, CallbackInfo ci) {
         builder.add(SNOWY);

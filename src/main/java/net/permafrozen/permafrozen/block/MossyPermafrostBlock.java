@@ -2,9 +2,12 @@ package net.permafrozen.permafrozen.block;
 
 import net.minecraft.block.*;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.FlowerFeature;
@@ -21,6 +24,11 @@ public class MossyPermafrostBlock extends PermafrozenSpreadableBlock implements 
     @Override
     public boolean isFertilizable(BlockView world, BlockPos pos, BlockState state, boolean isClient) {
         return world.getBlockState(pos.up()).isAir();
+    }
+
+    @Override
+    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+        return direction == Direction.UP ? (BlockState)state.with(SNOWY, isSnow(neighborState) || neighborState.getBlock() instanceof PlantBlock && neighborState.get(SNOWY)) : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
     @Override
@@ -73,5 +81,8 @@ public class MossyPermafrostBlock extends PermafrozenSpreadableBlock implements 
     private static <U extends FeatureConfig> BlockState getFlowerState(Random random, BlockPos pos, ConfiguredFeature<U, ?> flowerFeature) {
         FlowerFeature<U> flowerFeature2 = (FlowerFeature)flowerFeature.feature;
         return flowerFeature2.getFlowerState(random, pos, flowerFeature.getConfig());
+    }
+    private static boolean isSnow(BlockState state) {
+        return state.isIn(BlockTags.SNOW);
     }
 }

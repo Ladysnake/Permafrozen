@@ -38,9 +38,7 @@ public class PermafrozenClient implements ClientModInitializer, ClientTickEvents
 	public static ParticleType<AuroraParticleEffect> AURORA_SMOL;
 	public static final ManagedCoreShader AURORA = ShaderEffectManager.getInstance().manageCoreShader(new Identifier(Permafrozen.MOD_ID, "aurora"));
 	private final Uniform1f uniformGameTime = AURORA.findUniform1f("GameTime");
-	private final UniformMat4 uniformInverseTransformMatrix = AURORA.findUniformMat4("InverseTransformMatrix");
-	private int ticks;
-	private boolean renderingEffect;
+	private int ticks = 0;
 
 	private final Matrix4f projectionMatrix = new Matrix4f();
 
@@ -86,20 +84,11 @@ public class PermafrozenClient implements ClientModInitializer, ClientTickEvents
 
 	@Override
 	public void onEndTick(MinecraftClient client) {
-		if (client.player != null) {
-			if (!this.renderingEffect) {
-				this.ticks = 0;
-				this.renderingEffect = true;
-			}
-			this.ticks++;
-		} else {
-			this.renderingEffect = false;
-		}
+		this.ticks++;
 	}
 
 	@Override
 	public void onWorldRendered(Camera camera, float tickDelta, long nanoTime) {
 		uniformGameTime.set((ticks + tickDelta) / 20f);
-		uniformInverseTransformMatrix.set(GlMatrices.getInverseTransformMatrix(projectionMatrix));
 	}
 }
