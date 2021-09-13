@@ -120,6 +120,7 @@ public class PermafrozenBlocks {
 //vegetation
     public static final Block SPECTRAL_CAP = create("spectral_cap", new PermafrozenPlantBlock(AbstractBlock.Settings.of(Material.PLANT, MapColor.LAPIS_BLUE).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).luminance((state) -> 10)), true);
 	public static final Block GLACIAL_KELP = create("glacial_kelp", new PermafrozenKelpPlantBlock(copyOf(Blocks.KELP_PLANT)), true);
+	public static final Block GLAUCA_GRASS = create("glauca_grass", new PermafrozenPlantBlock(copyOf(Blocks.GRASS)), true);
 //crymstals
 	public static final Block PRISMARINE_CLUSTER = create("prismarine_cluster", new PrismarineCrystalClusterBlock(7, 3, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().breakByTool(FabricToolTags.PICKAXES).requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 12)), true);
 	public static final Block LARGE_PRISMARINE_BUD = create("large_prismarine_bud", new PrismarineCrystalClusterBlock(5, 3, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().breakByTool(FabricToolTags.PICKAXES).requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 9)), true);

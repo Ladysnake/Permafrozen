@@ -1,5 +1,6 @@
 package net.permafrozen.permafrozen.util;
 
+import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import ladysnake.satin.api.managed.ManagedCoreShader;
 import net.minecraft.client.MinecraftClient;
@@ -63,5 +64,4 @@ public class PermafrozenSky {
         RenderSystem.enableTexture();
         RenderSystem.disableBlend();
     }
-
 }

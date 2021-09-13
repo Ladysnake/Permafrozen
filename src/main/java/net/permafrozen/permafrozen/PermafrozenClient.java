@@ -34,11 +34,12 @@ import net.permafrozen.permafrozen.registry.PermafrozenBlocks;
 import net.permafrozen.permafrozen.registry.PermafrozenEntities;
 import net.permafrozen.permafrozen.registry.PermafrozenItems;
 
-public class PermafrozenClient implements ClientModInitializer, ClientTickEvents.EndTick, PostWorldRenderCallback {
+public class PermafrozenClient implements ClientModInitializer, ClientTickEvents.EndTick {
 	public static ParticleType<AuroraParticleEffect> AURORA_SMOL;
 	public static final ManagedCoreShader AURORA = ShaderEffectManager.getInstance().manageCoreShader(new Identifier(Permafrozen.MOD_ID, "aurora"));
 	private final Uniform1f uniformGameTime = AURORA.findUniform1f("GameTime");
-	private int ticks = 0;
+	private int ticks;
+	private boolean renderingEffect;
 
 	private final Matrix4f projectionMatrix = new Matrix4f();
 
@@ -52,12 +53,10 @@ public class PermafrozenClient implements ClientModInitializer, ClientTickEvents
 		EntityRendererRegistry.INSTANCE.register(PermafrozenEntities.AURORA_FAE, AuroraFaeRenderer::new);
 		EntityRendererRegistry.INSTANCE.register(PermafrozenEntities.PUFFBOO, PuffbooRenderer::new);
 		EntityRendererRegistry.INSTANCE.register(PermafrozenEntities.LESSER_FIDDLESNOUT, LesserFiddlesnoutEntityRenderer::new);
-		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), PermafrozenBlocks.FIR_SAPLING, PermafrozenBlocks.POTTED_FIR_SAPLING, PermafrozenBlocks.PRISMATIC_CORAL, PermafrozenBlocks.DEAD_PRISMATIC_CORAL, PermafrozenBlocks.FIR_TRAPDOOR, PermafrozenBlocks.SPECTRAL_CAP, PermafrozenBlocks.PRISMARINE_CLUSTER, PermafrozenBlocks.SMALL_PRISMARINE_BUD, PermafrozenBlocks.MEDIUM_PRISMARINE_BUD, PermafrozenBlocks.LARGE_PRISMARINE_BUD, PermafrozenBlocks.FIR_LEAVES, PermafrozenBlocks.DEADWOOD_TRAPDOOR, PermafrozenBlocks.DEADWOOD_DOOR);
+		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), PermafrozenBlocks.FIR_SAPLING, PermafrozenBlocks.POTTED_FIR_SAPLING, PermafrozenBlocks.PRISMATIC_CORAL, PermafrozenBlocks.DEAD_PRISMATIC_CORAL, PermafrozenBlocks.FIR_TRAPDOOR, PermafrozenBlocks.SPECTRAL_CAP, PermafrozenBlocks.PRISMARINE_CLUSTER, PermafrozenBlocks.SMALL_PRISMARINE_BUD, PermafrozenBlocks.MEDIUM_PRISMARINE_BUD, PermafrozenBlocks.LARGE_PRISMARINE_BUD, PermafrozenBlocks.FIR_LEAVES, PermafrozenBlocks.DEADWOOD_TRAPDOOR, PermafrozenBlocks.DEADWOOD_DOOR, PermafrozenBlocks.GLAUCA_GRASS);
 		SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, PermafrozenBlocks.FIR_SIGN.getTexture()));
 		SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, PermafrozenBlocks.DEADWOOD_SIGN.getTexture()));
 
-
-		PostWorldRenderCallback.EVENT.register(this);
 		ClientTickEvents.END_CLIENT_TICK.register(this);
 
 		initColors();
@@ -84,11 +83,15 @@ public class PermafrozenClient implements ClientModInitializer, ClientTickEvents
 
 	@Override
 	public void onEndTick(MinecraftClient client) {
-		this.ticks++;
+		if (client.player != null) {
+			if (!this.renderingEffect) {
+				this.ticks = 0;
+				this.renderingEffect = true;
+			}
+			this.ticks++;
+		} else {
+			this.renderingEffect = false;
+		}
 	}
 
-	@Override
-	public void onWorldRendered(Camera camera, float tickDelta, long nanoTime) {
-		uniformGameTime.set((ticks + tickDelta) / 20f);
-	}
 }
