@@ -3,5 +3,6 @@
   "ingredient": {
     "item": "permafrozen:smooth_shiverslate"
   },
-  "result": "permafrozen:smooth_shiverslate_bricks"
+  "result": "permafrozen:smooth_shiverslate_bricks",
+  "count": 1
 }
