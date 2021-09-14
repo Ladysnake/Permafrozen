@@ -7,8 +7,6 @@ import ladysnake.satin.api.event.PostWorldRenderCallback;
 import ladysnake.satin.api.managed.ManagedCoreShader;
 import ladysnake.satin.api.managed.ShaderEffectManager;
 import ladysnake.satin.api.managed.uniform.Uniform1f;
-import ladysnake.satin.api.managed.uniform.UniformMat4;
-import ladysnake.satin.api.util.GlMatrices;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -34,14 +32,10 @@ import net.permafrozen.permafrozen.registry.PermafrozenBlocks;
 import net.permafrozen.permafrozen.registry.PermafrozenEntities;
 import net.permafrozen.permafrozen.registry.PermafrozenItems;
 
-public class PermafrozenClient implements ClientModInitializer, ClientTickEvents.EndTick {
+public class PermafrozenClient implements ClientModInitializer {
 	public static ParticleType<AuroraParticleEffect> AURORA_SMOL;
 	public static final ManagedCoreShader AURORA = ShaderEffectManager.getInstance().manageCoreShader(new Identifier(Permafrozen.MOD_ID, "aurora"));
-	private final Uniform1f uniformGameTime = AURORA.findUniform1f("GameTime");
-	private int ticks;
-	private boolean renderingEffect;
 
-	private final Matrix4f projectionMatrix = new Matrix4f();
 
 
 	@Override
@@ -56,8 +50,6 @@ public class PermafrozenClient implements ClientModInitializer, ClientTickEvents
 		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), PermafrozenBlocks.FIR_SAPLING, PermafrozenBlocks.POTTED_FIR_SAPLING, PermafrozenBlocks.PRISMATIC_CORAL, PermafrozenBlocks.DEAD_PRISMATIC_CORAL, PermafrozenBlocks.FIR_TRAPDOOR, PermafrozenBlocks.SPECTRAL_CAP, PermafrozenBlocks.PRISMARINE_CLUSTER, PermafrozenBlocks.SMALL_PRISMARINE_BUD, PermafrozenBlocks.MEDIUM_PRISMARINE_BUD, PermafrozenBlocks.LARGE_PRISMARINE_BUD, PermafrozenBlocks.FIR_LEAVES, PermafrozenBlocks.DEADWOOD_TRAPDOOR, PermafrozenBlocks.DEADWOOD_DOOR, PermafrozenBlocks.GLAUCA_GRASS);
 		SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, PermafrozenBlocks.FIR_SIGN.getTexture()));
 		SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, PermafrozenBlocks.DEADWOOD_SIGN.getTexture()));
-
-		ClientTickEvents.END_CLIENT_TICK.register(this);
 
 		initColors();
 		initParticles();
@@ -81,17 +73,6 @@ public class PermafrozenClient implements ClientModInitializer, ClientTickEvents
 
 	}
 
-	@Override
-	public void onEndTick(MinecraftClient client) {
-		if (client.player != null) {
-			if (!this.renderingEffect) {
-				this.ticks = 0;
-				this.renderingEffect = true;
-			}
-			this.ticks++;
-		} else {
-			this.renderingEffect = false;
-		}
-	}
+
 
 }
