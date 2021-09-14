@@ -20,6 +20,7 @@ import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.TexturedRenderLayers;
+import net.minecraft.client.render.VertexFormats;
 import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.particle.ParticleType;
 import net.minecraft.util.Identifier;
@@ -34,7 +35,7 @@ import net.permafrozen.permafrozen.registry.PermafrozenItems;
 
 public class PermafrozenClient implements ClientModInitializer {
 	public static ParticleType<AuroraParticleEffect> AURORA_SMOL;
-	public static final ManagedCoreShader AURORA = ShaderEffectManager.getInstance().manageCoreShader(new Identifier(Permafrozen.MOD_ID, "aurora"));
+	public static final ManagedCoreShader AURORA = ShaderEffectManager.getInstance().manageCoreShader(new Identifier(Permafrozen.MOD_ID, "aurora"), VertexFormats.POSITION_TEXTURE);
 
 
 
