@@ -11,6 +11,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
+import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
@@ -21,6 +22,7 @@ import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.render.VertexFormats;
+import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.particle.ParticleType;
 import net.minecraft.util.Identifier;
@@ -32,6 +34,7 @@ import net.permafrozen.permafrozen.client.particle.aurora.AuroraParticleEffect;
 import net.permafrozen.permafrozen.registry.PermafrozenBlocks;
 import net.permafrozen.permafrozen.registry.PermafrozenEntities;
 import net.permafrozen.permafrozen.registry.PermafrozenItems;
+import software.bernie.example.client.renderer.tile.FertilizerTileRenderer;
 
 public class PermafrozenClient implements ClientModInitializer {
 	public static ParticleType<AuroraParticleEffect> AURORA_SMOL;
@@ -51,7 +54,7 @@ public class PermafrozenClient implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), PermafrozenBlocks.FIR_SAPLING, PermafrozenBlocks.POTTED_FIR_SAPLING, PermafrozenBlocks.PRISMATIC_CORAL, PermafrozenBlocks.DEAD_PRISMATIC_CORAL, PermafrozenBlocks.FIR_TRAPDOOR, PermafrozenBlocks.SPECTRAL_CAP, PermafrozenBlocks.PRISMARINE_CLUSTER, PermafrozenBlocks.SMALL_PRISMARINE_BUD, PermafrozenBlocks.MEDIUM_PRISMARINE_BUD, PermafrozenBlocks.LARGE_PRISMARINE_BUD, PermafrozenBlocks.FIR_LEAVES, PermafrozenBlocks.DEADWOOD_TRAPDOOR, PermafrozenBlocks.DEADWOOD_DOOR, PermafrozenBlocks.GLAUCA_GRASS);
 		SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, PermafrozenBlocks.FIR_SIGN.getTexture()));
 		SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, PermafrozenBlocks.DEADWOOD_SIGN.getTexture()));
-
+		BlockEntityRendererRegistry.INSTANCE.register(PermafrozenEntities.SPECTRAL_CAP_TYPE, (BlockEntityRendererFactory.Context rendererDispatcherIn) -> new SpectralCapRenderer());
 		initColors();
 		initParticles();
 

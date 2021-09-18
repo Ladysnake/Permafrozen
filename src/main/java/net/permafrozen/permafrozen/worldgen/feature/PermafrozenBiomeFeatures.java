@@ -11,6 +11,9 @@ public class PermafrozenBiomeFeatures {
 	public static void addSpectralCaps(GenerationSettings.Builder builder) {
 		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PermafrozenConfiguredFeatures.PATCH_SPECTRAL_CAP);
 	}
+	public static void addGlaucaGrass(GenerationSettings.Builder builder) {
+		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PermafrozenConfiguredFeatures.PATCH_GLAUCA);
+	}
 	public static void addWaterLakes(GenerationSettings.Builder builder) {
 		builder.feature(GenerationStep.Feature.LAKES, ConfiguredFeatures.LAKE_WATER);
 	}

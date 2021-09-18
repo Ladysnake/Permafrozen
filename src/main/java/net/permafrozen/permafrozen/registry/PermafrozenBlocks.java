@@ -15,10 +15,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.permafrozen.permafrozen.Permafrozen;
-import net.permafrozen.permafrozen.block.AuroraBlasterBlock;
-import net.permafrozen.permafrozen.block.MossyPermafrostBlock;
-import net.permafrozen.permafrozen.block.PrismarineCrystalBlock;
-import net.permafrozen.permafrozen.block.PrismarineCrystalClusterBlock;
+import net.permafrozen.permafrozen.block.*;
 import net.permafrozen.permafrozen.block.util.*;
 import net.permafrozen.permafrozen.mixin.BlocksAccessor;
 import net.permafrozen.permafrozen.worldgen.tree.FirSaplingGenerator;
@@ -118,7 +115,7 @@ public class PermafrozenBlocks {
 	public static final Block MOSSY_SMOOTH_SHIVERSLATE_BRICK_SLAB = create("mossy_smooth_shiverslate_brick_slab", new SlabBlock(copyOf(Blocks.DEEPSLATE_BRICK_SLAB)), true);
 	public static final Block MOSSY_SMOOTH_SHIVERSLATE_BRICK_WALL = create("mossy_smooth_shiverslate_brick_wall", new WallBlock(copyOf(Blocks.DEEPSLATE_BRICK_WALL)), true);
 //vegetation
-    public static final Block SPECTRAL_CAP = create("spectral_cap", new PermafrozenPlantBlock(AbstractBlock.Settings.of(Material.PLANT, MapColor.LAPIS_BLUE).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).luminance((state) -> 10)), true);
+    public static final Block SPECTRAL_CAP = create("spectral_cap", new SpectralCapBlock(AbstractBlock.Settings.of(Material.PLANT, MapColor.LAPIS_BLUE).ticksRandomly().breakInstantly().nonOpaque().sounds(BlockSoundGroup.GRASS).luminance((state) -> 10)), true);
 	public static final Block GLACIAL_KELP = create("glacial_kelp", new PermafrozenKelpPlantBlock(copyOf(Blocks.KELP_PLANT)), true);
 	public static final Block GLAUCA_GRASS = create("glauca_grass", new PermafrozenPlantBlock(copyOf(Blocks.GRASS)), true);
 //crymstals

@@ -15,6 +15,7 @@ import net.minecraft.world.gen.foliage.MegaPineFoliagePlacer;
 import net.minecraft.world.gen.foliage.SpruceFoliagePlacer;
 import net.minecraft.world.gen.placer.SimpleBlockPlacer;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
+import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.treedecorator.AlterGroundTreeDecorator;
 import net.minecraft.world.gen.trunk.GiantTrunkPlacer;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
@@ -33,6 +34,7 @@ public class PermafrozenConfiguredFeatures {
 	public static final ConfiguredFeature<?, ?> PATCH_SPECTRAL_CAP = register("patch_spectral_cap", Feature.RANDOM_PATCH.configure((new net.minecraft.world.gen.feature.RandomPatchFeatureConfig.Builder(new SimpleBlockStateProvider(PermafrozenBlocks.SPECTRAL_CAP.getDefaultState()), SimpleBlockPlacer.INSTANCE)).tries(3).build()));
 	public static final ConfiguredFeature<?, ?> PRISMARINE_SPIKE = register("prismarine_spike", (ConfiguredFeature)PermafrozenFeature.PRISMARINE_SPIKE.configure(FeatureConfig.DEFAULT).decorate(ConfiguredFeatures.Decorators.SQUARE_TOP_SOLID_HEIGHTMAP).repeat(3));
 	public static final ConfiguredFeature<?, ?> AURORA_CORAL = register("aurora_coral", (ConfiguredFeature)PermafrozenFeature.PRISMARINE_SPIKE.configure(FeatureConfig.DEFAULT).decorate(ConfiguredFeatures.Decorators.SQUARE_TOP_SOLID_HEIGHTMAP).repeat(1));
+	public static final ConfiguredFeature<?, ?> PATCH_GLAUCA = register("patch_glauca", Feature.RANDOM_PATCH.configure((new net.minecraft.world.gen.feature.RandomPatchFeatureConfig.Builder(new SimpleBlockStateProvider(PermafrozenBlocks.GLAUCA_GRASS.getDefaultState()), SimpleBlockPlacer.INSTANCE)).tries(64).build()));
 
 	public static <BEE extends FeatureConfig> ConfiguredFeature<BEE, ?> register(String id, ConfiguredFeature<BEE, ?> feature) {
 		CONFIGURED_STUFF.put(feature, new Identifier(Permafrozen.MOD_ID, id));

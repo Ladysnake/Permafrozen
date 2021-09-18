@@ -2,12 +2,15 @@ package net.permafrozen.permafrozen;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.World;
+import net.permafrozen.permafrozen.block.SpectralCapBlockEntity;
 import net.permafrozen.permafrozen.registry.*;
 import net.permafrozen.permafrozen.worldgen.feature.PermafrozenConfiguredFeatures;
 import software.bernie.geckolib3.GeckoLib;
