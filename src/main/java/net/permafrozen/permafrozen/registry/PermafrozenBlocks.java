@@ -159,6 +159,8 @@ public class PermafrozenBlocks {
 		flammableRegistry.add(FIR_FENCE_GATE, 5, 20);
 		CompostingChanceRegistry compostRegistry = CompostingChanceRegistry.INSTANCE;
 		compostRegistry.add(FIR_LEAVES, 0.3f);
+		compostRegistry.add(SPECTRAL_CAP, 0.6f);
+		compostRegistry.add(GLAUCA_GRASS, 0.6f);
 		compostRegistry.add(FIR_SAPLING, 0.3f);
 	}
 }

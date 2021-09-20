@@ -214,7 +214,8 @@ public class AuroraFaeEntity extends TameableEntity implements Flutterer, IAnima
 
     @Override
     public boolean isBreedingItem(ItemStack stack) {
-        return stack.getItem() == PermafrozenBlocks.SPECTRAL_CAP.asItem();
+        //TODO: decide what should aurora fae be tamed with
+        return false;
     }
 
     @Override

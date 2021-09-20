@@ -1,5 +1,6 @@
 package net.permafrozen.permafrozen.registry;
 
+import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
@@ -58,6 +59,8 @@ public class PermafrozenItems {
 	}
 	
 	public static void init() {
+		CompostingChanceRegistry compostRegistry = CompostingChanceRegistry.INSTANCE;
+		compostRegistry.add(FIR_PINECONE, 0.6f);
 		ITEMS.keySet().forEach(item -> Registry.register(Registry.ITEM, ITEMS.get(item), item));
 	}
 }
