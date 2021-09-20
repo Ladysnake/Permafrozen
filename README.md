@@ -6,8 +6,6 @@ Welcome to the Permafrozen! this mod adds tons of dragons small and big!
 
 # Credits 
 
--ZedZedMango_
-
 -Coolrexx
 
 -SuPaChiKen
@@ -31,6 +29,7 @@ Welcome to the Permafrozen! this mod adds tons of dragons small and big!
 
 # Licensing
 
+
 -This mod is "all rights reserved" meaning that assets/code arent meant to be stolen, reposted or repurposed. however there are a few exceptions regarding asset and code reuse.
 
 #Disclaimer
@@ -40,6 +39,7 @@ Welcome to the Permafrozen! this mod adds tons of dragons small and big!
 # You CAN
 
 -Modify our code for private use 
+
 
 -Make resource packs for private use (if you want to make a public resource pack just contact us and we will advertise) 
 
@@ -51,16 +51,18 @@ Welcome to the Permafrozen! this mod adds tons of dragons small and big!
 
 -Use the mod in Modpacks without permission 
 
+
 # You CANNOT
 
 -Redistribute our code and advertise it as your own
 
+
 -Use more than 50+% of our code without credit
+
 
 -Cannot advertise our project as something else such as Modloader,game etc
  
 -Advertise the mod as your own 
 
 -Have a closed source mod but use our code
-
 

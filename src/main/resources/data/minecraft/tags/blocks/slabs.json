@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "permafrozen:hertzstone_slab",
+    "permafrozen:polished_hertzstone_slab",
+    "permafrozen:polished_hertzstone_brick_slab"
+  ]
+}

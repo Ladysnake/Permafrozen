@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+       "up": "permafrozen:block/cryorite_block",
+       "north": "permafrozen:block/cryorite_block",
+       "south": "permafrozen:block/cryorite_block",
+       "east": "permafrozen:block/cryorite_block",
+       "west": "permafrozen:block/cryorite_block",
+       "down": "permafrozen:block/cryorite_block",
+       "particle": "permafrozen:block/cryorite_block"
+    }
+}

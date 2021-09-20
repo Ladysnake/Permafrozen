@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=y":  { "model": "permafrozen:block/frozen_debris" },
+    "axis=z":   { "model": "permafrozen:block/frozen_debris", "x": 90 },
+    "axis=x":   { "model": "permafrozen:block/frozen_debris", "x": 90, "y": 90 }
+  }
+}

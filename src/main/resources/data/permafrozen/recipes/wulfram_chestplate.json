@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "1#1",
+    "111",
+    "111"
+  ],
+  "key": {
+    "1": {
+      "item": "permafrozen:wulfram_ingot"
+    },
+    "#": {
+      "item": "minecraft:air"
+    }
+  },
+  "result": {
+    "item": "permafrozen:wulfram_chestplate",
+    "count": 1
+  }
+}

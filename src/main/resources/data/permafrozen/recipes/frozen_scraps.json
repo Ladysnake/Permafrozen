@@ -1,0 +1,9 @@
+{
+  "type": "smelting",
+  "ingredient": {
+    "item": "permafrozen:frozen_debris"
+  },
+  "result": "permafrozen:frozen_scraps",
+  "experience": 2,
+  "cookingtime": 200
+}

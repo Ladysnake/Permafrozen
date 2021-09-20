@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "permafrozen:hertzstone_wall",
+    "permafrozen:polished_hertzstone_wall",
+    "permafrozen:polished_hertzstone_brick_wall"
+  ]
+}

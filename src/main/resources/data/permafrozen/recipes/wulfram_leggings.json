@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "111",
+    "1#1",
+    "1#1"
+  ],
+  "key": {
+    "1": {
+      "item": "permafrozen:wulfram_ingot"
+    },
+    "#": {
+      "item": "minecraft:air"
+    }
+  },
+  "result": {
+    "item": "permafrozen:wulfram_leggings",
+    "count": 1
+  }
+}

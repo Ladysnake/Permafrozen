@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "permafrozen:wulfram_ingot"
+    }
+  ],
+  "result": {
+    "item": "permafrozen:wulfram_nugget",
+    "count": 9
+  }
+}

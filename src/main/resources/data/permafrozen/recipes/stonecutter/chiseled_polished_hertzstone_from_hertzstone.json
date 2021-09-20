@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:stonecutting",
+
+  "ingredient": {
+    "item": "permafrozen:hertzstone"
+  },
+
+  "result": "permafrozen:chiseled_polished_hertzstone",
+  "count": 1
+
+}

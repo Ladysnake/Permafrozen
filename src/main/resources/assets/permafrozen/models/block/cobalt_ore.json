@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+       "up": "permafrozen:block/cobalt_ore",
+       "north": "permafrozen:block/cobalt_ore",
+       "south": "permafrozen:block/cobalt_ore",
+       "east": "permafrozen:block/cobalt_ore",
+       "west": "permafrozen:block/cobalt_ore",
+       "down": "permafrozen:block/cobalt_ore",
+       "particle": "permafrozen:block/cobalt_ore"
+    }
+}
