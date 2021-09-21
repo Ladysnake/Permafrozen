@@ -40,9 +40,10 @@ public class PermafrozenConfiguredFeatures {
 		CONFIGURED_STUFF.put(feature, new Identifier(Permafrozen.MOD_ID, id));
 		return feature;
 	}
-	
 	public static final ConfiguredFeature<?, ?> TREES_FIR = register("trees_" + "fir", Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(ImmutableList.of(MEGA_FIR.withChance(0.1F), MEGA_FIR_DOS.withChance(0.1F)), FIR)).decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP).decorate(Decorator.COUNT_EXTRA.configure(new CountExtraDecoratorConfig(10, 0.1F, 1))));
-	
+
+	public static final ConfiguredFeature<?, ?> TREES_FIR_SPARSE = register("trees_" + "fir_sparse", Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(ImmutableList.of(FIR.withChance(0.02f)), FIR)).decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP_OCEAN_FLOOR_NO_WATER).decorate(Decorator.COUNT_EXTRA.configure(new CountExtraDecoratorConfig(1, 0.1F, 1))));
+
 	public static void init() {
 		CONFIGURED_STUFF.keySet().forEach(configuredFeature -> Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, CONFIGURED_STUFF.get(configuredFeature), configuredFeature));
 	}

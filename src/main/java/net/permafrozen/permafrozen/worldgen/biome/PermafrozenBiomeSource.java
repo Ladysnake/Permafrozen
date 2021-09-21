@@ -89,10 +89,11 @@ public class PermafrozenBiomeSource extends BiomeSource {
 	}
 	
 	static {
-		PERMAFROZEN_BIOMES = ImmutableList.of(PermafrozenBiomes.BOREAL_FOREST_KEY, PermafrozenBiomes.GLACIAL_OCEAN_KEY, PermafrozenBiomes.GLACIAL_OCEAN_SHORES_KEY);
+		PERMAFROZEN_BIOMES = ImmutableList.of(PermafrozenBiomes.BOREAL_FOREST_KEY, PermafrozenBiomes.GLACIAL_OCEAN_KEY, PermafrozenBiomes.GLACIAL_OCEAN_SHORES_KEY, PermafrozenBiomes.BOREAL_FOREST_GLADE_KEY);
 	}
 	
 	public static final Identifier BOREAS = new Identifier(Permafrozen.MOD_ID, "boreal_forest");
+	public static final Identifier BOREAS_GLADE = new Identifier(Permafrozen.MOD_ID, "boreal_forest_glade");
 	public static final Identifier GLACIAS = new Identifier(Permafrozen.MOD_ID, "glacial_ocean");
 	public static final Identifier GLACIAS_SHORES = new Identifier(Permafrozen.MOD_ID, "glacial_ocean_shores");
 	

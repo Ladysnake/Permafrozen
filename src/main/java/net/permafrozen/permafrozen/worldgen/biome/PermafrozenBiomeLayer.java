@@ -24,14 +24,15 @@ public class PermafrozenBiomeLayer implements InitLayer {
 	@Override
 	public int sample(LayerRandomnessSource noise, int x, int z) {
 		double depthNoise = perlinGen.sample(x * 0.055D, z * 0.055D, false);
-		double heatNoise = noise.getNoiseSampler().sample(x * 0.055D, 60, z * 0.055D);
-		if ( depthNoise > 0.30 ) {
-			return this.dynamicRegistry.getRawId(this.dynamicRegistry.get(PermafrozenBiomeSource.BOREAS));
+		double differentNoise = noise.getNoiseSampler().sample(x * 0.055D, 60, z * 0.055D);
+		if (depthNoise > 0.15) {
+			if (differentNoise > 0.30) {
+				return this.dynamicRegistry.getRawId(this.dynamicRegistry.get(PermafrozenBiomeSource.BOREAS_GLADE));
+			} else {
+				return this.dynamicRegistry.getRawId(this.dynamicRegistry.get(PermafrozenBiomeSource.BOREAS));
+			}
 		}
-		else if (depthNoise > 0.20 && depthNoise < 0.30 ) {
-			return this.dynamicRegistry.getRawId(this.dynamicRegistry.get(PermafrozenBiomeSource.BOREAS));
-		}
-		else if (depthNoise > 0.10 && depthNoise < 0.20 ) {
+		else if (depthNoise > 0.05) {
 			return this.dynamicRegistry.getRawId(this.dynamicRegistry.get(PermafrozenBiomeSource.GLACIAS_SHORES));
 		}
 		else {

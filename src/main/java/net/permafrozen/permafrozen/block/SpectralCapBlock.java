@@ -40,21 +40,16 @@ public class SpectralCapBlock extends PlantBlock implements BlockEntityProvider 
     }
 
     private void bounce(Entity entity) {
-        Vec3d vec3d = entity.getVelocity().add(0, 1, 0);
-        if (vec3d.y < 0.0D) {
+        Vec3d vec3d = entity.getVelocity().add(0, 2, 0);
             double d = entity instanceof LivingEntity ? 1.0D : 0.8D;
             entity.setVelocity(vec3d.x, -vec3d.y * d, vec3d.z);
-        }
 
     }
 
     public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
         double d = Math.abs(entity.getVelocity().y);
         if (d < 0.1D && !entity.bypassesSteppingEffects()) {
-            Vec3d vec3d = entity.getVelocity().add(0, 1, 0);
-
-            double e = entity instanceof LivingEntity ? 1.0D : 0.8D;
-            entity.setVelocity(vec3d.x, -vec3d.y * e, vec3d.z);
+            bounce(entity);
 
         }
 

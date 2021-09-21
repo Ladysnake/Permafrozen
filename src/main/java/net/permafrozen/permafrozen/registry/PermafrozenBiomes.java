@@ -20,9 +20,11 @@ import net.permafrozen.permafrozen.worldgen.feature.PermafrozenBiomeFeatures;
 
 public class PermafrozenBiomes {
 	public static final Biome BOREAL_FOREST = createBorealForest();
+	public static final Biome BOREAL_FOREST_GLADE = createBorealForestGlade();
 	public static final Biome GLACIAL_OCEAN = createGlacialOcean();
 	public static final Biome GLACIAL_OCEAN_SHORES = createGlacialOceanShores();
 	public static final RegistryKey<Biome> BOREAL_FOREST_KEY = RegistryKey.of(Registry.BIOME_KEY, new Identifier(Permafrozen.MOD_ID, "boreal_forest"));
+	public static final RegistryKey<Biome> BOREAL_FOREST_GLADE_KEY = RegistryKey.of(Registry.BIOME_KEY, new Identifier(Permafrozen.MOD_ID, "boreal_forest_glade"));
 	public static final RegistryKey<Biome> GLACIAL_OCEAN_KEY = RegistryKey.of(Registry.BIOME_KEY, new Identifier(Permafrozen.MOD_ID, "glacial_ocean"));
 	public static final RegistryKey<Biome> GLACIAL_OCEAN_SHORES_KEY = RegistryKey.of(Registry.BIOME_KEY, new Identifier(Permafrozen.MOD_ID, "glacial_ocean_shores"));
 	
@@ -34,6 +36,19 @@ public class PermafrozenBiomes {
 		DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);
 		DefaultBiomeFeatures.addMossyRocks(generationSettings);
 		PermafrozenBiomeFeatures.addFirTrees(generationSettings);
+		PermafrozenBiomeFeatures.addGlaucaGrass(generationSettings);
+		PermafrozenBiomeFeatures.addSpectralCaps(generationSettings);
+		PermafrozenBiomeFeatures.addWaterLakes(generationSettings);
+		DefaultBiomeFeatures.addSprings(generationSettings);
+		return new Biome.Builder().precipitation(Biome.Precipitation.SNOW).category(Biome.Category.TAIGA).depth(0.1F).scale(0.2F).temperature(0.0F).downfall(0.6F).effects(new BiomeEffects.Builder().waterColor(4159204).waterFogColor(329011).fogColor(12638463).skyColor(getSkyColor(0.0F)).loopSound(PermafrozenSoundEvents.BOREAL_AMBIENCE).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).build();
+	}
+	private static Biome createBorealForestGlade() {
+		SpawnSettings.Builder spawnSettings = new SpawnSettings.Builder();
+		spawnSettings.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(PermafrozenEntities.AURORA_FAE, 1, 0, 2)).spawnCost(PermafrozenEntities.AURORA_FAE, 1.0D, 0.12D);
+		GenerationSettings.Builder generationSettings = new GenerationSettings.Builder();
+		generationSettings.surfaceBuilder(PermafrozenSurfaceBuilders.PERMAFROST);
+		DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);
+		PermafrozenBiomeFeatures.addFirTreesSparse(generationSettings);
 		PermafrozenBiomeFeatures.addGlaucaGrass(generationSettings);
 		PermafrozenBiomeFeatures.addSpectralCaps(generationSettings);
 		PermafrozenBiomeFeatures.addWaterLakes(generationSettings);
@@ -79,6 +94,7 @@ public class PermafrozenBiomes {
 	public static void init() {
 		Registry.register(BuiltinRegistries.BIOME, BOREAL_FOREST_KEY.getValue(), BOREAL_FOREST);
 		Registry.register(BuiltinRegistries.BIOME, GLACIAL_OCEAN_KEY.getValue(), GLACIAL_OCEAN);
+		Registry.register(BuiltinRegistries.BIOME, BOREAL_FOREST_GLADE_KEY.getValue(), BOREAL_FOREST_GLADE);
 		Registry.register(BuiltinRegistries.BIOME, GLACIAL_OCEAN_SHORES_KEY.getValue(), GLACIAL_OCEAN_SHORES);
 		Registry.register(Registry.BIOME_SOURCE, new Identifier(Permafrozen.MOD_ID, "biome_source"), PermafrozenBiomeSource.CODEC);
 	}
