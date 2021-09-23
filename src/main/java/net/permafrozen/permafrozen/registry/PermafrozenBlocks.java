@@ -127,7 +127,7 @@ public class PermafrozenBlocks {
 //aurora tech
 	public static final Block AURORA_BLASTER = create("aurora_blaster", new AuroraBlasterBlock(copyOf(Blocks.OBSIDIAN)), true);
 //gyrehorn
-	public static final Block GYREHORN_WOOL = create("gyrehorn_wool", new Block(FabricBlockSettings.of(Material.WOOL, MapColor.BROWN).strength(0.8F).sounds(BlockSoundGroup.WOOL)), true);
+	public static final Block FLEECE = create("fleece", new Block(FabricBlockSettings.of(Material.WOOL, MapColor.BROWN).strength(0.8F).sounds(BlockSoundGroup.WOOL)), true);
 //other shit
 	public static final Block DEAD_PRISMATIC_CORAL_BLOCK = create("dead_prismatic_coral_block", new PermafrozenDeadCoralBlock(AbstractBlock.Settings.of(Material.STONE)), true);
 	public static final Block PRISMATIC_CORAL_BLOCK = create("prismatic_coral_block", new CoralBlockBlock(DEAD_PRISMATIC_CORAL_BLOCK, AbstractBlock.Settings.of(Material.STONE, MapColor.PURPLE).requiresTool().strength(1.5F, 6.0F).sounds(BlockSoundGroup.CORAL).luminance((blockState) -> 8)), true);
