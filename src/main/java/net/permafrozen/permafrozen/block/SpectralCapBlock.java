@@ -48,7 +48,7 @@ public class SpectralCapBlock extends PlantBlock implements BlockEntityProvider 
     public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
         double d = Math.abs(entity.getVelocity().y);
         if (d < 0.1D && !entity.bypassesSteppingEffects()) {
-            bounce(entity, entity.getVelocity().add(0, 4, 0));
+            bounce(entity, entity.getVelocity().add(0, 1, 0));
 
         }
 
