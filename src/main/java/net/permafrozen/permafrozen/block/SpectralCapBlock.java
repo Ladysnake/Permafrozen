@@ -7,10 +7,14 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
+@SuppressWarnings("deprecation")
 public class SpectralCapBlock extends PlantBlock implements BlockEntityProvider {
+    protected static final VoxelShape SHAPE = Block.createCuboidShape(1, 0, 1, 15, 11, 15);
+
     public SpectralCapBlock(Settings settings) {
         super(settings);
     }
@@ -21,6 +25,7 @@ public class SpectralCapBlock extends PlantBlock implements BlockEntityProvider 
         return BlockRenderType.ENTITYBLOCK_ANIMATED;
     }
 
+    @Override
     public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
         if (entity.bypassesLandingEffects()) {
             super.onLandedUpon(world, state, pos, entity, fallDistance);
@@ -30,6 +35,13 @@ public class SpectralCapBlock extends PlantBlock implements BlockEntityProvider 
 
     }
 
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return SHAPE;
+    }
+
+
+    @Override
     public void onEntityLand(BlockView world, Entity entity) {
         if (entity.bypassesLandingEffects()) {
             super.onEntityLand(world, entity);
@@ -45,6 +57,7 @@ public class SpectralCapBlock extends PlantBlock implements BlockEntityProvider 
 
     }
 
+    @Override
     public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
         double d = Math.abs(entity.getVelocity().y);
         if (d < 0.1D && !entity.bypassesSteppingEffects()) {

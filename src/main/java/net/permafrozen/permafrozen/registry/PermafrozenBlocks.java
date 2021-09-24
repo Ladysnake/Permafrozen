@@ -115,7 +115,7 @@ public class PermafrozenBlocks {
 	public static final Block MOSSY_SMOOTH_SHIVERSLATE_BRICK_SLAB = create("mossy_smooth_shiverslate_brick_slab", new SlabBlock(copyOf(Blocks.DEEPSLATE_BRICK_SLAB)), true);
 	public static final Block MOSSY_SMOOTH_SHIVERSLATE_BRICK_WALL = create("mossy_smooth_shiverslate_brick_wall", new WallBlock(copyOf(Blocks.DEEPSLATE_BRICK_WALL)), true);
 //vegetation
-    public static final Block SPECTRAL_CAP = create("spectral_cap", new SpectralCapBlock(AbstractBlock.Settings.of(Material.PLANT, MapColor.LAPIS_BLUE).ticksRandomly().breakInstantly().nonOpaque().sounds(BlockSoundGroup.GRASS).luminance((state) -> 10)), true);
+    public static final Block SPECTRAL_CAP = create("spectral_cap", new SpectralCapBlock(AbstractBlock.Settings.of(Material.PLANT, MapColor.LAPIS_BLUE).ticksRandomly().breakInstantly().nonOpaque().sounds(BlockSoundGroup.FUNGUS).luminance((state) -> 10)), true);
 	public static final Block GLACIAL_KELP = create("glacial_kelp", new PermafrozenKelpPlantBlock(copyOf(Blocks.KELP_PLANT)), true);
 	public static final Block GLAUCA_GRASS = create("glauca_grass", new PermafrozenPlantBlock(copyOf(Blocks.GRASS)), true);
 //crymstals
