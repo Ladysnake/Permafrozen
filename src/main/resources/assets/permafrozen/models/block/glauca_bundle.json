@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "permafrozen:block/glauca_bundle_bottom",
+    "bottom": "permafrozen:block/glauca_bundle_top",
+    "side": "permafrozen:block/glauca_bundle_side"
+  }
+}

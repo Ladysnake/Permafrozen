@@ -133,7 +133,8 @@ public class PermafrozenBlocks {
 	public static final Block PRISMATIC_CORAL_BLOCK = create("prismatic_coral_block", new CoralBlockBlock(DEAD_PRISMATIC_CORAL_BLOCK, AbstractBlock.Settings.of(Material.STONE, MapColor.PURPLE).requiresTool().strength(1.5F, 6.0F).sounds(BlockSoundGroup.CORAL).luminance((blockState) -> 8)), true);
 	public static final Block DEAD_PRISMATIC_CORAL = create("dead_prismatic_coral", new PermafrozenDeadCoral(AbstractBlock.Settings.of(Material.STONE)), true);
 	public static final Block PRISMATIC_CORAL = create("prismatic_coral", new PermafrozenCoral(DEAD_PRISMATIC_CORAL, AbstractBlock.Settings.of(Material.STONE, MapColor.PURPLE).requiresTool().strength(1.5F, 6.0F).sounds(BlockSoundGroup.CORAL).luminance((blockState) -> 8)), true);
-	
+	public static final Block GLAUCA_BUNDLE = create("glauca_bundle", new Block(copyOf(Blocks.HAY_BALE)), true);
+
 	private static <T extends Block> T create(String name, T block, boolean createItem) {
 		BLOCKS.put(block, new Identifier(Permafrozen.MOD_ID, name));
 		if (createItem) {

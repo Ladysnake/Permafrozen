@@ -32,7 +32,8 @@
 
   "effect.permafrozen.fragrant": "Fragrance",
 
-  "block.permafrozen.fleece": "fleece",
+  "block.permafrozen.fleece": "Fleece",
+  "block.permafrozen.glauca_bundle": "Glauca Bundle",
   "block.permafrozen.mossy_permafrost": "Mossy Permafrost",
   "block.permafrozen.permafrost": "Permafrost",
   "block.permafrozen.thawing_permafrost": "Thawing Permafrost",

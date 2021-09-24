@@ -1,0 +1,30 @@
+{
+  "variants": {
+	"facing=up": {
+	  "model": "permafrozen:block/glauca_bundle"
+	},
+	"facing=down": {
+	  "model": "permafrozen:block/glauca_bundle",
+	  "x": 180
+	},
+	"facing=north": {
+	  "model": "permafrozen:block/glauca_bundle",
+	  "x": 90
+	},
+	"facing=south": {
+	  "model": "permafrozen:block/glauca_bundle",
+		"x": 90,
+		"y": 180
+    },
+	"facing=west": {
+	  "model": "permafrozen:block/glauca_bundle",
+		"x": 90,
+		"y": 270
+	},
+	"facing=east": {
+		"model": "permafrozen:block/glauca_bundle",
+		"x": 90,
+		"y": 90
+	}
+}
+}
