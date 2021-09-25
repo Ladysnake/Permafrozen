@@ -33,7 +33,6 @@
   "effect.permafrozen.fragrant": "Fragrance",
 
   "block.permafrozen.fleece": "Fleece",
-  "block.permafrozen.glauca_bundle": "Glauca Bundle",
   "block.permafrozen.mossy_permafrost": "Mossy Permafrost",
   "block.permafrozen.permafrost": "Permafrost",
   "block.permafrozen.thawing_permafrost": "Thawing Permafrost",
@@ -103,6 +102,8 @@
   "block.permafrozen.prismatic_coral": "Prismatic Coral",
   "block.permafrozen.dead_prismatic_coral": "Dead Prismatic Coral",
   "block.permafrozen.glauca_grass": "Glauca",
+  "block.permafrozen.glauca_bundle": "Glauca Bundle",
+  "block.permafrozen.spectral_cap_block": "Spectral Cap Block",
 
   "entity.permafrozen.fir_boat": "Fir Boat",
   "entity.permafrozen.nudifae": "Nudifae",

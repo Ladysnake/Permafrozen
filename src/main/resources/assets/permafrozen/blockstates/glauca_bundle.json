@@ -1,7 +1,8 @@
 {
   "variants": {
 	"facing=up": {
-	  "model": "permafrozen:block/glauca_bundle"
+	  "model": "permafrozen:block/glauca_bundle",
+		"uvlock": true
 	},
 	"facing=down": {
 	  "model": "permafrozen:block/glauca_bundle",

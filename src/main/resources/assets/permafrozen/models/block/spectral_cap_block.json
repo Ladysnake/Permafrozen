@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_single_face",
+  "textures": {
+    "texture": "permafrozen:block/spectral_cap_block_side"
+  }
+}
