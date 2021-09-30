@@ -129,6 +129,7 @@ public class PermafrozenBlocks {
 //spectral cap
 	public static final Block SPECTRAL_CAP = create("spectral_cap", new SpectralCapBlock(AbstractBlock.Settings.of(Material.PLANT, MapColor.LAPIS_BLUE).ticksRandomly().breakInstantly().nonOpaque().sounds(BlockSoundGroup.GRASS).luminance((state) -> 10)), true);
 	public static final Block SPECTRAL_CAP_BLOCK = create("spectral_cap_block", new MushroomBlock(copyOf(Blocks.BROWN_MUSHROOM_BLOCK).luminance((state) -> 10)), true);
+	public static final Block SPECTRAL_CAP_STEM = create("spectral_cap_stem", new PillarBlock(AbstractBlock.Settings.of(Material.NETHER_WOOD).strength(2.0f).sounds(BlockSoundGroup.STEM)), true);
 
 //aurora tech
 	public static final Block AURORA_BLASTER = create("aurora_blaster", new AuroraBlasterBlock(copyOf(Blocks.OBSIDIAN)), true);

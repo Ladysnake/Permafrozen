@@ -34,6 +34,7 @@ import net.permafrozen.permafrozen.client.particle.aurora.AuroraParticleEffect;
 import net.permafrozen.permafrozen.registry.PermafrozenBlocks;
 import net.permafrozen.permafrozen.registry.PermafrozenEntities;
 import net.permafrozen.permafrozen.registry.PermafrozenItems;
+import net.permafrozen.permafrozen.util.ShaderHandler;
 import software.bernie.example.client.renderer.tile.FertilizerTileRenderer;
 
 public class PermafrozenClient implements ClientModInitializer {
@@ -55,6 +56,7 @@ public class PermafrozenClient implements ClientModInitializer {
 		SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, PermafrozenBlocks.FIR_SIGN.getTexture()));
 		SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, PermafrozenBlocks.DEADWOOD_SIGN.getTexture()));
 		BlockEntityRendererRegistry.INSTANCE.register(PermafrozenEntities.SPECTRAL_CAP_TYPE, (BlockEntityRendererFactory.Context rendererDispatcherIn) -> new SpectralCapRenderer());
+		ShaderHandler.init();
 		initColors();
 		initParticles();
 
@@ -74,7 +76,6 @@ public class PermafrozenClient implements ClientModInitializer {
 	private void initColors() {
 		ColorProviderRegistry.BLOCK.register((block, pos, world, layer) -> FoliageColors.getSpruceColor(), PermafrozenBlocks.FIR_LEAVES);
 		ColorProviderRegistry.ITEM.register((item, layer) -> GrassColors.getColor(0.5D, 1.0D), PermafrozenBlocks.FIR_LEAVES);
-
 	}
 
 

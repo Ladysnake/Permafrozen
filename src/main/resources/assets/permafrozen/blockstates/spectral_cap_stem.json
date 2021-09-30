@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "permafrozen:block/spectral_cap_stem"
+    },
+    "axis=z": {
+      "model": "permafrozen:block/spectral_cap_stem",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "permafrozen:block/spectral_cap_stem",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

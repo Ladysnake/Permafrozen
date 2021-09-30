@@ -31,6 +31,7 @@
   "item.permafrozen.thawing_permafrost_clump": "Thawing Permafrost Clump",
 
   "effect.permafrozen.fragrant": "Fragrance",
+  "effect.permafrozen.spectral_daze": "Spectral Daze",
 
   "block.permafrozen.fleece": "Fleece",
   "block.permafrozen.mossy_permafrost": "Mossy Permafrost",
@@ -104,6 +105,7 @@
   "block.permafrozen.glauca_grass": "Glauca",
   "block.permafrozen.glauca_bundle": "Glauca Bundle",
   "block.permafrozen.spectral_cap_block": "Spectral Cap Block",
+  "block.permafrozen.spectral_cap_stem": "Spectral Cap Stem",
 
   "entity.permafrozen.fir_boat": "Fir Boat",
   "entity.permafrozen.nudifae": "Nudifae",
