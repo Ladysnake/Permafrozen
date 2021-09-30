@@ -14,6 +14,8 @@ import net.permafrozen.permafrozen.registry.PermafrozenStatusEffects;
 public class ShaderHandler {
     public static final ManagedShaderEffect SPECTRAL_DAZE = ShaderEffectManager.getInstance()
             .manage(new Identifier(Permafrozen.MOD_ID, "shaders/post/spectral_daze.json"));
+    public static final ManagedShaderEffect SPECTRAL_DAZE_DOS = ShaderEffectManager.getInstance()
+            .manage(new Identifier(Permafrozen.MOD_ID, "shaders/post/spectral_daze_2.json"));
     private static final Uniform3f SPECTR_PHOSPHOR = SPECTRAL_DAZE.findUniform3f("Phosphor");
 
     public static void init() {
@@ -26,6 +28,7 @@ public class ShaderHandler {
             ClientPlayerEntity player = MinecraftClient.getInstance().player;
             if (player.hasStatusEffect(PermafrozenStatusEffects.SPECTRAL_DAZE)) {
                 SPECTRAL_DAZE.render(v);
+                SPECTRAL_DAZE_DOS.render(v);
             }
         }
     }
@@ -34,9 +37,9 @@ public class ShaderHandler {
         if (client.player != null) {
             if (client.player.hasStatusEffect(PermafrozenStatusEffects.SPECTRAL_DAZE)
                     && client.player.getStatusEffect(PermafrozenStatusEffects.SPECTRAL_DAZE).getAmplifier() > 0) {
-                SPECTR_PHOSPHOR.set(0.8F, 0.8F, 1.0F);
-            } else {
                 SPECTR_PHOSPHOR.set(0.7F, 0.7F, 0.9F);
+            } else {
+                SPECTR_PHOSPHOR.set(0.6F, 0.6F, 0.8F);
             }
 
         }
