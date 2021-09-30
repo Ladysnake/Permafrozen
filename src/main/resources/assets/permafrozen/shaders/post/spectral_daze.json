@@ -31,7 +31,7 @@
       "outtarget": "previous"
     },
     {
-      "name": "blit",
+      "name": "deconverge",
       "intarget": "swap",
       "outtarget": "minecraft:main"
     }
