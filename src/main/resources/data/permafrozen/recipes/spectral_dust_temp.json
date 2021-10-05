@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "ingredient": {
+    "item": "permafrozen:spectral_cap"
+  },
+  "result": "permafrozen:spectral_dust",
+  "experience": 5,
+  "cookingtime": 900
+}
