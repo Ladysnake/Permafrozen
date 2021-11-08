@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab_top",
+  "textures": {
+    "bottom": "permafrozen:block/peat_shingles",
+    "top": "permafrozen:block/peat_shingles",
+    "side": "permafrozen:block/peat_shingles"
+  }
+}

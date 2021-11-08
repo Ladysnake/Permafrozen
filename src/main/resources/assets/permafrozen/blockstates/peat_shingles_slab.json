@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "permafrozen:block/peat_shingles_slab"
+    },
+    "type=top": {
+      "model": "permafrozen:block/peat_shingles_slab_top"
+    },
+    "type=double": {
+      "model": "permafrozen:block/peat_shingles"
+    }
+  }
+}

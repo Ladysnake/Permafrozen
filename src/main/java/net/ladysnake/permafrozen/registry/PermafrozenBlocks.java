@@ -57,6 +57,15 @@ public class PermafrozenBlocks {
 	private static final Identifier FIR_SIGN_TEXTURE = new Identifier(Permafrozen.MOD_ID, "entity/sign/fir");
 	public static final TerraformSignBlock FIR_SIGN = create("fir_sign", new TerraformSignBlock(FIR_SIGN_TEXTURE, copyOf(Blocks.OAK_SIGN)), false);
 	public static final Block FIR_WALL_SIGN = create("fir_wall_sign", new TerraformWallSignBlock(FIR_SIGN_TEXTURE, copyOf(Blocks.OAK_WALL_SIGN)), false);
+	//peat
+	public static final Block QUAGMIRE = create("quagmire", new QuagmireBlock(copyOf(Blocks.POWDER_SNOW)), true);
+	public static final Block PEAT = create("peat", new Block(copyOf(Blocks.COARSE_DIRT)), true);
+	public static final Block DRIED_PEAT_BRICKS = create("peat_bricks", new Block(copyOf(Blocks.BRICKS)), true);
+	public static final Block DRIED_PEAT_SHINGLES = create("peat_shingles", new Block(copyOf(Blocks.BRICKS)), true);
+	public static final Block DRIED_PEAT_SHINGLE_SLAB = create("peat_shingles_slab", new SlabBlock(copyOf(Blocks.BRICKS)), true);
+	public static final Block DRIED_PEAT_SHINGLE_STAIRS = create("peat_shingles_stairs", new TerraformStairsBlock(DRIED_PEAT_SHINGLES, copyOf(Blocks.BRICKS)), true);
+	public static final Block DRIED_PEAT_TILE = create("peat_tile", new Block(copyOf(Blocks.BRICKS)), true);
+
 	//deadwood
 	public static final Block STRIPPED_DEADWOOD_LOG = create("stripped_deadwood_log", new PillarBlock(copyOf(Blocks.OAK_LOG)), true);
 	public static final Block STRIPPED_DEADWOOD_WOOD = create("stripped_deadwood_wood", new PillarBlock(copyOf(STRIPPED_FIR_LOG)), true);

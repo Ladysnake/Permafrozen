@@ -7,7 +7,10 @@
   "authors": [
 	"Arathain",
     "MoriyaShiine",
-	"Other people too"
+	"Ladysnake",
+    "VakyPanda",
+    "Coolrex",
+    "3847575"
   ],
   "contact": {
 	"homepage": "",
@@ -17,10 +20,10 @@
   "environment": "*",
   "entrypoints": {
 	"main": [
-	  "net.permafrozen.permafrozen.Permafrozen"
+	  "net.ladysnake.permafrozen.Permafrozen"
 	],
 	"client": [
-	  "net.permafrozen.permafrozen.PermafrozenClient"
+	  "net.ladysnake.permafrozen.PermafrozenClient"
 	]
   },
   "mixins": [
@@ -31,9 +34,14 @@
 	"fabricloader": ">=0.11.3",
 	"fabric": "*",
 	"minecraft": "1.17.x",
+    "geckolib3": ">=3.0.7",
 	"java": ">=16"
+
   },
   "suggests": {
 	"another-mod": "*"
+  },
+  "breaks": {
+    "optifabric": "*"
   }
 }
