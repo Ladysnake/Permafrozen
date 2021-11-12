@@ -34,6 +34,14 @@
   "effect.permafrozen.fragrant": "Fragrance",
   "effect.permafrozen.spectral_daze": "Spectral Daze",
 
+  "block.permafrozen.peat": "Peat",
+  "block.permafrozen.peat_bricks": "Peat Bricks",
+  "block.permafrozen.peat_tile": "Peat Tile",
+  "block.permafrozen.peat_shingles": "Peat Shingles",
+  "block.permafrozen.peat_shingles_slab": "Peat Shingles Slab",
+  "block.permafrozen.peat_shingles_stairs": "Peat Shingles Stairs",
+
+
   "block.permafrozen.fleece": "Fleece",
   "block.permafrozen.mossy_permafrost": "Mossy Permafrost",
   "block.permafrozen.permafrost": "Permafrost",

@@ -1,15 +1,16 @@
 package net.ladysnake.permafrozen.block;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.EntityShapeContext;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.FallingBlockEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.pathing.NavigationType;
+import net.minecraft.item.Items;
+import net.minecraft.tag.EntityTypeTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
@@ -23,17 +24,9 @@ public class QuagmireBlock extends Block {
         super(settings);
     }
 
-    public boolean isSideInvisible(BlockState state, BlockState stateFrom, Direction direction) {
-        return stateFrom.isOf(this) || super.isSideInvisible(state, stateFrom, direction);
-    }
-
-    public VoxelShape getCullingShape(BlockState state, BlockView world, BlockPos pos) {
-        return VoxelShapes.empty();
-    }
-
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         if (!(entity instanceof LivingEntity) || entity.getBlockStateAtPos().isOf(this)) {
-            entity.slowMovement(state, new Vec3d(0.8999999761581421D, 1.5D, 0.8999999761581421D));
+            entity.slowMovement(state, new Vec3d(entity.getVelocity().x / 2, MathHelper.lerp(MathHelper.clamp(entity.getVelocity().y, 0, 1), entity.getVelocity().y / 2, Math.sqrt(1.5D * entity.getVelocity().y)), entity.getVelocity().z / 2));
         }
 
     }
@@ -49,7 +42,8 @@ public class QuagmireBlock extends Block {
                 }
 
                 boolean bl = entity instanceof FallingBlockEntity;
-                if (bl && context.isAbove(VoxelShapes.fullCube(), pos, false) && !context.isDescending()) {
+
+                if (bl || canWalkOnPowderSnow(entity) && context.isAbove(VoxelShapes.fullCube(), pos, false) && !context.isDescending()) {
                     return super.getCollisionShape(state, world, pos, context);
                 }
             }
@@ -57,10 +51,14 @@ public class QuagmireBlock extends Block {
 
         return VoxelShapes.empty();
     }
-
-    public VoxelShape getCameraCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return VoxelShapes.empty();
+    public static boolean canWalkOnPowderSnow(Entity entity) {
+        if (entity.getType().isIn(EntityTypeTags.POWDER_SNOW_WALKABLE_MOBS)) {
+            return true;
+        } else {
+            return entity instanceof LivingEntity && ((LivingEntity) entity).getEquippedStack(EquipmentSlot.FEET).isOf(Items.LEATHER_BOOTS);
+        }
     }
+
 
     public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
         return true;

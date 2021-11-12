@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
+import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.sound.BlockSoundGroup;
@@ -58,7 +59,7 @@ public class PermafrozenBlocks {
 	public static final TerraformSignBlock FIR_SIGN = create("fir_sign", new TerraformSignBlock(FIR_SIGN_TEXTURE, copyOf(Blocks.OAK_SIGN)), false);
 	public static final Block FIR_WALL_SIGN = create("fir_wall_sign", new TerraformWallSignBlock(FIR_SIGN_TEXTURE, copyOf(Blocks.OAK_WALL_SIGN)), false);
 	//peat
-	public static final Block QUAGMIRE = create("quagmire", new QuagmireBlock(copyOf(Blocks.POWDER_SNOW)), true);
+	public static final Block QUAGMIRE = create("quagmire", new QuagmireBlock(copyOf(Blocks.DIRT)), true);
 	public static final Block PEAT = create("peat", new Block(copyOf(Blocks.COARSE_DIRT)), true);
 	public static final Block DRIED_PEAT_BRICKS = create("peat_bricks", new Block(copyOf(Blocks.BRICKS)), true);
 	public static final Block DRIED_PEAT_SHINGLES = create("peat_shingles", new Block(copyOf(Blocks.BRICKS)), true);
