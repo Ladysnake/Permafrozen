@@ -34,7 +34,7 @@ public class QuagmireBlock extends Block {
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         if (context instanceof EntityShapeContext) {
             EntityShapeContext entityShapeContext = (EntityShapeContext)context;
-            Optional<Entity> optional = entityShapeContext.getEntity();
+            Optional<Entity> optional = Optional.ofNullable(entityShapeContext.getEntity());
             if (optional.isPresent()) {
                 Entity entity = (Entity)optional.get();
                 if (entity.fallDistance > 2.5F) {

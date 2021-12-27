@@ -3,7 +3,7 @@ package net.ladysnake.permafrozen.entity.living;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.control.AquaticLookControl;
+import net.minecraft.entity.ai.control.YawAdjustingLookControl;
 import net.minecraft.entity.ai.control.AquaticMoveControl;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
@@ -39,7 +39,7 @@ public class LesserFiddlesnoutEntity extends WaterCreatureEntity implements IAni
     public LesserFiddlesnoutEntity(EntityType<? extends WaterCreatureEntity> entityType, World world) {
         super(entityType, world);
         this.moveControl = new AquaticMoveControl(this, 85, 10, 0.02F, 0.1F, true);
-        this.lookControl = new AquaticLookControl(this, 10);
+        this.lookControl = new YawAdjustingLookControl(this, 10);
     }
 
     protected EntityNavigation createNavigation(World world) {
@@ -59,8 +59,8 @@ public class LesserFiddlesnoutEntity extends WaterCreatureEntity implements IAni
         this.goalSelector.add(2, new AttackJumpGoal(this, 1.2000000476837158D, true));
         this.goalSelector.add(2, new MeleeAttackGoal(this, 1.2000000476837158D, true));
         this.goalSelector.add(8, new ChaseBoatGoal(this));
-        this.targetSelector.add(2, new FollowTargetGoal(this, PlayerEntity.class, 10, true, false, livingEntity -> true));
-        this.targetSelector.add(2, new FollowTargetGoal(this, FishEntity.class, 10, true, false, livingEntity -> true));
+        this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, 10, true, false, livingEntity -> true));
+        this.targetSelector.add(2, new ActiveTargetGoal<>(this, FishEntity.class, 10, true, false, livingEntity -> true));
         this.targetSelector.add(2, new RevengeGoal(this).setGroupRevenge());
     }
 

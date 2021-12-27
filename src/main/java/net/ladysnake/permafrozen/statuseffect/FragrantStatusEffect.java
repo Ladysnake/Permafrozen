@@ -3,7 +3,7 @@ package net.ladysnake.permafrozen.statuseffect;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.pathing.Path;
 import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectType;
+import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.Box;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class FragrantStatusEffect extends StatusEffect {
-	public FragrantStatusEffect(StatusEffectType type, int color) {
+	public FragrantStatusEffect(StatusEffectCategory type, int color) {
 		super(type, color);
 	}
 	

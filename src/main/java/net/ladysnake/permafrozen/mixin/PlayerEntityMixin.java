@@ -48,13 +48,13 @@ public abstract class PlayerEntityMixin extends LivingEntity {
                 ticks = 0;
             }
         }
-        if(this.world.getBiome(this.getCameraBlockPos()) == PermafrozenBiomes.BOREAL_FOREST) {
-            float pitchModifier = 0.7f;
-            if (playerEntity.isSubmergedIn(FluidTags.WATER)) {
-                pitchModifier = 0.3f;
-            }
-            playerEntity.playSound(PermafrozenSoundEvents.BOREAL_AMBIENCE, SoundCategory.WEATHER, 0.5f, pitchModifier);
-        }
+//        if(this.world.getBiome(this.getCameraBlockPos()) == PermafrozenBiomes.BOREAL_FOREST) {
+//            float pitchModifier = 0.7f;
+//            if (playerEntity.isSubmergedIn(FluidTags.WATER)) {
+//                pitchModifier = 0.3f;
+//            }
+//            playerEntity.playSound(PermafrozenSoundEvents.BOREAL_AMBIENCE, SoundCategory.WEATHER, 0.5f, pitchModifier);
+//        }
 
 
 

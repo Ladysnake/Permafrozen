@@ -1,7 +1,7 @@
 package net.ladysnake.permafrozen.registry;
 
 import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectType;
+import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.ladysnake.permafrozen.Permafrozen;
@@ -13,8 +13,8 @@ import java.util.Map;
 
 public class PermafrozenStatusEffects {
 	private static final Map<StatusEffect, Identifier> EFFECTS = new LinkedHashMap<>();
-	public static final StatusEffect FRAGRANT = create("fragrant", new FragrantStatusEffect(StatusEffectType.BENEFICIAL, 0xde7a28));
-	public static final StatusEffect SPECTRAL_DAZE = create("spectral_daze", new SpectralDazeStatusEffect(StatusEffectType.BENEFICIAL, 0x00bbd4));
+	public static final StatusEffect FRAGRANT = create("fragrant", new FragrantStatusEffect(StatusEffectCategory.BENEFICIAL, 0xde7a28));
+	public static final StatusEffect SPECTRAL_DAZE = create("spectral_daze", new SpectralDazeStatusEffect(StatusEffectCategory.BENEFICIAL, 0x00bbd4));
 
 
 	private static <T extends StatusEffect> T create(String name, T effect) {

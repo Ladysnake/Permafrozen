@@ -4,7 +4,7 @@ import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MovementType;
 import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.control.AquaticLookControl;
+import net.minecraft.entity.ai.control.YawAdjustingLookControl;
 import net.minecraft.entity.ai.control.AquaticMoveControl;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -38,7 +38,7 @@ public class LunarKoiEntity extends FishEntity implements IAnimatable {
 	public LunarKoiEntity(EntityType<? extends FishEntity> entityType, World world) {
 		super(entityType, world);
 		this.moveControl = new AquaticMoveControl(this, 85, 10, 0.02F, 0.1F, true);
-		this.lookControl = new AquaticLookControl(this, 10);
+		this.lookControl = new YawAdjustingLookControl(this, 10);
 	}
 
 	protected void initGoals() {

@@ -24,7 +24,7 @@ public class Permafrozen implements ModInitializer {
 		PermafrozenBlocks.init();
 		PermafrozenItems.init();
 		PermafrozenBoatTypes.init();
-		PermafrozenBiomes.init();
+//		bioms
 		PermafrozenStatusEffects.init();
 		PermafrozenSoundEvents.init();
 	}

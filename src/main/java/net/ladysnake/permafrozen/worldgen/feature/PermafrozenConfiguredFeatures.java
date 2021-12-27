@@ -1,29 +1,7 @@
 package net.ladysnake.permafrozen.worldgen.feature;
 
-import com.google.common.collect.ImmutableList;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.math.intprovider.ConstantIntProvider;
-import net.minecraft.util.math.intprovider.UniformIntProvider;
-import net.minecraft.util.registry.BuiltinRegistries;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.world.gen.decorator.CountExtraDecoratorConfig;
-import net.minecraft.world.gen.decorator.Decorator;
-import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
-import net.minecraft.world.gen.foliage.MegaPineFoliagePlacer;
-import net.minecraft.world.gen.foliage.SpruceFoliagePlacer;
-import net.minecraft.world.gen.placer.SimpleBlockPlacer;
-import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
-import net.minecraft.world.gen.trunk.GiantTrunkPlacer;
-import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
-import net.ladysnake.permafrozen.Permafrozen;
-import net.ladysnake.permafrozen.registry.PermafrozenBlocks;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 public class PermafrozenConfiguredFeatures {
-	private static final Map<ConfiguredFeature<?, ?>, Identifier> CONFIGURED_STUFF = new LinkedHashMap<>();
+	/*private static final Map<ConfiguredFeature<?, ?>, Identifier> CONFIGURED_STUFF = new LinkedHashMap<>();
 
 	public static final ConfiguredFeature<TreeFeatureConfig, ?> FIR = register("fir", Feature.TREE.configure((new net.minecraft.world.gen.feature.TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PermafrozenBlocks.FIR_LOG.getDefaultState()), new StraightTrunkPlacer(10, 7, 9), new SimpleBlockStateProvider(PermafrozenBlocks.FIR_LEAVES.getDefaultState()), new SimpleBlockStateProvider(PermafrozenBlocks.FIR_SAPLING.getDefaultState()), new SpruceFoliagePlacer(UniformIntProvider.create(2, 3), UniformIntProvider.create(0, 2), UniformIntProvider.create(7, 9)), new TwoLayersFeatureSize(2, 0, 2))).ignoreVines().dirtProvider(new SimpleBlockStateProvider(PermafrozenBlocks.MOSSY_PERMAFROST.getDefaultState())).build()));
 	public static final ConfiguredFeature<TreeFeatureConfig, ?> MEGA_FIR = register("big_fir", Feature.TREE.configure((new net.minecraft.world.gen.feature.TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PermafrozenBlocks.FIR_LOG.getDefaultState()), new GiantTrunkPlacer(18, 11, 15), new SimpleBlockStateProvider(PermafrozenBlocks.FIR_LEAVES.getDefaultState()), new SimpleBlockStateProvider(PermafrozenBlocks.FIR_SAPLING.getDefaultState()), new MegaPineFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0), UniformIntProvider.create(13, 17)), new TwoLayersFeatureSize(1, 1, 2))).dirtProvider(new SimpleBlockStateProvider(PermafrozenBlocks.MOSSY_PERMAFROST.getDefaultState())).build()));
@@ -43,5 +21,5 @@ public class PermafrozenConfiguredFeatures {
 
 	public static void init() {
 		CONFIGURED_STUFF.keySet().forEach(configuredFeature -> Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, CONFIGURED_STUFF.get(configuredFeature), configuredFeature));
-	}
+	}*/
 }

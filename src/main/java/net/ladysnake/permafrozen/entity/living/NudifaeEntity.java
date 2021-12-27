@@ -335,7 +335,7 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucket
 		
 		@Override
 		public void tick() {
-			this.nudifaeEntity.getLookControl().lookAt(this.tempter, (float) (this.nudifaeEntity.getLookYawSpeed() + 20), (float) this.nudifaeEntity.getLookPitchSpeed());
+			this.nudifaeEntity.getLookControl().lookAt(this.tempter, (float) (this.nudifaeEntity.getMaxLookYawChange() + 20), (float) this.nudifaeEntity.getMaxLookPitchChange());
 			if (this.nudifaeEntity.squaredDistanceTo(this.tempter) < 6.25D) {
 				this.nudifaeEntity.getNavigation().recalculatePath();
 			}

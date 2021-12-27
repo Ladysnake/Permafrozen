@@ -1,8 +1,10 @@
 package net.ladysnake.permafrozen.entity.living;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.block.LeavesBlock;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.Flutterer;
+import net.minecraft.entity.ai.FuzzyTargeting;
 import net.minecraft.entity.ai.control.FlightMoveControl;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
@@ -14,6 +16,7 @@ import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -22,9 +25,10 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.*;
 import net.minecraft.world.World;
 import net.ladysnake.permafrozen.registry.PermafrozenEntities;
 import net.ladysnake.permafrozen.registry.PermafrozenItems;
@@ -225,6 +229,41 @@ public class PuffbooEntity extends TameableEntity implements IAnimatable, Flutte
         NORMAL,
         RANBOO,
         CODA
+    }
+
+    static class FlyOntoTreeGoal
+            extends FlyGoal {
+        public FlyOntoTreeGoal(PathAwareEntity pathAwareEntity, double d) {
+            super(pathAwareEntity, d);
+        }
+
+        @Override
+        @Nullable
+        protected Vec3d getWanderTarget() {
+            Vec3d vec3d = null;
+            if (this.mob.isTouchingWater()) {
+                vec3d = FuzzyTargeting.find(this.mob, 15, 15);
+            }
+            if (this.mob.getRandom().nextFloat() >= this.probability) {
+                vec3d = this.locateTree();
+            }
+            return vec3d == null ? super.getWanderTarget() : vec3d;
+        }
+
+        @Nullable
+        private Vec3d locateTree() {
+            BlockPos blockPos = this.mob.getBlockPos();
+            BlockPos.Mutable mutable = new BlockPos.Mutable();
+            BlockPos.Mutable mutable2 = new BlockPos.Mutable();
+            Iterable<BlockPos> iterable = BlockPos.iterate(MathHelper.floor(this.mob.getX() - 3.0), MathHelper.floor(this.mob.getY() - 6.0), MathHelper.floor(this.mob.getZ() - 3.0), MathHelper.floor(this.mob.getX() + 3.0), MathHelper.floor(this.mob.getY() + 6.0), MathHelper.floor(this.mob.getZ() + 3.0));
+            for (BlockPos blockPos2 : iterable) {
+                BlockState blockState;
+                boolean bl;
+                if (blockPos.equals(blockPos2) || !(bl = (blockState = this.mob.world.getBlockState(mutable2.set((Vec3i)blockPos2, Direction.DOWN))).getBlock() instanceof LeavesBlock || blockState.isIn(BlockTags.LOGS)) || !this.mob.world.isAir(blockPos2) || !this.mob.world.isAir(mutable.set((Vec3i)blockPos2, Direction.UP))) continue;
+                return Vec3d.ofBottomCenter(blockPos2);
+            }
+            return null;
+        }
     }
 
 }

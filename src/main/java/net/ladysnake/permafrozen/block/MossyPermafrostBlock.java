@@ -8,9 +8,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.FeatureConfig;
-import net.minecraft.world.gen.feature.FlowerFeature;
+import net.minecraft.world.gen.feature.*;
 import net.ladysnake.permafrozen.block.util.PermafrozenSpreadableBlock;
 
 import java.util.List;
@@ -40,48 +38,29 @@ public class MossyPermafrostBlock extends PermafrozenSpreadableBlock implements 
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
         BlockPos blockPos = pos.up();
         BlockState blockState = Blocks.GRASS.getDefaultState();
-
-        label48:
-        for(int i = 0; i < 128; ++i) {
+        block0: for (int i = 0; i < 128; ++i) {
+            PlacedFeature placedFeature;
             BlockPos blockPos2 = blockPos;
-
-            for(int j = 0; j < i / 16; ++j) {
-                blockPos2 = blockPos2.add(random.nextInt(3) - 1, (random.nextInt(3) - 1) * random.nextInt(3) / 2, random.nextInt(3) - 1);
-                if (!world.getBlockState(blockPos2.down()).isOf(this) || world.getBlockState(blockPos2).isFullCube(world, blockPos2)) {
-                    continue label48;
-                }
+            for (int j = 0; j < i / 16; ++j) {
+                if (!world.getBlockState((blockPos2 = blockPos2.add(random.nextInt(3) - 1, (random.nextInt(3) - 1) * random.nextInt(3) / 2, random.nextInt(3) - 1)).down()).isOf(this) || world.getBlockState(blockPos2).isFullCube(world, blockPos2)) continue block0;
             }
-
-            BlockState blockState2 = world.getBlockState(blockPos2);
-            if (blockState2.isOf(blockState.getBlock()) && random.nextInt(10) == 0) {
-                ((Fertilizable)blockState.getBlock()).grow(world, random, blockPos2, blockState2);
+            BlockState j = world.getBlockState(blockPos2);
+            if (j.isOf(blockState.getBlock()) && random.nextInt(10) == 0) {
+                ((Fertilizable)((Object)blockState.getBlock())).grow(world, random, blockPos2, j);
             }
-
-            if (blockState2.isAir()) {
-                BlockState blockState4;
-                if (random.nextInt(8) == 0) {
-                    List<ConfiguredFeature<?, ?>> list = world.getBiome(blockPos2).getGenerationSettings().getFlowerFeatures();
-                    if (list.isEmpty()) {
-                        continue;
-                    }
-
-                    blockState4 = getFlowerState(random, blockPos2, (ConfiguredFeature)list.get(0));
-                } else {
-                    blockState4 = blockState;
-                }
-
-                if (blockState4.canPlaceAt(world, blockPos2)) {
-                    world.setBlockState(blockPos2, blockState4, 3);
-                }
+            if (!j.isAir()) continue;
+            if (random.nextInt(8) == 0) {
+                List<ConfiguredFeature<?, ?>> list = world.getBiome(blockPos2).getGenerationSettings().getFlowerFeatures();
+                if (list.isEmpty()) continue;
+                placedFeature = ((RandomPatchFeatureConfig)list.get(0).getConfig()).feature().get();
+            } else {
+                placedFeature = VegetationPlacedFeatures.GRASS_BONEMEAL;
             }
+            placedFeature.generateUnregistered(world, world.getChunkManager().getChunkGenerator(), random, blockPos2);
         }
 
     }
 
-    private static <U extends FeatureConfig> BlockState getFlowerState(Random random, BlockPos pos, ConfiguredFeature<U, ?> flowerFeature) {
-        FlowerFeature<U> flowerFeature2 = (FlowerFeature)flowerFeature.feature;
-        return flowerFeature2.getFlowerState(random, pos, flowerFeature.getConfig());
-    }
     private static boolean isSnow(BlockState state) {
         return state.isIn(BlockTags.SNOW);
     }

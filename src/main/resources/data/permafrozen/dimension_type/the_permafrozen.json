@@ -13,7 +13,7 @@
   "bed_works": true,
   "piglin_safe": false,
   "respawn_anchor_works": false,
-  "ambient_light": 0.1,
+  "ambient_light": 0,
   "fixed_time": 18000,
   "infiniburn": "minecraft:infiniburn_overworld"
 }

@@ -13,6 +13,7 @@ import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.passive.ParrotEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -192,7 +193,7 @@ public class AuroraFaeEntity extends TameableEntity implements Flutterer, IAnima
         this.goalSelector.add(3, new FollowOwnerGoal(this, 2, 10, 2, false));
         this.goalSelector.add(4, new AnimalMateGoal(this, 1));
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 1));
-        this.goalSelector.add(2, new FlyOntoTreeGoal(this, 1.0D));
+        this.goalSelector.add(2, new FlyGoal(this, 1.0D));
         this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8));
         this.goalSelector.add(2, new AuroraFaeEntity.ChargeTargetGoal());
 
