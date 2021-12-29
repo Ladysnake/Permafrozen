@@ -1,19 +1,5 @@
 package net.ladysnake.permafrozen.registry;
 
-import net.minecraft.entity.SpawnGroup;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.registry.BuiltinRegistries;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeEffects;
-import net.minecraft.world.biome.GenerationSettings;
-import net.minecraft.world.biome.SpawnSettings;
-import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
-import net.ladysnake.permafrozen.Permafrozen;
-import net.ladysnake.permafrozen.worldgen.feature.PermafrozenBiomeFeatures;
-
 public class PermafrozenBiomes {
 //	public static final Biome BOREAL_FOREST = createBorealForest();
 //	public static final Biome BOREAL_FOREST_GLADE = createBorealForestGlade();

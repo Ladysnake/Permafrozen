@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "permafrozen:block/deadwood_thorn",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "permafrozen:block/deadwood_thorn",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "permafrozen:block/deadwood_thorn",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "permafrozen:block/deadwood_thorn",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "permafrozen:block/deadwood_thorn"
+    },
+    "facing=west": {
+      "model": "permafrozen:block/deadwood_thorn",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

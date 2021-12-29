@@ -1,0 +1,16 @@
+{
+  "variants": {
+	"axis=y": {
+	  "model": "permafrozen:block/spireshroom_wood"
+	},
+	"axis=z": {
+	  "model": "permafrozen:block/spireshroom_wood",
+	  "x": 90
+	},
+	"axis=x": {
+	  "model": "permafrozen:block/spireshroom_wood",
+	  "x": 90,
+	  "y": 90
+	}
+  }
+}

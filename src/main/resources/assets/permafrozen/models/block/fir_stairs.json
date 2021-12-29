@@ -1,8 +1,0 @@
-{
-  "parent": "block/stairs",
-  "textures": {
-	"bottom": "permafrozen:block/fir_planks",
-	"top": "permafrozen:block/fir_planks",
-	"side": "permafrozen:block/fir_planks"
-  }
-}

@@ -1,16 +1,16 @@
 {
   "variants": {
-    "facing=north,powered=false": { "model": "permafrozen:block/aurora_blaster", "x": 90, "uvlock": true },
-    "facing=east,powered=false":  { "model": "permafrozen:block/aurora_blaster", "x": 90, "y":  90, "uvlock": true },
-    "facing=south,powered=false": { "model": "permafrozen:block/aurora_blaster", "x": 90, "y": 180, "uvlock": true },
-    "facing=west,powered=false":  { "model": "permafrozen:block/aurora_blaster", "x": 90, "y": 270, "uvlock": true },
+    "facing=north,powered=false": { "model": "permafrozen:block/aurora_blaster", "x": 90, "uvlock": false },
+    "facing=east,powered=false":  { "model": "permafrozen:block/aurora_blaster", "x": 90, "y":  90, "uvlock": false },
+    "facing=south,powered=false": { "model": "permafrozen:block/aurora_blaster", "x": 90, "y": 180, "uvlock": false },
+    "facing=west,powered=false":  { "model": "permafrozen:block/aurora_blaster", "x": 90, "y": 270, "uvlock": false },
     "facing=up,powered=false":    { "model": "permafrozen:block/aurora_blaster", "uvlock": true },
-    "facing=down,powered=false":  { "model": "permafrozen:block/aurora_blaster", "x": 180, "uvlock": true },
-    "facing=north,powered=true":  { "model": "permafrozen:block/aurora_blaster_powered", "x": 90, "uvlock": true },
-    "facing=east,powered=true":   { "model": "permafrozen:block/aurora_blaster_powered", "x": 90, "y":  90, "uvlock": true },
-    "facing=south,powered=true":  { "model": "permafrozen:block/aurora_blaster_powered", "x": 90, "y": 180, "uvlock": true },
-    "facing=west,powered=true":   { "model": "permafrozen:block/aurora_blaster_powered", "x": 90, "y": 270, "uvlock": true },
+    "facing=down,powered=false":  { "model": "permafrozen:block/aurora_blaster", "x": 180, "uvlock": false },
+    "facing=north,powered=true":  { "model": "permafrozen:block/aurora_blaster_powered", "x": 90, "uvlock": false },
+    "facing=east,powered=true":   { "model": "permafrozen:block/aurora_blaster_powered", "x": 90, "y":  90, "uvlock": false },
+    "facing=south,powered=true":  { "model": "permafrozen:block/aurora_blaster_powered", "x": 90, "y": 180, "uvlock": false },
+    "facing=west,powered=true":   { "model": "permafrozen:block/aurora_blaster_powered", "x": 90, "y": 270, "uvlock": false },
     "facing=up,powered=true":    { "model": "permafrozen:block/aurora_blaster_powered", "uvlock": true },
-    "facing=down,powered=true":  { "model": "permafrozen:block/aurora_blaster_powered", "x": 180, "uvlock": true }
+    "facing=down,powered=true":  { "model": "permafrozen:block/aurora_blaster_powered", "x": 180, "uvlock": false }
   }
 }

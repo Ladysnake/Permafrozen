@@ -8,11 +8,11 @@
   ],
   "key": {
 	"#": {
-	  "item": "permafrozen:fir_planks"
+	  "item": "permafrozen:deadwood_planks"
 	}
   },
   "result": {
-	"item": "permafrozen:fir_door",
+	"item": "permafrozen:deadwood_door",
 	"count": 3
   }
 }

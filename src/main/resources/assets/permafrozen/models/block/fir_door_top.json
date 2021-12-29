@@ -1,7 +1,0 @@
-{
-  "parent": "block/door_top",
-  "textures": {
-	"bottom": "permafrozen:block/fir_door_bottom",
-	"top": "permafrozen:block/fir_door_top"
-  }
-}

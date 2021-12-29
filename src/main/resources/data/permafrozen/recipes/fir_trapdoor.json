@@ -7,11 +7,11 @@
   ],
   "key": {
 	"#": {
-	  "item": "permafrozen:fir_planks"
+	  "item": "permafrozen:deadwood_planks"
 	}
   },
   "result": {
-	"item": "permafrozen:fir_trapdoor",
+	"item": "permafrozen:deadwood_trapdoor",
 	"count": 2
   }
 }

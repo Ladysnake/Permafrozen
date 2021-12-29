@@ -3,10 +3,10 @@
   "group": "wooden_button",
   "ingredients": [
 	{
-	  "item": "permafrozen:fir_planks"
+	  "item": "permafrozen:deadwood_planks"
 	}
   ],
   "result": {
-	"item": "permafrozen:fir_button"
+	"item": "permafrozen:deadwood_button"
   }
 }

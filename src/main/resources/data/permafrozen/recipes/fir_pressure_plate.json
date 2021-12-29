@@ -6,10 +6,10 @@
   ],
   "key": {
 	"#": {
-	  "item": "permafrozen:fir_planks"
+	  "item": "permafrozen:deadwood_planks"
 	}
   },
   "result": {
-	"item": "permafrozen:fir_pressure_plate"
+	"item": "permafrozen:deadwood_pressure_plate"
   }
 }

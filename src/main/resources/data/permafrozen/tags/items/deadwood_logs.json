@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+	"permafrozen:deadwood_log",
+	"permafrozen:deadwood_wood",
+	"permafrozen:stripped_deadwood_log",
+	"permafrozen:stripped_deadwood_wood"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+	"end": "permafrozen:block/spireshroom_log_bark_top",
+	"side": "permafrozen:block/spireshroom_log"
+  }
+}

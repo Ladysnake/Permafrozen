@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-	"#permafrozen:fir_logs"
+	"#permafrozen:deadwood_logs",
+    "#permafrozen:spireshroom_logs"
   ]
 }

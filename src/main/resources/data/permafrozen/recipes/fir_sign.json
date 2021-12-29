@@ -8,14 +8,14 @@
   ],
   "key": {
 	"#": {
-	  "item": "permafrozen:fir_planks"
+	  "item": "permafrozen:deadwood_planks"
 	},
 	"X": {
 	  "item": "stick"
 	}
   },
   "result": {
-	"item": "permafrozen:fir_sign",
+	"item": "permafrozen:deadwood_sign",
 	"count": 3
   }
 }

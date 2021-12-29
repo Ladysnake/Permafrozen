@@ -3,11 +3,11 @@
   "group": "planks",
   "ingredients": [
 	{
-	  "tag": "permafrozen:fir_logs"
+	  "tag": "permafrozen:deadwood_logs"
 	}
   ],
   "result": {
-	"item": "permafrozen:fir_planks",
+	"item": "permafrozen:deadwood_planks",
 	"count": 4
   }
 }

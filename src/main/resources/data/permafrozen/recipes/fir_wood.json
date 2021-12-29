@@ -7,11 +7,11 @@
   ],
   "key": {
 	"#": {
-	  "item": "permafrozen:fir_log"
+	  "item": "permafrozen:deadwood_log"
 	}
   },
   "result": {
-	"item": "permafrozen:fir_wood",
+	"item": "permafrozen:deadwood_wood",
 	"count": 3
   }
 }

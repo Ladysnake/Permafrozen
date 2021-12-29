@@ -1,0 +1,16 @@
+{
+  "type": "crafting_shaped",
+  "group": "boat",
+  "pattern": [
+	"# #",
+	"###"
+  ],
+  "key": {
+	"#": {
+	  "item": "permafrozen:deadwood_planks"
+	}
+  },
+  "result": {
+	"item": "permafrozen:deadwood_boat"
+  }
+}

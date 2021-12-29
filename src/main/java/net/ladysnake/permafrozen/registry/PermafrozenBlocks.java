@@ -9,7 +9,6 @@ import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
-import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.sound.BlockSoundGroup;
@@ -19,7 +18,6 @@ import net.ladysnake.permafrozen.Permafrozen;
 import net.ladysnake.permafrozen.block.*;
 import net.ladysnake.permafrozen.block.util.*;
 import net.ladysnake.permafrozen.mixin.BlocksAccessor;
-import net.ladysnake.permafrozen.worldgen.tree.FirSaplingGenerator;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -36,28 +34,6 @@ public class PermafrozenBlocks {
 	public static final Block COARSE_PERMAFROST = create("coarse_permafrost", new Block(copyOf(Blocks.COARSE_DIRT)), true);
 	public static final Block THAWING_PERMAFROST = create("thawing_permafrost", new Block(copyOf(Blocks.CLAY)), true);
 
-//wood
-
-	//fir
-	public static final Block STRIPPED_FIR_LOG = create("stripped_fir_log", new PillarBlock(copyOf(Blocks.OAK_LOG)), true);
-	public static final Block STRIPPED_FIR_WOOD = create("stripped_fir_wood", new PillarBlock(copyOf(STRIPPED_FIR_LOG)), true);
-	public static final Block FIR_LOG = create("fir_log", new StrippableLogBlock(() -> STRIPPED_FIR_LOG, MapColor.BROWN, copyOf(STRIPPED_FIR_LOG)), true);
-	public static final Block FIR_WOOD = create("fir_wood", new StrippableLogBlock(() -> STRIPPED_FIR_WOOD, MapColor.BROWN, copyOf(STRIPPED_FIR_LOG)), true);
-	public static final Block FIR_LEAVES = create("fir_leaves", BlocksAccessor.callCreateLeavesBlock(BlockSoundGroup.GRASS), true);
-	public static final Block FIR_SAPLING = create("fir_sapling", new PermafrozenSaplingBlock(new FirSaplingGenerator(), copyOf(Blocks.OAK_SAPLING)), true);
-	public static final Block POTTED_FIR_SAPLING = create("potted_fir_sapling", new FlowerPotBlock(FIR_SAPLING, copyOf(Blocks.POTTED_OAK_SAPLING)), false);
-	public static final Block FIR_PLANKS = create("fir_planks", new Block(copyOf(Blocks.OAK_PLANKS)), true);
-	public static final Block FIR_STAIRS = create("fir_stairs", new TerraformStairsBlock(FIR_PLANKS, copyOf(Blocks.OAK_STAIRS)), true);
-	public static final Block FIR_SLAB = create("fir_slab", new SlabBlock(copyOf(Blocks.OAK_SLAB)), true);
-	public static final Block FIR_FENCE = create("fir_fence", new FenceBlock(copyOf(Blocks.OAK_FENCE)), true);
-	public static final Block FIR_FENCE_GATE = create("fir_fence_gate", new FenceGateBlock(copyOf(Blocks.OAK_FENCE_GATE)), true);
-	public static final Block FIR_PRESSURE_PLATE = create("fir_pressure_plate", new TerraformPressurePlateBlock(copyOf(Blocks.OAK_PRESSURE_PLATE)), true);
-	public static final Block FIR_BUTTON = create("fir_button", new TerraformButtonBlock(copyOf(Blocks.OAK_BUTTON)), true);
-	public static final Block FIR_TRAPDOOR = create("fir_trapdoor", new TerraformTrapdoorBlock(copyOf(Blocks.OAK_TRAPDOOR)), true);
-	public static final Block FIR_DOOR = create("fir_door", new TerraformDoorBlock(copyOf(Blocks.OAK_DOOR)), false);
-	private static final Identifier FIR_SIGN_TEXTURE = new Identifier(Permafrozen.MOD_ID, "entity/sign/fir");
-	public static final TerraformSignBlock FIR_SIGN = create("fir_sign", new TerraformSignBlock(FIR_SIGN_TEXTURE, copyOf(Blocks.OAK_SIGN)), false);
-	public static final Block FIR_WALL_SIGN = create("fir_wall_sign", new TerraformWallSignBlock(FIR_SIGN_TEXTURE, copyOf(Blocks.OAK_WALL_SIGN)), false);
 	//peat
 	public static final Block QUAGMIRE = create("quagmire", new QuagmireBlock(copyOf(Blocks.DIRT)), true);
 	public static final Block PEAT = create("peat", new Block(copyOf(Blocks.COARSE_DIRT)), true);
@@ -69,12 +45,13 @@ public class PermafrozenBlocks {
 
 	//deadwood
 	public static final Block STRIPPED_DEADWOOD_LOG = create("stripped_deadwood_log", new PillarBlock(copyOf(Blocks.OAK_LOG)), true);
-	public static final Block STRIPPED_DEADWOOD_WOOD = create("stripped_deadwood_wood", new PillarBlock(copyOf(STRIPPED_FIR_LOG)), true);
-	public static final Block DEADWOOD_LOG = create("deadwood_log", new StrippableLogBlock(() -> STRIPPED_FIR_LOG, MapColor.BROWN, copyOf(STRIPPED_FIR_LOG)), true);
-	public static final Block DEADWOOD_WOOD = create("deadwood_wood", new StrippableLogBlock(() -> STRIPPED_FIR_WOOD, MapColor.BROWN, copyOf(STRIPPED_FIR_LOG)), true);
+	public static final Block STRIPPED_DEADWOOD_WOOD = create("stripped_deadwood_wood", new PillarBlock(copyOf(STRIPPED_DEADWOOD_LOG)), true);
+	public static final Block DEADWOOD_LOG = create("deadwood_log", new StrippableLogBlock(() -> STRIPPED_DEADWOOD_LOG, MapColor.BROWN, copyOf(STRIPPED_DEADWOOD_LOG)), true);
+	public static final Block DEADWOOD_WOOD = create("deadwood_wood", new StrippableLogBlock(() -> STRIPPED_DEADWOOD_WOOD, MapColor.BROWN, copyOf(STRIPPED_DEADWOOD_LOG)), true);
 	public static final Block DEADWOOD_PLANKS = create("deadwood_planks", new Block(copyOf(Blocks.OAK_PLANKS)), true);
-	public static final Block DEADWOOD_STAIRS = create("deadwood_stairs", new TerraformStairsBlock(FIR_PLANKS, copyOf(Blocks.OAK_STAIRS)), true);
+	public static final Block DEADWOOD_STAIRS = create("deadwood_stairs", new TerraformStairsBlock(DEADWOOD_PLANKS, copyOf(Blocks.OAK_STAIRS)), true);
 	public static final Block DEADWOOD_SLAB = create("deadwood_slab", new SlabBlock(copyOf(Blocks.OAK_SLAB)), true);
+	//public static final Block DEADWOOD_THORN = create("deadwood_thorn", new PrismarineCrystalClusterBlock(7, 3, copyOf(STRIPPED_DEADWOOD_LOG)), true);
 	public static final Block DEADWOOD_FENCE = create("deadwood_fence", new FenceBlock(copyOf(Blocks.OAK_FENCE)), true);
 	public static final Block DEADWOOD_FENCE_GATE = create("deadwood_fence_gate", new FenceGateBlock(copyOf(Blocks.OAK_FENCE_GATE)), true);
 	public static final Block DEADWOOD_PRESSURE_PLATE = create("deadwood_pressure_plate", new TerraformPressurePlateBlock(copyOf(Blocks.OAK_PRESSURE_PLATE)), true);
@@ -84,9 +61,15 @@ public class PermafrozenBlocks {
 	private static final Identifier DEADWOOD_SIGN_TEXTURE = new Identifier(Permafrozen.MOD_ID, "entity/sign/deadwood");
 	public static final TerraformSignBlock DEADWOOD_SIGN = create("deadwood_sign", new TerraformSignBlock(DEADWOOD_SIGN_TEXTURE, copyOf(Blocks.OAK_SIGN)), false);
 	public static final Block DEADWOOD_WALL_SIGN = create("deadwood_wall_sign", new TerraformWallSignBlock(DEADWOOD_SIGN_TEXTURE, copyOf(Blocks.OAK_WALL_SIGN)), false);
+	//spireshroom
+	public static final Block STRIPPED_SPIRESHROOM_LOG = create("stripped_spireshroom_log", new PillarBlock(copyOf(Blocks.WARPED_HYPHAE)), true);
+	public static final Block STRIPPED_SPIRESHROOM_WOOD = create("stripped_spireshroom_wood", new PillarBlock(copyOf(STRIPPED_SPIRESHROOM_LOG)), true);
+	public static final Block SPIRESHROOM_LOG = create("spireshroom_log", new StrippableLogBlock(() -> STRIPPED_SPIRESHROOM_LOG, MapColor.CYAN, copyOf(STRIPPED_SPIRESHROOM_LOG)), true);
+	public static final Block SPIRESHROOM_WOOD = create("spireshroom_wood", new StrippableLogBlock(() -> STRIPPED_SPIRESHROOM_WOOD, MapColor.CYAN, copyOf(STRIPPED_SPIRESHROOM_LOG)), true);
+	public static final Block SPIRESHROOM_PLANKS = create("spireshroom_planks", new Block(copyOf(Blocks.WARPED_PLANKS)), true);
 
 
-//snad
+	//snad
 	public static final Block SAPPHIRE_SAND = create("sapphire_sand", new GravelBlock(copyOf(Blocks.SAND)), true);
 	public static final Block SAPPHIRE_SANDSTONE = create("sapphire_sandstone", new Block(copyOf(Blocks.SANDSTONE)), true);
 	public static final Block CHISELED_SAPPHIRE_SANDSTONE = create("chiseled_sapphire_sandstone", new Block(copyOf(Blocks.CHISELED_SANDSTONE)), true);
@@ -166,23 +149,20 @@ public class PermafrozenBlocks {
 		BLOCKS.keySet().forEach(block -> Registry.register(Registry.BLOCK, BLOCKS.get(block), block));
 		ITEMS.keySet().forEach(item -> Registry.register(Registry.ITEM, ITEMS.get(item), item));
 		FuelRegistry fuelRegistry = FuelRegistry.INSTANCE;
-		fuelRegistry.add(FIR_FENCE, 300);
-		fuelRegistry.add(FIR_FENCE_GATE, 300);
+		fuelRegistry.add(DEADWOOD_FENCE, 300);
+		fuelRegistry.add(DEADWOOD_FENCE_GATE, 300);
 		FlammableBlockRegistry flammableRegistry = FlammableBlockRegistry.getDefaultInstance();
-		flammableRegistry.add(STRIPPED_FIR_LOG, 5, 5);
-		flammableRegistry.add(STRIPPED_FIR_WOOD, 5, 5);
-		flammableRegistry.add(FIR_LOG, 5, 5);
-		flammableRegistry.add(FIR_WOOD, 5, 5);
-		flammableRegistry.add(FIR_LEAVES, 30, 60);
-		flammableRegistry.add(FIR_PLANKS, 5, 20);
-		flammableRegistry.add(FIR_STAIRS, 5, 20);
-		flammableRegistry.add(FIR_SLAB, 5, 20);
-		flammableRegistry.add(FIR_FENCE, 5, 20);
-		flammableRegistry.add(FIR_FENCE_GATE, 5, 20);
+		flammableRegistry.add(STRIPPED_DEADWOOD_LOG, 5, 5);
+		flammableRegistry.add(STRIPPED_DEADWOOD_WOOD, 5, 5);
+		flammableRegistry.add(DEADWOOD_LOG, 5, 5);
+		flammableRegistry.add(DEADWOOD_WOOD, 5, 5);
+		flammableRegistry.add(DEADWOOD_PLANKS, 5, 20);
+		flammableRegistry.add(DEADWOOD_STAIRS, 5, 20);
+		flammableRegistry.add(DEADWOOD_SLAB, 5, 20);
+		flammableRegistry.add(DEADWOOD_FENCE, 5, 20);
+		flammableRegistry.add(DEADWOOD_FENCE_GATE, 5, 20);
 		CompostingChanceRegistry compostRegistry = CompostingChanceRegistry.INSTANCE;
-		compostRegistry.add(FIR_LEAVES, 0.3f);
 		compostRegistry.add(SPECTRAL_CAP, 0.6f);
 		compostRegistry.add(GLAUCA_GRASS, 0.6f);
-		compostRegistry.add(FIR_SAPLING, 0.3f);
 	}
 }

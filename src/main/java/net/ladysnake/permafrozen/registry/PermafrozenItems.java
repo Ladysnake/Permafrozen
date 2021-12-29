@@ -36,9 +36,8 @@ public class PermafrozenItems {
 	public static final Item FATFISH = create("fatfish", new Item((new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP).food(FoodComponents.COD)));
 	public static final Item COOKED_FATFISH = create("cooked_fatfish", new Item((new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP).food(FoodComponents.COOKED_COD)));
 	public static final Item FIR_PINECONE = create("fir_cone", new Item(new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
-	public static final Item FIR_DOOR_ITEM = create("fir_door", new TallBlockItem(PermafrozenBlocks.FIR_DOOR, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
 	public static final Item DEADWOOD_DOOR_ITEM = create("deadwood_door", new TallBlockItem(PermafrozenBlocks.DEADWOOD_DOOR, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
-	public static final Item FIR_SIGN_ITEM = create("fir_sign", new SignItem(new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP).maxCount(16), PermafrozenBlocks.FIR_SIGN, PermafrozenBlocks.FIR_WALL_SIGN));
+	public static final Item DEADWOOD_SIGN_ITEM = create("deadwood_sign", new SignItem(new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP).maxCount(16), PermafrozenBlocks.DEADWOOD_SIGN, PermafrozenBlocks.DEADWOOD_WALL_SIGN));
 	public static final Item NUDIFAE_BUCKET = create("nudifae_bucket", new EntityBucketItem(PermafrozenEntities.NUDIFAE, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP).maxCount(1)));
 	public static final Item NUDIFAE_SPAWN_EGG = create("nudifae_spawn_egg", new SpawnEggItem(PermafrozenEntities.NUDIFAE, 0xb3e5fc, 0x0090ea, (new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP)));
 	public static final Item LUNAR_KOI_SPAWN_EGG = create("lunar_koi_spawn_egg", new SpawnEggItem(PermafrozenEntities.LUNAR_KOI, 0x25dbe4, 0xdefafc, (new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP)));

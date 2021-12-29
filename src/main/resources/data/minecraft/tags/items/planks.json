@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-	"permafrozen:fir_planks"
+	"permafrozen:deadwood_planks",
+    "permafrozen:spireshroom_planks"
   ]
 }

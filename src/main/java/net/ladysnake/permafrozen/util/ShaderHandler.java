@@ -31,7 +31,7 @@ public class ShaderHandler {
             if (player.hasStatusEffect(PermafrozenStatusEffects.SPECTRAL_DAZE)) {
                 SPECTRAL_DAZE.render(v);
                 SPECTRAL_DAZE_DOS.render(v);
-                if(player.getStatusEffect(PermafrozenStatusEffects.SPECTRAL_DAZE).getAmplifier() > 1) {
+                if(player.getStatusEffect(PermafrozenStatusEffects.SPECTRAL_DAZE).getAmplifier() > 0) {
                     SPECTRAL_DAZE_TRES.render(v);
                 }
             }

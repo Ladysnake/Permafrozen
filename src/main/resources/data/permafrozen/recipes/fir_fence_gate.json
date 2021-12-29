@@ -10,10 +10,10 @@
 	  "item": "stick"
 	},
 	"W": {
-	  "item": "permafrozen:fir_planks"
+	  "item": "permafrozen:deadwood_planks"
 	}
   },
   "result": {
-	"item": "permafrozen:fir_fence_gate"
+	"item": "permafrozen:deadwood_fence_gate"
   }
 }

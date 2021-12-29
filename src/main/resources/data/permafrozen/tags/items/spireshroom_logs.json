@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "permafrozen:spireshroom_log",
+    "permafrozen:spireshroom_wood",
+    "permafrozen:stripped_spireshroom_log",
+    "permafrozen:stripped_spireshroom_wood"
+  ]
+}
