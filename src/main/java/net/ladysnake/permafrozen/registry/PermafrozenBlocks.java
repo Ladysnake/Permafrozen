@@ -51,7 +51,7 @@ public class PermafrozenBlocks {
 	public static final Block DEADWOOD_PLANKS = create("deadwood_planks", new Block(copyOf(Blocks.OAK_PLANKS)), true);
 	public static final Block DEADWOOD_STAIRS = create("deadwood_stairs", new TerraformStairsBlock(DEADWOOD_PLANKS, copyOf(Blocks.OAK_STAIRS)), true);
 	public static final Block DEADWOOD_SLAB = create("deadwood_slab", new SlabBlock(copyOf(Blocks.OAK_SLAB)), true);
-	//public static final Block DEADWOOD_THORN = create("deadwood_thorn", new PrismarineCrystalClusterBlock(7, 3, copyOf(STRIPPED_DEADWOOD_LOG)), true);
+	public static final Block DEADWOOD_THORN = create("deadwood_thorn", new PrismarineCrystalClusterBlock(7, 3, FabricBlockSettings.of(Material.WOOD, MapColor.TERRACOTTA_WHITE).nonOpaque().breakByTool(FabricToolTags.AXES).requiresTool().ticksRandomly().sounds(BlockSoundGroup.WOOD).strength(1.5f)), true);
 	public static final Block DEADWOOD_FENCE = create("deadwood_fence", new FenceBlock(copyOf(Blocks.OAK_FENCE)), true);
 	public static final Block DEADWOOD_FENCE_GATE = create("deadwood_fence_gate", new FenceGateBlock(copyOf(Blocks.OAK_FENCE_GATE)), true);
 	public static final Block DEADWOOD_PRESSURE_PLATE = create("deadwood_pressure_plate", new TerraformPressurePlateBlock(copyOf(Blocks.OAK_PRESSURE_PLATE)), true);
