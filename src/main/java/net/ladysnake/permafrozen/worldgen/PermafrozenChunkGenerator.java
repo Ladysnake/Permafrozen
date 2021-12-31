@@ -265,17 +265,17 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 
 	@Override
 	public int getWorldHeight() {
-		return this.settings.getGenerationShapeConfig().height();
+		return this.settings.get().getGenerationShapeConfig().height();
 	}
 
 	@Override
 	public int getSeaLevel() {
-		return this.settings.getSeaLevel();
+		return this.settings.get().getSeaLevel();
 	}
 
 	@Override
 	public int getMinimumY() {
-		return this.settings.getGenerationShapeConfig().minimumY();
+		return this.settings.get().getGenerationShapeConfig().minimumY();
 	}
 //
 //	public static TerrainChunkGenerator create(Registry<Biome> biomeReg, Registry<ChunkGeneratorSettings> settingsReg, long seed) {
