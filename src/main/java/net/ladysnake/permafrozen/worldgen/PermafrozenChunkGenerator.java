@@ -1,26 +1,21 @@
 package net.ladysnake.permafrozen.worldgen;
 
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Supplier;
-
 import com.mojang.serialization.Codec;
-
-import net.ladysnake.permafrozen.util.SimpleIntCache;
-import net.ladysnake.permafrozen.util.JitteredGrid;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.ladysnake.permafrozen.util.GridPoint;
+import net.ladysnake.permafrozen.util.JitteredGrid;
+import net.ladysnake.permafrozen.util.SimpleIntCache;
 import net.ladysnake.permafrozen.worldgen.terrain.PermafrozenCarverContext;
 import net.ladysnake.permafrozen.worldgen.terrain.TerrainSampler;
 import net.ladysnake.permafrozen.worldgen.terrain.TerrainType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.util.dynamic.RegistryLookupCodec;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.ChunkRegion;
 import net.minecraft.world.HeightLimitView;
 import net.minecraft.world.Heightmap;
@@ -36,9 +31,7 @@ import net.minecraft.world.biome.source.util.MultiNoiseUtil;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ProtoChunk;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.NoiseColumnSampler;
 import net.minecraft.world.gen.StructureAccessor;
-import net.minecraft.world.gen.StructureWeightSampler;
 import net.minecraft.world.gen.carver.CarverContext;
 import net.minecraft.world.gen.carver.CarvingMask;
 import net.minecraft.world.gen.carver.ConfiguredCarver;
@@ -46,13 +39,20 @@ import net.minecraft.world.gen.chunk.AquiferSampler;
 import net.minecraft.world.gen.chunk.Blender;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.chunk.ChunkGeneratorSettings;
-import net.minecraft.world.gen.chunk.ChunkNoiseSampler;
 import net.minecraft.world.gen.chunk.NoiseChunkGenerator;
 import net.minecraft.world.gen.chunk.VerticalBlockSample;
 import net.minecraft.world.gen.random.AbstractRandom;
 import net.minecraft.world.gen.random.AtomicSimpleRandom;
 import net.minecraft.world.gen.random.ChunkRandom;
 import net.minecraft.world.gen.random.RandomSeed;
+
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Supplier;
 
 // TODO noise caves
 public class PermafrozenChunkGenerator extends ChunkGenerator {
@@ -287,7 +287,7 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 		if (chunkRegion.toServerWorld().getServer().getWorld(World.OVERWORLD).getChunkManager().getChunkGenerator() instanceof NoiseChunkGenerator overworldGenerator) {
 			// From NoiseChunkGenerator, cleaned up a bit.
 			BiomeAccess sourcedBiomeAccess = biomeAccess.withSource((x, y, z) -> this.populationSource.getBiome(x, y, z, this.getMultiNoiseSampler()));
-			
+
 			ChunkRandom rand = new ChunkRandom(new AtomicSimpleRandom(RandomSeed.getSeed()));
 			int radius = 8;
 			ChunkPos chunkPos = chunk.getPos();
@@ -344,22 +344,20 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 
 	@Override
 	public MultiNoiseUtil.MultiNoiseSampler getMultiNoiseSampler() {
-		// Flag
 		return (i, j, k) -> NO_MULTI_NOISE;
 	}
 
+	public static long trueWorldSeed; // hack for json dimensions
+
 	private static final MultiNoiseUtil.NoiseValuePoint NO_MULTI_NOISE = MultiNoiseUtil.createNoiseValuePoint(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
 
-	//
-//	public static TerrainChunkGenerator create(Registry<Biome> biomeReg, Registry<ChunkGeneratorSettings> settingsReg, long seed) {
-//		return new TerrainChunkGenerator(new TerrainBiomeProvider(biomeReg, seed), seed, () -> settingsReg.getOrThrow(ChunkGeneratorSettings.OVERWORLD));
-//	}
-//
-//	public static final Codec<TerrainChunkGenerator> CODEC = RecordCodecBuilder.create(instance ->
-//			instance.group(BiomeSource.CODEC.fieldOf("biome_source").forGetter(chunkGenerator -> chunkGenerator.populationSource),
-//							Codec.LONG.fieldOf("seed").stable().forGetter(chunkGenerator -> chunkGenerator.seed),
-//							ChunkGeneratorSettings.REGISTRY_CODEC.fieldOf("settings").forGetter(chunkGenerator -> () -> chunkGenerator.settings))
-//					.apply(instance, TerrainChunkGenerator::new));
+	public static final Codec<PermafrozenChunkGenerator> CODEC = RecordCodecBuilder.create(instance ->
+			instance.group(
+							RegistryLookupCodec.of(Registry.BIOME_KEY).forGetter(chunkGenerator -> chunkGenerator.biomeRegistry),
+					BiomeSource.CODEC.fieldOf("biome_source").forGetter(chunkGenerator -> chunkGenerator.populationSource),
+							Codec.LONG.fieldOf("seed").orElseGet(() -> trueWorldSeed).stable().forGetter(chunkGenerator -> chunkGenerator.seed),
+							ChunkGeneratorSettings.REGISTRY_CODEC.fieldOf("settings").forGetter(chunkGenerator -> chunkGenerator.settings))
+					.apply(instance, PermafrozenChunkGenerator::new));
 
 	public static final BlockState DEEPSLATE = Blocks.DEEPSLATE.getDefaultState();
 	public static final BlockState STONE = Blocks.STONE.getDefaultState();

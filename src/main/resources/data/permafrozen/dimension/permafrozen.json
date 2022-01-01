@@ -1,7 +1,7 @@
 {
 	"type": "permafrozen:the_permafrozen",
 	"generator": {
-		"type": "minecraft:noise",
+		"type": "permafrozen:permafrozen",
 		"seed": 0,
 		"settings": "minecraft:overworld",
 		"biome_source": {
