@@ -6,6 +6,7 @@
   "mixins": [
     "BlocksAccessor",
     "CampfireBlockEntityMixin",
+    "GeneratorOptionsMixin",
     "LeavesBlockMixin",
     "PlayerEntityMixin",
     "WorldRendererMixin"

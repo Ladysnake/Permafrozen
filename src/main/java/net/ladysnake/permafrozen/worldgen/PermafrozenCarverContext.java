@@ -1,4 +1,4 @@
-package net.ladysnake.permafrozen.worldgen.terrain;
+package net.ladysnake.permafrozen.worldgen;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;

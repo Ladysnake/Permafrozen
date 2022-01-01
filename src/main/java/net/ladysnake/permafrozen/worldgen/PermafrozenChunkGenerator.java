@@ -5,7 +5,6 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.ladysnake.permafrozen.util.GridPoint;
 import net.ladysnake.permafrozen.util.JitteredGrid;
 import net.ladysnake.permafrozen.util.SimpleIntCache;
-import net.ladysnake.permafrozen.worldgen.terrain.PermafrozenCarverContext;
 import net.ladysnake.permafrozen.worldgen.terrain.TerrainSampler;
 import net.ladysnake.permafrozen.worldgen.terrain.TerrainType;
 import net.minecraft.block.BlockState;
@@ -15,7 +14,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.ChunkRegion;
 import net.minecraft.world.HeightLimitView;
 import net.minecraft.world.Heightmap;
@@ -49,7 +47,6 @@ import net.minecraft.world.gen.random.RandomSeed;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.function.Supplier;
@@ -63,7 +60,7 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 		this.seed = seed;
 		this.voronoiSeed = (int) seed;
 		this.settings = settings;
-		this.terrainSampler = new TerrainSampler(biomeRegistry, seed);
+		this.terrainSampler = biomeSource instanceof PermafrozenBiomeSource pbs ? pbs.terrainSampler : new TerrainSampler(biomeRegistry, seed);
 		this.terrainHeightSampler = new SimpleIntCache(512, this::calculateTerrainHeight);
 	}
 
@@ -353,11 +350,11 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 
 	public static final Codec<PermafrozenChunkGenerator> CODEC = RecordCodecBuilder.create(instance ->
 			instance.group(
-							RegistryLookupCodec.of(Registry.BIOME_KEY).forGetter(chunkGenerator -> chunkGenerator.biomeRegistry),
+					RegistryLookupCodec.of(Registry.BIOME_KEY).forGetter(chunkGenerator -> chunkGenerator.biomeRegistry),
 					BiomeSource.CODEC.fieldOf("biome_source").forGetter(chunkGenerator -> chunkGenerator.populationSource),
-							Codec.LONG.fieldOf("seed").orElseGet(() -> trueWorldSeed).stable().forGetter(chunkGenerator -> chunkGenerator.seed),
-							ChunkGeneratorSettings.REGISTRY_CODEC.fieldOf("settings").forGetter(chunkGenerator -> chunkGenerator.settings))
-					.apply(instance, PermafrozenChunkGenerator::new));
+					Codec.LONG.fieldOf("seed").orElseGet(() -> trueWorldSeed).stable().forGetter(chunkGenerator -> chunkGenerator.seed),
+					ChunkGeneratorSettings.REGISTRY_CODEC.fieldOf("settings").forGetter(chunkGenerator -> chunkGenerator.settings))
+				.apply(instance, PermafrozenChunkGenerator::new));
 
 	public static final BlockState DEEPSLATE = Blocks.DEEPSLATE.getDefaultState();
 	public static final BlockState STONE = Blocks.STONE.getDefaultState();

@@ -2,7 +2,7 @@ package net.ladysnake.permafrozen;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.ladysnake.permafrozen.worldgen.terrain.PermafrozenWorldgen;
+import net.ladysnake.permafrozen.worldgen.PermafrozenWorldgen;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;

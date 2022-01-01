@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.Optional;
 
 @Mixin(GeneratorOptions.class)
-public class MixinGeneratorOptions {
+public class GeneratorOptionsMixin {
 	/**
 	 * World seed for worldgen when not specified by JSON by Haven King
 	 * https://github.com/Hephaestus-Dev/seedy-behavior/blob/master/src/main/java/dev/hephaestus/seedy/mixin/world/gen/GeneratorOptionsMixin.java
