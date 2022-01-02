@@ -23,13 +23,15 @@ public abstract class TerrainType {
 	abstract public double sampleHeight(int x, int z);
 
 	/**
-	 * @return the weight on fading out rivers. 0.0 expresses intent for terrain with rivers, whereas 1.0 expresses intent to have no rivers.
+	 * @return the weight of this terrain type.
 	 */
-	public double getRiverFadeModifier() {
-		return 0.0;
+	public double modifyWeight(double original) {
+		return original;
 	}
 
-	protected final void buildDefaultSurface(Chunk chunk, int x, int z, int height, int seaLevel, BlockState top, BlockState filler) {
+	abstract public void buildSurface(Chunk chunk, AbstractRandom random, int x, int z, int height, int seaLevel);
+
+	protected static final void buildDefaultSurface(Chunk chunk, int x, int z, int height, int seaLevel, BlockState top, BlockState filler) {
 		// Use chunk y levels for CC Compat
 		// Since we use a heightmap this can be a bit simpler than it is in vanilla
 		BlockPos.Mutable pos = new BlockPos.Mutable();
@@ -45,5 +47,9 @@ public abstract class TerrainType {
 		}
 	}
 
-	abstract public void buildSurface(Chunk chunk, AbstractRandom random, int x, int z, int height, int seaLevel);
+	protected static double map(double value, double min, double max, double newmin, double newmax) {
+		value -= min;
+		value /= (max - min);
+		return newmin + value * (newmax - newmin);
+	}
 }

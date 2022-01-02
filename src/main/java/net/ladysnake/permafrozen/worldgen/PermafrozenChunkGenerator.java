@@ -185,11 +185,9 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 	private int calculateTerrainHeight(int x, int z) {
 		double height = 0.0;
 		double totalWeight = 0.0;
-		double riverFadeModifier = 0.0; // for non-mountains to specify river fades
 		final double maxSquareRadius = 9.0; // 3.0 * 3.0;
 
 		// Sample Relevant Voronoi in 5x5 area around the player for smoothing
-		// This is not optimised
 
 		int calcX = (x >> 4);
 		int calcZ = (z >> 4);
@@ -210,24 +208,20 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 				double weight = maxSquareRadius - sqrDist;
 
 				// this is kept square-weighted because sqrt is a trash cringe operation and is slower than the hare from aesop's fables
-				if (weight > 0) {
+				if (weight > 0) { // firstly minimise samples
 					TerrainType type = this.terrainSampler.sample(MathHelper.floor(point.getX() * 16.0), MathHelper.floor(point.getY() * 16.0));
+					weight = type.modifyWeight(weight);
 
-					totalWeight += weight;
-					height += weight * type.sampleHeight(x, z);
-					riverFadeModifier += weight * type.getRiverFadeModifier();
+					if (weight > 0) { // minimise samples again
+						totalWeight += weight;
+						height += weight * type.sampleHeight(x, z);
+					}
 				}
 			}
 		}
 
 		// Complete the average
-		height = height / totalWeight;
-		riverFadeModifier = riverFadeModifier / totalWeight;
-
-		double riverGen = this.terrainSampler.sampleRiver(x, z);
-		riverGen *= riverFadeModifier;
-
-		return (int) (MathHelper.lerp(riverGen, height, RIVER_HEIGHT));
+		return (int) (height / totalWeight);
 	}
 
 	@Override

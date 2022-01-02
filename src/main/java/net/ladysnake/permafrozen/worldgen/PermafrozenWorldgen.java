@@ -1,7 +1,6 @@
 package net.ladysnake.permafrozen.worldgen;
 
 import net.ladysnake.permafrozen.Permafrozen;
-import net.ladysnake.permafrozen.worldgen.PermafrozenChunkGenerator;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
