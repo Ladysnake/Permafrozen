@@ -22,23 +22,36 @@ public class SpireshroomFeature extends Feature<DefaultFeatureConfig> {
 
     @Override
     public boolean generate(FeatureContext<DefaultFeatureConfig> context) {
-        int heightGenerated = 0;
         StructureWorldAccess world = context.getWorld();
         BlockPos.Mutable pos = new BlockPos.Mutable().set(context.getOrigin());
+
+        // don't generate on ice
+        if (world.getBlockState(pos.down()).isOf(Blocks.ICE)) {
+        	return false;
+        }
+
+        int heightGenerated = 0;
         Random random = context.getRandom();
         BlockState spireshroom = PermafrozenBlocks.SPIRESHROOM_LOG.getDefaultState();
         BlockState spireshroomTop = PermafrozenBlocks.SPIRESHROOM_WOOD.getDefaultState();
         int height = 4 + random.nextInt(10);
+        int bendHeight = height > 7 ? height/3 + random.nextInt(2) : 100; // arbitrary high number otherwise
 
         for (int y = 0; y <= height; ++y) {
             if (world.getBlockState(pos).isOf(Blocks.WATER) || world.getBlockState(pos).isOf(Blocks.AIR)) {
+            	// normal gen
                 if (y == height) {
                     world.setBlockState(pos, spireshroomTop, Block.NOTIFY_LISTENERS);
                     ++heightGenerated;
+                } else if (y == bendHeight) { // the bend, without having a weird diagonal jump
+	                world.setBlockState(pos, spireshroomTop, Block.NOTIFY_LISTENERS);
+	                pos.move(Direction.fromHorizontal(random.nextInt(4)));
+	                world.setBlockState(pos, spireshroomTop, Block.NOTIFY_LISTENERS);
                 } else {
                     world.setBlockState(pos, spireshroom, Block.NOTIFY_LISTENERS);
                 }
             } else if (y > 0) {
+            	// if it runs out of room just cap it
                 BlockPos blockPos3 = pos.down();
                 if (!spireshroom.canPlaceAt(world, blockPos3) || world.getBlockState(blockPos3.down()).isOf(PermafrozenBlocks.SPIRESHROOM_LOG)) break;
                 world.setBlockState(blockPos3, spireshroomTop, Block.NOTIFY_LISTENERS);
