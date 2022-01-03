@@ -33,7 +33,7 @@ public class WorldRendererMixin {
 
     @Inject(at = @At(value = "INVOKE", target = "Ljava/lang/Runnable;run()V", shift = At.Shift.AFTER), method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/util/math/Matrix4f;FLjava/lang/Runnable;)V", cancellable = true)
     private void renderPFSky(MatrixStack matrices, Matrix4f skyObjectMatrix, float tickDelta, Runnable runnable, CallbackInfo info) {
-        if (this.world.getRegistryKey().equals(Permafrozen.WORLD_KEY)) {
+        if (this.world.getRegistryKey().equals(Permafrozen.WORLD_KEY) && MinecraftClient.getInstance().options.graphicsMode.getId() > 0) {
             PermafrozenSky.renderPFSky(matrices, skyObjectMatrix, tickDelta, runnable, world, client, lightSkyBuffer, darkSkyBuffer, starsBuffer);
             info.cancel();
         }
