@@ -40,7 +40,7 @@ public abstract class TerrainType {
 			existing = chunk.getBlockState(pos);
 
 			if (existing.isOf(Blocks.STONE) && y >= height - 3) {
-				chunk.setBlockState(pos, y == height - 1 && y >= seaLevel ? top : filler, false);
+				chunk.setBlockState(pos, y == height - 1 && y >= seaLevel - 1? top : filler, false);
 			}
 		}
 	}

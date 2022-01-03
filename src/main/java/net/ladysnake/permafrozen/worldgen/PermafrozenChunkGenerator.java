@@ -13,13 +13,13 @@ import net.minecraft.util.dynamic.RegistryLookupCodec;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.ChunkRegion;
 import net.minecraft.world.HeightLimitView;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.Heightmap.Type;
 import net.minecraft.world.SpawnHelper;
-import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.source.BiomeAccess;
@@ -62,6 +62,7 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 		this.settings = settings;
 		this.terrainSampler = biomeSource instanceof PermafrozenBiomeSource pbs ? pbs.terrainSampler : new TerrainSampler(biomeRegistry, seed);
 		this.terrainHeightSampler = new SimpleIntCache(512, this::calculateTerrainHeight);
+		this.fakeNoiseCGForCarving = new NoiseChunkGenerator(BuiltinRegistries.NOISE_PARAMETERS, biomeSource, 0, settings);
 	}
 
 	private final Registry<Biome> biomeRegistry;
@@ -70,6 +71,7 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 	private final Supplier<ChunkGeneratorSettings> settings;
 	private final TerrainSampler terrainSampler;
 	private final SimpleIntCache terrainHeightSampler;
+	private final NoiseChunkGenerator fakeNoiseCGForCarving; // because 1.18's carvers depend on this
 
 	@Override
 	protected Codec<? extends ChunkGenerator> getCodec() {
@@ -274,44 +276,44 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 
 	@Override
 	public void carve(ChunkRegion chunkRegion, long seed, BiomeAccess biomeAccess, StructureAccessor structureAccessor, Chunk chunk, GenerationStep.Carver generationStep) {
-		// TODO should we even be using carvers anymore they are so hardcoded for vanilla chunk generators
-		if (chunkRegion.toServerWorld().getServer().getWorld(World.OVERWORLD).getChunkManager().getChunkGenerator() instanceof NoiseChunkGenerator overworldGenerator) {
-			// From NoiseChunkGenerator, cleaned up a bit.
-			BiomeAccess sourcedBiomeAccess = biomeAccess.withSource((x, y, z) -> this.populationSource.getBiome(x, y, z, this.getMultiNoiseSampler()));
+		// From NoiseChunkGenerator, cleaned up a bit.
+		BiomeAccess sourcedBiomeAccess = biomeAccess.withSource((x, y, z) -> this.populationSource.getBiome(x, y, z, this.getMultiNoiseSampler()));
+		final int seaLevel = this.getSeaLevel();
 
-			ChunkRandom rand = new ChunkRandom(new AtomicSimpleRandom(RandomSeed.getSeed()));
-			int radius = 8;
-			ChunkPos chunkPos = chunk.getPos();
+		ChunkRandom rand = new ChunkRandom(new AtomicSimpleRandom(RandomSeed.getSeed()));
+		int radius = 8;
+		ChunkPos chunkPos = chunk.getPos();
 
-			CarverContext carverContext = new PermafrozenCarverContext(
-					this,
-					overworldGenerator,
-					chunkRegion.getRegistryManager(), chunk.getHeightLimitView());
-			CarvingMask carvingMask = ((ProtoChunk) chunk).getOrCreateCarvingMask(generationStep);
+		CarverContext carverContext = new PermafrozenCarverContext(
+				this,
+				this.fakeNoiseCGForCarving,
+				chunkRegion.getRegistryManager(), chunk.getHeightLimitView());
+		CarvingMask carvingMask = ((ProtoChunk) chunk).getOrCreateCarvingMask(generationStep);
 
-			for (int xOffset = -radius; xOffset <= radius; ++xOffset) {
-				for (int zOffset = -radius; zOffset <= radius; ++zOffset) {
-					ChunkPos chunkPos2 = new ChunkPos(chunkPos.x + xOffset, chunkPos.z + zOffset);
-					Chunk chunk2 = chunkRegion.getChunk(chunkPos2.x, chunkPos2.z);
-					GenerationSettings settings = chunk2.setBiomeIfAbsent(() -> this.populationSource.getBiome(BiomeCoords.fromBlock(chunkPos2.getStartX()), 0, BiomeCoords.fromBlock(chunkPos2.getStartZ()), this.getMultiNoiseSampler())).getGenerationSettings();
-					List<Supplier<ConfiguredCarver<?>>> list = settings.getCarversForStep(generationStep);
-					ListIterator listIterator = list.listIterator();
+		for (int xOffset = -radius; xOffset <= radius; ++xOffset) {
+			for (int zOffset = -radius; zOffset <= radius; ++zOffset) {
+				ChunkPos carverChunkPos = new ChunkPos(chunkPos.x + xOffset, chunkPos.z + zOffset);
+				Chunk carverChunk = chunkRegion.getChunk(carverChunkPos.x, carverChunkPos.z);
+				GenerationSettings settings = carverChunk.setBiomeIfAbsent(() -> this.populationSource.getBiome(BiomeCoords.fromBlock(carverChunkPos.getStartX()), 0, BiomeCoords.fromBlock(carverChunkPos.getStartZ()), this.getMultiNoiseSampler())).getGenerationSettings();
+				List<Supplier<ConfiguredCarver<?>>> list = settings.getCarversForStep(generationStep);
+				ListIterator listIterator = list.listIterator();
+				// water caves in water areas, unflooded caves in unflooded areas. TODO proper aquifers, maybe. Carvers in 1.18 are a bandaid-patched mess it seems
+				AquiferSampler caveFloodLevelSampler = AquiferSampler.seaLevel((x, y, z) -> new AquiferSampler.FluidLevel(chunk.sampleHeightmap(Type.OCEAN_FLOOR_WG, carverChunkPos.getCenterX(), carverChunkPos.getCenterZ()) < seaLevel ? seaLevel : this.getMinimumY(), WATER));
 
-					while (listIterator.hasNext()) {
-						int l = listIterator.nextIndex();
-						ConfiguredCarver<?> configuredCarver = (ConfiguredCarver) ((Supplier) listIterator.next()).get();
-						rand.setCarverSeed(seed + (long) l, chunkPos2.x, chunkPos2.z);
-						if (configuredCarver.shouldCarve(rand)) {
-							Objects.requireNonNull(sourcedBiomeAccess);
-							configuredCarver.carve(
-									carverContext,
-									chunk,
-									sourcedBiomeAccess::getBiome,
-									rand,
-									AquiferSampler.seaLevel((x, y, z) -> new AquiferSampler.FluidLevel(this.getSeaLevel(), WATER)),
-									chunkPos2,
-									carvingMask);
-						}
+				while (listIterator.hasNext()) {
+					int l = listIterator.nextIndex();
+					ConfiguredCarver<?> configuredCarver = (ConfiguredCarver) ((Supplier) listIterator.next()).get();
+					rand.setCarverSeed(seed + (long) l, carverChunkPos.x, carverChunkPos.z);
+					if (configuredCarver.shouldCarve(rand)) {
+						Objects.requireNonNull(sourcedBiomeAccess);
+						configuredCarver.carve(
+								carverContext,
+								chunk,
+								sourcedBiomeAccess::getBiome,
+								rand,
+								caveFloodLevelSampler,
+								carverChunkPos,
+								carvingMask);
 					}
 				}
 			}

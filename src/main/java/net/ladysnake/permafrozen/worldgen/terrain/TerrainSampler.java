@@ -7,6 +7,10 @@ import net.minecraft.world.biome.BiomeKeys;
 
 import java.util.Random;
 
+/**
+ * The terrain sampler, which determines the biomes, and possible terrains for each biome.
+ * Biomes must also be added in the biome source to generate their features correctly.
+ */
 public class TerrainSampler {
 	public TerrainSampler(Registry<Biome> biomeRegistry, long seed) {
 		Random random = new Random(seed);
@@ -14,7 +18,7 @@ public class TerrainSampler {
 		this.moistureNoise = new OpenSimplexNoise(random);
 		this.cache = new SimpleObjectCache(512, TerrainType[]::new, this::pickTerrain);
 
-		this.test1 = new TestTerrainType(biomeRegistry.get(BiomeKeys.TAIGA), random, 80);
+		this.test1 = new TestTerrainType(biomeRegistry.get(BiomeKeys.SNOWY_TAIGA), random, 80);
 		this.test2 = new TestTerrainType(biomeRegistry.get(BiomeKeys.FROZEN_OCEAN), random, 40);
 	}
 
