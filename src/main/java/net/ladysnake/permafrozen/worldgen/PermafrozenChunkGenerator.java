@@ -2,11 +2,12 @@ package net.ladysnake.permafrozen.worldgen;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.ladysnake.permafrozen.registry.PermafrozenBlocks;
 import net.ladysnake.permafrozen.util.GridPoint;
 import net.ladysnake.permafrozen.util.JitteredGrid;
 import net.ladysnake.permafrozen.util.SimpleIntCache;
 import net.ladysnake.permafrozen.worldgen.terrain.TerrainSampler;
-import net.ladysnake.permafrozen.worldgen.terrain.TerrainType;
+import net.ladysnake.permafrozen.worldgen.terrain.Terrain;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.dynamic.RegistryLookupCodec;
@@ -103,7 +104,7 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 			}
 		}
 
-		this.buildBedrock();
+		this.buildBedrock(chunk);
 	}
 
 	private void buildBedrock(Chunk chunk) {
@@ -161,7 +162,7 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 
 				for (int y = chunk.getBottomY(); y < height; ++y) {
 					try {
-						state = y < deepslateHeight ? DEEPSLATE : STONE;
+						state = y < deepslateHeight ? DEEPSLATE : SHIVERSLATE;
 						setPos.setY(y);
 						chunk.setBlockState(setPos, state, false);
 					} catch (RuntimeException e) {
@@ -173,8 +174,8 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 					}
 				}
 
-				oceanFloor.trackUpdate(x, height - 1, z, STONE);
-				surface.trackUpdate(x, height - 1, z, STONE);
+				oceanFloor.trackUpdate(x, height - 1, z, SHIVERSLATE);
+				surface.trackUpdate(x, height - 1, z, SHIVERSLATE);
 
 				int trueHeight = terrainHeights[(x * 16) + z];
 
@@ -183,12 +184,12 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 
 					for (int y = height; y < cap; ++y) {
 						setPos.setY(y);
-						chunk.setBlockState(setPos, WATER, false);
+						chunk.setBlockState(setPos, ICE, false);
 					}
 				}
 
-				oceanFloor.trackUpdate(x, seaLevel - 1, z, WATER); // for oceanFloor probably not necessary
-				surface.trackUpdate(x, seaLevel - 1, z, WATER);
+				oceanFloor.trackUpdate(x, seaLevel - 1, z, ICE); // for oceanFloor probably not necessary
+				surface.trackUpdate(x, seaLevel - 1, z, ICE);
 			}
 		}
 
@@ -222,7 +223,7 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 
 				// this is kept square-weighted because sqrt is a trash cringe operation and is slower than the hare from aesop's fables
 				if (weight > 0) { // firstly minimise samples
-					TerrainType type = this.terrainSampler.sample(MathHelper.floor(point.getX() * 16.0), MathHelper.floor(point.getY() * 16.0));
+					Terrain type = this.terrainSampler.sample(MathHelper.floor(point.getX() * 16.0), MathHelper.floor(point.getY() * 16.0));
 					weight = type.modifyWeight(weight);
 
 					if (weight > 0) { // minimise samples again
@@ -243,7 +244,7 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 		int height = this.terrainHeightSampler.sample(x, z);
 		int seaLevel = this.getSeaLevel();
 
-		if (height < seaLevel && heightmap.getBlockPredicate().test(WATER)) {
+		if (height < seaLevel && heightmap.getBlockPredicate().test(ICE)) {
 			return seaLevel - 1;
 		}
 
@@ -260,13 +261,13 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 		int y;
 
 		for (y = world.getBottomY(); y < height; ++y) {
-			states[i++] = STONE;
+			states[i++] = SHIVERSLATE;
 		}
 
 		int seaLevel = this.getSeaLevel();
 
 		while (y++ < seaLevel) {
-			states[i++] = WATER;
+			states[i++] = ICE;
 		}
 
 		while (i < states.length) {
@@ -309,7 +310,7 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 				List<Supplier<ConfiguredCarver<?>>> list = settings.getCarversForStep(generationStep);
 				ListIterator listIterator = list.listIterator();
 				// water caves in water areas, unflooded caves in unflooded areas. TODO proper aquifers, maybe. Carvers in 1.18 are a bandaid-patched mess it seems
-				AquiferSampler caveFloodLevelSampler = AquiferSampler.seaLevel((x, y, z) -> new AquiferSampler.FluidLevel(chunk.sampleHeightmap(Type.OCEAN_FLOOR_WG, carverChunkPos.getCenterX(), carverChunkPos.getCenterZ()) < seaLevel ? seaLevel : this.getMinimumY(), WATER));
+				AquiferSampler caveFloodLevelSampler = AquiferSampler.seaLevel((x, y, z) -> new AquiferSampler.FluidLevel(chunk.sampleHeightmap(Type.OCEAN_FLOOR_WG, carverChunkPos.getCenterX(), carverChunkPos.getCenterZ()) < seaLevel ? seaLevel : this.getMinimumY(), ICE));
 
 				while (listIterator.hasNext()) {
 					int l = listIterator.nextIndex();
@@ -364,9 +365,8 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 				.apply(instance, PermafrozenChunkGenerator::new));
 
 	public static final BlockState DEEPSLATE = Blocks.DEEPSLATE.getDefaultState();
-	public static final BlockState STONE = Blocks.STONE.getDefaultState();
+	public static final BlockState SHIVERSLATE = PermafrozenBlocks.SHIVERSLATE.getDefaultState();
 	public static final BlockState AIR = Blocks.AIR.getDefaultState();
 	public static final BlockState CAVE_AIR = Blocks.CAVE_AIR.getDefaultState();
-	public static final BlockState WATER = Blocks.WATER.getDefaultState();
-	public static final double RIVER_HEIGHT = 61.0;
+	public static final BlockState ICE = Blocks.ICE.getDefaultState();
 }

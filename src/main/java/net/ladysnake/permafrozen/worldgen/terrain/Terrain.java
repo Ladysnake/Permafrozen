@@ -1,5 +1,6 @@
 package net.ladysnake.permafrozen.worldgen.terrain;
 
+import net.ladysnake.permafrozen.registry.PermafrozenBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -7,8 +8,8 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.random.AbstractRandom;
 
-public abstract class TerrainType {
-	protected TerrainType(Biome biome) {
+public abstract class Terrain {
+	protected Terrain(Biome biome) {
 		this.biome = biome;
 	}
 
@@ -39,7 +40,7 @@ public abstract class TerrainType {
 			pos.set(x, y, z);
 			existing = chunk.getBlockState(pos);
 
-			if (existing.isOf(Blocks.STONE) && y >= height - 3) {
+			if (existing.isOf(PermafrozenBlocks.SHIVERSLATE) && y >= height - 3) {
 				chunk.setBlockState(pos, y == height - 1 && y >= seaLevel - 1? top : filler, false);
 			}
 		}
