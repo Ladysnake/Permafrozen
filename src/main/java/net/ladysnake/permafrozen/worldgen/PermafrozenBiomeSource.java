@@ -2,6 +2,7 @@ package net.ladysnake.permafrozen.worldgen;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.ladysnake.permafrozen.worldgen.biome.PermafrozenBiomes;
 import net.ladysnake.permafrozen.worldgen.terrain.TerrainSampler;
 import net.minecraft.util.dynamic.RegistryLookupCodec;
 import net.minecraft.util.registry.Registry;
@@ -22,8 +23,8 @@ public class PermafrozenBiomeSource extends BiomeSource {
 
 	public PermafrozenBiomeSource(Registry<Biome> biomeRegistry, long seed) {
 		super(List.of(
-				biomeRegistry.getOrThrow(BiomeKeys.FROZEN_OCEAN),
-				biomeRegistry.getOrThrow(BiomeKeys.SNOWY_TAIGA)
+				biomeRegistry.getOrThrow(PermafrozenBiomes.TUNDRA),
+				biomeRegistry.getOrThrow(PermafrozenBiomes.SHRUMNAL_SPIRES)
 		));
 
 		this.biomeRegistry = biomeRegistry;

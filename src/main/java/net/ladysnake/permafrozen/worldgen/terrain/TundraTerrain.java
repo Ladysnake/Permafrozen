@@ -20,8 +20,8 @@ public class TundraTerrain extends Terrain {
 
 	@Override
 	public double sampleHeight(int x, int z) {
-		double pingo = this.pingosNoise == null ? 0 : 30 * MathHelper.clamp(2 * (this.pingosNoise.sample(x * 0.0022, z * 0.0022) - 0.5), 0, 1);
-		return pingo + this.localHillsNoise.sample(x * 0.02, z * 0.02) * 2 + 64;
+		double pingo = this.pingosNoise == null ? 0 : 30 * MathHelper.clamp(1.5 * (this.pingosNoise.sample(x * 0.0031, z * 0.0031) - (2.0/3.0)), 0, 1);
+		return pingo + this.localHillsNoise.sample(x * 0.033, z * 0.033) * 2 + 63.5;
 	}
 
 	@Override
