@@ -36,7 +36,9 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 		Registry.register(Registry.BIOME_SOURCE, new Identifier(Permafrozen.MOD_ID, "permafrozen"), PermafrozenBiomeSource.CODEC);
 
 		registerBiome(TUNDRA, createTundra());
-		registerBiome(SHRUMNAL_SPIRES, createShrumnalSpires());
+		registerBiome(CHILLING_CANYON, createShrumnalSpires());
+		registerBiome(FRIGID_FEN, createFrigidFen());
+		registerBiome(SHRUMNAL_SPIRES, createChillingCanyon());
 	}
 
 	private static Biome createTundra() {
@@ -46,7 +48,9 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 				Biome.Category.PLAINS,
 				generationSettings,
 				new SpawnSettings.Builder()
-						.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.FOX, 10, 5, 7)) // weight min max
+						.creatureSpawnProbability(0.07f) // default is 0.1f, snowy plains uses 0.07f
+						.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.FOX, 10, 5, 7))
+						.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.POLAR_BEAR, 1, 1, 3))
 						.build(),
 				DEFAULT_PERMAROZEN_FOG_COLOUR);
 	}
@@ -61,7 +65,35 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 				Biome.Category.FOREST,
 				generationSettings,
 				new SpawnSettings.Builder()
-						.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.FOX, 10, 5, 7)) // weight min max
+						.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.FOX, 10, 5, 7))
+						.build(),
+				DEFAULT_PERMAROZEN_FOG_COLOUR);
+	}
+
+
+	private static Biome createFrigidFen() {
+		GenerationSettings.Builder generationSettings = new GenerationSettings.Builder()
+				.feature(GenerationStep.Feature.VEGETAL_DECORATION, PermafrozenPlacedFeatures.FRIGID_FEN_VEGETATION)
+				.feature(GenerationStep.Feature.VEGETAL_DECORATION, PermafrozenPlacedFeatures.GLAUCA_PATCHES);
+
+		return createPermafrozenBiome(
+				Biome.Category.SWAMP,
+				generationSettings,
+				new SpawnSettings.Builder()
+						.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ZOMBIE, 100, 2, 4))
+						.build(),
+				DEFAULT_PERMAROZEN_FOG_COLOUR);
+	}
+
+	private static Biome createChillingCanyon() {
+		GenerationSettings.Builder generationSettings = new GenerationSettings.Builder();
+
+		return createPermafrozenBiome(
+				Biome.Category.MOUNTAIN,
+				generationSettings,
+				new SpawnSettings.Builder()
+						.creatureSpawnProbability(0.04f)
+						.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.GOAT, 10, 5, 7))
 						.build(),
 				DEFAULT_PERMAROZEN_FOG_COLOUR);
 	}

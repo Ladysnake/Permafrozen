@@ -224,7 +224,7 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 				// this is kept square-weighted because sqrt is a trash cringe operation and is slower than the hare from aesop's fables
 				if (weight > 0) { // firstly minimise samples
 					Terrain type = this.terrainSampler.sample(MathHelper.floor(point.getX() * 16.0), MathHelper.floor(point.getY() * 16.0));
-					weight = type.modifyWeight(weight);
+					weight = type.modifyWeight(weight, maxSquareRadius);
 
 					if (weight > 0) { // minimise samples again
 						totalWeight += weight;

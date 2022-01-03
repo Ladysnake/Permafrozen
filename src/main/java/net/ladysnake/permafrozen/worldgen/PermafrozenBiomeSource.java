@@ -24,7 +24,9 @@ public class PermafrozenBiomeSource extends BiomeSource {
 	public PermafrozenBiomeSource(Registry<Biome> biomeRegistry, long seed) {
 		super(List.of(
 				biomeRegistry.getOrThrow(PermafrozenBiomes.TUNDRA),
-				biomeRegistry.getOrThrow(PermafrozenBiomes.SHRUMNAL_SPIRES)
+				biomeRegistry.getOrThrow(PermafrozenBiomes.SHRUMNAL_SPIRES),
+				biomeRegistry.getOrThrow(PermafrozenBiomes.FRIGID_FEN),
+				biomeRegistry.getOrThrow(PermafrozenBiomes.CHILLING_CANYON)
 		));
 
 		this.biomeRegistry = biomeRegistry;

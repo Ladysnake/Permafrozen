@@ -22,9 +22,9 @@ public abstract class Terrain {
 	abstract public double sampleHeight(int x, int z);
 
 	/**
-	 * @return the weight of this terrain type.
+	 * @return the weight of this terrain type for terrain blending.
 	 */
-	public double modifyWeight(double original) {
+	public double modifyWeight(double original, double maxWeight) {
 		return original;
 	}
 
@@ -50,5 +50,19 @@ public abstract class Terrain {
 		value -= min;
 		value /= (max - min);
 		return newmin + value * (newmax - newmin);
+	}
+
+	protected static double clampMap(double value, double min, double max, double newmin, double newmax) {
+		value -= min;
+		value /= (max - min);
+		value = newmin + value * (newmax - newmin);
+
+		if (value > newmax) {
+			return newmax;
+		} else if (value < newmin) {
+			return newmin;
+		} else {
+			return value;
+		}
 	}
 }
