@@ -24,6 +24,6 @@ public class TestTerrainType extends TerrainType {
 
 	@Override
 	public void buildSurface(Chunk chunk, AbstractRandom random, int x, int z, int height, int seaLevel) {
-		buildDefaultSurface(chunk, x, z, height, seaLevel, Blocks.SNOW.getDefaultState(), Blocks.STONE.getDefaultState());
+		buildDefaultSurface(chunk, x, z, height, seaLevel, Blocks.GRASS_BLOCK.getDefaultState(), Blocks.STONE.getDefaultState());
 	}
 }
