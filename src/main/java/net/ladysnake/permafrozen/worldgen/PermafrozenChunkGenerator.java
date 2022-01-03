@@ -145,7 +145,7 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 				setPos.setZ(z);
 
 				int height = chunkHeights[(x * 17) + z];
-				int deepslateHeight = MathHelper.floor(3 * MathHelper.sin(totalX * 0.01f) + 3 * MathHelper.sin(totalZ * 0.01f));
+				int deepslateHeight = MathHelper.floor(3 * MathHelper.sin(totalX * 0.022f) + 3 * MathHelper.sin(totalZ * 0.022f));
 				BlockState state;
 
 				for (int y = chunk.getBottomY(); y < height; ++y) {
