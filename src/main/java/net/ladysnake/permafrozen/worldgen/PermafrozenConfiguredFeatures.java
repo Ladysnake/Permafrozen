@@ -29,7 +29,7 @@ public class PermafrozenConfiguredFeatures {
 
     // random selectors
 	public static final ConfiguredFeature<RandomFeatureConfig, ?> SHRUMNAL_SPIRES_VEGETATION = register("shrumnal_spires_vegetation", Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(
-		    List.of(new RandomFeatureEntry(SPECTRAL_CAP.withPlacement(), 0.125f)),
+		    List.of(new RandomFeatureEntry(SPECTRAL_CAP.withPlacement(), 0.0625f)),
 		    SPIRESHROOM.withPlacement()
     )));
 
