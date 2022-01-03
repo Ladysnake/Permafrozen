@@ -9,7 +9,8 @@
     "CarverMixin",
     "GeneratorOptionsMixin",
     "LeavesBlockMixin",
-    "PlayerEntityMixin"
+    "PlayerEntityMixin",
+    "WorldRendererMixin"
   ],
   "client": [
   ],
