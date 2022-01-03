@@ -19,7 +19,7 @@ public class PermafrozenConfiguredFeatures {
     public static final ConfiguredFeature<DefaultFeatureConfig, ?> SPIRESHROOM = register("spireshroom", PermafrozenFeatures.SPIRESHROOM.configure(FeatureConfig.DEFAULT));
     public static final ConfiguredFeature<HugeMushroomFeatureConfig, ?> SPECTRAL_CAP = register("spectral_cap", Feature.HUGE_RED_MUSHROOM.configure(new HugeMushroomFeatureConfig(
     		BlockStateProvider.of(PermafrozenBlocks.SPECTRAL_CAP_BLOCK.getDefaultState().with(MushroomBlock.DOWN, false)),
-		    BlockStateProvider.of(PermafrozenBlocks.SPECTRAL_CAP_STEM.getDefaultState().with(MushroomBlock.UP, false)),
+		    BlockStateProvider.of(PermafrozenBlocks.SPECTRAL_CAP_STEM.getDefaultState()),
 		    3)));
 
     public static final ConfiguredFeature<RandomPatchFeatureConfig, ?> GLAUCA_PATCH = register("glauca_patch", Feature.RANDOM_PATCH.configure(grassRandomPatch(BlockStateProvider.of(PermafrozenBlocks.GLAUCA_GRASS.getDefaultState().with(PermafrozenPlantBlock.SNOWY, true)), 32)));
