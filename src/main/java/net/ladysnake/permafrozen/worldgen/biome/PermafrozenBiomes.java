@@ -55,7 +55,8 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 
 	private static Biome createShrumnalSpires() {
 		GenerationSettings.Builder generationSettings = new GenerationSettings.Builder()
-				.feature(GenerationStep.Feature.VEGETAL_DECORATION, PermafrozenConfiguredFeatures.NATURAL_SPIRESHROOMS);
+				.feature(GenerationStep.Feature.VEGETAL_DECORATION, PermafrozenConfiguredFeatures.NATURAL_SPIRESHROOMS)
+				.feature(GenerationStep.Feature.VEGETAL_DECORATION, PermafrozenConfiguredFeatures.GLAUCA_PATCHES);
 
 		return createPermafrozenBiome(
 				Biome.Category.FOREST,

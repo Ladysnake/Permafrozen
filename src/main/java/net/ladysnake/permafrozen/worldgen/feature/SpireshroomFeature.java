@@ -34,22 +34,36 @@ public class SpireshroomFeature extends Feature<DefaultFeatureConfig> {
         Random random = context.getRandom();
         BlockState spireshroom = PermafrozenBlocks.SPIRESHROOM_LOG.getDefaultState();
         BlockState spireshroomTop = PermafrozenBlocks.SPIRESHROOM_WOOD.getDefaultState();
+
         int height = 4 + random.nextInt(10);
-        int bendHeight = height > 7 ? height/3 + random.nextInt(2) : 100; // arbitrary high number otherwise
+	    boolean thick = random.nextInt(9) == 0;
+        int bendHeight = (!thick && height > 7) ? height/3 + random.nextInt(2) : 100; // arbitrary high number otherwise
 
         for (int y = 0; y <= height; ++y) {
             if (world.getBlockState(pos).isOf(Blocks.WATER) || world.getBlockState(pos).isOf(Blocks.AIR)) {
-            	// normal gen
-                if (y == height) {
-                    world.setBlockState(pos, spireshroomTop, Block.NOTIFY_LISTENERS);
-                    ++heightGenerated;
-                } else if (y == bendHeight) { // the bend, without having a weird diagonal jump
-	                world.setBlockState(pos, spireshroomTop, Block.NOTIFY_LISTENERS);
-	                pos.move(Direction.fromHorizontal(random.nextInt(4)));
-	                world.setBlockState(pos, spireshroomTop, Block.NOTIFY_LISTENERS);
-                } else {
-                    world.setBlockState(pos, spireshroom, Block.NOTIFY_LISTENERS);
-                }
+            	if (thick) {
+            	    BlockState toSet = y == height ? spireshroomTop : spireshroom;
+		            world.setBlockState(pos, toSet, Block.NOTIFY_LISTENERS);
+		            pos.move(Direction.NORTH);
+		            world.setBlockState(pos, toSet, Block.NOTIFY_LISTENERS);
+		            pos.move(Direction.EAST);
+		            world.setBlockState(pos, toSet, Block.NOTIFY_LISTENERS);
+		            pos.move(Direction.SOUTH);
+		            world.setBlockState(pos, toSet, Block.NOTIFY_LISTENERS);
+		            pos.move(Direction.WEST);
+	            } else {
+		            // normal gen
+		            if (y == height) {
+			            world.setBlockState(pos, spireshroomTop, Block.NOTIFY_LISTENERS);
+			            ++heightGenerated;
+		            } else if (y == bendHeight) { // the bend, without having a weird diagonal jump
+			            world.setBlockState(pos, spireshroomTop, Block.NOTIFY_LISTENERS);
+			            pos.move(Direction.fromHorizontal(random.nextInt(4)));
+			            world.setBlockState(pos, spireshroomTop, Block.NOTIFY_LISTENERS);
+		            } else {
+			            world.setBlockState(pos, spireshroom, Block.NOTIFY_LISTENERS);
+		            }
+	            }
             } else if (y > 0) {
             	// if it runs out of room just cap it
                 BlockPos blockPos3 = pos.down();
