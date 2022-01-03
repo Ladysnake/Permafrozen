@@ -8,7 +8,7 @@ import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 
-public class PermafrozenFeature {
+public class PermafrozenFeatures {
     public static final Feature<DefaultFeatureConfig> PRISMARINE_SPIKE = register("prismarine_spike", new PrismarineSpikeFeature(DefaultFeatureConfig.CODEC));
     public static final Feature<DefaultFeatureConfig> AURORA_CORAL = register("aurora_coral", new AuroraCoralFeature(DefaultFeatureConfig.CODEC));
     public static final Feature<DefaultFeatureConfig> SPIRESHROOM = register("spireshroom", new SpireshroomFeature(DefaultFeatureConfig.CODEC));

@@ -4,9 +4,9 @@ import net.ladysnake.permafrozen.Permafrozen;
 import net.ladysnake.permafrozen.worldgen.PermafrozenBiomeSource;
 import net.ladysnake.permafrozen.worldgen.PermafrozenChunkGenerator;
 import net.ladysnake.permafrozen.worldgen.PermafrozenConfiguredFeatures;
+import net.ladysnake.permafrozen.worldgen.PermafrozenPlacedFeatures;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-import net.minecraft.entity.passive.PandaEntity;
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
@@ -20,8 +20,6 @@ import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.carver.ConfiguredCarvers;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
-
-import java.util.OptionalInt;
 
 public class PermafrozenBiomes extends OverworldBiomeCreator {
 	private static final int DEFAULT_PERMAROZEN_FOG_COLOUR = 0xEFFFFF; // change this to whatever you want. Overworld is 0xC0D8FF
@@ -55,8 +53,9 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 
 	private static Biome createShrumnalSpires() {
 		GenerationSettings.Builder generationSettings = new GenerationSettings.Builder()
-				.feature(GenerationStep.Feature.VEGETAL_DECORATION, PermafrozenConfiguredFeatures.NATURAL_SPIRESHROOMS)
-				.feature(GenerationStep.Feature.VEGETAL_DECORATION, PermafrozenConfiguredFeatures.GLAUCA_PATCHES);
+				.feature(GenerationStep.Feature.VEGETAL_DECORATION, PermafrozenPlacedFeatures.SHRUMNAL_SPIRES_VEGETATION)
+				.feature(GenerationStep.Feature.VEGETAL_DECORATION, PermafrozenPlacedFeatures.GLAUCA_PATCHES)
+				.feature(GenerationStep.Feature.VEGETAL_DECORATION, PermafrozenPlacedFeatures.SPECTRAL_CAP_PATCHES);
 
 		return createPermafrozenBiome(
 				Biome.Category.FOREST,
