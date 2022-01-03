@@ -36,7 +36,7 @@ public class TerrainSampler {
 
 	private Terrain pickTerrain(int x, int z) {
 		double moisture = this.moistureNoise.sample( x * 0.0014, z * 0.0014);
-		double mtns = this.moistureNoise.sample( x * 0.0014, z * 0.0014);
+		double mtns = this.mtnNoise.sample( x * 0.0014, z * 0.0014);
 
 		if (mtns > 0.2) {
 			return this.chillingCanyonsTerrain;

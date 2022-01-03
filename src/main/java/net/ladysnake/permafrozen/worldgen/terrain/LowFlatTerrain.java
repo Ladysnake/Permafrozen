@@ -28,7 +28,7 @@ public class LowFlatTerrain extends Terrain {
 		double pingo = 0;
 
 		if (this.pingosNoise != null) {
-			pingo = clampMap(this.pingosNoise.sample(x * 0.002, z * 0.002), -0.03, 0.03, 0.0, 1.0);
+			pingo = clampMap(this.pingosNoise.sample(x * 0.002, z * 0.002), -0.014, 0.014, 0.0, 1.0);
 
 			if (pingo > 0) {
 				int gridPointX = x >> 6;
@@ -40,8 +40,8 @@ public class LowFlatTerrain extends Terrain {
 				// sample potentially nearby points on the jittered grid
 				for (int dx = -1; dx <= 1; ++dx) {
 					for (int dz = -1; dz <= 1; ++dz) {
-						double value = 0.3 - JitteredGrid.sampleJitteredGrid(dx + gridPointX, dz + gridPointZ, this.pingoJitteredGridSeed, 0.3).centreSqrDist(gridPointTrueX, gridPointTrueZ);
-						value = 18 * MathHelper.clamp(value, 0.0, 0.3);
+						double value = 0.2 - JitteredGrid.sampleJitteredGrid(dx + gridPointX, dz + gridPointZ, this.pingoJitteredGridSeed, 0.3).centreSqrDist(gridPointTrueX, gridPointTrueZ);
+						value = 18 * 5 * MathHelper.clamp(value, 0.0, 0.2);
 
 						if (value > pingoHeight) {
 							pingoHeight = value;

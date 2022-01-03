@@ -36,9 +36,9 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 		Registry.register(Registry.BIOME_SOURCE, new Identifier(Permafrozen.MOD_ID, "permafrozen"), PermafrozenBiomeSource.CODEC);
 
 		registerBiome(TUNDRA, createTundra());
-		registerBiome(CHILLING_CANYON, createShrumnalSpires());
+		registerBiome(SHRUMNAL_SPIRES, createShrumnalSpires());
 		registerBiome(FRIGID_FEN, createFrigidFen());
-		registerBiome(SHRUMNAL_SPIRES, createChillingCanyon());
+		registerBiome(CHILLING_CANYON, createChillingCanyon());
 	}
 
 	private static Biome createTundra() {
