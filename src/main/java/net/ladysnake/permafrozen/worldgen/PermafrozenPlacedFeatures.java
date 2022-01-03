@@ -21,7 +21,7 @@ public class PermafrozenPlacedFeatures {
 	// placed features
 	public static final PlacedFeature SHRUMNAL_SPIRES_VEGETATION = register("shrumnal_spires_vegetation", PermafrozenConfiguredFeatures.SHRUMNAL_SPIRES_VEGETATION.withPlacement(VegetationPlacedFeatures.modifiers(PlacedFeatures.createCountExtraModifier(4, 0.1f, 1))));
 	public static final PlacedFeature GLAUCA_PATCHES = register("glauca_patches", PermafrozenConfiguredFeatures.GLAUCA_PATCH.withPlacement(VegetationPlacedFeatures.modifiers(6)));
-	public static final PlacedFeature SPECTRAL_CAP_PATCHES = register("spectral_cap_patches", PermafrozenConfiguredFeatures.SPECTRAL_CAP_PATCH.withPlacement(modifiersWithChance(8, null)));
+	public static final PlacedFeature SPECTRAL_CAP_PATCHES = register("spectral_cap_patches", PermafrozenConfiguredFeatures.SPECTRAL_CAP.withPlacement(modifiersWithChance(3, null)));
 
 	private static PlacedFeature register(String id, PlacedFeature feature) {
 		return Registry.register(BuiltinRegistries.PLACED_FEATURE, new Identifier(Permafrozen.MOD_ID, id), feature);
