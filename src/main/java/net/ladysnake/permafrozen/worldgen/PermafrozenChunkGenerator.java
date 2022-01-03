@@ -309,8 +309,9 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 				GenerationSettings settings = carverChunk.setBiomeIfAbsent(() -> this.populationSource.getBiome(BiomeCoords.fromBlock(carverChunkPos.getStartX()), 0, BiomeCoords.fromBlock(carverChunkPos.getStartZ()), this.getMultiNoiseSampler())).getGenerationSettings();
 				List<Supplier<ConfiguredCarver<?>>> list = settings.getCarversForStep(generationStep);
 				ListIterator listIterator = list.listIterator();
-				// water caves in water areas, unflooded caves in unflooded areas. TODO proper aquifers, maybe. Carvers in 1.18 are a bandaid-patched mess it seems
-				AquiferSampler caveFloodLevelSampler = AquiferSampler.seaLevel((x, y, z) -> new AquiferSampler.FluidLevel(chunk.sampleHeightmap(Type.OCEAN_FLOOR_WG, carverChunkPos.getCenterX(), carverChunkPos.getCenterZ()) < seaLevel ? seaLevel : this.getMinimumY(), ICE));
+				// TODO height level aquifers -- "fluid" as ice, or water? should the carvers carve air in ice in this dimension?
+				// This controls aquifers. Currently this will basically ignore them
+				AquiferSampler caveFloodLevelSampler = AquiferSampler.seaLevel((x, y, z) -> new AquiferSampler.FluidLevel(this.getMinimumY(), ICE));
 
 				while (listIterator.hasNext()) {
 					int l = listIterator.nextIndex();
