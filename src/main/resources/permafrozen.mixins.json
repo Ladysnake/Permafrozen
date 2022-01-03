@@ -8,8 +8,7 @@
     "CampfireBlockEntityMixin",
     "GeneratorOptionsMixin",
     "LeavesBlockMixin",
-    "PlayerEntityMixin",
-    "WorldRendererMixin"
+    "PlayerEntityMixin"
   ],
   "client": [
   ],
