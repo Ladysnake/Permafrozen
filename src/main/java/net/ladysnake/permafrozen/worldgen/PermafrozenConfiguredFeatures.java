@@ -16,7 +16,7 @@ public class PermafrozenConfiguredFeatures {
     public static final ConfiguredFeature<DefaultFeatureConfig, ?> PRISMARINE_SPIKE = register("prismarine_spike", PermafrozenFeature.PRISMARINE_SPIKE.configure(FeatureConfig.DEFAULT));
 
 	// placed features
-	public static final PlacedFeature NATURAL_SPIRESHROOMS = register("natural_spireshrooms", SPIRESHROOM.withPlacement(PlacedFeatures.createCountExtraModifier(2, 0.2f, 2)));
+	public static final PlacedFeature NATURAL_SPIRESHROOMS = register("natural_spireshrooms", SPIRESHROOM.withPlacement(VegetationPlacedFeatures.modifiers(PlacedFeatures.createCountExtraModifier(2, 0.2f, 2))));
 
 	private static <FC extends FeatureConfig> ConfiguredFeature<FC, ?> register(String id, ConfiguredFeature<FC, ?> configuredFeature) {
 		return Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Permafrozen.MOD_ID, id), configuredFeature);

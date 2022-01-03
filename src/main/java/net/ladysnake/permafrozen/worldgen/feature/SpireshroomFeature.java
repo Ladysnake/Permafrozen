@@ -7,6 +7,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.KelpBlock;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
@@ -21,30 +22,32 @@ public class SpireshroomFeature extends Feature<DefaultFeatureConfig> {
 
     @Override
     public boolean generate(FeatureContext<DefaultFeatureConfig> context) {
-        int i = 0;
-        StructureWorldAccess structureWorldAccess = context.getWorld();
-        BlockPos blockPos = context.getOrigin();
+        int heightGenerated = 0;
+        StructureWorldAccess world = context.getWorld();
+        BlockPos.Mutable pos = new BlockPos.Mutable().set(context.getOrigin());
         Random random = context.getRandom();
         BlockState spireshroom = PermafrozenBlocks.SPIRESHROOM_LOG.getDefaultState();
         BlockState spireshroomTop = PermafrozenBlocks.SPIRESHROOM_WOOD.getDefaultState();
-        int k = 4 + random.nextInt(10);
-        for (int l = 0; l <= k; ++l) {
-            if(structureWorldAccess.getBlockState(blockPos).isOf(Blocks.WATER) || structureWorldAccess.getBlockState(blockPos).isOf(Blocks.AIR)) {
-                if (l == k) {
-                    structureWorldAccess.setBlockState(blockPos, (BlockState)spireshroomTop, Block.NOTIFY_LISTENERS);
-                    ++i;
+        int height = 4 + random.nextInt(10);
+
+        for (int y = 0; y <= height; ++y) {
+            if (world.getBlockState(pos).isOf(Blocks.WATER) || world.getBlockState(pos).isOf(Blocks.AIR)) {
+                if (y == height) {
+                    world.setBlockState(pos, spireshroomTop, Block.NOTIFY_LISTENERS);
+                    ++heightGenerated;
                 } else {
-                    structureWorldAccess.setBlockState(blockPos, spireshroom, Block.NOTIFY_LISTENERS);
+                    world.setBlockState(pos, spireshroom, Block.NOTIFY_LISTENERS);
                 }
-            } else if (l > 0) {
-                BlockPos blockPos3 = blockPos.down();
-                if (!spireshroom.canPlaceAt(structureWorldAccess, blockPos3) || structureWorldAccess.getBlockState(blockPos3.down()).isOf(PermafrozenBlocks.SPIRESHROOM_LOG)) break;
-                structureWorldAccess.setBlockState(blockPos3, (BlockState)spireshroomTop, Block.NOTIFY_LISTENERS);
-                ++i;
+            } else if (y > 0) {
+                BlockPos blockPos3 = pos.down();
+                if (!spireshroom.canPlaceAt(world, blockPos3) || world.getBlockState(blockPos3.down()).isOf(PermafrozenBlocks.SPIRESHROOM_LOG)) break;
+                world.setBlockState(blockPos3, spireshroomTop, Block.NOTIFY_LISTENERS);
+                ++heightGenerated;
                 break;
             }
-            blockPos = blockPos.up();
+
+            pos.move(Direction.UP);
         }
-        return i > 0;
+        return heightGenerated > 0;
     }
 }

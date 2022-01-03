@@ -83,7 +83,7 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 				.generationSettings(generationSettings.build())
 				.spawnSettings(spawnSettings)
 				.effects(new BiomeEffects.Builder()
-						.fogColor(0xCF9F00)
+						.fogColor(fogColour)
 						.waterColor(0x44BFEF)
 						.waterFogColor(0x00A4A4)
 						.skyColor(getSkyColor(0.5f))
