@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 public class PermafrozenPlantBlock extends PlantBlock {
     protected static final VoxelShape SHAPE = Block.createCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
 
-    private static final BooleanProperty SNOWY;
+    public static final BooleanProperty SNOWY;
 
     public PermafrozenPlantBlock(Settings settings) {
         super(settings);

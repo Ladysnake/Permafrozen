@@ -15,6 +15,7 @@ public class TundraTerrain extends Terrain {
 		this.localHillsNoise = new OpenSimplexNoise(random);
 	}
 
+	// https://en.wikipedia.org/wiki/Pingo#/media/File:Closed_pingos_diagram.jpg Could later add water or ice to make it more realistic
 	private final OpenSimplexNoise pingosNoise; // https://sciencing.com/landforms-tundra-7575771.html
 	private final OpenSimplexNoise localHillsNoise;
 

@@ -35,9 +35,13 @@ public class SpireshroomFeature extends Feature<DefaultFeatureConfig> {
         BlockState spireshroom = PermafrozenBlocks.SPIRESHROOM_LOG.getDefaultState();
         BlockState spireshroomTop = PermafrozenBlocks.SPIRESHROOM_WOOD.getDefaultState();
 
-        int height = 4 + random.nextInt(10);
+        int height = 7 + random.nextInt(18);
 	    boolean thick = random.nextInt(9) == 0;
         int bendHeight = (!thick && height > 7) ? height/3 + random.nextInt(2) : 100; // arbitrary high number otherwise
+
+	    if (thick) {
+	    	height *= 1.8;
+	    }
 
         for (int y = 0; y <= height; ++y) {
             if (world.getBlockState(pos).isOf(Blocks.WATER) || world.getBlockState(pos).isOf(Blocks.AIR)) {
