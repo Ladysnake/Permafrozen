@@ -92,7 +92,6 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 
 		int startX = chunkPos.getStartX();
 		int startZ = chunkPos.getStartZ();
-		BlockPos.Mutable mutable = new BlockPos.Mutable();
 
 		for(int xo = 0; xo < 16; ++xo) {
 			for(int zo = 0; zo < 16; ++zo) {
@@ -104,9 +103,21 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 			}
 		}
 
-		//this.buildBedrock(chunk, chunkRandom); TODO bedrock
+		this.buildBedrock();
 	}
 
+	private void buildBedrock(Chunk chunk) {
+		BlockPos.Mutable mutable = new BlockPos.Mutable();
+		int minY;
+
+		if (chunk.getBottomY() == (minY = this.getMinimumY())) { // cubic chunks compat. the rest of the code has it so may as well
+			for(int xo = 0; xo < 16; ++xo) {
+				for (int zo = 0; zo < 16; ++zo) {
+					chunk.setBlockState(mutable.set(xo, minY, zo), Blocks.BEDROCK.getDefaultState(), false);
+				}
+			}
+		}
+	}
 	@Override
 	public CompletableFuture<Chunk> populateNoise(Executor executor, Blender blender, StructureAccessor accessor, Chunk chunk) {
 		ChunkPos pos = chunk.getPos();
