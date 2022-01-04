@@ -29,7 +29,7 @@ public class DeadwoodTreeFeature extends Feature<DefaultFeatureConfig> {
 		if (world.getBlockState(pos.down()).isOf(Blocks.ICE)) {
 			pos.offset(Direction.DOWN);
 
-			if (world.getBlockState(pos.down()).isOf(Blocks.ICE)) {
+			if (!world.getBlockState(pos.down()).isOf(PermafrozenBlocks.MOSSY_PERMAFROST)) {
 				return false;
 			}
 		}

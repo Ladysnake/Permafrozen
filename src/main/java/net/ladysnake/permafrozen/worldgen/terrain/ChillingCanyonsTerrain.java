@@ -2,6 +2,8 @@ package net.ladysnake.permafrozen.worldgen.terrain;
 
 import net.ladysnake.permafrozen.registry.PermafrozenBlocks;
 import net.ladysnake.permafrozen.util.JitteredGrid;
+import net.minecraft.block.BlockState;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
@@ -29,12 +31,22 @@ public class ChillingCanyonsTerrain extends Terrain {
 
 	@Override
 	public void buildSurface(Chunk chunk, AbstractRandom random, int x, int z, int height, int seaLevel) {
-		double canyonsSample = this.canyonsNoise.sample(x * 0.006, z * 0.006);
+		double canyonsSample = this.canyonsNoise.sample(x * 0.012, z * 0.012);
 
-		if (canyonsSample > 0.1 && canyonsSample < 0.125 || canyonsSample < -0.2 && canyonsSample > -0.215) {
+		if (height <= 75 || canyonsSample > 0.3 && canyonsSample < 0.37 || canyonsSample < -0.2 && canyonsSample > -0.32) {
 			buildDefaultSurface(chunk, x, z, height, seaLevel, PermafrozenBlocks.MOSSY_PERMAFROST.getDefaultState(), PermafrozenBlocks.PERMAFROST.getDefaultState());
 		} else {
-			buildDefaultSurface(chunk, x, z, (int) this.topHillsNoise.sample(x * 0.01, z * 0.01) * 4 + 120, seaLevel, PermafrozenBlocks.SHIVERSLATE.getDefaultState(), PermafrozenBlocks.SHIVERSLATE.getDefaultState());
+			int newheight = (int) (this.topHillsNoise.sample(x * 0.01, z * 0.01) * 4) + 120;
+
+			BlockPos.Mutable pos = new BlockPos.Mutable();
+
+			for (int y = chunk.getTopY(); y >= chunk.getBottomY(); --y) {
+				pos.set(x, y, z);
+
+				if (y <= newheight && y >= height) {
+					chunk.setBlockState(pos, PermafrozenBlocks.SHIVERSLATE.getDefaultState(), false);
+				}
+			}
 		}
 	}
 }
