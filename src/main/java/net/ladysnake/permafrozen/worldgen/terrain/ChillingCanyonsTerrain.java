@@ -28,8 +28,8 @@ public class ChillingCanyonsTerrain extends Terrain {
 	public double sampleHeight(int x, int z) {
 		double bottomSample = 3 * this.bottomHillsNoise.sample(x * 0.03, z * 0.03) + 6 * this.bottomHillsNoise.sample(x * 0.008, z * 0.008) + 75;
 		double topSample = this.topHillsNoise.sample(x * 0.01, z * 0.01) * 4 + 150;
-		double canyonsSample = -this.canyonsNoise.sample(x * 0.01, z * 0.01);
-		return clampMap(canyonsSample, -1.0, -0.8, bottomSample, topSample);
+		double canyonsSample = -this.canyonsNoise.sample(x * 0.008, z * 0.008);
+		return clampMap(canyonsSample, -0.98, -0.78, bottomSample, topSample);
 	}
 
 	@Override
