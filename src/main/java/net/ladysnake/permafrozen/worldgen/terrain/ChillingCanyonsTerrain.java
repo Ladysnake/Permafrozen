@@ -19,7 +19,6 @@ public class ChillingCanyonsTerrain extends Terrain {
 		this.canyonsNoise = new RidgedNoise(random);
 	}
 
-	// https://en.wikipedia.org/wiki/Pingo#/media/File:Closed_pingos_diagram.jpg Could later add water or ice to make it more realistic
 	private final OpenSimplexNoise topHillsNoise;
 	private final OpenSimplexNoise bottomHillsNoise;
 	private final RidgedNoise canyonsNoise;
