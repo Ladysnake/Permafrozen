@@ -2,6 +2,7 @@ package net.ladysnake.permafrozen;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.ladysnake.permafrozen.worldgen.biome.PermafrozenBiomes;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
@@ -24,7 +25,7 @@ public class Permafrozen implements ModInitializer {
 		PermafrozenBlocks.init();
 		PermafrozenItems.init();
 		PermafrozenBoatTypes.init();
-//		bioms
+		PermafrozenBiomes.init();
 		PermafrozenStatusEffects.init();
 		PermafrozenSoundEvents.init();
 	}
