@@ -201,7 +201,7 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 		double totalWeight = 0.0;
 		final double maxSquareRadius = 9.0; // 3.0 * 3.0;
 
-		// Sample Relevant Voronoi in 5x5 area around the player for smoothing
+		// Sample Relevant jittered points around the player for smoothing
 
 		int calcX = (x >> 4);
 		int calcZ = (z >> 4);
