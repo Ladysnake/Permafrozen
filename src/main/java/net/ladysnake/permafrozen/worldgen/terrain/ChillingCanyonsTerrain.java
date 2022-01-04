@@ -28,8 +28,8 @@ public class ChillingCanyonsTerrain extends Terrain {
 	public double sampleHeight(int x, int z) {
 		double bottomSample = 3 * this.bottomHillsNoise.sample(x * 0.03, z * 0.03) + 6 * this.bottomHillsNoise.sample(x * 0.008, z * 0.008) + 75;
 		double topSample = this.topHillsNoise.sample(x * 0.01, z * 0.01) * 4 + 150;
-		double canyonsSample = this.canyonsNoise.sample(x * 0.014, z * 0.014);
-		return clampMap(canyonsSample, 0.9, 1.0, bottomSample, topSample);
+		double canyonsSample = -this.canyonsNoise.sample(x * 0.01, z * 0.01);
+		return clampMap(canyonsSample, -1.0, -0.8, bottomSample, topSample);
 	}
 
 	@Override
@@ -39,17 +39,7 @@ public class ChillingCanyonsTerrain extends Terrain {
 
 	@Override
 	public void buildSurface(Chunk chunk, AbstractRandom random, int x, int z, int height, int seaLevel) {
-		if (height > 100) {
-			BlockPos.Mutable pos = new BlockPos.Mutable();
-
-			for (int y = chunk.getTopY(); y >= chunk.getBottomY(); --y) { // still doing the CC compat stuff by using chunk heights.
-				pos.set(x, y, z);
-
-				if (y >= height) {
-					chunk.setBlockState(pos, PermafrozenBlocks.SHIVERSLATE.getDefaultState(), false);
-				}
-			}
-		} else {
+		if (height <= 100) {
 			buildDefaultSurface(chunk, x, z, height, seaLevel, PermafrozenBlocks.MOSSY_PERMAFROST.getDefaultState(), PermafrozenBlocks.PERMAFROST.getDefaultState());
 		}
 	}
