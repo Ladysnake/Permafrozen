@@ -16,37 +16,41 @@ public class ChillingCanyonsTerrain extends Terrain {
 		super(biome);
 		this.topHillsNoise = new OpenSimplexNoise(random);
 		this.bottomHillsNoise = new OpenSimplexNoise(random);
-		this.canyonsNoise = new OpenSimplexNoise(random);
+		this.canyonsNoise = new RidgedNoise(random);
 	}
 
 	// https://en.wikipedia.org/wiki/Pingo#/media/File:Closed_pingos_diagram.jpg Could later add water or ice to make it more realistic
 	private final OpenSimplexNoise topHillsNoise;
 	private final OpenSimplexNoise bottomHillsNoise;
-	private final OpenSimplexNoise canyonsNoise;
+	private final RidgedNoise canyonsNoise;
 
 	@Override
 	public double sampleHeight(int x, int z) {
-		return 3 * this.bottomHillsNoise.sample(x * 0.03, z * 0.03) + 6 * this.bottomHillsNoise.sample(x * 0.008, z * 0.008) + 75;
+		double bottomSample = 3 * this.bottomHillsNoise.sample(x * 0.03, z * 0.03) + 6 * this.bottomHillsNoise.sample(x * 0.008, z * 0.008) + 75;
+		double topSample = this.topHillsNoise.sample(x * 0.01, z * 0.01) * 4 + 150;
+		double canyonsSample = this.canyonsNoise.sample(x * 0.014, z * 0.014);
+		return clampMap(canyonsSample, 0.9, 1.0, bottomSample, topSample);
+	}
+
+	@Override
+	public double modifyWeight(double original, double maxWeight) {
+		return clampMap(original, maxWeight / 2, maxWeight, 0, maxWeight * 2);
 	}
 
 	@Override
 	public void buildSurface(Chunk chunk, AbstractRandom random, int x, int z, int height, int seaLevel) {
-		double canyonsSample = this.canyonsNoise.sample(x * 0.012, z * 0.012);
-
-		if (height <= 75 || canyonsSample > 0.3 && canyonsSample < 0.37 || canyonsSample < -0.2 && canyonsSample > -0.32) {
-			buildDefaultSurface(chunk, x, z, height, seaLevel, PermafrozenBlocks.MOSSY_PERMAFROST.getDefaultState(), PermafrozenBlocks.PERMAFROST.getDefaultState());
-		} else {
-			int newheight = (int) (this.topHillsNoise.sample(x * 0.01, z * 0.01) * 4) + 120;
-
+		if (height > 100) {
 			BlockPos.Mutable pos = new BlockPos.Mutable();
 
-			for (int y = chunk.getTopY(); y >= chunk.getBottomY(); --y) {
+			for (int y = chunk.getTopY(); y >= chunk.getBottomY(); --y) { // still doing the CC compat stuff by using chunk heights.
 				pos.set(x, y, z);
 
-				if (y <= newheight && y >= height) {
+				if (y >= height) {
 					chunk.setBlockState(pos, PermafrozenBlocks.SHIVERSLATE.getDefaultState(), false);
 				}
 			}
+		} else {
+			buildDefaultSurface(chunk, x, z, height, seaLevel, PermafrozenBlocks.MOSSY_PERMAFROST.getDefaultState(), PermafrozenBlocks.PERMAFROST.getDefaultState());
 		}
 	}
 }
