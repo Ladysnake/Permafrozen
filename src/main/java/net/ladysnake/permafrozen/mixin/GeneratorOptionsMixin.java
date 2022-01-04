@@ -16,8 +16,6 @@ public class GeneratorOptionsMixin {
 	/**
 	 * World seed for worldgen when not specified by JSON by Haven King
 	 * https://github.com/Hephaestus-Dev/seedy-behavior/blob/master/src/main/java/dev/hephaestus/seedy/mixin/world/gen/GeneratorOptionsMixin.java
-	 *
-	 * tele jigsaw grunt pathic telepathic st'ructure processorjigsaw worldgenjson
 	 */
 	@Inject(method = "<init>(JZZLnet/minecraft/util/registry/SimpleRegistry;Ljava/util/Optional;)V",
 			at = @At(value = "RETURN"))
