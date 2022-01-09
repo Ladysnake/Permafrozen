@@ -1,5 +1,6 @@
 package net.ladysnake.permafrozen.block;
 
+import net.ladysnake.permafrozen.block.entity.SpectralCapBlockEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;

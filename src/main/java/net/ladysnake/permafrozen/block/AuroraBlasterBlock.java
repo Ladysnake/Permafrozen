@@ -32,7 +32,7 @@ public class AuroraBlasterBlock extends FacingBlock {
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return (BlockState)((BlockState)this.getDefaultState().with(FACING, ctx.getPlayerLookDirection())).with(POWERED, false);
+        return (BlockState) this.getDefaultState().with(FACING, ctx.getPlayerLookDirection()).with(POWERED, false);
     }
 
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block block, BlockPos fromPos, boolean notify) {

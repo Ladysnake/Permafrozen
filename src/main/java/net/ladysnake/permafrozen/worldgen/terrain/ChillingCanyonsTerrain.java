@@ -3,6 +3,7 @@ package net.ladysnake.permafrozen.worldgen.terrain;
 import net.ladysnake.permafrozen.registry.PermafrozenBlocks;
 import net.ladysnake.permafrozen.util.JitteredGrid;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.biome.Biome;
@@ -40,6 +41,9 @@ public class ChillingCanyonsTerrain extends Terrain {
 	public void buildSurface(Chunk chunk, AbstractRandom random, int x, int z, int height, int seaLevel) {
 		if (height <= 100) {
 			buildDefaultSurface(chunk, x, z, height, seaLevel, PermafrozenBlocks.MOSSY_PERMAFROST.getDefaultState(), PermafrozenBlocks.PERMAFROST.getDefaultState());
+		}
+		if (height >= 146) {
+			buildDefaultSurface(chunk, x, z, height, seaLevel, Blocks.SNOW_BLOCK.getDefaultState(),  Blocks.SNOW_BLOCK.getDefaultState());
 		}
 	}
 }

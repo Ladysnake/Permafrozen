@@ -2,7 +2,7 @@ package net.ladysnake.permafrozen.client.entity.model;
 
 import net.minecraft.util.Identifier;
 import net.ladysnake.permafrozen.Permafrozen;
-import net.ladysnake.permafrozen.block.SpectralCapBlockEntity;
+import net.ladysnake.permafrozen.block.entity.SpectralCapBlockEntity;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 public class SpectralCapModel extends AnimatedGeoModel<SpectralCapBlockEntity> {

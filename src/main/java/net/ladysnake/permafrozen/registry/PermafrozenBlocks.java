@@ -126,6 +126,7 @@ public class PermafrozenBlocks {
 
 //aurora tech
 	public static final Block AURORA_BLASTER = create("aurora_blaster", new AuroraBlasterBlock(copyOf(Blocks.OBSIDIAN)), true);
+	public static final Block AURORA_BARRIER = create("aurora_barrier", new AuroraBarrierBlock(copyOf(Blocks.OBSIDIAN)), true);
 
 //gyrehorn
 	public static final Block FLEECE = create("fleece", new Block(FabricBlockSettings.of(Material.WOOL, MapColor.BROWN).strength(0.8F).sounds(BlockSoundGroup.WOOL)), true);

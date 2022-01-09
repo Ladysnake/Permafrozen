@@ -4,13 +4,14 @@ package net.ladysnake.permafrozen.registry;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.ladysnake.permafrozen.block.entity.AuroraBarrierBlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.ladysnake.permafrozen.Permafrozen;
-import net.ladysnake.permafrozen.block.SpectralCapBlockEntity;
+import net.ladysnake.permafrozen.block.entity.SpectralCapBlockEntity;
 import net.ladysnake.permafrozen.entity.living.*;
 
 import java.util.LinkedHashMap;
@@ -27,6 +28,7 @@ public class PermafrozenEntities {
 	public static final EntityType<PuffbooEntity> PUFFBOO = createEntity("puffboo", PuffbooEntity.createBooAttributes(), FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, PuffbooEntity::new).dimensions(EntityDimensions.fixed(0.5f, 0.4f)).build());
 	public static final EntityType<LesserFiddlesnoutEntity> LESSER_FIDDLESNOUT = createEntity("fiddlesnout", LesserFiddlesnoutEntity.createFiddlesnoutAttributes(), FabricEntityTypeBuilder.create(SpawnGroup.WATER_CREATURE, LesserFiddlesnoutEntity::new).dimensions(EntityDimensions.changing(0.8f, 0.5f)).build());
 	public static       BlockEntityType<SpectralCapBlockEntity> SPECTRAL_CAP_TYPE;
+	public static       BlockEntityType<AuroraBarrierBlockEntity> AURORA_BARRIER_TYPE;
 
 	private static <T extends Entity> EntityType<T> createEntity(String name, EntityType<T> type) {
 		ENTITY_TYPES.put(type, new Identifier(Permafrozen.MOD_ID, name));
@@ -43,5 +45,7 @@ public class PermafrozenEntities {
 		ENTITY_TYPES.keySet().forEach(entityType -> Registry.register(Registry.ENTITY_TYPE, ENTITY_TYPES.get(entityType), entityType));
 		SPECTRAL_CAP_TYPE = Registry.register(Registry.BLOCK_ENTITY_TYPE, Permafrozen.MOD_ID + "spectral_cap",
 				FabricBlockEntityTypeBuilder.create(SpectralCapBlockEntity::new, PermafrozenBlocks.SPECTRAL_CAP).build(null));
+		AURORA_BARRIER_TYPE = Registry.register(Registry.BLOCK_ENTITY_TYPE, Permafrozen.MOD_ID + "aurora_barrier",
+				FabricBlockEntityTypeBuilder.create(AuroraBarrierBlockEntity::new, PermafrozenBlocks.AURORA_BARRIER).build(null));
 	}
 }

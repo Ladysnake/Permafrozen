@@ -40,7 +40,7 @@ public abstract class Terrain {
 			pos.set(x, y, z);
 			existing = chunk.getBlockState(pos);
 
-			if (existing.isOf(PermafrozenBlocks.SHIVERSLATE) && y >= height - 3) {
+			if (existing.isOf(PermafrozenBlocks.SHIVERSLATE) && y >= height - 5) {
 				chunk.setBlockState(pos, y == height - 1 && y >= seaLevel - 1? top : filler, false);
 			}
 		}
