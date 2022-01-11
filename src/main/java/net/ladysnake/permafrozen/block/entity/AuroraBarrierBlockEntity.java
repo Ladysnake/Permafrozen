@@ -15,10 +15,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.explosion.Explosion;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class AuroraBarrierBlockEntity extends BlockEntity {
     private static HashSet<BlockPos> barrierList;
@@ -75,16 +72,19 @@ public class AuroraBarrierBlockEntity extends BlockEntity {
             }
             List<Box> boxList = new ArrayList<>();
             for (BlockPos oppositePos : opposingList) {
-                Box box = new Box(pos, oppositePos);
+                Box box = new Box(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, oppositePos.getX() + 0.5, oppositePos.getY() + 0.5, oppositePos.getZ() + 0.5);
                 boxList.add(box);
             }
             //the blocking
             for (Box box : boxList) {
-                List<Entity> list = tickerWorld.getEntitiesByClass(Entity.class, box, (entity) -> entity.getVelocity().getX() != 0 || entity.getVelocity().getZ() != 0);
+                List<Entity> list = tickerWorld.getEntitiesByClass(Entity.class, box, Objects::nonNull);
                 for (Entity entity : list) {
-                    entity.setVelocity(-entity.getVelocity().x, entity.getVelocity().y, -entity.getVelocity().z);
+                    entity.setVelocity(-(box.getCenter().x-entity.getPos().x)*2, -(box.getCenter().y-entity.getPos().y)*2, -(box.getCenter().z-entity.getPos().z)*2);
                 }
             }
+        } else {
+            barrierList = new HashSet<>();
+            opposingList = new HashSet<>();
         }
     }
 }
