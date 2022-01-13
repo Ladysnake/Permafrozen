@@ -46,8 +46,8 @@ public class PermafrozenBlocks {
 	//deadwood
 	public static final Block STRIPPED_DEADWOOD_LOG = create("stripped_deadwood_log", new PillarBlock(copyOf(Blocks.OAK_LOG)), true);
 	public static final Block STRIPPED_DEADWOOD_WOOD = create("stripped_deadwood_wood", new PillarBlock(copyOf(STRIPPED_DEADWOOD_LOG)), true);
-	public static final Block DEADWOOD_LOG = create("deadwood_log", new StrippableLogBlock(() -> STRIPPED_DEADWOOD_LOG, MapColor.BROWN, copyOf(STRIPPED_DEADWOOD_LOG)), true);
-	public static final Block DEADWOOD_WOOD = create("deadwood_wood", new StrippableLogBlock(() -> STRIPPED_DEADWOOD_WOOD, MapColor.BROWN, copyOf(STRIPPED_DEADWOOD_LOG)), true);
+	public static final Block DEADWOOD_LOG = create("deadwood_log", new StrippableDeadwoodBlock(() -> STRIPPED_DEADWOOD_LOG, MapColor.BROWN, copyOf(STRIPPED_DEADWOOD_LOG)), true);
+	public static final Block DEADWOOD_WOOD = create("deadwood_wood", new StrippableDeadwoodBlock(() -> STRIPPED_DEADWOOD_WOOD, MapColor.BROWN, copyOf(STRIPPED_DEADWOOD_LOG)), true);
 	public static final Block DEADWOOD_PLANKS = create("deadwood_planks", new Block(copyOf(Blocks.OAK_PLANKS)), true);
 	public static final Block DEADWOOD_STAIRS = create("deadwood_stairs", new TerraformStairsBlock(DEADWOOD_PLANKS, copyOf(Blocks.OAK_STAIRS)), true);
 	public static final Block DEADWOOD_SLAB = create("deadwood_slab", new SlabBlock(copyOf(Blocks.OAK_SLAB)), true);
@@ -109,7 +109,6 @@ public class PermafrozenBlocks {
 	public static final Block MOSSY_SMOOTH_SHIVERSLATE_BRICK_WALL = create("mossy_smooth_shiverslate_brick_wall", new WallBlock(copyOf(Blocks.DEEPSLATE_BRICK_WALL)), true);
 
 //vegetation
-	public static final Block GLACIAL_KELP = create("glacial_kelp", new PermafrozenKelpPlantBlock(copyOf(Blocks.KELP_PLANT)), true);
 	public static final Block GLAUCA_GRASS = create("glauca_grass", new PermafrozenPlantBlock(copyOf(Blocks.GRASS)), true);
 
 //crymstals

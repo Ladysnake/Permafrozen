@@ -1,6 +1,8 @@
 package net.ladysnake.permafrozen.worldgen.feature;
 
 import com.mojang.serialization.Codec;
+import net.ladysnake.permafrozen.block.PrismarineCrystalClusterBlock;
+import net.ladysnake.permafrozen.block.StrippableDeadwoodBlock;
 import net.ladysnake.permafrozen.registry.PermafrozenBlocks;
 import net.ladysnake.permafrozen.util.MutableVec3d;
 import net.minecraft.block.BlockState;
@@ -77,11 +79,13 @@ public class DeadwoodTreeFeature extends Feature<DefaultFeatureConfig> {
 			pos.move(angleX, angleY, angleZ);
 			pos.transferTo(blockpos);
 
-			this.setBlockState(world, blockpos, LOG);
+			this.setBlockState(world, blockpos, WOOD);
 
 			// chance to grow an extra block up or down at any point along
-			if (rand.nextDouble() < Math.abs(pos.getY())) {
-				this.setBlockState(world, blockpos.offset(pos.getY() > 0 ? Direction.UP : Direction.DOWN), LOG);
+			if (rand.nextDouble() < Math.abs(pos.getY()) && rand.nextInt(3) == 1) {
+				BlockPos pos2 = blockpos.offset(pos.getY() > 0 ? Direction.UP : Direction.DOWN);
+				this.setBlockState(world, pos2, LOG);
+				this.setBlockState(world, pos2.offset(pos.getY() > 0 ? Direction.UP : Direction.DOWN), PermafrozenBlocks.DEADWOOD_THORN.getDefaultState().with(PrismarineCrystalClusterBlock.FACING, pos.getY() > 0 ? Direction.UP : Direction.DOWN));
 			}
 
 			if (i == requestedResult) {
@@ -92,5 +96,6 @@ public class DeadwoodTreeFeature extends Feature<DefaultFeatureConfig> {
 		return result;
 	}
 
-	private static final BlockState LOG = PermafrozenBlocks.DEADWOOD_LOG.getDefaultState();
+	private static final BlockState LOG = PermafrozenBlocks.DEADWOOD_LOG.getDefaultState().with(StrippableDeadwoodBlock.PERSISTENT, true);
+	private static final BlockState WOOD = PermafrozenBlocks.DEADWOOD_WOOD.getDefaultState().with(StrippableDeadwoodBlock.PERSISTENT, true);
 }

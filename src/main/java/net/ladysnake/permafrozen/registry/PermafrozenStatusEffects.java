@@ -1,5 +1,6 @@
 package net.ladysnake.permafrozen.registry;
 
+import net.ladysnake.permafrozen.statuseffect.BurrowedStatusEffect;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.util.Identifier;
@@ -14,6 +15,7 @@ import java.util.Map;
 public class PermafrozenStatusEffects {
 	private static final Map<StatusEffect, Identifier> EFFECTS = new LinkedHashMap<>();
 	public static final StatusEffect FRAGRANT = create("fragrant", new FragrantStatusEffect(StatusEffectCategory.BENEFICIAL, 0xde7a28));
+	public static final StatusEffect BURROWED = create("burrowed", new BurrowedStatusEffect(StatusEffectCategory.BENEFICIAL, 0x48c260));
 	public static final StatusEffect SPECTRAL_DAZE = create("spectral_daze", new SpectralDazeStatusEffect(StatusEffectCategory.BENEFICIAL, 0x00bbd4));
 
 

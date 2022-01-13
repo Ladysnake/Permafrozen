@@ -26,6 +26,7 @@ public class PermafrozenEntities {
 	public static final EntityType<AuroraFaeEntity> AURORA_FAE = createEntity("aurora_fae", AuroraFaeEntity.createFaeAttributes(), FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, AuroraFaeEntity::new).dimensions(EntityDimensions.fixed(0.5F, 0.4F)).build());
 	public static final EntityType<PuffbooEntity> PUFFBOO = createEntity("puffboo", PuffbooEntity.createBooAttributes(), FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, PuffbooEntity::new).dimensions(EntityDimensions.fixed(0.5f, 0.4f)).build());
 	public static final EntityType<LesserFiddlesnoutEntity> LESSER_FIDDLESNOUT = createEntity("fiddlesnout", LesserFiddlesnoutEntity.createFiddlesnoutAttributes(), FabricEntityTypeBuilder.create(SpawnGroup.WATER_CREATURE, LesserFiddlesnoutEntity::new).dimensions(EntityDimensions.changing(0.8f, 0.5f)).build());
+	public static final EntityType<BurrowGrubEntity> BURROW_GRUB = createEntity("burrow_grub", BurrowGrubEntity.createBurrowGrubAttributes(), FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, BurrowGrubEntity::new).dimensions(EntityDimensions.fixed(0.4F, 0.2F)).build());
 	public static       BlockEntityType<SpectralCapBlockEntity> SPECTRAL_CAP_TYPE;
 
 	private static <T extends Entity> EntityType<T> createEntity(String name, EntityType<T> type) {

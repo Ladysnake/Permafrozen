@@ -1,6 +1,7 @@
 package net.ladysnake.permafrozen.worldgen.biome;
 
 import net.ladysnake.permafrozen.Permafrozen;
+import net.ladysnake.permafrozen.registry.PermafrozenEntities;
 import net.ladysnake.permafrozen.worldgen.PermafrozenBiomeSource;
 import net.ladysnake.permafrozen.worldgen.PermafrozenChunkGenerator;
 import net.ladysnake.permafrozen.worldgen.PermafrozenConfiguredFeatures;
@@ -25,7 +26,7 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 	private static final int DEFAULT_PERMAROZEN_FOG_COLOUR = 0xEFFFFF; // change this to whatever you want. Overworld is 0xC0D8FF
 
 	public static final RegistryKey<Biome> TUNDRA = createKey("tundra");
-	public static final RegistryKey<Biome> SHRUMNAL_SPIRES = createKey("shrumnal_spires");
+	public static final RegistryKey<Biome> SHRUMAL_SPIRES = createKey("shrumal_spires");
 	public static final RegistryKey<Biome> FRIGID_FEN = createKey("frigid_fen");
 	public static final RegistryKey<Biome> CHILLING_CANYON = createKey("chilling_canyon");
 	public static final RegistryKey<Biome> GLACIER_OCEAN = createKey("glacier_ocean");
@@ -36,7 +37,7 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 		Registry.register(Registry.BIOME_SOURCE, new Identifier(Permafrozen.MOD_ID, "permafrozen"), PermafrozenBiomeSource.CODEC);
 
 		registerBiome(TUNDRA, createTundra());
-		registerBiome(SHRUMNAL_SPIRES, createShrumnalSpires());
+		registerBiome(SHRUMAL_SPIRES, createShrumalSpires());
 		registerBiome(FRIGID_FEN, createFrigidFen());
 		registerBiome(CHILLING_CANYON, createChillingCanyon());
 	}
@@ -55,9 +56,9 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 				DEFAULT_PERMAROZEN_FOG_COLOUR);
 	}
 
-	private static Biome createShrumnalSpires() {
+	private static Biome createShrumalSpires() {
 		GenerationSettings.Builder generationSettings = new GenerationSettings.Builder()
-				.feature(GenerationStep.Feature.VEGETAL_DECORATION, PermafrozenPlacedFeatures.SHRUMNAL_SPIRES_VEGETATION)
+				.feature(GenerationStep.Feature.VEGETAL_DECORATION, PermafrozenPlacedFeatures.SHRUMAL_SPIRES_VEGETATION)
 				.feature(GenerationStep.Feature.VEGETAL_DECORATION, PermafrozenPlacedFeatures.GLAUCA_PATCHES)
 				.feature(GenerationStep.Feature.VEGETAL_DECORATION, PermafrozenPlacedFeatures.SPECTRAL_CAP_PATCHES);
 
@@ -65,7 +66,7 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 				Biome.Category.FOREST,
 				generationSettings,
 				new SpawnSettings.Builder()
-						.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.FOX, 10, 5, 7))
+						.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(PermafrozenEntities.AURORA_FAE, 2, 1, 2))
 						.build(),
 				DEFAULT_PERMAROZEN_FOG_COLOUR);
 	}

@@ -30,8 +30,10 @@
   "item.permafrozen.aurora_fae_spawn_egg": "Aurora Fae Spawn Egg",
   "item.permafrozen.puffboo_spawn_egg": "Puffboo Spawn Egg",
   "item.permafrozen.thawing_permafrost_clump": "Thawing Permafrost Clump",
+  "item.permafrozen.burrow_grub": "Burrow Grub",
 
   "effect.permafrozen.fragrant": "Fragrance",
+  "effect.permafrozen.burrowed": "Burrowed",
   "effect.permafrozen.spectral_daze": "Spectral Daze",
 
   "block.permafrozen.peat": "Peat",
@@ -125,6 +127,7 @@
   "entity.permafrozen.fatfish": "Fatfish",
   "entity.permafrozen.puffboo": "Puffboo",
   "entity.permafrozen.fiddlesnout": "Fiddlesnout",
+  "entity.permafrozen.burrow_grub": "Burrow Grub",
 
   "permafrozen.subtitles.entity.aurora_fae.ambient": "Aurora Fae chirps",
   "permafrozen.subtitles.entity.aurora_fae.hurt": "Aurora Fae is hurt",
