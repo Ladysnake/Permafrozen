@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.ladysnake.permafrozen.mixin",
+  "package": "ladysnake.permafrozen.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "BlocksAccessor",
@@ -9,10 +9,11 @@
     "CarverMixin",
     "GeneratorOptionsMixin",
     "LeavesBlockMixin",
-    "PlayerEntityMixin",
-    "WorldRendererMixin"
+    "LivingEntityMixin",
+    "PlayerEntityMixin"
   ],
   "client": [
+    "WorldRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

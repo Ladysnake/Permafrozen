@@ -16,14 +16,14 @@
 	"homepage": "",
 	"sources": ""
   },
-  "license": "CC0-nok/icon.png",
+  "license": "CC0 code / ARR assets",
   "environment": "*",
   "entrypoints": {
 	"main": [
-	  "net.ladysnake.permafrozen.Permafrozen"
+      "ladysnake.permafrozen.Permafrozen"
 	],
 	"client": [
-	  "net.ladysnake.permafrozen.PermafrozenClient"
+      "ladysnake.permafrozen.PermafrozenClient"
 	]
   },
   "mixins": [
