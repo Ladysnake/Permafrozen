@@ -64,9 +64,7 @@ public class FatfishEntity extends SchoolingFishEntity implements IAnimatable {
 	@Override
 	public void registerControllers(AnimationData animationData) {
 		animationData.addAnimationController(new AnimationController<>(this, "controller", 2, animationEvent -> {
-			//String animname = event.getController().getCurrentAnimation() != null ? event.getController().getCurrentAnimation().animationName : "";
 			boolean isInWater = isInsideWaterOrBubbleColumn();
-			//boolean isMoving = isInWater ? !(limbSwingAmount > -0.02) || !(limbSwingAmount < 0.02) : !(limbSwingAmount > -0.10F) || !(limbSwingAmount < 0.10F);
 			AnimationBuilder anim = isInWater ? SWIM : FLOP;
 			animationEvent.getController().setAnimation(anim);
 			return PlayState.CONTINUE;

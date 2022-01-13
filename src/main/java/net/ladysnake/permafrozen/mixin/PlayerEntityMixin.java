@@ -1,14 +1,20 @@
 package net.ladysnake.permafrozen.mixin;
 
+import net.ladysnake.permafrozen.Permafrozen;
+import net.ladysnake.permafrozen.entity.living.BurrowGrubEntity;
+import net.ladysnake.permafrozen.registry.PermafrozenEntities;
+import net.ladysnake.permafrozen.registry.PermafrozenStatusEffects;
+import net.ladysnake.permafrozen.util.PlayerUtil;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.tag.ItemTags;
 import net.minecraft.world.World;
-import net.ladysnake.permafrozen.Permafrozen;
-import net.ladysnake.permafrozen.util.PlayerUtil;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -29,7 +35,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         if (!this.world.isClient && !playerEntity.isCreative() && !playerEntity.isSpectator() && playerEntity.isAlive() && this.getEntityWorld() == Objects.requireNonNull(this.getEntityWorld().getServer()).getWorld(Permafrozen.WORLD_KEY)) {
             ticks++;
             if (ticks >= 20) {
-                if (PlayerUtil.isWarmBlockNearby(playerEntity) || playerEntity.isOnFire() && temperature < 36) {
+                if ((PlayerUtil.isWarmBlockNearby(playerEntity) || playerEntity.isOnFire()) && temperature < 36) {
                     temperature++;
                 } else if(playerEntity.world.isSkyVisible(playerEntity.getCameraBlockPos())) {
                     temperature--;
@@ -58,6 +64,24 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     @Inject(method = "readCustomDataFromNbt(Lnet/minecraft/nbt/NbtCompound;)V", at = @At("TAIL"))
     public void readCustomDataFromNbt(NbtCompound nbt, CallbackInfo ci) {
         temperature = nbt.getInt("temp");
+    }
+
+    @Override
+    protected boolean tryUseTotem(DamageSource source) {
+        if (this.hasStatusEffect(PermafrozenStatusEffects.BURROWED) && !source.isFire() && !source.isOutOfWorld() && !source.isExplosive()) {
+            this.setHealth(1.0F);
+            this.addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 60, 2));
+            return true;
+        } else {
+            if (this.hasStatusEffect(PermafrozenStatusEffects.BURROWED)) {
+                BurrowGrubEntity entity = PermafrozenEntities.BURROW_GRUB.create(this.world);
+                for(int i  = 0 ; i < 2 + this.getRandom().nextInt(3); i++) {
+                    entity.updatePosition(this.getX(), this.getY(), this.getZ());
+                    world.spawnEntity(entity);
+                }
+            }
+            return super.tryUseTotem(source);
+        }
     }
 
     @Inject(method = "writeCustomDataToNbt(Lnet/minecraft/nbt/NbtCompound;)V", at = @At("TAIL"))

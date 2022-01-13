@@ -20,7 +20,7 @@ public class AuroraFaeRenderer extends GeoEntityRenderer<AuroraFaeEntity> {
 
     @Override
     public void render(AuroraFaeEntity faeEntity, float entityYaw, float partialTicks, MatrixStack stack, VertexConsumerProvider provider, int packedLightIn) {
-        super.render(faeEntity, entityYaw, partialTicks, stack, provider, packedLightIn);
+        super.render(faeEntity, entityYaw, partialTicks, stack, provider, 15728880);
     }
 
     @Override

@@ -47,6 +47,7 @@ public class PermafrozenClient implements ClientModInitializer {
 	public void onInitializeClient() {
 		TerraformBoatClientHelper.registerModelLayer(new Identifier(Permafrozen.MOD_ID, "deadwood"));
 		EntityRendererRegistry.INSTANCE.register(PermafrozenEntities.NUDIFAE, NudifaeEntityRenderer::new);
+		EntityRendererRegistry.INSTANCE.register(PermafrozenEntities.BURROW_GRUB, BurrowGrubRenderer::new);
 		EntityRendererRegistry.INSTANCE.register(PermafrozenEntities.LUNAR_KOI, LunarKoiEntityRenderer::new);
 		EntityRendererRegistry.INSTANCE.register(PermafrozenEntities.FATFISH, FatfishEntityRenderer::new);
 		EntityRendererRegistry.INSTANCE.register(PermafrozenEntities.AURORA_FAE, AuroraFaeRenderer::new);
