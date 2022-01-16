@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "permafrozen:raw_wulfram"
+  },
+  "result": "permafrozen:wulfram_ingot",
+  "experience": 1.0,
+  "cookingtime": 800
+}

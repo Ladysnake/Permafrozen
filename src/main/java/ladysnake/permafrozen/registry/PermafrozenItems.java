@@ -22,6 +22,7 @@ public class PermafrozenItems {
 	
 	
 	public static final Item WULFRAM_INGOT = create("wulfram_ingot", new Item(new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
+	public static final Item RAW_WULFRAM = create("raw_wulfram", new Item(new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
 	public static final Item WULFRAM_SWORD = create("wulfram_sword", new SwordItem(PermafrozenMaterials.WULFRAM, 3, -2.4f, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
 	public static final Item WULFRAM_SHOVEL = create("wulfram_shovel", new ShovelItem(PermafrozenMaterials.WULFRAM, 0.5f, -3, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
 	public static final Item WULFRAM_AXE = create("wulfram_axe", new PermafrozenAxeItem(PermafrozenMaterials.WULFRAM, 4.5f, -3, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
