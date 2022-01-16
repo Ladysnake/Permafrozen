@@ -57,11 +57,10 @@
 		],
 		"subtitle": "permafrozen.subtitles.entity.puffboo.death"
 	},
-	"ambient.boreal_forest": {
-		"category": "ambient",
+	"music.shrumal_spires": {
 		"sounds": [
 			{
-				"name": "permafrozen:ambient/boreal_forest",
+				"name": "permafrozen:music/a_welcoming_snowfall",
 				"stream": true
 			}
 		]

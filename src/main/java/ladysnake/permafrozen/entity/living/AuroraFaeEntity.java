@@ -1,5 +1,6 @@
 package ladysnake.permafrozen.entity.living;
 
+import ladysnake.permafrozen.registry.PermafrozenBlocks;
 import ladysnake.permafrozen.registry.PermafrozenSoundEvents;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
@@ -125,15 +126,21 @@ public class AuroraFaeEntity extends TameableEntity implements Flutterer, IAnima
             }
 
             return ActionResult.success(this.world.isClient);
+        } else if (this.isTamed() && isBreedingItem(player.getStackInHand(hand)) ) {
+            if (!player.getAbilities().creativeMode) {
+                itemStack.decrement(1);
+            }
+            this.heal(8);
+            return ActionResult.success(this.world.isClient);
         } else if (this.isOnGround() && this.isTamed() && this.isOwner(player)) {
             if (!this.world.isClient) {
                 this.setSitting(!this.isSitting());
             }
 
             return ActionResult.success(this.world.isClient);
-        } else {
-            return super.interactMob(player, hand);
         }
+        return super.interactMob(player, hand);
+
     }
 
     public boolean damage(DamageSource source, float amount) {
@@ -214,8 +221,7 @@ public class AuroraFaeEntity extends TameableEntity implements Flutterer, IAnima
 
     @Override
     public boolean isBreedingItem(ItemStack stack) {
-        //TODO: decide what should aurora fae be tamed with
-        return false;
+        return stack.getItem().equals(PermafrozenBlocks.SPECTRAL_CAP.asItem());
     }
 
     @Override

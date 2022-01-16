@@ -47,11 +47,12 @@ public class AuroraFaeModel extends AnimatedGeoModel<AuroraFaeEntity> {
             head.setRotationY((extraData.netHeadYaw) * ((float) Math.PI / 500F));
         }
         if (entity.isBaby()) {
-            IBone root = this.getAnimationProcessor().getBone("body");
+            IBone root = this.getAnimationProcessor().getBone("Root");
             if (root != null) {
                 root.setScaleX(0.5f);
                 root.setScaleY(0.5f);
                 root.setScaleZ(0.5f);
+                root.setPositionY(-0.1F);
             }
         }
     }

@@ -31,7 +31,7 @@ public class ShaderHandler {
             if (player.hasStatusEffect(PermafrozenStatusEffects.SPECTRAL_DAZE)) {
                 SPECTRAL_DAZE.render(v);
                 SPECTRAL_DAZE_DOS.render(v);
-                if(player.getStatusEffect(PermafrozenStatusEffects.SPECTRAL_DAZE).getAmplifier() > 0) {
+                if(player.getStatusEffect(PermafrozenStatusEffects.SPECTRAL_DAZE).getDuration() <= 2400) {
                     SPECTRAL_DAZE_TRES.render(v);
                 }
             }
@@ -41,8 +41,8 @@ public class ShaderHandler {
     private static void onEndTick(MinecraftClient client) {
         if (client.player != null) {
             if (client.player.hasStatusEffect(PermafrozenStatusEffects.SPECTRAL_DAZE)
-                    && client.player.getStatusEffect(PermafrozenStatusEffects.SPECTRAL_DAZE).getAmplifier() > 0) {
-                SPECTR_PHOSPHOR.set(0.7F, 0.7F, 0.9F);
+                    && client.player.getStatusEffect(PermafrozenStatusEffects.SPECTRAL_DAZE).getDuration() <= 2400) {
+                SPECTR_PHOSPHOR.set(0.7F, 0.7F, 0.95F);
             } else {
                 SPECTR_PHOSPHOR.set(0.6F, 0.6F, 0.8F);
             }

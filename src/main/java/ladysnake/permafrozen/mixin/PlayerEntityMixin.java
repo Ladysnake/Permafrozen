@@ -2,12 +2,14 @@ package ladysnake.permafrozen.mixin;
 
 import ladysnake.permafrozen.Permafrozen;
 import ladysnake.permafrozen.util.PlayerUtil;
+import net.minecraft.block.PowderSnowBlock;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.tag.ItemTags;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -39,20 +41,13 @@ public abstract class PlayerEntityMixin extends LivingEntity {
                     }
                 }
                 if(temperature < 2 && !this.getEquippedStack(EquipmentSlot.HEAD).isIn(ItemTags.FREEZE_IMMUNE_WEARABLES) && !this.getEquippedStack(EquipmentSlot.CHEST).isIn(ItemTags.FREEZE_IMMUNE_WEARABLES) && !this.getEquippedStack(EquipmentSlot.LEGS).isIn(ItemTags.FREEZE_IMMUNE_WEARABLES) && !this.getEquippedStack(EquipmentSlot.FEET).isIn(ItemTags.FREEZE_IMMUNE_WEARABLES)) {
-                    playerEntity.setFrozenTicks(Math.min(this.getMinFreezeDamageTicks(), this.getFrozenTicks() + 1));
+                    playerEntity.setFrozenTicks(Math.min(this.getMinFreezeDamageTicks() * 4, this.getFrozenTicks() - temperature * 4));
                 }
                 ticks = 0;
             }
+            temperature = MathHelper.clamp(temperature, -40, 36);
+            System.out.println(temperature);
         }
-//        if(this.world.getBiome(this.getCameraBlockPos()) == PermafrozenBiomes.BOREAL_FOREST) {
-//            float pitchModifier = 0.7f;
-//            if (playerEntity.isSubmergedIn(FluidTags.WATER)) {
-//                pitchModifier = 0.3f;
-//            }
-//            playerEntity.playSound(PermafrozenSoundEvents.BOREAL_AMBIENCE, SoundCategory.WEATHER, 0.5f, pitchModifier);
-//        }
-
-
 
     }
     @Inject(method = "readCustomDataFromNbt(Lnet/minecraft/nbt/NbtCompound;)V", at = @At("TAIL"))

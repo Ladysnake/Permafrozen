@@ -1,5 +1,6 @@
 package ladysnake.permafrozen.worldgen.biome;
 
+import ladysnake.permafrozen.registry.PermafrozenSoundEvents;
 import ladysnake.permafrozen.worldgen.PermafrozenChunkGenerator;
 import ladysnake.permafrozen.worldgen.PermafrozenPlacedFeatures;
 import ladysnake.permafrozen.Permafrozen;
@@ -120,7 +121,7 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 						.waterFogColor(0x00A4A4)
 						.skyColor(getSkyColor(0.5f))
 						.moodSound(BiomeMoodSound.CAVE)
-						.music(null) // vanilla music
+						.music(category == Biome.Category.FOREST ? PermafrozenSoundEvents.SHRUMAL_SPIRES_MUSIC : null)
 						.build())
 				.build();
 	}

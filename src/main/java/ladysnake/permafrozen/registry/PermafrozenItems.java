@@ -50,7 +50,7 @@ public class PermafrozenItems {
 	public static final Item PUFFBOO_FEATHER = create("puffboo_feather", new Item((new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP)));
 	public static final Item PUFFBOO_MEAT = create("raw_puffboo", new Item((new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP).food(FoodComponents.CHICKEN)));
 	public static final Item COOKED_PUFFBOO_MEAT = create("cooked_puffboo", new Item((new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP).food(FoodComponents.COOKED_CHICKEN)));
-	public static final FoodComponent SPECTRAL_STUFF = new FoodComponent.Builder().alwaysEdible().hunger(5).statusEffect(new StatusEffectInstance(PermafrozenStatusEffects.SPECTRAL_DAZE, 2400, 0), 1.0f).build();
+	public static final FoodComponent SPECTRAL_STUFF = new FoodComponent.Builder().alwaysEdible().hunger(5).statusEffect(new StatusEffectInstance(PermafrozenStatusEffects.SPECTRAL_DAZE, 4800, 0), 1.0f).build();
 	public static final Item SPECTRAL_DUST = create("spectral_dust", new Item((new Item.Settings().food(SPECTRAL_STUFF).group(Permafrozen.PERMAFROZEN_GROUP))));
 	public static final FoodComponent BURROW_GRUB_FOOD = new FoodComponent.Builder().alwaysEdible().hunger(2).statusEffect(new StatusEffectInstance(PermafrozenStatusEffects.BURROWED, 2400, 0), 0.9f).build();
 	public static final Item BURROW_GRUB = create("burrow_grub", new Item((new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP).food(BURROW_GRUB_FOOD)));

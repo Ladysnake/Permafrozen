@@ -16,6 +16,7 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.registry.Registry;
 
 import java.util.LinkedHashMap;
@@ -81,6 +82,7 @@ public class PermafrozenBlocks {
 	public static final Block SMOOTH_SAPPHIRE_SANDSTONE_SLAB = create("smooth_sapphire_sandstone_slab", new SlabBlock(copyOf(Blocks.SMOOTH_SANDSTONE_SLAB)), true);
 	public static final Block SMOOTH_SAPPHIRE_SANDSTONE_STAIRS = create("smooth_sapphire_sandstone_stairs", new TerraformStairsBlock(SMOOTH_SAPPHIRE_SANDSTONE, copyOf(Blocks.SMOOTH_SANDSTONE_STAIRS)), true);
 //stone
+	public static final Block WULFRAM_ORE = create("wulfram_ore", new OreBlock(copyOf(Blocks.DEEPSLATE_IRON_ORE), UniformIntProvider.create(0, 2)), true);
 	public static final Block SHIVERSLATE = create("shiverslate", new Block(copyOf(Blocks.DEEPSLATE)), true);
 	public static final Block SHIVERSLATE_STAIRS = create("shiverslate_stairs", new TerraformStairsBlock(SHIVERSLATE, copyOf(Blocks.DEEPSLATE_BRICK_STAIRS)), true);
 	public static final Block SHIVERSLATE_SLAB = create("shiverslate_slab", new SlabBlock(copyOf(Blocks.DEEPSLATE_BRICK_SLAB)), true);
