@@ -27,8 +27,5 @@ public class SpectralDazeStatusEffect extends StatusEffect {
     @Override
     public void onApplied(LivingEntity entity, AttributeContainer attributes, int amplifier) {
         super.onApplied(entity, attributes, amplifier);
-        if(amplifier == 0)
-        entity.addStatusEffect(new StatusEffectInstance(PermafrozenStatusEffects.SPECTRAL_DAZE, 1000, Objects.requireNonNull(entity.getStatusEffect(PermafrozenStatusEffects.SPECTRAL_DAZE)).getAmplifier() + 1));
-
     }
 }

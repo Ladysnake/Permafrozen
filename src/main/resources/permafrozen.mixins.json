@@ -13,6 +13,7 @@
     "PlayerEntityMixin"
   ],
   "client": [
+    "MinecraftClientMixin",
     "WorldRendererMixin"
   ],
   "injectors": {

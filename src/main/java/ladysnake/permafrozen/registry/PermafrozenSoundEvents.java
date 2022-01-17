@@ -1,5 +1,6 @@
 package ladysnake.permafrozen.registry;
 
+import net.minecraft.sound.MusicSound;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -10,6 +11,7 @@ import java.util.Map;
 
 public class PermafrozenSoundEvents {
 	private static final Map<SoundEvent, Identifier> SOUND_EVENTS = new LinkedHashMap<>();
+	public static final SoundEvent MUSIC_SHRUMAL_SPIRES = create("music.shrumal_spires");
 	
 	public static final SoundEvent ENTITY_AURORA_FAE_AMBIENT = create("entity.aurora_fae.ambient");
 	public static final SoundEvent ENTITY_AURORA_FAE_HURT = create("entity.aurora_fae.hurt");
@@ -20,7 +22,7 @@ public class PermafrozenSoundEvents {
 	public static final SoundEvent ENTITY_NUDIFAE_DEATH = create("entity.nudifae.death");
 	public static final SoundEvent ENTITY_NUDIFAE_HURT = create("entity.nudifae.hurt");
 	public static final SoundEvent ENTITY_NUDIFAE_AMBIENT = create("entity.nudifae.ambient");
-	public static final SoundEvent BOREAL_AMBIENCE = create("ambient.boreal_forest");
+	public static final MusicSound SHRUMAL_SPIRES_MUSIC = new MusicSound(MUSIC_SHRUMAL_SPIRES, 3000, 8000, true);
 	private static SoundEvent create(String name) {
 		Identifier id = new Identifier(Permafrozen.MOD_ID, name);
 		SoundEvent soundEvent = new SoundEvent(id);
