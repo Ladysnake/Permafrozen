@@ -1,6 +1,5 @@
 {
-  "parent": "block/cross",
   "textures": {
-    "cross": "permafrozen:block/spectral_cap"
+    "particle": "permafrozen:block/spectral_cap_block_top"
   }
 }

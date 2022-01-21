@@ -2,6 +2,7 @@ package ladysnake.permafrozen.util;
 
 import ladysnake.permafrozen.Permafrozen;
 import ladysnake.permafrozen.registry.PermafrozenStatusEffects;
+import ladysnake.permafrozen.worldgen.biome.PermafrozenBiomes;
 import ladysnake.satin.api.event.ShaderEffectRenderCallback;
 import ladysnake.satin.api.managed.ManagedShaderEffect;
 import ladysnake.satin.api.managed.ShaderEffectManager;

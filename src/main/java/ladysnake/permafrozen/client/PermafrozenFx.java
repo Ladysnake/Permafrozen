@@ -5,10 +5,7 @@ import ladysnake.satin.api.event.ShaderEffectRenderCallback;
 import net.minecraft.client.MinecraftClient;
 
 public class PermafrozenFx implements ShaderEffectRenderCallback, ClientTickEvents.EndTick {
-    /**
-     * Incremented every tick for animations
-     */
-    private int ticks = 0;
+
     @Override
     public void renderShaderEffects(float tickDelta) {
         /*//System.out.println(PermafrozenClient.AURORA.getProgram().gameTime.getFloatData().get());
@@ -21,6 +18,6 @@ public class PermafrozenFx implements ShaderEffectRenderCallback, ClientTickEven
 
     @Override
     public void onEndTick(MinecraftClient client) {
-        ++ticks;
+
     }
 }

@@ -13,11 +13,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeEffects;
-import net.minecraft.world.biome.GenerationSettings;
-import net.minecraft.world.biome.OverworldBiomeCreator;
-import net.minecraft.world.biome.SpawnSettings;
+import net.minecraft.world.biome.*;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.carver.ConfiguredCarvers;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
@@ -60,7 +56,8 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 		GenerationSettings.Builder generationSettings = new GenerationSettings.Builder()
 				.feature(GenerationStep.Feature.VEGETAL_DECORATION, PermafrozenPlacedFeatures.SHRUMAL_SPIRES_VEGETATION)
 				.feature(GenerationStep.Feature.VEGETAL_DECORATION, PermafrozenPlacedFeatures.GLAUCA_PATCHES)
-				.feature(GenerationStep.Feature.VEGETAL_DECORATION, PermafrozenPlacedFeatures.SPECTRAL_CAP_PATCHES);
+				.feature(GenerationStep.Feature.VEGETAL_DECORATION, PermafrozenPlacedFeatures.SPECTRAL_CAP_PATCHES)
+				.feature(GenerationStep.Feature.SURFACE_STRUCTURES, PermafrozenPlacedFeatures.SHIVERSLATE_ROCK);
 
 		return createPermafrozenBiome(
 				Biome.Category.FOREST,
@@ -75,7 +72,8 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 	private static Biome createFrigidFen() {
 		GenerationSettings.Builder generationSettings = new GenerationSettings.Builder()
 				.feature(GenerationStep.Feature.VEGETAL_DECORATION, PermafrozenPlacedFeatures.FRIGID_FEN_VEGETATION)
-				.feature(GenerationStep.Feature.VEGETAL_DECORATION, PermafrozenPlacedFeatures.GLAUCA_PATCHES);
+				.feature(GenerationStep.Feature.VEGETAL_DECORATION, PermafrozenPlacedFeatures.GLAUCA_PATCHES)
+				.feature(GenerationStep.Feature.SURFACE_STRUCTURES, PermafrozenPlacedFeatures.SHIVERSLATE_ROCK);
 
 		return createPermafrozenBiome(
 				Biome.Category.SWAMP,
@@ -117,11 +115,11 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 				.spawnSettings(spawnSettings)
 				.effects(new BiomeEffects.Builder()
 						.fogColor(fogColour)
-						.waterColor(0x44BFEF)
-						.waterFogColor(0x00A4A4)
-						.skyColor(getSkyColor(0.5f))
+						.waterColor(category.equals(Biome.Category.SWAMP) ? 0x212121 : 0x44BFEF)
+						.waterFogColor(category.equals(Biome.Category.SWAMP) ? 0x212121 : 0x00A4A4)
+						.skyColor(category.equals(Biome.Category.SWAMP) ? 0x212121 : getSkyColor(0.5f))
 						.moodSound(BiomeMoodSound.CAVE)
-						.music(category == Biome.Category.FOREST ? PermafrozenSoundEvents.SHRUMAL_SPIRES_MUSIC : null)
+						.music(PermafrozenSoundEvents.SHRUMAL_SPIRES_MUSIC)
 						.build())
 				.build();
 	}

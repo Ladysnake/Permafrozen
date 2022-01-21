@@ -17,6 +17,7 @@ import java.util.List;
 public class PermafrozenConfiguredFeatures {
 	// configured features
     public static final ConfiguredFeature<DefaultFeatureConfig, ?> SPIRESHROOM = register("spireshroom", PermafrozenFeatures.SPIRESHROOM.configure(FeatureConfig.DEFAULT));
+	public static final ConfiguredFeature<DefaultFeatureConfig, ?> SHIVERSLATE_ROCK = register("shiverslate_rock", PermafrozenFeatures.SHIVERSLATE_ROCK.configure(FeatureConfig.DEFAULT));
 	public static final ConfiguredFeature<DefaultFeatureConfig, ?> DEADWOOD_TREE = register("deadwood_tree", PermafrozenFeatures.DEADWOOD_TREE.configure(FeatureConfig.DEFAULT));
     public static final ConfiguredFeature<HugeMushroomFeatureConfig, ?> HUGE_SPECTRAL_CAP = register("huge_spectral_cap", Feature.HUGE_RED_MUSHROOM.configure(new HugeMushroomFeatureConfig(
     		BlockStateProvider.of(PermafrozenBlocks.SPECTRAL_CAP_BLOCK.getDefaultState().with(MushroomBlock.DOWN, false)),

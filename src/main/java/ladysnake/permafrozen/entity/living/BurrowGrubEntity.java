@@ -28,7 +28,7 @@ public class BurrowGrubEntity extends HostileEntity implements IAnimatable {
         this.goalSelector.add(4, new MeleeAttackGoal(this, 1.0, false));
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.6));
         this.targetSelector.add(1, (new RevengeGoal(this, new Class[0])).setGroupRevenge(new Class[0]));
-        this.targetSelector.add(2, new ActiveTargetGoal<>(this, LivingEntity.class, true, livingEntity -> (!(livingEntity instanceof BurrowGrubEntity) && !livingEntity.hasStatusEffect(PermafrozenStatusEffects.BURROWED))));
+        this.targetSelector.add(2, new ActiveTargetGoal<>(this, LivingEntity.class, true, livingEntity -> (!(livingEntity instanceof BurrowGrubEntity) && !(livingEntity instanceof AuroraFaeEntity) && !livingEntity.hasStatusEffect(PermafrozenStatusEffects.BURROWED))));
     }
     public double getHeightOffset() {
         return 0.1;

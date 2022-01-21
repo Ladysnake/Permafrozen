@@ -4,4 +4,4 @@
 ###### the dimension is permanently frozen haha do you get the joke
 
 ## License
-CC0 for the code, ARR for the textures
+MIT for the code, ARR for the textures
