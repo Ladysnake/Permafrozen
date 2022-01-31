@@ -79,7 +79,7 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 				Biome.Category.SWAMP,
 				generationSettings,
 				new SpawnSettings.Builder()
-						.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ZOMBIE, 100, 2, 4))
+						//.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ZOMBIE, 100, 2, 4))
 						.build(),
 				DEFAULT_PERMAROZEN_FOG_COLOUR);
 	}
@@ -117,7 +117,7 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 						.fogColor(fogColour)
 						.waterColor(category.equals(Biome.Category.SWAMP) ? 0x212121 : 0x44BFEF)
 						.waterFogColor(category.equals(Biome.Category.SWAMP) ? 0x212121 : 0x00A4A4)
-						.skyColor(category.equals(Biome.Category.SWAMP) ? 0x212121 : getSkyColor(0.5f))
+						.skyColor(category.equals(Biome.Category.SWAMP) ? 0x212121 : 0x0d0e40)
 						.moodSound(BiomeMoodSound.CAVE)
 						.music(PermafrozenSoundEvents.SHRUMAL_SPIRES_MUSIC)
 						.build())

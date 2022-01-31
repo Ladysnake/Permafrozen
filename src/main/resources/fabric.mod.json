@@ -16,7 +16,7 @@
 	"homepage": "",
 	"sources": ""
   },
-  "license": "CC0 code / ARR assets",
+  "license": "MIT code / ARR assets",
   "environment": "*",
   "entrypoints": {
 	"main": [
@@ -24,11 +24,19 @@
 	],
 	"client": [
       "ladysnake.permafrozen.PermafrozenClient"
-	]
+	],
+    "cardinal-components-world": [
+      "ladysnake.permafrozen.registry.PermafrozenComponents"
+    ]
   },
   "mixins": [
 	"permafrozen.mixins.json"
   ],
+  "custom": {
+    "cardinal-components": [
+      "permafrozen:snowstorm"
+    ]
+  },
   "accessWidener": "permafrozen.accesswidener",
   "depends": {
 	"fabricloader": ">=0.12.12",

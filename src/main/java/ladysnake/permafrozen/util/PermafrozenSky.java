@@ -21,7 +21,7 @@ public class PermafrozenSky {
         invMat.invert();
         ManagedCoreShader shader = PermafrozenClient.AURORA;
         shader.findUniformMat4("InverseTransformMatrix").set(invMat);
-        shader.findUniform1f("Time").set((world.getTime() + tickDelta) / 16);
+        shader.findUniform1f("Time").set((world.getTime() + tickDelta) / 20);
         RenderSystem.setShader(PermafrozenClient.AURORA::getProgram);
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bufferBuilder = tessellator.getBuffer();

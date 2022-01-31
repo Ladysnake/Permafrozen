@@ -1,11 +1,19 @@
 {
   "variants": {
-    "": [
+    "snowy=false": [
       {
         "model": "permafrozen:block/cobbled_shiverslate"
       },
       {
         "model": "permafrozen:block/cobbled_shiverslate_1"
+      }
+    ],
+    "snowy=true": [
+      {
+        "model": "permafrozen:block/cobbled_shiverslate_snow"
+      },
+      {
+        "model": "permafrozen:block/cobbled_shiverslate_1_snow"
       }
     ]
   }

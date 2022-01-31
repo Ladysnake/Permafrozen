@@ -13,7 +13,10 @@
     "PlayerEntityMixin"
   ],
   "client": [
+    "JsonEffectGlShaderMixin",
     "MinecraftClientMixin",
+    "RebuildTaskMixin",
+    "ChunkDataMixin",
     "WorldRendererMixin"
   ],
   "injectors": {

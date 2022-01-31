@@ -11,7 +11,6 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
-    maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
     maven {
         name "terraform wood api"
         url "https://maven.terraformersmc.com"
@@ -19,10 +18,12 @@ repositories {
     maven {
         name = 'Ladysnake Mods'
         url = 'https://ladysnake.jfrog.io/artifactory/mods'
-        content {
-            includeGroup 'io.github.ladysnake'
-        }
     }
+    maven {
+        name = "Nexus Repository Manager"
+        url = 'https://oss.sonatype.org/content/repositories/snapshots'
+    }
+    maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
 }
 
 dependencies {
@@ -33,6 +34,10 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     modImplementation "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
     include "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
+    modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cca_version}"
+    include "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cca_version}"
+    modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-world:${project.cca_version}"
+    include "dev.onyxstudios.cardinal-components-api:cardinal-components-world:${project.cca_version}"
     modApi "io.github.ladysnake:satin:${project.satin_version}"
     include "io.github.ladysnake:satin:${project.satin_version}"
     modImplementation "software.bernie.geckolib:geckolib-fabric-1.18:${project.geckolib_version}"

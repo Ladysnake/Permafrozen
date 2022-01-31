@@ -2,3 +2,11 @@ accessWidener v1 named
 
 accessible field net/minecraft/block/entity/CampfireBlockEntity itemsBeingCooked Lnet/minecraft/util/collection/DefaultedList;
 extendable method net/minecraft/entity/LivingEntity tryUseTotem (Lnet/minecraft/entity/damage/DamageSource;)Z
+accessible field com/mojang/blaze3d/platform/GlStateManager TEXTURES [Lcom/mojang/blaze3d/platform/GlStateManager$Texture2DState;
+accessible field com/mojang/blaze3d/platform/GlStateManager activeTexture I
+accessible class com/mojang/blaze3d/platform/GlStateManager$Texture2DState
+accessible field net/minecraft/client/gl/ShaderEffect passes Ljava/util/List;
+accessible class net/minecraft/client/render/WorldRenderer$ChunkInfo
+accessible field net/minecraft/client/render/WorldRenderer chunkInfos Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+accessible field net/minecraft/client/render/WorldRenderer$ChunkInfo chunk Lnet/minecraft/client/render/chunk/ChunkBuilder$BuiltChunk;
+accessible class net/minecraft/client/render/chunk/ChunkBuilder$BuiltChunk$RebuildTask

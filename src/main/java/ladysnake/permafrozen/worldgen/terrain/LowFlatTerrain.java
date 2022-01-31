@@ -52,7 +52,7 @@ public class LowFlatTerrain extends Terrain {
 			}
 		}
 
-		return pingo + this.localHillsNoise.sample(x * 0.033, z * 0.033) * 2 + 63.5;
+		return pingo + this.localHillsNoise.sample(x * 0.033, z * 0.033) * 2 + 64.5;
 	}
 
 	@Override

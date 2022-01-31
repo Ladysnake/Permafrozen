@@ -4,8 +4,10 @@ import ladysnake.permafrozen.registry.*;
 import ladysnake.permafrozen.worldgen.biome.PermafrozenBiomes;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
@@ -28,5 +30,10 @@ public class Permafrozen implements ModInitializer {
 		PermafrozenBiomes.init();
 		PermafrozenStatusEffects.init();
 		PermafrozenSoundEvents.init();
+		ServerTickEvents.END_SERVER_TICK.register(serverWorld -> {
+			for(ServerWorld world : serverWorld.getWorlds()) {
+				PermafrozenComponents.SNOWSTORM.get(world).tick();
+			}
+		});
 	}
 }

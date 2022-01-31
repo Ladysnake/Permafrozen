@@ -22,6 +22,8 @@ public class Wind {
 
     private float windX;
     private float windZ;
+    private float prevWindX;
+    private float prevWindZ;
     private SmoothNoise velocityNoise;
     private SmoothNoise directionTrendNoise;
     private SmoothNoise directionNoise;
@@ -66,6 +68,13 @@ public class Wind {
     public float getWindZ() {
         return this.windZ;
     }
+    public float getPrevWindX() {
+        return this.prevWindX;
+    }
+
+    public float getPrevWindZ() {
+        return this.prevWindZ;
+    }
 
     public State getState() {
         return this.state;
@@ -96,7 +105,9 @@ public class Wind {
         }
 
         boolean raining = world.getLevelProperties().isRaining();
+        raining = false;
         boolean thundering = world.isThundering();
+        thundering = false;
         boolean weatherChanged = this.wasRaining != raining || this.wasThundering != thundering;
 
         if (weatherChanged || this.stateDuration <= 0) {
@@ -124,7 +135,8 @@ public class Wind {
 
         float strength = this.velocityNoise.getNoise();
         float direction = this.directionNoise.getLerp() + this.directionNoise.getNoise();
-
+        this.prevWindX = this.windX;
+        this.prevWindZ = this.windZ;
         this.windX = strength * MathHelper.cos(direction);
         this.windZ = strength * MathHelper.sin(direction);
     }

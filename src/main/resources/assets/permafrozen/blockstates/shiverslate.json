@@ -1,6 +1,6 @@
 {
   "variants": {
-    "": [
+    "snowy=false": [
       {
         "model": "permafrozen:block/shiverslate"
       },
@@ -14,6 +14,11 @@
       {
         "model": "permafrozen:block/shiverslate_mirrored",
         "y": 180
+      }
+    ],
+    "snowy=true": [
+      {
+        "model": "permafrozen:block/shiverslate_snow"
       }
     ]
   }

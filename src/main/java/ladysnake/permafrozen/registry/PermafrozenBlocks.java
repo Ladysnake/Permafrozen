@@ -83,16 +83,16 @@ public class PermafrozenBlocks {
 	public static final Block SMOOTH_SAPPHIRE_SANDSTONE_STAIRS = create("smooth_sapphire_sandstone_stairs", new TerraformStairsBlock(SMOOTH_SAPPHIRE_SANDSTONE, copyOf(Blocks.SMOOTH_SANDSTONE_STAIRS)), true);
 //stone
 	public static final Block WULFRAM_ORE = create("wulfram_ore", new OreBlock(copyOf(Blocks.DEEPSLATE_IRON_ORE), UniformIntProvider.create(0, 2)), true);
-	public static final Block SHIVERSLATE = create("shiverslate", new Block(copyOf(Blocks.DEEPSLATE)), true);
+	public static final Block SHIVERSLATE = create("shiverslate", new ShiverslateBlock(copyOf(Blocks.DEEPSLATE)), true);
 	public static final Block SHIVERSLATE_STAIRS = create("shiverslate_stairs", new TerraformStairsBlock(SHIVERSLATE, copyOf(Blocks.DEEPSLATE_BRICK_STAIRS)), true);
 	public static final Block SHIVERSLATE_SLAB = create("shiverslate_slab", new SlabBlock(copyOf(Blocks.DEEPSLATE_BRICK_SLAB)), true);
 	public static final Block SHIVERSLATE_BUTTON = create("shiverslate_button", new PermafrozenStoneButtonBlock(copyOf(Blocks.DEEPSLATE)), true);
 	public static final Block SHIVERSLATE_PRESSURE_PLATE = create("shiverslate_pressure_plate", new TerraformPressurePlateBlock(copyOf(Blocks.DEEPSLATE)), true);
-	public static final Block COBBLED_SHIVERSLATE = create("cobbled_shiverslate", new Block(copyOf(Blocks.COBBLED_DEEPSLATE)), true);
+	public static final Block COBBLED_SHIVERSLATE = create("cobbled_shiverslate", new ShiverslateBlock(copyOf(Blocks.COBBLED_DEEPSLATE)), true);
 	public static final Block COBBLED_SHIVERSLATE_STAIRS = create("cobbled_shiverslate_stairs", new TerraformStairsBlock(COBBLED_SHIVERSLATE, copyOf(Blocks.DEEPSLATE_BRICK_STAIRS)), true);
 	public static final Block COBBLED_SHIVERSLATE_SLAB = create("cobbled_shiverslate_slab", new SlabBlock(copyOf(Blocks.DEEPSLATE_BRICK_SLAB)), true);
 	public static final Block COBBLED_SHIVERSLATE_WALL = create("cobbled_shiverslate_wall", new WallBlock(copyOf(Blocks.DEEPSLATE_BRICK_WALL)), true);
-	public static final Block MOSSY_COBBLED_SHIVERSLATE = create("mossy_cobbled_shiverslate", new Block(copyOf(Blocks.COBBLED_DEEPSLATE)), true);
+	public static final Block MOSSY_COBBLED_SHIVERSLATE = create("mossy_cobbled_shiverslate", new ShiverslateBlock(copyOf(Blocks.COBBLED_DEEPSLATE)), true);
 	public static final Block MOSSY_COBBLED_SHIVERSLATE_STAIRS = create("mossy_cobbled_shiverslate_stairs", new TerraformStairsBlock(MOSSY_COBBLED_SHIVERSLATE, copyOf(Blocks.DEEPSLATE_BRICK_STAIRS)), true);
 	public static final Block MOSSY_COBBLED_SHIVERSLATE_SLAB = create("mossy_cobbled_shiverslate_slab", new SlabBlock(copyOf(Blocks.DEEPSLATE_BRICK_SLAB)), true);
 	public static final Block MOSSY_COBBLED_SHIVERSLATE_WALL = create("mossy_cobbled_shiverslate_wall", new WallBlock(copyOf(Blocks.DEEPSLATE_BRICK_WALL)), true);

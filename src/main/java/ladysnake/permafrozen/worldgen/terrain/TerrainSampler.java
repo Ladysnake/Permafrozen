@@ -19,13 +19,13 @@ public class TerrainSampler {
 		this.cache = new SimpleObjectCache(512, Terrain[]::new, this::pickTerrain);
 
 		this.tundraTerrain = new LowFlatTerrain(biomeRegistry.get(PermafrozenBiomes.TUNDRA), random, true);
-		this.shrumnalSpiresTerrain = new LowFlatTerrain(biomeRegistry.get(PermafrozenBiomes.SHRUMAL_SPIRES), random, false);
-		this.frigidFenTerrain = new LowFlatTerrain(biomeRegistry.get(PermafrozenBiomes.FRIGID_FEN), random, false);
+		this.shrumalSpiresTerrain = new LowFlatTerrain(biomeRegistry.get(PermafrozenBiomes.SHRUMAL_SPIRES), random, false);
+		this.frigidFenTerrain = new SlightlyLowerFlatTerrain(biomeRegistry.get(PermafrozenBiomes.FRIGID_FEN), random, false);
 		this.chillingCanyonsTerrain = new ChillingCanyonsTerrain(biomeRegistry.get(PermafrozenBiomes.CHILLING_CANYON), random);
 	}
 
 	private final Terrain tundraTerrain;
-	private final Terrain shrumnalSpiresTerrain;
+	private final Terrain shrumalSpiresTerrain;
 	private final Terrain frigidFenTerrain;
 	private final Terrain chillingCanyonsTerrain;
 
@@ -41,7 +41,7 @@ public class TerrainSampler {
 		if (mtns > 0.2) {
 			return this.chillingCanyonsTerrain;
 		} else if (moisture > -0.1) {
-			return mtns < -0.2 && moisture > 0.2 ? this.frigidFenTerrain : this.shrumnalSpiresTerrain;
+			return mtns < -0.2 && moisture > 0.2 ? this.frigidFenTerrain : this.shrumalSpiresTerrain;
 		} else {
 			return this.tundraTerrain;
 		}
