@@ -31,14 +31,13 @@ public class Permafrozen implements ModInitializer {
 		PermafrozenBiomes.init();
 		PermafrozenStatusEffects.init();
 		PermafrozenSoundEvents.init();
-		ServerTickEvents.END_SERVER_TICK.register(serverWorld -> {
-			for(ServerWorld world : serverWorld.getWorlds()) {
-				PermafrozenComponents.SNOWSTORM.get(world).tick();
-			}
+		ServerTickEvents.END_WORLD_TICK.register(serverWorld -> {
+			PermafrozenComponents.SNOWSTORM.get(serverWorld).tick();
+
 		});
-		ClientTickEvents.END_WORLD_TICK.register(world -> {
-			PermafrozenComponents.SNOWSTORM.get(world).tick();
-		});
+//		ClientTickEvents.END_WORLD_TICK.register(world -> {
+//			PermafrozenComponents.SNOWSTORM.get(world).tick();
+//		});
 		PermafrozenGamerules.init();
 	}
 }

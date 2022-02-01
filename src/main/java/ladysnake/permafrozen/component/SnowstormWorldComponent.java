@@ -5,6 +5,8 @@ import ladysnake.permafrozen.Permafrozen;
 import ladysnake.permafrozen.registry.PermafrozenComponents;
 import ladysnake.permafrozen.registry.PermafrozenGamerules;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.World;
 
 import java.util.Objects;
@@ -60,5 +62,15 @@ public class SnowstormWorldComponent implements AutoSyncedComponent {
         ticksSinceSnowstorm = tag.getInt("snowstormTicks");
         ticksSinceNoSnowstorm = tag.getInt("noSnowstormTicks");
         isSnowstorming = tag.getBoolean("isSnowstorming");
+    }
+
+    @Override
+    public void writeSyncPacket(PacketByteBuf buf, ServerPlayerEntity recipient) {
+        AutoSyncedComponent.super.writeSyncPacket(buf, recipient);
+    }
+
+    @Override
+    public void applySyncPacket(PacketByteBuf buf) {
+        AutoSyncedComponent.super.applySyncPacket(buf);
     }
 }
