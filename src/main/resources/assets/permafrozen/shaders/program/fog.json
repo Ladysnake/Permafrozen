@@ -57,6 +57,12 @@
       "type": "float",
       "count": 1,
       "values": [ 0.0 ]
+    },
+    {
+      "name": "Opacity",
+      "type": "float",
+      "count": 1,
+      "values": [ 0.0 ]
     }
   ]
 }

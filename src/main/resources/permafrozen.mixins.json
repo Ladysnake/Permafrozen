@@ -9,8 +9,7 @@
     "CarverMixin",
     "GeneratorOptionsMixin",
     "LeavesBlockMixin",
-    "LivingEntityMixin",
-    "PlayerEntityMixin"
+    "LivingEntityMixin"
   ],
   "client": [
     "JsonEffectGlShaderMixin",

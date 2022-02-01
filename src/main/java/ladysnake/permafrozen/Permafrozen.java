@@ -3,6 +3,7 @@ package ladysnake.permafrozen;
 import ladysnake.permafrozen.registry.*;
 import ladysnake.permafrozen.worldgen.biome.PermafrozenBiomes;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.item.ItemGroup;
@@ -35,5 +36,9 @@ public class Permafrozen implements ModInitializer {
 				PermafrozenComponents.SNOWSTORM.get(world).tick();
 			}
 		});
+		ClientTickEvents.END_WORLD_TICK.register(world -> {
+			PermafrozenComponents.SNOWSTORM.get(world).tick();
+		});
+		PermafrozenGamerules.init();
 	}
 }

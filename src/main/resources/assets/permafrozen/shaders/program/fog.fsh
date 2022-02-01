@@ -8,6 +8,7 @@ uniform mat4 ViewInverseMat;
 
 uniform float Darkness;
 uniform float Thickness;
+uniform float Opacity;
 
 in vec2 texCoord;
 

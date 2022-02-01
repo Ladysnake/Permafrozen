@@ -123,7 +123,7 @@ public class WorldRendererMixin {
         }
         // fog proper
         assert mcClient.player != null;
-        if(!(mcClient.player.getWorld() != null && !mcClient.player.getWorld().getBiome(mcClient.player.getBlockPos()).getCategory().equals(Biome.Category.SWAMP) || mcClient.player.getY() >= 120) || PermafrozenComponents.SNOWSTORM.get(mcClient.player.getWorld()).isSnowstorming()) {
+        if(!(mcClient.player.getWorld() != null && !mcClient.player.getWorld().getBiomeKey(mcClient.player.getBlockPos()).get().equals(PermafrozenBiomes.FRIGID_FEN) || mcClient.player.getY() >= 120) || PermafrozenComponents.SNOWSTORM.get(mcClient.player.getWorld()).isSnowstorming()) {
 
             ManagedShaderEffect shader = ShaderHandler.FRIGID_FOG;
 
@@ -140,7 +140,7 @@ public class WorldRendererMixin {
                 shader.findUniformMat4("ViewInverseMat").set(VIEW_INVERSE);
 
                 shader.findUniform1f("Darkness").set(PermafrozenComponents.SNOWSTORM.get(mcClient.player.getWorld()).isSnowstorming() ? 0.0f : 1.0f);
-                shader.findUniform1f("Thickness").set(PermafrozenComponents.SNOWSTORM.get(mcClient.player.getWorld()).isSnowstorming() ? 16.0f : (float) ((mcClient.player.getY() / 3 - 20) * (mcClient.player.getY() / 3 - 20) + 16));
+                shader.findUniform1f("Thickness").set(PermafrozenComponents.SNOWSTORM.get(mcClient.player.getWorld()).isSnowstorming() ? 20.0f : (float) ((mcClient.player.getY() / 3 - 20) * (mcClient.player.getY() / 3 - 20) + 16));
 
                 if(this.transparencyShader != null)
                 {
