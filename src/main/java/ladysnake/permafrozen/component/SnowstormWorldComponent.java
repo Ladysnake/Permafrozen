@@ -1,6 +1,8 @@
 package ladysnake.permafrozen.component;
 
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
+import dev.onyxstudios.cca.api.v3.component.tick.ClientTickingComponent;
+import dev.onyxstudios.cca.api.v3.component.tick.ServerTickingComponent;
 import ladysnake.permafrozen.Permafrozen;
 import ladysnake.permafrozen.registry.PermafrozenComponents;
 import ladysnake.permafrozen.registry.PermafrozenGamerules;
@@ -11,13 +13,14 @@ import net.minecraft.world.World;
 
 import java.util.Objects;
 
-public class SnowstormWorldComponent implements AutoSyncedComponent {
+public class SnowstormWorldComponent implements AutoSyncedComponent, ServerTickingComponent, ClientTickingComponent {
     private int ticksSinceSnowstorm;
     private int ticksSinceNoSnowstorm;
     private boolean isSnowstorming;
     private final World world;
     public SnowstormWorldComponent(World newWorld) {
         world = newWorld;
+        isSnowstorming = false;
     }
     public void tick() {
         SnowstormWorldComponent component = PermafrozenComponents.SNOWSTORM.get(world);
@@ -43,11 +46,10 @@ public class SnowstormWorldComponent implements AutoSyncedComponent {
     }
     public void setSnowstorming(boolean snow) {
         isSnowstorming = snow;
-        PermafrozenComponents.SNOWSTORM.sync(world);
     }
 
     public boolean isSnowstorming() {
-        return isSnowstorming;
+        return this.world.getRegistryKey().equals(Permafrozen.WORLD_KEY) && isSnowstorming;
     }
 
     @Override
@@ -72,5 +74,15 @@ public class SnowstormWorldComponent implements AutoSyncedComponent {
     @Override
     public void applySyncPacket(PacketByteBuf buf) {
         AutoSyncedComponent.super.applySyncPacket(buf);
+    }
+
+    @Override
+    public void serverTick() {
+        tick();
+    }
+
+    @Override
+    public void clientTick() {
+        tick();
     }
 }

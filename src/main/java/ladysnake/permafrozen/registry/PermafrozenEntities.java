@@ -2,6 +2,7 @@ package ladysnake.permafrozen.registry;
 
 
 import ladysnake.permafrozen.Permafrozen;
+import ladysnake.permafrozen.block.entity.AuroraAltarBlockEntity;
 import ladysnake.permafrozen.entity.living.*;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
@@ -31,6 +32,7 @@ public class PermafrozenEntities {
 	public static final EntityType<BurrowGrubEntity> BURROW_GRUB = createEntity("burrow_grub", BurrowGrubEntity.createBurrowGrubAttributes(), FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, BurrowGrubEntity::new).dimensions(EntityDimensions.fixed(0.4F, 0.2F)).build());
 	public static       BlockEntityType<SpectralCapBlockEntity> SPECTRAL_CAP_TYPE;
 	public static       BlockEntityType<AuroraBarrierBlockEntity> AURORA_BARRIER_TYPE;
+	public static       BlockEntityType<AuroraAltarBlockEntity> AURORA_ALTAR_TYPE;
 
 	private static <T extends Entity> EntityType<T> createEntity(String name, EntityType<T> type) {
 		ENTITY_TYPES.put(type, new Identifier(Permafrozen.MOD_ID, name));
@@ -49,5 +51,7 @@ public class PermafrozenEntities {
 				FabricBlockEntityTypeBuilder.create(SpectralCapBlockEntity::new, PermafrozenBlocks.SPECTRAL_CAP).build(null));
 		AURORA_BARRIER_TYPE = Registry.register(Registry.BLOCK_ENTITY_TYPE, Permafrozen.MOD_ID + "aurora_barrier",
 				FabricBlockEntityTypeBuilder.create(AuroraBarrierBlockEntity::new, PermafrozenBlocks.AURORA_BARRIER).build(null));
+		AURORA_ALTAR_TYPE = Registry.register(Registry.BLOCK_ENTITY_TYPE, Permafrozen.MOD_ID + "aurora_altar",
+				FabricBlockEntityTypeBuilder.create(AuroraAltarBlockEntity::new, PermafrozenBlocks.AURORA_ALTAR).build(null));
 	}
 }

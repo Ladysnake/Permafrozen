@@ -67,6 +67,7 @@ public class PermafrozenClient implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), PermafrozenBlocks.PRISMATIC_CORAL, PermafrozenBlocks.DEAD_PRISMATIC_CORAL, PermafrozenBlocks.MOSSY_COBBLED_SHIVERSLATE, PermafrozenBlocks.COBBLED_SHIVERSLATE, PermafrozenBlocks.SHIVERSLATE, PermafrozenBlocks.SPECTRAL_CAP, PermafrozenBlocks.PRISMARINE_CLUSTER, PermafrozenBlocks.SMALL_PRISMARINE_BUD, PermafrozenBlocks.MEDIUM_PRISMARINE_BUD, PermafrozenBlocks.LARGE_PRISMARINE_BUD, PermafrozenBlocks.DEADWOOD_TRAPDOOR, PermafrozenBlocks.DEADWOOD_DOOR, PermafrozenBlocks.GLAUCA_GRASS, PermafrozenBlocks.DEADWOOD_THORN);
 		SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, PermafrozenBlocks.DEADWOOD_SIGN.getTexture()));
 		BlockEntityRendererRegistry.INSTANCE.register(PermafrozenEntities.SPECTRAL_CAP_TYPE, (BlockEntityRendererFactory.Context rendererDispatcherIn) -> new SpectralCapRenderer());
+		BlockEntityRendererRegistry.INSTANCE.register(PermafrozenEntities.AURORA_ALTAR_TYPE, (BlockEntityRendererFactory.Context rendererDispatcherIn) -> new AuroraAltarRenderer());
 		BlockRenderLayerMap.INSTANCE.putBlock(PermafrozenBlocks.FEN_ICE, RenderLayer.getTranslucent());
 		ShaderHandler.init();
 		ClientTickEvents.START_WORLD_TICK.register(world -> Wind.get().tick(world));

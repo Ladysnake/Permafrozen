@@ -6,6 +6,7 @@ import ladysnake.permafrozen.client.melonslisestuff.init.IzzyShaders;
 import ladysnake.permafrozen.client.melonslisestuff.init.IzzyTextures;
 import ladysnake.permafrozen.client.melonslisestuff.renderer.shader.ExtendedShaderEffect;
 import ladysnake.permafrozen.registry.PermafrozenComponents;
+import ladysnake.permafrozen.registry.PermafrozenStatusEffects;
 import ladysnake.permafrozen.util.PermafrozenSky;
 import ladysnake.permafrozen.util.ShaderHandler;
 import ladysnake.permafrozen.util.Wind;
@@ -123,7 +124,7 @@ public class WorldRendererMixin {
         }
         // fog proper
         assert mcClient.player != null;
-        if(!(mcClient.player.getWorld() != null && !mcClient.player.getWorld().getBiomeKey(mcClient.player.getBlockPos()).get().equals(PermafrozenBiomes.FRIGID_FEN) || mcClient.player.getY() >= 120) || PermafrozenComponents.SNOWSTORM.get(mcClient.player.getWorld()).isSnowstorming()) {
+        if(!(mcClient.player.getWorld() != null && !(PermafrozenComponents.PLAYER.get(mcClient.player).getFenTicks(tickDelta/80f) > 0.0) || mcClient.player.getY() >= 120) || PermafrozenComponents.SNOWSTORM.get(mcClient.player.getWorld()).isSnowstorming()) {
 
             ManagedShaderEffect shader = ShaderHandler.FRIGID_FOG;
 
@@ -138,9 +139,9 @@ public class WorldRendererMixin {
 
                 shader.findUniformMat4("ProjInverseMat").set(PROJECTION_INVERSE);
                 shader.findUniformMat4("ViewInverseMat").set(VIEW_INVERSE);
-
                 shader.findUniform1f("Darkness").set(PermafrozenComponents.SNOWSTORM.get(mcClient.player.getWorld()).isSnowstorming() ? 0.0f : 1.0f);
-                shader.findUniform1f("Thickness").set(PermafrozenComponents.SNOWSTORM.get(mcClient.player.getWorld()).isSnowstorming() ? 20.0f : (float) ((mcClient.player.getY() / 3 - 20) * (mcClient.player.getY() / 3 - 20) + 16));
+                shader.findUniform1f("Opacity").set(PermafrozenComponents.SNOWSTORM.get(mcClient.player.getWorld()).isSnowstorming() ? PermafrozenComponents.PLAYER.get(mcClient.player).getFenTicks(tickDelta/80f) : PermafrozenComponents.PLAYER.get(mcClient.player).getOutsideTicks(tickDelta/80f));
+                shader.findUniform1f("Thickness").set(PermafrozenComponents.SNOWSTORM.get(mcClient.player.getWorld()).isSnowstorming() ? (mcClient.player.hasStatusEffect(PermafrozenStatusEffects.GUIDANCE) ? 36.0f : 20.0f) : (float) ((mcClient.player.getY() / 3 - 20) * (mcClient.player.getY() / 3 - 20) + 16));
 
                 if(this.transparencyShader != null)
                 {
@@ -175,7 +176,6 @@ public class WorldRendererMixin {
     @Inject(method = "renderWeather", at = @At("HEAD"), cancellable = true)
     private void renderPFWeather(LightmapTextureManager manager, float f, double d, double e, double g, CallbackInfo ci) {
         if (this.world.getRegistryKey().equals(Permafrozen.WORLD_KEY)) {
-           //maybe add own rendering here
             ci.cancel();
         }
     }

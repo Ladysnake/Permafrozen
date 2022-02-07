@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 
 import java.util.Objects;
 
-public class PFPlayerComponent implements AutoSyncedComponent, ServerTickingComponent {
+public class PFPlayerComponent implements AutoSyncedComponent, ClientTickingComponent {
     private final PlayerEntity obj;
     private int fenTicks;
     private int outsideTicks;
@@ -60,30 +60,30 @@ public class PFPlayerComponent implements AutoSyncedComponent, ServerTickingComp
                     ticks = 0;
                 }
             }
-            prevFenTicks = fenTicks;
-            if(obj.getWorld().getBiomeKey(obj.getBlockPos()).isPresent() && obj.getWorld().getBiomeKey(obj.getBlockPos()).get() == PermafrozenBiomes.FRIGID_FEN) {
-                fenTicks++;
-            } else {
-                fenTicks--;
-            }
-            prevOutsideTicks = outsideTicks;
-            if(isOutside(obj, obj.getWorld())) {
-                outsideTicks++;
-            } else {
-                outsideTicks--;
-            }
-
             temperature = MathHelper.clamp(temperature, -40, 36);
-            outsideTicks = MathHelper.clamp(outsideTicks, 0, 80);
-            fenTicks = MathHelper.clamp(fenTicks, 0, 80);
-        }
 
+        }
+        prevFenTicks = fenTicks;
+        if(obj.getWorld().getBiomeKey(obj.getBlockPos()).isPresent() && obj.getWorld().getBiomeKey(obj.getBlockPos()).get() == PermafrozenBiomes.FRIGID_FEN) {
+            fenTicks++;
+        } else {
+            fenTicks--;
+        }
+        prevOutsideTicks = outsideTicks;
+        if(isOutside(obj, obj.getWorld())) {
+            outsideTicks++;
+        } else {
+            outsideTicks--;
+        }
+        outsideTicks = MathHelper.clamp(outsideTicks, 0, 80);
+        fenTicks = MathHelper.clamp(fenTicks, 0, 80);
     }
 
     @Override
-    public void serverTick() {
+    public void clientTick() {
        tick();
     }
+
     public boolean isOutside(PlayerEntity entity, World world) {
         boolean canSeeSky = false;
         for(int i = 0; i < 5; i++) {
