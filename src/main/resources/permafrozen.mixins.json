@@ -9,13 +9,14 @@
     "CarverMixin",
     "GeneratorOptionsMixin",
     "LeavesBlockMixin",
-    "LivingEntityMixin"
+    "LivingEntityMixin",
+    "PlayerEntityMixin"
   ],
   "client": [
+    "ChunkDataMixin",
     "JsonEffectGlShaderMixin",
     "MinecraftClientMixin",
     "RebuildTaskMixin",
-    "ChunkDataMixin",
     "WorldRendererMixin"
   ],
   "injectors": {
