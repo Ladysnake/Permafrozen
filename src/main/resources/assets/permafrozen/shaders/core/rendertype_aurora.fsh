@@ -82,7 +82,7 @@ vec4 aurora(vec3 ro, vec3 rd)
 
     for(float i=0.;i<50.;i++)
     {
-        float of = 0.006*hash21(coord.xy)*smoothstep(0.,15., i);
+        float of = 0.006*hash21(coord.xy)*smoothstep(i/2.,15., 2*i);
         float pt = ((.8+pow(i,1.4)*.002)-ro.y)/(rd.y*2.+0.4);
         pt -= of;
         vec3 bpos = ro + pt*rd;
@@ -119,7 +119,6 @@ vec3 nmzHash33(vec3 q)
     p = p.yzx*(p.zxy^(p >> 3U));
     return vec3(p^(p >> 16U))*(1.0/vec3(0xffffffffU));
 }
-
 vec3 stars(in vec3 p)
 {
     vec3 c = vec3(0.);
@@ -155,7 +154,6 @@ void main()
     p.x *= OutSize.x/OutSize.y;
 
     vec3 ro = vec3(0,0,-6.7);
-   // vec3 rd = normalize(modelPos);
     vec3 rd = normalize(vPosition.xyz);
 
     vec3 col = vec3(0.);

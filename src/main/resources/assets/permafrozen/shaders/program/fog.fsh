@@ -43,5 +43,5 @@ void main()
     vec3 posPS = playerSpace(texCoord, depth);
     float dstToSurface = length(posPS);
 
-    fragColor = vec4(applyFog(color, dstToSurface, Darkness), 1.0);
+    fragColor = vec4(applyFog(color, dstToSurface, Darkness), Opacity);
 }

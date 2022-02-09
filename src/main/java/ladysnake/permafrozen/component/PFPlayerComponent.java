@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 
 import java.util.Objects;
 
-public class PFPlayerComponent implements AutoSyncedComponent, ClientTickingComponent {
+public class PFPlayerComponent implements AutoSyncedComponent {
     private final PlayerEntity obj;
     private int fenTicks;
     private int outsideTicks;
@@ -77,11 +77,6 @@ public class PFPlayerComponent implements AutoSyncedComponent, ClientTickingComp
         }
         outsideTicks = MathHelper.clamp(outsideTicks, 0, 80);
         fenTicks = MathHelper.clamp(fenTicks, 0, 80);
-    }
-
-    @Override
-    public void clientTick() {
-       tick();
     }
 
     public boolean isOutside(PlayerEntity entity, World world) {

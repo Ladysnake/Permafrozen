@@ -32,7 +32,7 @@ public class AuroraParticle extends SpriteBillboardParticle {
         this.maxAge = 10 + this.random.nextInt(10);
         this.scale *= 0.75f + new Random().nextFloat() * 0.50f;
         this.setSpriteForAge(spriteProvider);
-        this.velocityY = 0.1;
+        this.velocityY = 0.08;
     }
 
     public ParticleTextureSheet getType() {
@@ -64,7 +64,7 @@ public class AuroraParticle extends SpriteBillboardParticle {
         colorGreen = MathHelper.clamp(colorGreen + greenEvolution, 0, 1);
         colorBlue = MathHelper.clamp(colorBlue + blueEvolution, 0, 1);
 
-        this.velocityY = 0.3;
+        this.velocityY = 0.08;
         this.velocityX = 0;
         this.velocityZ = 0;
         this.scale = Math.max(0, this.scale - 0.005f);

@@ -17,6 +17,6 @@ public abstract class PlayerEntityMixin extends LivingEntity{
     }
     @Inject(at = @At("HEAD"), method = "tick")
     private void permafrozenPlayerTick(CallbackInfo ci) {
-        //PermafrozenComponents.PLAYER
+        PermafrozenComponents.PLAYER.get(this).tick();
     }
 }

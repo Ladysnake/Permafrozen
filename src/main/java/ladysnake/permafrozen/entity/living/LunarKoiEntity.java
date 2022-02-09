@@ -1,9 +1,7 @@
 package ladysnake.permafrozen.entity.living;
 
-import net.minecraft.entity.EntityData;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.MovementType;
-import net.minecraft.entity.SpawnReason;
+import net.minecraft.block.Blocks;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.control.YawAdjustingLookControl;
 import net.minecraft.entity.ai.control.AquaticMoveControl;
 import net.minecraft.entity.ai.goal.*;
@@ -12,16 +10,19 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.FishEntity;
+import net.minecraft.entity.passive.GlowSquidEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import ladysnake.permafrozen.registry.PermafrozenItems;
+import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -29,6 +30,8 @@ import software.bernie.geckolib3.core.builder.AnimationBuilder;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
+
+import java.util.Random;
 
 public class LunarKoiEntity extends FishEntity implements IAnimatable {
 	public static final AnimationBuilder FLOP = new AnimationBuilder().addAnimation("flop");
@@ -60,7 +63,7 @@ public class LunarKoiEntity extends FishEntity implements IAnimatable {
 		this.setPitch(0.0F);
 		return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
 	}
-	
+
 	@Override
 	public ItemStack getBucketItem() {
 		return new ItemStack(PermafrozenItems.LUNAR_KOI_BUCKET);
@@ -113,5 +116,9 @@ public class LunarKoiEntity extends FishEntity implements IAnimatable {
 	@Override
 	public AnimationFactory getFactory() {
 		return factory;
+	}
+
+	public static boolean canSpawn(EntityType<LunarKoiEntity> lunarKoiEntityEntityType, ServerWorldAccess serverWorldAccess, SpawnReason spawnReason, BlockPos blockPos, Random random) {
+		return serverWorldAccess.getBlockState(blockPos).isOf(Blocks.WATER) && blockPos.getY() <= serverWorldAccess.getSeaLevel() - 33;
 	}
 }

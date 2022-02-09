@@ -1,5 +1,7 @@
 package ladysnake.permafrozen.worldgen.biome;
 
+import ladysnake.permafrozen.entity.living.LunarKoiEntity;
+import ladysnake.permafrozen.entity.living.NudifaeEntity;
 import ladysnake.permafrozen.registry.PermafrozenSoundEvents;
 import ladysnake.permafrozen.worldgen.PermafrozenChunkGenerator;
 import ladysnake.permafrozen.worldgen.PermafrozenPlacedFeatures;
@@ -8,11 +10,14 @@ import ladysnake.permafrozen.registry.PermafrozenEntities;
 import ladysnake.permafrozen.worldgen.PermafrozenBiomeSource;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.SpawnRestriction;
+import net.minecraft.entity.passive.AxolotlEntity;
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.*;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.carver.ConfiguredCarvers;
@@ -36,6 +41,8 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 		registerBiome(SHRUMAL_SPIRES, createShrumalSpires());
 		registerBiome(FRIGID_FEN, createFrigidFen());
 		registerBiome(CHILLING_CANYON, createChillingCanyon());
+		SpawnRestriction.register(PermafrozenEntities.LUNAR_KOI, SpawnRestriction.Location.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, LunarKoiEntity::canSpawn);
+		SpawnRestriction.register(PermafrozenEntities.NUDIFAE, SpawnRestriction.Location.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, NudifaeEntity::canSpawn);
 	}
 
 	private static Biome createTundra() {
@@ -46,6 +53,8 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 				generationSettings,
 				new SpawnSettings.Builder()
 						.creatureSpawnProbability(0.07f) // default is 0.1f, snowy plains uses 0.07f
+						.spawn(SpawnGroup.UNDERGROUND_WATER_CREATURE, new SpawnSettings.SpawnEntry(PermafrozenEntities.NUDIFAE, 1, 1, 3))
+						.spawn(SpawnGroup.UNDERGROUND_WATER_CREATURE, new SpawnSettings.SpawnEntry(PermafrozenEntities.LUNAR_KOI, 1, 1, 3))
 						.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.FOX, 10, 5, 7))
 						.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.POLAR_BEAR, 1, 1, 3))
 						.build(),
@@ -63,6 +72,8 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 				Biome.Category.FOREST,
 				generationSettings,
 				new SpawnSettings.Builder()
+						.spawn(SpawnGroup.UNDERGROUND_WATER_CREATURE, new SpawnSettings.SpawnEntry(PermafrozenEntities.NUDIFAE, 1, 1, 3))
+						.spawn(SpawnGroup.UNDERGROUND_WATER_CREATURE, new SpawnSettings.SpawnEntry(PermafrozenEntities.LUNAR_KOI, 1, 1, 3))
 						.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(PermafrozenEntities.AURORA_FAE, 2, 1, 2))
 						.build(),
 				DEFAULT_PERMAROZEN_FOG_COLOUR);
@@ -92,16 +103,20 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 				generationSettings,
 				new SpawnSettings.Builder()
 						.creatureSpawnProbability(0.04f)
-						.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.GOAT, 10, 5, 7))
+						.spawn(SpawnGroup.UNDERGROUND_WATER_CREATURE, new SpawnSettings.SpawnEntry(PermafrozenEntities.NUDIFAE, 1, 1, 3))
+						.spawn(SpawnGroup.UNDERGROUND_WATER_CREATURE, new SpawnSettings.SpawnEntry(PermafrozenEntities.LUNAR_KOI, 1, 1, 3))
+						.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(PermafrozenEntities.PUFFBOO, 2, 1, 4))
 						.build(),
 				DEFAULT_PERMAROZEN_FOG_COLOUR);
 	}
 
 	private static Biome createPermafrozenBiome(Biome.Category category, GenerationSettings.Builder generationSettings, SpawnSettings spawnSettings, int fogColour) {
 		generationSettings
+				.feature(GenerationStep.Feature.UNDERGROUND_STRUCTURES, PermafrozenPlacedFeatures.PRISMARINE_GEODE)
 				.carver(GenerationStep.Carver.AIR, ConfiguredCarvers.CAVE)
 				.carver(GenerationStep.Carver.AIR, ConfiguredCarvers.CAVE_EXTRA_UNDERGROUND)
 				.carver(GenerationStep.Carver.AIR, ConfiguredCarvers.CANYON);
+
 
 		DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);
 		DefaultBiomeFeatures.addDefaultOres(generationSettings);

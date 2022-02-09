@@ -1,6 +1,8 @@
 package ladysnake.permafrozen.block.entity;
 
+import ladysnake.permafrozen.PermafrozenClient;
 import ladysnake.permafrozen.block.AuroraAltarBlock;
+import ladysnake.permafrozen.client.particle.aurora.AuroraParticleEffect;
 import ladysnake.permafrozen.registry.PermafrozenEntities;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.minecraft.block.BlockState;
@@ -10,6 +12,7 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.util.math.Vector3d;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.particle.ParticleEffect;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.LiteralText;
 import net.minecraft.util.math.BlockPos;
@@ -49,6 +52,8 @@ public class AuroraAltarBlockEntity extends BlockEntity implements IAnimatable {
         return this.getCachedState().get(AuroraAltarBlock.LIT);
     }
     public static void tick(World tickerWorld, BlockPos pos, BlockState tickerState, AuroraAltarBlockEntity blockEntity) {
+        if(blockEntity.isActive())
+        tickerWorld.addParticle(new AuroraParticleEffect(0.1f, 1.0f, 0.3f, 0.02f, -0.08f, 0.08f), pos.getX() + 0.5, pos.getY() + 1.4, pos.getZ() + 0.5, 0,1,0);
     }
 
     @Override

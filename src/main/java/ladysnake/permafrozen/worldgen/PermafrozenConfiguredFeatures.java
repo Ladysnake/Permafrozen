@@ -5,8 +5,11 @@ import ladysnake.permafrozen.Permafrozen;
 import ladysnake.permafrozen.block.util.PermafrozenPlantBlock;
 import ladysnake.permafrozen.registry.PermafrozenBlocks;
 import ladysnake.permafrozen.worldgen.feature.PermafrozenFeatures;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.MushroomBlock;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.feature.*;
@@ -27,8 +30,7 @@ public class PermafrozenConfiguredFeatures {
     public static final ConfiguredFeature<RandomPatchFeatureConfig, ?> GLAUCA_PATCH = register("glauca_patch", Feature.RANDOM_PATCH.configure(randomPatchConfig(BlockStateProvider.of(PermafrozenBlocks.GLAUCA_GRASS.getDefaultState().with(PermafrozenPlantBlock.SNOWY, true)), 32)));
     public static final ConfiguredFeature<SimpleBlockFeatureConfig, ?> SPECTRAL_CAP = register("spectral_cap", Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(BlockStateProvider.of(PermafrozenBlocks.SPECTRAL_CAP))));
     public static final ConfiguredFeature<DefaultFeatureConfig, ?> AURORA_CORAL = register("aurora_coral", PermafrozenFeatures.AURORA_CORAL.configure(FeatureConfig.DEFAULT));
-    public static final ConfiguredFeature<DefaultFeatureConfig, ?> PRISMARINE_SPIKE = register("prismarine_spike", PermafrozenFeatures.PRISMARINE_SPIKE.configure(FeatureConfig.DEFAULT));
-
+	public static final ConfiguredFeature<GeodeFeatureConfig, ?> PRISMARINE_GEODE = ConfiguredFeatures.register("prismarine_geode", Feature.GEODE.configure(new GeodeFeatureConfig(new GeodeLayerConfig(BlockStateProvider.of(Blocks.WATER), BlockStateProvider.of(PermafrozenBlocks.BUDDING_PRISMARINE), BlockStateProvider.of(PermafrozenBlocks.BUDDING_PRISMARINE), BlockStateProvider.of(PermafrozenBlocks.SAPPHIRE_SAND), BlockStateProvider.of(PermafrozenBlocks.COBBLED_SHIVERSLATE), List.of(PermafrozenBlocks.SMALL_PRISMARINE_BUD.getDefaultState(), PermafrozenBlocks.MEDIUM_PRISMARINE_BUD.getDefaultState(), PermafrozenBlocks.LARGE_PRISMARINE_BUD.getDefaultState(), PermafrozenBlocks.PRISMARINE_CLUSTER.getDefaultState()), BlockTags.FEATURES_CANNOT_REPLACE.getId(), BlockTags.GEODE_INVALID_BLOCKS.getId()), new GeodeLayerThicknessConfig(1.7, 2.2, 3.2, 4.2), new GeodeCrackConfig(0.95, 2.0, 2), 0.35, 0.083, true, UniformIntProvider.create(4, 6), UniformIntProvider.create(3, 4), UniformIntProvider.create(1, 2), -16, 16, 0.05, 1)));
     // random selectors
 	public static final ConfiguredFeature<RandomFeatureConfig, ?> SHRUMNAL_SPIRES_VEGETATION = register("shrumnal_spires_vegetation", Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(
 		    List.of(new RandomFeatureEntry(HUGE_SPECTRAL_CAP.withPlacement(), 0.0625f)),

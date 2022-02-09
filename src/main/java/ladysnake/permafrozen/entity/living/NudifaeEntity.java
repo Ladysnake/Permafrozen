@@ -1,6 +1,7 @@
 package ladysnake.permafrozen.entity.living;
 
 import ladysnake.permafrozen.registry.PermafrozenSoundEvents;
+import ladysnake.permafrozen.registry.PermafrozenStatusEffects;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
@@ -13,7 +14,9 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.passive.GlowSquidEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -37,6 +40,7 @@ import net.minecraft.world.World;
 import ladysnake.permafrozen.Permafrozen;
 import ladysnake.permafrozen.registry.PermafrozenEntities;
 import ladysnake.permafrozen.registry.PermafrozenItems;
+import net.minecraft.world.biome.BuiltinBiomes;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -45,6 +49,7 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
+import java.util.Random;
 import java.util.UUID;
 
 public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucketable {
@@ -63,6 +68,9 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucket
 		this.moveControl = new NudifaeMoveControl(this);
 		this.stepHeight = 1.5f;
 		this.setPathfindingPenalty(PathNodeType.WATER, 0.0F);
+	}
+	public static boolean canSpawn(EntityType<? extends LivingEntity> type, ServerWorldAccess world, SpawnReason reason, BlockPos pos, Random random) {
+		return world.getBlockState(pos).isOf(Blocks.WATER);
 	}
 
 	public ActionResult interactMob(PlayerEntity player, Hand hand) {
@@ -94,6 +102,14 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucket
 			return ActionResult.success(this.world.isClient);
 		} else {
 			return (ActionResult)Bucketable.tryBucket(player, hand, this).orElse(super.interactMob(player, hand));
+		}
+	}
+
+	@Override
+	protected void mobTick() {
+		super.mobTick();
+		if(this.getOwner() != null && this.getOwner().squaredDistanceTo(this) < 20) {
+			this.getOwner().addStatusEffect(new StatusEffectInstance(PermafrozenStatusEffects.GUIDANCE, 1000, 0));
 		}
 	}
 

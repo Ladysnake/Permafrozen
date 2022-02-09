@@ -23,40 +23,37 @@ import software.bernie.geckolib3.geo.render.built.GeoBone;
 import software.bernie.geckolib3.renderers.geo.GeoBlockRenderer;
 
 public class AuroraAltarRenderer extends GeoBlockRenderer<AuroraAltarBlockEntity> {
-    public AuroraAltarRenderer() {super(new AuroraAltarModel());}
+    private VertexConsumerProvider rtb;
+    private Identifier whTexture;
+    private boolean isActive;
+    public AuroraAltarRenderer() {
+        super(new AuroraAltarModel());
+    }
 
     @Override
     public RenderLayer getRenderType(AuroraAltarBlockEntity animatable, float partialTicks, MatrixStack stack, VertexConsumerProvider renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn, Identifier textureLocation) {
         return RenderLayer.getEntityTranslucent(getTextureLocation(animatable));
     }
 
+
     @Override
     public void renderEarly(AuroraAltarBlockEntity animatable, MatrixStack stackIn, float ticks, VertexConsumerProvider renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float partialTicks) {
         BlockPos pos = animatable.getPos();
-        IBone eye = this.getGeoModelProvider().getBone("soup");
-        PlayerEntity player = animatable.getWorld().getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 15, false);
-        if(player != null && animatable.getCachedState().get(AuroraAltarBlock.LIT)) {
-            Vector3d target = new Vector3d(player.getX() - pos.getX(), player.getY() - pos.getY(), player.getZ() - pos.getZ());
-            eye.setRotationY((float) MathHelper.lerp(eye.getRotationY(), (((float) Math.atan2(target.x, target.z))), 0.5f));
-        }
+        this.rtb = renderTypeBuffer;
+        this.whTexture = this.getTextureLocation(animatable);
+        this.isActive = animatable.getCachedState().get(AuroraAltarBlock.LIT);
         super.renderEarly(animatable, stackIn, ticks, renderTypeBuffer, vertexBuilder, packedLightIn, packedOverlayIn, red, green, blue, partialTicks);
     }
-    //    @Override
-//    public void renderRecursively(GeoBone bone, MatrixStack stack, VertexConsumer bufferIn, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float alpha) {
-//        if (bone.getName().equals("root")) {
-//            stack.push();
-//            // You'll need to play around with these to get item to render in the correct orientation
-//            stack.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(-75));
-//            stack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(0));
-//            stack.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(0));
-//            // You'll need to play around with this to render the item in the correct spot.
-//            stack.translate(0.4D, 0.3D, 0.6D);
-//            // Sets the scaling of the item.
-//            stack.scale(1.0f, 1.0f, 1.0f);
-//            // Change mainHand to predefined Itemstack and Mode to what transform you would want to use.
-//            MinecraftClient.getInstance().getItemRenderer().renderItem(PermafrozenItems.DEFERVESCENCE_ORB.getDefaultStack(), ModelTransformation.Mode.THIRD_PERSON_RIGHT_HAND, 157774, packedOverlayIn, stack, this.);
-//            stack.pop();
-//        }
-//        super.renderRecursively(bone, stack, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha);
-//    }
+    @Override
+    public void renderRecursively(GeoBone bone, MatrixStack stack, VertexConsumer bufferIn, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float alpha) {
+        if (bone.getName().equals("soup") && isActive) {
+            stack.push();
+            stack.translate(0, 1.15D, 0);
+            stack.scale(0.7f, 0.7f, 0.7f);
+            MinecraftClient.getInstance().getItemRenderer().renderItem(PermafrozenItems.DEFERVESCENCE_ORB.getDefaultStack(), ModelTransformation.Mode.THIRD_PERSON_RIGHT_HAND, 15728880, packedOverlayIn, stack, this.rtb, 0);
+            stack.pop();
+            bufferIn = rtb.getBuffer(RenderLayer.getEntityTranslucent(whTexture));
+        }
+        super.renderRecursively(bone, stack, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha);
+    }
 }
