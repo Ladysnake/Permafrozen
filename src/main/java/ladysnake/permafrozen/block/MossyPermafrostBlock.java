@@ -26,7 +26,7 @@ public class MossyPermafrostBlock extends PermafrozenSpreadableBlock implements 
 
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        return direction == Direction.UP ? (BlockState)state.with(SNOWY, isSnow(neighborState)) : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+        return direction == Direction.UP ? state.with(SNOWY, isSnow(neighborState)) : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class MossyPermafrostBlock extends PermafrozenSpreadableBlock implements 
             }
             BlockState j = world.getBlockState(blockPos2);
             if (j.isOf(blockState.getBlock()) && random.nextInt(10) == 0) {
-                ((Fertilizable)((Object)blockState.getBlock())).grow(world, random, blockPos2, j);
+                ((Fertilizable) blockState.getBlock()).grow(world, random, blockPos2, j);
             }
             if (!j.isAir()) continue;
             if (random.nextInt(8) == 0) {

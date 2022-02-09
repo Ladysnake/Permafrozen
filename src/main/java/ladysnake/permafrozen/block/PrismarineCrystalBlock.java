@@ -57,7 +57,7 @@ public class PrismarineCrystalBlock extends Block {
             }
 
             if (block != null) {
-                BlockState blockState2 = (BlockState)((BlockState)block.getDefaultState().with(PrismarineCrystalClusterBlock.FACING, direction)).with(PrismarineCrystalClusterBlock.WATERLOGGED, blockState.getFluidState().getFluid() == Fluids.WATER);
+                BlockState blockState2 = block.getDefaultState().with(PrismarineCrystalClusterBlock.FACING, direction).with(PrismarineCrystalClusterBlock.WATERLOGGED, blockState.getFluidState().getFluid() == Fluids.WATER);
                 world.setBlockState(blockPos, blockState2);
             }
 

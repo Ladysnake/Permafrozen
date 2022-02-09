@@ -36,7 +36,7 @@ public class LunarKoiEntityModel extends AnimatedGeoModel<LunarKoiEntity> {
 		if (entity.isInsideWaterOrBubbleColumn()) {
 			IBone body = this.getAnimationProcessor().getBone("body");
 			if (body != null) {
-				body.setRotationX((float) entity.getVelocity().getY());
+				body.setRotationX(-entity.getPitch()/180F);
 			}
 		}
 	}

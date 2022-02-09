@@ -18,7 +18,7 @@ public class PermafrozenComponents implements WorldComponentInitializer, EntityC
 
     @Override
     public void registerWorldComponentFactories(WorldComponentFactoryRegistry registry) {
-        registry.register(SNOWSTORM, SnowstormWorldComponent::new);
+        registry.register(SNOWSTORM, SnowstormWorldComponent.class, SnowstormWorldComponent::new);
     }
 
     @Override

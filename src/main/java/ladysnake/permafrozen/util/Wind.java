@@ -142,7 +142,7 @@ public class Wind {
     }
 
     public enum State {
-        CALM(0.005f, 0.005f, 0.02f),
+        CALM(0.0005f, 0.0005f, 0.002f),
         WINDY(0.05f, 0.3f, 0.7f),
         STORMY(0.05f, 0.6f, 1.1f);
 

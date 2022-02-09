@@ -48,7 +48,7 @@ public class AuroraAltarRenderer extends GeoBlockRenderer<AuroraAltarBlockEntity
     public void renderRecursively(GeoBone bone, MatrixStack stack, VertexConsumer bufferIn, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float alpha) {
         if (bone.getName().equals("soup") && isActive) {
             stack.push();
-            stack.translate(0, 1.15D, 0);
+            stack.translate(0, 1.25D, -0.05);
             stack.scale(0.7f, 0.7f, 0.7f);
             MinecraftClient.getInstance().getItemRenderer().renderItem(PermafrozenItems.DEFERVESCENCE_ORB.getDefaultStack(), ModelTransformation.Mode.THIRD_PERSON_RIGHT_HAND, 15728880, packedOverlayIn, stack, this.rtb, 0);
             stack.pop();

@@ -3,7 +3,7 @@
 	"animations": {
 		"open": {
 			"loop": "hold_on_last_frame",
-			"animation_length": 4,
+			"animation_length": 4.5,
 			"bones": {
 				"stabilisers": {
 					"rotation": {
@@ -23,6 +23,13 @@
 						},
 						"3.5": {
 							"vector": [90, 0, 0],
+							"easing": "easeInBack"
+						},
+						"4.0": {
+							"vector": [90, 0, 0]
+						},
+						"4.5": {
+							"vector": [90, 0, 360],
 							"easing": "easeInBack"
 						}
 					},
@@ -48,7 +55,7 @@
 							"vector": [0, 6, 0]
 						},
 						"4.0": {
-							"vector": [0, 6, -2],
+							"vector": [0, 6, -1],
 							"easing": "easeInBack"
 						}
 					}
@@ -160,7 +167,7 @@
 						}
 					},
 					"position": {
-						"vector": [0, 4, 0]
+						"vector": [0, 6, 0]
 					}
 				},
 				"cap1": {
