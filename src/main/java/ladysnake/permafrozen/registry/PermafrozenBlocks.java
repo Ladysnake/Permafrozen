@@ -133,6 +133,7 @@ public class PermafrozenBlocks {
 	public static final Block FLEECE = create("fleece", new Block(FabricBlockSettings.of(Material.WOOL, MapColor.BROWN).strength(0.8F).sounds(BlockSoundGroup.WOOL)), true);
 
 //other shit
+	public static final Block DISTILLERY = create("distillery", new DistilleryBlock(FabricBlockSettings.of(Material.METAL).sounds(BlockSoundGroup.METAL)), true);
 	public static final Block DEAD_PRISMATIC_CORAL_BLOCK = create("dead_prismatic_coral_block", new PermafrozenDeadCoralBlock(AbstractBlock.Settings.of(Material.STONE)), true);
 	public static final Block PRISMATIC_CORAL_BLOCK = create("prismatic_coral_block", new CoralBlockBlock(DEAD_PRISMATIC_CORAL_BLOCK, AbstractBlock.Settings.of(Material.STONE, MapColor.PURPLE).requiresTool().strength(1.5F, 6.0F).sounds(BlockSoundGroup.CORAL).luminance((blockState) -> 8)), true);
 	public static final Block DEAD_PRISMATIC_CORAL = create("dead_prismatic_coral", new PermafrozenDeadCoral(AbstractBlock.Settings.of(Material.STONE)), true);

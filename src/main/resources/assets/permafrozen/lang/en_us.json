@@ -44,8 +44,7 @@
   "block.permafrozen.peat_shingles": "Peat Shingles",
   "block.permafrozen.peat_shingles_slab": "Peat Shingles Slab",
   "block.permafrozen.peat_shingles_stairs": "Peat Shingles Stairs",
-
-
+  "block.permafrozen.distillery": "Distillery",
   "block.permafrozen.fleece": "Fleece",
   "block.permafrozen.fen_ice": "Fen Ice",
   "block.permafrozen.mossy_permafrost": "Mossy Permafrost",
@@ -122,8 +121,10 @@
   "block.permafrozen.glauca_bundle": "Glauca Bundle",
   "block.permafrozen.spectral_cap_block": "Spectral Cap Block",
   "block.permafrozen.spectral_cap_stem": "Spectral Cap Stem",
+  "block.permafrozen.aurora_altar": "Aurora Altar",
+  "container.distillery": "Wine Kettle",
 
-  "entity.permafrozen.fir_boat": "Fir Boat",
+  "entity.permafrozen.deadwood_boat": "Deadwood Boat",
   "entity.permafrozen.nudifae": "Nudifae",
   "entity.permafrozen.aurora_fae": "Aurora Fae",
   "entity.permafrozen.lunar_koi": "Lunar Koi",
