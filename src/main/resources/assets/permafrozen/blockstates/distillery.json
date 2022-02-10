@@ -1,8 +1,8 @@
 {
   "variants": {
     "facing=north": { "model": "permafrozen:block/distillery", "uvlock": true },
-    "facing=east":  { "model": "permafrozen:block/distillery", "y":  90, "uvlock": true },
-    "facing=south": { "model": "permafrozen:block/distillery", "y": 180, "uvlock": true },
-    "facing=west":  { "model": "permafrozen:block/distillery", "y": 270, "uvlock": true }
+    "facing=east":  { "model": "permafrozen:block/distillery", "y":  90, "uvlock": false },
+    "facing=south": { "model": "permafrozen:block/distillery", "y": 180, "uvlock": false },
+    "facing=west":  { "model": "permafrozen:block/distillery", "y": 270, "uvlock": false }
   }
 }

@@ -8,8 +8,6 @@ public class PermafrozenFx implements ShaderEffectRenderCallback, ClientTickEven
 
     @Override
     public void renderShaderEffects(float tickDelta) {
-        /*//System.out.println(PermafrozenClient.AURORA.getProgram().gameTime.getFloatData().get());
-        PermafrozenClient.AURORA.getProgram().gameTime.set((ticks + tickDelta) / 20f);*/
     }
     public void registerCallbacks() {
         ShaderEffectRenderCallback.EVENT.register(this);

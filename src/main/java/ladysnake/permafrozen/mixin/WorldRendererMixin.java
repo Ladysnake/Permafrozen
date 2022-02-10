@@ -89,7 +89,6 @@ public class WorldRendererMixin {
         MinecraftClient mcClient = MinecraftClient.getInstance();
 
         //courtesy of Izzy also known as Melonslise
-        System.out.println(PermafrozenComponents.SNOWSTORM.get(mcClient.player.getWorld()).isSnowstorming());
         if(PermafrozenComponents.SNOWSTORM.get(mcClient.player.getWorld()).isSnowstorming()) {
             PROJECTION_INVERSE.load(RenderSystem.getProjectionMatrix());
             PROJECTION_INVERSE.invert();
