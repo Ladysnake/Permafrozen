@@ -42,6 +42,7 @@ public class LowFlatTerrain extends Terrain {
 						double value = 0.1 - JitteredGrid.sampleJitteredGrid(dx + gridPointX, dz + gridPointZ, this.pingoJitteredGridSeed, 0.3).centreSqrDist(gridPointTrueX, gridPointTrueZ);
 						value = 18 * 10 * MathHelper.clamp(value, 0.0, 0.1);
 
+
 						if (value > pingoHeight) {
 							pingoHeight = value;
 						}
@@ -51,8 +52,12 @@ public class LowFlatTerrain extends Terrain {
 				pingo *= pingoHeight;
 			}
 		}
+		double temp = pingo + this.localHillsNoise.sample(x * 0.033, z * 0.033) * 2 + 64.5;
+		if(temp > 68) {
+			temp += localHillsNoise.sample(x * 0.08, z * 0.08);
+		}
 
-		return pingo + this.localHillsNoise.sample(x * 0.033, z * 0.033) * 2 + 64.5;
+		return temp;
 	}
 
 	@Override

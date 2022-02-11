@@ -57,6 +57,6 @@ public class SlightlyLowerFlatTerrain extends Terrain {
 
     @Override
     public void buildSurface(Chunk chunk, AbstractRandom random, int x, int z, int height, int seaLevel) {
-        buildDefaultSurface(chunk, x, z, height, seaLevel, PermafrozenBlocks.MOSSY_PERMAFROST.getDefaultState(), PermafrozenBlocks.PERMAFROST.getDefaultState());
+        buildDefaultSurface(chunk, x, z, height, seaLevel, PermafrozenBlocks.PEAT.getDefaultState(), PermafrozenBlocks.THAWING_PERMAFROST.getDefaultState());
     }
 }

@@ -82,7 +82,6 @@ public class PermafrozenBlocks {
 	public static final Block SMOOTH_SAPPHIRE_SANDSTONE_SLAB = create("smooth_sapphire_sandstone_slab", new SlabBlock(copyOf(Blocks.SMOOTH_SANDSTONE_SLAB)), true);
 	public static final Block SMOOTH_SAPPHIRE_SANDSTONE_STAIRS = create("smooth_sapphire_sandstone_stairs", new TerraformStairsBlock(SMOOTH_SAPPHIRE_SANDSTONE, copyOf(Blocks.SMOOTH_SANDSTONE_STAIRS)), true);
 //stone
-	public static final Block WULFRAM_ORE = create("wulfram_ore", new OreBlock(copyOf(Blocks.DEEPSLATE_IRON_ORE), UniformIntProvider.create(0, 2)), true);
 	public static final Block SHIVERSLATE = create("shiverslate", new ShiverslateBlock(copyOf(Blocks.DEEPSLATE)), true);
 	public static final Block SHIVERSLATE_STAIRS = create("shiverslate_stairs", new TerraformStairsBlock(SHIVERSLATE, copyOf(Blocks.DEEPSLATE_BRICK_STAIRS)), true);
 	public static final Block SHIVERSLATE_SLAB = create("shiverslate_slab", new SlabBlock(copyOf(Blocks.DEEPSLATE_BRICK_SLAB)), true);
@@ -108,6 +107,11 @@ public class PermafrozenBlocks {
 	public static final Block MOSSY_SMOOTH_SHIVERSLATE_BRICK_STAIRS = create("mossy_smooth_shiverslate_brick_stairs", new TerraformStairsBlock(MOSSY_SMOOTH_SHIVERSLATE_BRICKS, copyOf(Blocks.DEEPSLATE_BRICK_STAIRS)), true);
 	public static final Block MOSSY_SMOOTH_SHIVERSLATE_BRICK_SLAB = create("mossy_smooth_shiverslate_brick_slab", new SlabBlock(copyOf(Blocks.DEEPSLATE_BRICK_SLAB)), true);
 	public static final Block MOSSY_SMOOTH_SHIVERSLATE_BRICK_WALL = create("mossy_smooth_shiverslate_brick_wall", new WallBlock(copyOf(Blocks.DEEPSLATE_BRICK_WALL)), true);
+
+//wulfram
+	public static final Block WULFRAM_BLOCK = create("wulfram_block", new PillarBlock(AbstractBlock.Settings.of(Material.METAL, MapColor.LIGHT_BLUE_GRAY).requiresTool().strength(5.0f, 6.0f).sounds(BlockSoundGroup.METAL)), true);
+	public static final Block WULFRAM_ORE = create("wulfram_ore", new OreBlock(copyOf(Blocks.DEEPSLATE_IRON_ORE), UniformIntProvider.create(0, 2)), true);
+	public static final Block RAW_WULFRAM_BLOCK = create("raw_wulfram_block", new Block(AbstractBlock.Settings.of(Material.STONE, MapColor.CYAN).requiresTool().strength(5.0f, 6.0f)), true);
 
 //vegetation
 	public static final Block GLAUCA_GRASS = create("glauca_grass", new PermafrozenPlantBlock(copyOf(Blocks.GRASS)), true);

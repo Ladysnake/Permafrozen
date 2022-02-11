@@ -63,7 +63,7 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 		this.settings = settings;
 		this.terrainSampler = biomeSource instanceof PermafrozenBiomeSource pbs ? pbs.terrainSampler : new TerrainSampler(biomeRegistry, seed);
 		this.terrainHeightSampler = new SimpleIntCache(512, this::calculateTerrainHeight);
-		this.fakeNoiseCGForCarving = new NoiseChunkGenerator(BuiltinRegistries.NOISE_PARAMETERS, biomeSource, 0, settings);
+		this.fakeNoiseCGForCarving = new NoiseChunkGenerator(BuiltinRegistries.NOISE_PARAMETERS, biomeSource, seed, settings);
 	}
 
 	private final Registry<Biome> biomeRegistry;

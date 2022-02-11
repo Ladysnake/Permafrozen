@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "permafrozen:block/wulfram_block"
+    },
+    "axis=z": {
+      "model": "permafrozen:block/wulfram_block",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "permafrozen:block/wulfram_block",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

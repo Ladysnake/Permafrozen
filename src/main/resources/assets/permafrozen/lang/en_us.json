@@ -122,6 +122,9 @@
   "block.permafrozen.spectral_cap_block": "Spectral Cap Block",
   "block.permafrozen.spectral_cap_stem": "Spectral Cap Stem",
   "block.permafrozen.aurora_altar": "Aurora Altar",
+  "block.permafrozen.raw_wulfram_block": "Raw Wulfram Block",
+  "block.permafrozen.wulfram_block": "Wulfram Block",
+  "block.permafrozen.wulfram_ore": "Wulfram Ore",
   "container.distillery": "Distillery",
 
   "entity.permafrozen.deadwood_boat": "Deadwood Boat",

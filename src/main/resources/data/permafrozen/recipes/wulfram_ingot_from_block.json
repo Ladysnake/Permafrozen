@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "pattern": [
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "permafrozen:wulfram_block"
+    }
+  },
+  "result": {
+    "item": "permafrozen:wulfram_ingot",
+    "count": 9
+  }
+}

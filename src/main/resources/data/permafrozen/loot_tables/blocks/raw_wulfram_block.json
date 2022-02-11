@@ -1,0 +1,14 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "permafrozen:raw_wulfram_block",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

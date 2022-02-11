@@ -25,7 +25,11 @@ public class ChillingCanyonsTerrain extends Terrain {
 		double bottomSample = 3 * this.bottomHillsNoise.sample(x * 0.03, z * 0.03) + 6 * this.bottomHillsNoise.sample(x * 0.008, z * 0.008) + 75;
 		double topSample = this.topHillsNoise.sample(x * 0.01, z * 0.01) * 4 + 150;
 		double canyonsSample = -this.canyonsNoise.sample(x * 0.008, z * 0.008);
-		return clampMap(canyonsSample, -0.98, -0.78, bottomSample, topSample);
+		double temp = clampMap(canyonsSample, -0.95, -0.75, bottomSample, topSample);
+		if(temp < 140) {
+			temp += this.bottomHillsNoise.sample(x * 0.1, z * 0.1) * 2;
+		}
+		return temp;
 	}
 
 	@Override
@@ -36,7 +40,7 @@ public class ChillingCanyonsTerrain extends Terrain {
 	@Override
 	public void buildSurface(Chunk chunk, AbstractRandom random, int x, int z, int height, int seaLevel) {
 		if (height <= 100) {
-			buildDefaultSurface(chunk, x, z, height, seaLevel, PermafrozenBlocks.MOSSY_PERMAFROST.getDefaultState(), PermafrozenBlocks.PERMAFROST.getDefaultState());
+			buildDefaultSurface(chunk, x, z, height, seaLevel, PermafrozenBlocks.MOSSY_PERMAFROST.getDefaultState(), PermafrozenBlocks.COARSE_PERMAFROST.getDefaultState());
 		}
 		if (height >= 146) {
 			buildDefaultSurface(chunk, x, z, height, seaLevel, Blocks.SNOW_BLOCK.getDefaultState(),  Blocks.SNOW_BLOCK.getDefaultState());

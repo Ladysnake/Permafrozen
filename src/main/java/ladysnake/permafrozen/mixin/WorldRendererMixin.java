@@ -110,7 +110,7 @@ public class WorldRendererMixin {
                 effect.getUniformByNameOrDummy("ViewInverseMat").set(VIEW_INVERSE);
                 effect.getUniformByNameOrDummy("CameraPosition").set((float) camPos.x, (float) camPos.y, (float) camPos.z);
                 effect.getUniformByNameOrDummy("STime").set(world.getTime() + tickDelta);
-                effect.getUniformByNameOrDummy("WindDirection").set(MathHelper.lerp(tickDelta, Wind.get().getPrevWindX(), Wind.get().getWindX()) * 0.5f, 1.0f, MathHelper.lerp(tickDelta, Wind.get().getPrevWindZ(), Wind.get().getWindZ()) * 0.5f);
+                effect.getUniformByNameOrDummy("WindDirection").set(MathHelper.lerp(tickDelta, Wind.get().getPrevWindX(), Wind.get().getWindX()), 0.1f, MathHelper.lerp(tickDelta, Wind.get().getPrevWindZ(), Wind.get().getWindZ()));
                 effect.getUniformByNameOrDummy("HeightmapCorner").set(cornerX, cornerZ);
                 effect.bindSampler("NoiseVolume", () -> IzzyTextures.INSTANCE.noiseVolume.getId());
                 effect.bindSampler("HeightmapTexture", () -> IzzyTextures.INSTANCE.heightmapTexture.getId());

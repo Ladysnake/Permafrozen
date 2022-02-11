@@ -2,6 +2,7 @@ package ladysnake.permafrozen.block;
 
 import ladysnake.permafrozen.registry.PermafrozenEntities;
 import net.minecraft.block.*;
+import net.minecraft.block.enums.Thickness;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -65,11 +66,11 @@ public class PrismarineCrystalClusterBlock extends Block implements Waterloggabl
         }
     }
     @Override
-    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        float i = (float)(entity.getVelocity().x + entity.getVelocity().y + entity.getVelocity().z);
-        if (entity instanceof LivingEntity && entity.getType() != PermafrozenEntities.LUNAR_KOI && i > 3) {
-            entity.damage(DamageSource.STALAGMITE, Math.round((i) / 3));
-
+    public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
+        if (state.get(FACING) == Direction.UP) {
+            entity.handleFallDamage(fallDistance + 2.0f, 2.0f, DamageSource.STALAGMITE);
+        } else {
+            super.onLandedUpon(world, state, pos, entity, fallDistance);
         }
     }
 

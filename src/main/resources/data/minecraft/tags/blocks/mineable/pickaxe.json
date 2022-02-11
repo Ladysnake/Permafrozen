@@ -2,7 +2,6 @@
   "replace": false,
   "values": [
     "permafrozen:shiverslate",
-    "permafrozen:wulfram_ore",
     "permafrozen:shiverslate_button",
     "permafrozen:shiverslate_pressure_plate",
     "permafrozen:shiverslate_slab",
@@ -40,6 +39,9 @@
     "permafrozen:mossy_permafrost",
     "permafrozen:thawing_permafrost",
     "permafrozen:coarse_permafrost",
-    "permafrozen:permafrost"
+    "permafrozen:permafrost",
+    "permafrozen:wulfram_ore",
+    "permafrozen:raw_wulfram_block",
+    "permafrozen:wulfram_block"
   ]
 }
