@@ -1,6 +1,7 @@
 package ladysnake.permafrozen.registry;
 
 import ladysnake.permafrozen.Permafrozen;
+import ladysnake.permafrozen.item.PermafrozenBottleItem;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -51,11 +52,13 @@ public class PermafrozenItems {
 	public static final Item PUFFBOO_FEATHER = create("puffboo_feather", new Item((new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP)));
 	public static final Item PUFFBOO_MEAT = create("raw_puffboo", new Item((new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP).food(FoodComponents.CHICKEN)));
 	public static final Item COOKED_PUFFBOO_MEAT = create("cooked_puffboo", new Item((new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP).food(FoodComponents.COOKED_CHICKEN)));
-	public static final FoodComponent SPECTRAL_STUFF = new FoodComponent.Builder().alwaysEdible().hunger(5).statusEffect(new StatusEffectInstance(PermafrozenStatusEffects.SPECTRAL_DAZE, 4800, 0), 1.0f).build();
-	public static final Item SPECTRAL_DUST = create("spectral_dust", new Item((new Item.Settings().food(SPECTRAL_STUFF).group(Permafrozen.PERMAFROZEN_GROUP))));
+	public static final FoodComponent BOTTLE = new FoodComponent.Builder().alwaysEdible().hunger(5).build();
 	public static final FoodComponent BURROW_GRUB_FOOD = new FoodComponent.Builder().alwaysEdible().hunger(2).statusEffect(new StatusEffectInstance(PermafrozenStatusEffects.BURROWED, 2400, 0), 0.9f).build();
 	public static final Item BURROW_GRUB = create("burrow_grub", new Item((new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP).food(BURROW_GRUB_FOOD)));
-
+	public static final Item WRAITHBERRY = create("wraithberry", new Item((new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP)));
+	public static final Item EMPTY_SILT_BOTTLE = create("silt_bottle", new Item(new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
+	public static final Item SPECTRAL_SHINE_BOTTLE = create("spectral_shine_bottle", new PermafrozenBottleItem(PermafrozenStatusEffects.SPECTRAL_DAZE, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP).maxCount(1).food(BOTTLE)));
+	public static final Item WRAITHWINE_BOTTLE = create("wraithwine_bottle", new PermafrozenBottleItem(PermafrozenStatusEffects.WRAITHWRATH, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP).maxCount(1).food(BOTTLE)));
 	private static <T extends Item> T create(String name, T item) {
 		ITEMS.put(item, new Identifier(Permafrozen.MOD_ID, name));
 		return item;

@@ -86,33 +86,74 @@ public class DistilleryBlockEntity extends LootableContainerBlockEntity {
             for (ItemStack stack : blockEntity.inventory) {
                 if (stack.isOf(PermafrozenBlocks.SPECTRAL_CAP.asItem())) {
                     isCooking = true;
-                    if (cookingTicks >= 600) {
+                    if (cookingTicks >= 400) {
                         BlockEntity entity = world.getBlockEntity(pos.offset(state.get(Properties.HORIZONTAL_FACING).getOpposite()).down());
                         if (entity != null) {
                             if (entity instanceof BarrelBlockEntity barrel) {
                                 for (int i = 0; i < barrel.size(); ++i) {
-                                    if (barrel.getStack(i).isEmpty()) {
-                                        barrel.setStack(i, PermafrozenItems.SPECTRAL_DUST.getDefaultStack());
+                                    if (barrel.getStack(i).isOf(PermafrozenItems.EMPTY_SILT_BOTTLE)) {
+                                        barrel.getStack(i).decrement(1);
                                         stack.decrement(1);
-                                        break;
-                                    }
-                                    if (barrel.getStack(i).isOf(PermafrozenItems.SPECTRAL_DUST) && !(barrel.getStack(i).getCount() >= barrel.getStack(i).getMaxCount())) {
-                                        barrel.getStack(i).increment(1);
-                                        stack.decrement(1);
+                                        for (int k = 0; k < barrel.size(); ++k) {
+                                            if(barrel.getStack(k).isEmpty()) {
+                                                barrel.setStack(k, PermafrozenItems.SPECTRAL_SHINE_BOTTLE.getDefaultStack());
+                                                break;
+                                            }
+                                        }
                                         break;
                                     }
                                 }
                             }
                             if (entity instanceof ChestBlockEntity chest) {
                                 for (int i = 0; i < chest.size(); ++i) {
-                                    if (chest.getStack(i).isEmpty()) {
-                                        chest.setStack(i, PermafrozenItems.SPECTRAL_DUST.getDefaultStack());
+                                    if (chest.getStack(i).isOf(PermafrozenItems.EMPTY_SILT_BOTTLE)) {
+                                        chest.getStack(i).decrement(1);
                                         stack.decrement(1);
+                                        for (int k = 0; k < chest.size(); ++k) {
+                                            if(chest.getStack(k).isEmpty()) {
+                                                chest.setStack(k, PermafrozenItems.SPECTRAL_SHINE_BOTTLE.getDefaultStack());
+                                                break;
+                                            }
+                                        }
                                         break;
                                     }
-                                    if (chest.getStack(i).isOf(PermafrozenItems.SPECTRAL_DUST) && !(chest.getStack(i).getCount() >= chest.getStack(i).getMaxCount())) {
-                                        chest.getStack(i).increment(1);
+                                }
+                            }
+                        }
+                        cookingTicks = 0;
+                    }
+
+                } else if (stack.isOf(PermafrozenItems.WRAITHBERRY)) {
+                    isCooking = true;
+                    if (cookingTicks >= 400) {
+                        BlockEntity entity = world.getBlockEntity(pos.offset(state.get(Properties.HORIZONTAL_FACING).getOpposite()).down());
+                        if (entity != null) {
+                            if (entity instanceof BarrelBlockEntity barrel) {
+                                for (int i = 0; i < barrel.size(); ++i) {
+                                    if (barrel.getStack(i).isOf(PermafrozenItems.EMPTY_SILT_BOTTLE)) {
+                                        barrel.getStack(i).decrement(1);
                                         stack.decrement(1);
+                                        for (int k = 0; k < barrel.size(); ++k) {
+                                            if(barrel.getStack(k).isEmpty()) {
+                                                barrel.setStack(k, PermafrozenItems.WRAITHWINE_BOTTLE.getDefaultStack());
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    }
+                                }
+                            }
+                            if (entity instanceof ChestBlockEntity chest) {
+                                for (int i = 0; i < chest.size(); ++i) {
+                                    if (chest.getStack(i).isOf(PermafrozenItems.EMPTY_SILT_BOTTLE)) {
+                                        chest.getStack(i).decrement(1);
+                                        stack.decrement(1);
+                                        for (int k = 0; k < chest.size(); ++k) {
+                                            if(chest.getStack(k).isEmpty()) {
+                                                chest.setStack(k, PermafrozenItems.WRAITHWINE_BOTTLE.getDefaultStack());
+                                                break;
+                                            }
+                                        }
                                         break;
                                     }
                                 }
@@ -174,7 +215,7 @@ public class DistilleryBlockEntity extends LootableContainerBlockEntity {
         super(PermafrozenEntities.DISTILLERY_TYPE, blockPos, blockState);
     }
     void playSound(BlockState state, SoundEvent soundEvent) {
-        Vec3i vec3i = state.get(Properties.FACING).getVector();
+        Vec3i vec3i = state.get(Properties.HORIZONTAL_FACING).getVector();
         double d = (double)this.pos.getX() + 0.5 + (double)vec3i.getX() / 2.0;
         double e = (double)this.pos.getY() + 0.5 + (double)vec3i.getY() / 2.0;
         double f = (double)this.pos.getZ() + 0.5 + (double)vec3i.getZ() / 2.0;

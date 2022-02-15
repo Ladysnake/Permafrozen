@@ -33,10 +33,15 @@
   "item.permafrozen.puffboo_spawn_egg": "Puffboo Spawn Egg",
   "item.permafrozen.thawing_permafrost_clump": "Thawing Permafrost Clump",
   "item.permafrozen.burrow_grub": "Burrow Grub",
+  "item.permafrozen.wraithberry": "Wraithberry",
+  "item.permafrozen.silt_bottle": "Silt Bottle",
+  "item.permafrozen.spectral_shine_bottle": "Spectral Shine Bottle",
+  "item.permafrozen.wraithwine_bottle": "Wraithwine Bottle",
 
   "effect.permafrozen.fragrant": "Fragrance",
   "effect.permafrozen.burrowed": "Burrowed",
   "effect.permafrozen.spectral_daze": "Spectral Daze",
+  "effect.permafrozen.wraithwrath": "Wraithwrath",
 
   "block.permafrozen.peat": "Peat",
   "block.permafrozen.peat_bricks": "Peat Bricks",
