@@ -130,7 +130,6 @@ public class PermafrozenBlocks {
 
 //aurora tech
 	public static final Block AURORA_BLASTER = create("aurora_blaster", new AuroraBlasterBlock(copyOf(Blocks.OBSIDIAN)), true);
-	public static final Block AURORA_BARRIER = create("aurora_barrier", new AuroraBarrierBlock(copyOf(Blocks.OBSIDIAN)), true);
 	public static final Block AURORA_ALTAR = create("aurora_altar", new AuroraAltarBlock(copyOf(Blocks.OBSIDIAN).nonOpaque()), true);
 
 //gyrehorn

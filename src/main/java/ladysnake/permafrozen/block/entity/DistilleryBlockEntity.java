@@ -77,8 +77,8 @@ public class DistilleryBlockEntity extends LootableContainerBlockEntity {
 
         if (downState.isIn(BlockTags.FIRE) || downState.isIn(BlockTags.CAMPFIRES) || downState.isIn(BlockTags.CANDLES) || downState.isIn(BlockTags.STRIDER_WARM_BLOCKS) || (downState.getBlock() instanceof AbstractFurnaceBlock && downState.get(AbstractFurnaceBlock.LIT)) || (downState.getBlock() instanceof TorchBlock)) {
             world.addParticle(ParticleTypes.SMOKE, true, pos.getX() + 0.5, pos.getY() + 0.9, pos.getZ() + 0.5,  0, 0, 0);
-            if(cookingTicks > 0) {
-                world.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, true, pos.getX() + 0.5, pos.getY() + 0.9, pos.getZ() + 0.5,  0, 0, 0);
+            if(cookingTicks > 10) {
+                world.addParticle(ParticleTypes.LARGE_SMOKE, true, pos.getX() + 0.5, pos.getY() + 0.9, pos.getZ() + 0.5,  0, 0, 0);
             }
         }
         boolean isCooking = false;
@@ -151,6 +151,45 @@ public class DistilleryBlockEntity extends LootableContainerBlockEntity {
                                         for (int k = 0; k < chest.size(); ++k) {
                                             if(chest.getStack(k).isEmpty()) {
                                                 chest.setStack(k, PermafrozenItems.WRAITHWINE_BOTTLE.getDefaultStack());
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        cookingTicks = 0;
+                    }
+
+                } else if (stack.isOf(PermafrozenBlocks.GLAUCA_BUNDLE.asItem())) {
+                    isCooking = true;
+                    if (cookingTicks >= 400) {
+                        BlockEntity entity = world.getBlockEntity(pos.offset(state.get(Properties.HORIZONTAL_FACING).getOpposite()).down());
+                        if (entity != null) {
+                            if (entity instanceof BarrelBlockEntity barrel) {
+                                for (int i = 0; i < barrel.size(); ++i) {
+                                    if (barrel.getStack(i).isOf(PermafrozenItems.EMPTY_SILT_BOTTLE)) {
+                                        barrel.getStack(i).decrement(1);
+                                        stack.decrement(1);
+                                        for (int k = 0; k < barrel.size(); ++k) {
+                                            if(barrel.getStack(k).isEmpty()) {
+                                                barrel.setStack(k, PermafrozenItems.KILJU_BEER_BOTTLE.getDefaultStack());
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    }
+                                }
+                            }
+                            if (entity instanceof ChestBlockEntity chest) {
+                                for (int i = 0; i < chest.size(); ++i) {
+                                    if (chest.getStack(i).isOf(PermafrozenItems.EMPTY_SILT_BOTTLE)) {
+                                        chest.getStack(i).decrement(1);
+                                        stack.decrement(1);
+                                        for (int k = 0; k < chest.size(); ++k) {
+                                            if(chest.getStack(k).isEmpty()) {
+                                                chest.setStack(k, PermafrozenItems.KILJU_BEER_BOTTLE.getDefaultStack());
                                                 break;
                                             }
                                         }

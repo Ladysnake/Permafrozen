@@ -115,6 +115,8 @@ public class ShaderHandler {
                 if(player.getStatusEffect(PermafrozenStatusEffects.SPECTRAL_DAZE).getDuration() <= 2400) {
                     SPECTRAL_DAZE_TRES.render(v);
                 }
+            } else if (player.hasStatusEffect(PermafrozenStatusEffects.WRAITHWRATH)) {
+                SPECTRAL_DAZE.render(v);
             }
         }
     }
@@ -126,6 +128,8 @@ public class ShaderHandler {
             if (client.player.hasStatusEffect(PermafrozenStatusEffects.SPECTRAL_DAZE)
                     && client.player.getStatusEffect(PermafrozenStatusEffects.SPECTRAL_DAZE).getDuration() <= 2400) {
                 SPECTR_PHOSPHOR.set(0.7F, 0.7F, 0.95F);
+            } else if (client.player.hasStatusEffect(PermafrozenStatusEffects.WRAITHWRATH)) {
+                SPECTR_PHOSPHOR.set(0.9F, 0.8F, 0.8F);
             } else {
                 SPECTR_PHOSPHOR.set(0.6F, 0.6F, 0.8F);
             }

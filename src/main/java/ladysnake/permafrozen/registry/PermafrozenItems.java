@@ -5,6 +5,7 @@ import ladysnake.permafrozen.item.PermafrozenBottleItem;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
 import net.minecraft.sound.SoundEvents;
@@ -59,6 +60,7 @@ public class PermafrozenItems {
 	public static final Item EMPTY_SILT_BOTTLE = create("silt_bottle", new Item(new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
 	public static final Item SPECTRAL_SHINE_BOTTLE = create("spectral_shine_bottle", new PermafrozenBottleItem(PermafrozenStatusEffects.SPECTRAL_DAZE, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP).maxCount(1).food(BOTTLE)));
 	public static final Item WRAITHWINE_BOTTLE = create("wraithwine_bottle", new PermafrozenBottleItem(PermafrozenStatusEffects.WRAITHWRATH, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP).maxCount(1).food(BOTTLE)));
+	public static final Item KILJU_BEER_BOTTLE = create("kilju_beer_bottle", new PermafrozenBottleItem(StatusEffects.SATURATION, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP).maxCount(1).food(BOTTLE)));
 	private static <T extends Item> T create(String name, T item) {
 		ITEMS.put(item, new Identifier(Permafrozen.MOD_ID, name));
 		return item;

@@ -1,5 +1,6 @@
 package ladysnake.permafrozen.item;
 
+import ladysnake.permafrozen.registry.PermafrozenItems;
 import ladysnake.permafrozen.registry.PermafrozenStatusEffects;
 import ladysnake.permafrozen.statuseffect.BurrowedStatusEffect;
 import ladysnake.permafrozen.statuseffect.SpectralDazeStatusEffect;
@@ -43,12 +44,16 @@ public class PermafrozenBottleItem extends Item {
             if(effect instanceof WraithwrathStatusEffect) {
                 user.removeStatusEffect(PermafrozenStatusEffects.BURROWED);
             }
+            if(effect.equals(StatusEffects.SATURATION)) {
+                user.removeStatusEffect(PermafrozenStatusEffects.WRAITHWRATH);
+                user.removeStatusEffect(PermafrozenStatusEffects.SPECTRAL_DAZE);
+            }
         }
         if (stack.isEmpty()) {
-            return new ItemStack(Items.GLASS_BOTTLE);
+            return new ItemStack(PermafrozenItems.EMPTY_SILT_BOTTLE);
         }
         if (user instanceof PlayerEntity playerEntity && !((PlayerEntity)user).getAbilities().creativeMode) {
-            serverPlayerEntity = new ItemStack(Items.GLASS_BOTTLE);
+            serverPlayerEntity = new ItemStack(PermafrozenItems.EMPTY_SILT_BOTTLE);
             if (!playerEntity.getInventory().insertStack((ItemStack)serverPlayerEntity)) {
                 playerEntity.dropItem((ItemStack)serverPlayerEntity, false);
             }
@@ -68,12 +73,12 @@ public class PermafrozenBottleItem extends Item {
 
     @Override
     public SoundEvent getDrinkSound() {
-        return SoundEvents.ITEM_HONEY_BOTTLE_DRINK;
+        return SoundEvents.ENTITY_WANDERING_TRADER_DRINK_POTION;
     }
 
     @Override
     public SoundEvent getEatSound() {
-        return SoundEvents.ITEM_HONEY_BOTTLE_DRINK;
+        return SoundEvents.ENTITY_WANDERING_TRADER_DRINK_POTION;
     }
 
     @Override
