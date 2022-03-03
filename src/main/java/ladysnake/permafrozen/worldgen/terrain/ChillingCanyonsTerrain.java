@@ -27,7 +27,7 @@ public class ChillingCanyonsTerrain extends Terrain {
 		double canyonsSample = -this.canyonsNoise.sample(x * 0.008, z * 0.008);
 		double temp = clampMap(canyonsSample, -0.95, -0.75, bottomSample, topSample);
 		if(temp < 140) {
-			temp += this.bottomHillsNoise.sample(x * 0.1, z * 0.1) * 2;
+			temp += this.bottomHillsNoise.sample(x * 0.1, z * 0.1) * 3;
 		}
 		return temp;
 	}

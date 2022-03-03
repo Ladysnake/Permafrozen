@@ -54,7 +54,7 @@ public class LowFlatTerrain extends Terrain {
 		}
 		double temp = pingo + this.localHillsNoise.sample(x * 0.033, z * 0.033) * 2 + 64.5;
 		if(temp > 68) {
-			temp += localHillsNoise.sample(x * 0.08, z * 0.08);
+			temp += localHillsNoise.sample(x * 0.08, z * 0.08) * 2;
 		}
 
 		return temp;
