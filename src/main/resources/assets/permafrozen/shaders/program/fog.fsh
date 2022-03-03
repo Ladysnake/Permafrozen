@@ -28,7 +28,7 @@ vec3 playerSpace(vec2 uv, float depth)
 
 vec3 applyFog(vec3 rgb, float distance, float darkness)
 {
-    float fogAmount = 0.4 + 0.6 * sqrt(distance / Thickness);
+    float fogAmount = (0.4 + 0.6 * sqrt(distance / Thickness)) * Opacity;
     fogAmount = clamp(fogAmount, 0.0, 1.0);
 
     vec3 fogColor = mix(vec3(0.5, 0.6, 0.7), vec3(0.3, 0.31, 0.3), darkness);

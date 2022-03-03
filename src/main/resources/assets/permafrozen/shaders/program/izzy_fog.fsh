@@ -11,6 +11,7 @@ uniform mat4 ViewInverseMat;
 uniform vec3 CameraPosition;
 uniform vec3 WindDirection;
 uniform float STime;
+uniform float Opacity;
 uniform ivec2 HeightmapCorner;
 
 in vec2 texCoord;
@@ -170,7 +171,7 @@ float marchFog(vec3 ro, vec3 rd, float maxDist, float stepSize, vec3 driftDir, f
 float marchFog2(vec3 ro, vec3 rd, float maxDist, float stepSize, vec3 driftDir, float time)
 {
     float fog = 0.0;
-    float densityMul = step(0.0, heightAboveGround(ro));
+    float densityMul = step(0.0, heightAboveGround(ro)) * Opacity;
 
     int maxSteps = int(clamp(maxDist, 0.0, 64.0) * 4.0);
     stepSize = 0.25;
@@ -187,7 +188,7 @@ float marchFog2(vec3 ro, vec3 rd, float maxDist, float stepSize, vec3 driftDir, 
         float hg = heightAboveGround(p);
 
         densityMul = clamp(remap(hg, 8.0, 10.0, 1.0, 0.0), 0.0, 1.0);
-        densityMul = step(0.0, hg) * densityMul;
+        densityMul = step(0.0, hg) * densityMul * Opacity;
         // densityMul *= hg <= 0.0 ? 0.95 : 1.0;
 
         /*
@@ -270,7 +271,7 @@ void main()
 
     vec3 windDir = normalize(WindDirection);
     float fog = marchFog2(CameraPosition, normalize(posPS), dstToSurface, 1.0, windDir, STime) * 1.2; // GameTime * 24000.0
-    fragColor = vec4(mix(color, vec3(1.0, 1.0, 1.0), fog), 1.0);
+    fragColor = vec4(mix(color, vec3(1.0, 1.0, 1.0), fog), Opacity);
 
     // fragColor = vec4(vec3(texture(HeightmapTexture, texCoord).r / 320.0), 1.0);
 

@@ -23,6 +23,8 @@ import net.minecraft.client.world.ClientWorld;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Matrix4f;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.Vec3f;
+import net.minecraft.world.LightType;
 import net.minecraft.world.biome.Biome;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -110,7 +112,10 @@ public class WorldRendererMixin {
                 effect.getUniformByNameOrDummy("ViewInverseMat").set(VIEW_INVERSE);
                 effect.getUniformByNameOrDummy("CameraPosition").set((float) camPos.x, (float) camPos.y, (float) camPos.z);
                 effect.getUniformByNameOrDummy("STime").set(world.getTime() + tickDelta);
-                effect.getUniformByNameOrDummy("WindDirection").set(MathHelper.lerp(tickDelta, Wind.get().getPrevWindX(), Wind.get().getWindX()), 0.1f, MathHelper.lerp(tickDelta, Wind.get().getPrevWindZ(), Wind.get().getWindZ()));
+                effect.getUniformByNameOrDummy("Opacity").set((float) Math.pow(PermafrozenComponents.SNOWSTORM.get(mcClient.player.getWorld()).getTransitionTicks() / 120f, 2));
+                Vec3f vec = new Vec3f(MathHelper.lerp(tickDelta, Wind.get().getPrevWindX(), Wind.get().getWindX()), 0.1f, MathHelper.lerp(tickDelta, Wind.get().getPrevWindZ(), Wind.get().getWindZ()));
+                vec.normalize();
+                effect.getUniformByNameOrDummy("WindDirection").set(vec.getX() / 2, vec.getY(), vec.getZ() / 2);
                 effect.getUniformByNameOrDummy("HeightmapCorner").set(cornerX, cornerZ);
                 effect.bindSampler("NoiseVolume", () -> IzzyTextures.INSTANCE.noiseVolume.getId());
                 effect.bindSampler("HeightmapTexture", () -> IzzyTextures.INSTANCE.heightmapTexture.getId());
@@ -140,7 +145,7 @@ public class WorldRendererMixin {
                 shader.findUniformMat4("ProjInverseMat").set(PROJECTION_INVERSE);
                 shader.findUniformMat4("ViewInverseMat").set(VIEW_INVERSE);
                 shader.findUniform1f("Darkness").set(PermafrozenComponents.SNOWSTORM.get(mcClient.player.getWorld()).isSnowstorming() ? 0.0f : 1.0f);
-                shader.findUniform1f("Opacity").set(PermafrozenComponents.SNOWSTORM.get(mcClient.player.getWorld()).isSnowstorming() ? PermafrozenComponents.PLAYER.get(mcClient.player).getOutsideTicks(tickDelta/80f) : PermafrozenComponents.PLAYER.get(mcClient.player).getFenTicks(tickDelta/80f));
+                shader.findUniform1f("Opacity").set(PermafrozenComponents.SNOWSTORM.get(mcClient.player.getWorld()).isSnowstorming() ? (float) Math.pow(PermafrozenComponents.SNOWSTORM.get(mcClient.player.getWorld()).getTransitionTicks() / 120f, 2) * ((PermafrozenComponents.PLAYER.get(mcClient.player).getOutsideTicks(tickDelta) + 20f + mcClient.world.getLightLevel(LightType.SKY, mcClient.player.getBlockPos()) * 4)/ (100f + mcClient.world.getLightLevel(LightType.SKY, mcClient.player.getBlockPos()) * 4)) : PermafrozenComponents.PLAYER.get(mcClient.player).getFenTicks(tickDelta) / 100);
                 shader.findUniform1f("Thickness").set(PermafrozenComponents.SNOWSTORM.get(mcClient.player.getWorld()).isSnowstorming() ? (mcClient.player.hasStatusEffect(PermafrozenStatusEffects.GUIDANCE) ? 36.0f : 20.0f) : (float) ((mcClient.player.getY() / 3 - 20) * (mcClient.player.getY() / 3 - 20) + 16));
 
                 if(this.transparencyShader != null) {

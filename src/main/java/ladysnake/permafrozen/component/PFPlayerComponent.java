@@ -76,7 +76,8 @@ public class PFPlayerComponent implements AutoSyncedComponent {
             outsideTicks--;
         }
         outsideTicks = MathHelper.clamp(outsideTicks, 0, 80);
-        fenTicks = MathHelper.clamp(fenTicks, 0, 80);
+        fenTicks = MathHelper.clamp(fenTicks, 0, 100);
+        PermafrozenComponents.PLAYER.sync(obj);
     }
 
     public boolean isOutside(PlayerEntity entity, World world) {
