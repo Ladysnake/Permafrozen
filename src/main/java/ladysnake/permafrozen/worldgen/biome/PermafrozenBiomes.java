@@ -8,6 +8,8 @@ import ladysnake.permafrozen.worldgen.PermafrozenPlacedFeatures;
 import ladysnake.permafrozen.Permafrozen;
 import ladysnake.permafrozen.registry.PermafrozenEntities;
 import ladysnake.permafrozen.worldgen.PermafrozenBiomeSource;
+import ladysnake.permafrozen.worldgen.feature.SnowUnderTreeFeature;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.SpawnRestriction;
@@ -21,9 +23,17 @@ import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.*;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.carver.ConfiguredCarvers;
-import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
+import net.minecraft.world.gen.decorator.BiomePlacementModifier;
+import net.minecraft.world.gen.feature.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PermafrozenBiomes extends OverworldBiomeCreator {
+	private static final Feature<DefaultFeatureConfig> SNOWY_TREES_FEATURE = new SnowUnderTreeFeature(DefaultFeatureConfig.CODEC);
+	public static final ConfiguredFeature<?, ?> SNOWY_TREES_CONFIGURED = SNOWY_TREES_FEATURE.configure(FeatureConfig.DEFAULT);
+
+	private static List<Identifier> biomesToAddTo = new ArrayList<>();
 	private static final int DEFAULT_PERMAROZEN_FOG_COLOUR = 0xEFFFFF; // change this to whatever you want. Overworld is 0xC0D8FF
 
 	public static final RegistryKey<Biome> TUNDRA = createKey("tundra");
@@ -41,8 +51,26 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 		registerBiome(SHRUMAL_SPIRES, createShrumalSpires());
 		registerBiome(FRIGID_FEN, createFrigidFen());
 		registerBiome(CHILLING_CANYON, createChillingCanyon());
+
+		Registry.register(Registry.FEATURE, new Identifier("permafrozen", "snowundertrees"), SNOWY_TREES_FEATURE);
+		RegistryKey<ConfiguredFeature<?, ?>> snowUnderTrees = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("permafrozen", "snowundertrees"));
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, snowUnderTrees.getValue(), SNOWY_TREES_CONFIGURED);
+		PlacedFeature SNOWY_TREES_PLACED_FEATURE = SNOWY_TREES_CONFIGURED.withPlacement(BiomePlacementModifier.of());
+		RegistryKey<PlacedFeature> placedSnowUnderTrees = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier("permafrozen", "snowundertrees"));
+		Registry.register(BuiltinRegistries.PLACED_FEATURE, snowUnderTrees.getValue(), SNOWY_TREES_PLACED_FEATURE);
+
+		BiomeModifications.addFeature(b -> shouldAddSnow(b.getBiome()), GenerationStep.Feature.TOP_LAYER_MODIFICATION, placedSnowUnderTrees);
 		SpawnRestriction.register(PermafrozenEntities.LUNAR_KOI, SpawnRestriction.Location.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, LunarKoiEntity::canSpawn);
 		SpawnRestriction.register(PermafrozenEntities.NUDIFAE, SpawnRestriction.Location.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, NudifaeEntity::canSpawn);
+	}
+	private static boolean shouldAddSnow(Biome biome) {
+		return biome.getPrecipitation() == Biome.Precipitation.SNOW;
+	}
+
+	public static void addSnowUnderTrees(Biome biome) {
+		Identifier id = BuiltinRegistries.BIOME.getId(biome);
+		if (!biomesToAddTo.contains(id))
+			biomesToAddTo.add(id);
 	}
 
 	private static Biome createTundra() {
@@ -117,9 +145,15 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 				.carver(GenerationStep.Carver.AIR, ConfiguredCarvers.CAVE_EXTRA_UNDERGROUND)
 				.carver(GenerationStep.Carver.AIR, ConfiguredCarvers.CANYON);
 
-
+		generationSettings.feature(GenerationStep.Feature.UNDERGROUND_ORES, PermafrozenPlacedFeatures.ORE_COAL_UPPER);
+		generationSettings.feature(GenerationStep.Feature.UNDERGROUND_ORES, PermafrozenPlacedFeatures.ORE_COAL_LOWER);
+		generationSettings.feature(GenerationStep.Feature.UNDERGROUND_ORES, PermafrozenPlacedFeatures.ORE_WULFRAM_UPPER);
+		generationSettings.feature(GenerationStep.Feature.UNDERGROUND_ORES, PermafrozenPlacedFeatures.ORE_WULFRAM_MIDDLE);
+		generationSettings.feature(GenerationStep.Feature.UNDERGROUND_ORES, PermafrozenPlacedFeatures.ORE_WULFRAM_SMALL);
+		generationSettings.feature(GenerationStep.Feature.UNDERGROUND_ORES, PermafrozenPlacedFeatures.ORE_DIAMOND);
+		generationSettings.feature(GenerationStep.Feature.UNDERGROUND_ORES, PermafrozenPlacedFeatures.ORE_DIAMOND_LARGE);
+		generationSettings.feature(GenerationStep.Feature.UNDERGROUND_ORES, PermafrozenPlacedFeatures.ORE_DIAMOND_BURIED);
 		DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);
-		DefaultBiomeFeatures.addDefaultOres(generationSettings);
 
 		return new Biome.Builder()
 				.category(category)

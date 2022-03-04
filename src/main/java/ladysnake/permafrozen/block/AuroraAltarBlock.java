@@ -44,16 +44,11 @@ public class AuroraAltarBlock extends Block implements BlockEntityProvider {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if(player.getStackInHand(hand).isEmpty()) {
-            world.setBlockState(pos, state.with(LIT, false));
-            PermafrozenComponents.SNOWSTORM.get(world).setTimeLeft(0);
-        }
         if(player.getStackInHand(hand).getItem().equals(PermafrozenItems.DEFERVESCENCE_ORB)) {
             world.setBlockState(pos, state.with(LIT, true));
             if(!player.getAbilities().creativeMode) {
                 player.getStackInHand(hand).decrement(1);
             }
-            PermafrozenComponents.SNOWSTORM.get(world).startSnowstorm(world, 20000);
             return ActionResult.CONSUME;
         }
         return super.onUse(state, world, pos, player, hand, hit);

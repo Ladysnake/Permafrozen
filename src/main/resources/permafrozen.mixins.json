@@ -8,6 +8,7 @@
     "CampfireBlockEntityMixin",
     "CarverMixin",
     "GeneratorOptionsMixin",
+    "HeightmapMixin",
     "LeavesBlockMixin",
     "LivingEntityMixin",
     "PlayerEntityMixin"

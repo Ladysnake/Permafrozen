@@ -107,7 +107,8 @@ public class PermafrozenBlocks {
 	public static final Block MOSSY_SMOOTH_SHIVERSLATE_BRICK_STAIRS = create("mossy_smooth_shiverslate_brick_stairs", new TerraformStairsBlock(MOSSY_SMOOTH_SHIVERSLATE_BRICKS, copyOf(Blocks.DEEPSLATE_BRICK_STAIRS)), true);
 	public static final Block MOSSY_SMOOTH_SHIVERSLATE_BRICK_SLAB = create("mossy_smooth_shiverslate_brick_slab", new SlabBlock(copyOf(Blocks.DEEPSLATE_BRICK_SLAB)), true);
 	public static final Block MOSSY_SMOOTH_SHIVERSLATE_BRICK_WALL = create("mossy_smooth_shiverslate_brick_wall", new WallBlock(copyOf(Blocks.DEEPSLATE_BRICK_WALL)), true);
-
+	public static final Block SHIVERSLATE_DIAMOND_ORE = create("shiverslate_diamond_ore", new OreBlock(copyOf(Blocks.DEEPSLATE_DIAMOND_ORE), UniformIntProvider.create(3, 7)), true);
+	public static final Block SHIVERSLATE_COAL_ORE = create("shiverslate_coal_ore", new OreBlock(copyOf(Blocks.DEEPSLATE_COAL_ORE), UniformIntProvider.create(0, 2)), true);
 //wulfram
 	public static final Block WULFRAM_BLOCK = create("wulfram_block", new PillarBlock(AbstractBlock.Settings.of(Material.METAL, MapColor.LIGHT_BLUE_GRAY).requiresTool().strength(5.0f, 6.0f).sounds(BlockSoundGroup.METAL)), true);
 	public static final Block WULFRAM_ORE = create("wulfram_ore", new OreBlock(copyOf(Blocks.DEEPSLATE_IRON_ORE), UniformIntProvider.create(0, 2)), true);

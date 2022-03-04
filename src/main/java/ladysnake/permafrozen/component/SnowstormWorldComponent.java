@@ -4,8 +4,14 @@ import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
 import dev.onyxstudios.cca.api.v3.component.tick.ServerTickingComponent;
 import ladysnake.permafrozen.Permafrozen;
 import ladysnake.permafrozen.registry.PermafrozenComponents;
+import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
+import net.minecraft.block.NetherPortalBlock;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.World;
+
+import java.util.Random;
 
 public class SnowstormWorldComponent implements AutoSyncedComponent, ServerTickingComponent {
     private boolean isSnowstorming;
@@ -76,8 +82,11 @@ public class SnowstormWorldComponent implements AutoSyncedComponent, ServerTicki
         if(isSnowstorming() && getTransitionTicks() < 120) {
             setTransitionTicks(getTransitionTicks() + 1);
         }
-        if(getTimeLeft() > 0) {
-            setTimeLeft(getTimeLeft() - 1);
+        setTimeLeft(getTimeLeft() - 1);
+        if(!isSnowstorming && getTimeLeft() <= -24000) {
+            Random random = new Random();
+            if(random.nextFloat() <= ((Math.log10(Math.abs(getTimeLeft())) / 8) - 0.5))
+            startSnowstorm(world, 20000);
         }
         if(isSnowstorming() && getTimeLeft() <= 0){
             setTransitionTicks(getTransitionTicks() - 2);

@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "permafrozen:wulfram_block"
+      "item": "permafrozen:glauca_bundle"
     }
   ],
   "result": {
-    "item": "permafrozen:wulfram_ingot",
+    "item": "permafrozen:glauca_grass",
     "count": 9
   }
 }

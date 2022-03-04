@@ -42,6 +42,8 @@
     "permafrozen:permafrost",
     "permafrozen:distillery",
     "permafrozen:wulfram_ore",
+    "permafrozen:shiverslate_diamond_ore",
+    "permafrozen:shiverslate_coal_ore",
     "permafrozen:raw_wulfram_block",
     "permafrozen:wulfram_block"
   ]

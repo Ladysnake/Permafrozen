@@ -10,4 +10,7 @@ accessible class net/minecraft/client/render/WorldRenderer$ChunkInfo
 accessible field net/minecraft/client/render/WorldRenderer chunkInfos Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
 accessible field net/minecraft/client/render/WorldRenderer$ChunkInfo chunk Lnet/minecraft/client/render/chunk/ChunkBuilder$BuiltChunk;
 accessible class net/minecraft/client/render/chunk/ChunkBuilder$BuiltChunk$RebuildTask
+accessible field net/minecraft/world/Heightmap blockPredicate Ljava/util/function/Predicate;
+accessible method net/minecraft/world/Heightmap set (III)V
+accessible field net/minecraft/world/Heightmap chunk Lnet/minecraft/world/chunk/Chunk;
 accessible method net/minecraft/entity/SpawnRestriction register (Lnet/minecraft/entity/EntityType;Lnet/minecraft/entity/SpawnRestriction$Location;Lnet/minecraft/world/Heightmap$Type;Lnet/minecraft/entity/SpawnRestriction$SpawnPredicate;)V

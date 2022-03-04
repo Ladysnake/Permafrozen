@@ -73,7 +73,7 @@
   "block.permafrozen.stripped_spireshroom_wood": "Stripped Spireshroom Wood",
   "block.permafrozen.spireshroom_wood": "Spireshroom Wood",
   "block.permafrozen.spireshroom_planks": "Spireshroom Planks",
-  "block.permafrozen.deadwood_log": "Spireshroom Log",
+  "block.permafrozen.deadwood_log": "Deadwood Log",
   "block.permafrozen.stripped_deadwood_log": "Stripped Deadwood Log",
   "block.permafrozen.stripped_deadwood_wood": "Stripped Deadwood",
   "block.permafrozen.deadwood_wood": "Deadwood",
@@ -131,6 +131,8 @@
   "block.permafrozen.raw_wulfram_block": "Raw Wulfram Block",
   "block.permafrozen.wulfram_block": "Wulfram Block",
   "block.permafrozen.wulfram_ore": "Wulfram Ore",
+  "block.permafrozen.shiverslate_diamond_ore": "Shiverslate Diamond Ore",
+  "block.permafrozen.shiverslate_coal_ore": "Shiverslate Coal Ore",
   "container.distillery": "Distillery",
 
   "entity.permafrozen.deadwood_boat": "Deadwood Boat",

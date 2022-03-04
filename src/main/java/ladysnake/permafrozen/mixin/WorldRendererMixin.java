@@ -115,7 +115,7 @@ public class WorldRendererMixin {
                 effect.getUniformByNameOrDummy("Opacity").set((float) Math.pow(PermafrozenComponents.SNOWSTORM.get(mcClient.player.getWorld()).getTransitionTicks() / 120f, 2));
                 Vec3f vec = new Vec3f(MathHelper.lerp(tickDelta, Wind.get().getPrevWindX(), Wind.get().getWindX()), 0.1f, MathHelper.lerp(tickDelta, Wind.get().getPrevWindZ(), Wind.get().getWindZ()));
                 vec.normalize();
-                effect.getUniformByNameOrDummy("WindDirection").set(vec.getX() / 2, vec.getY(), vec.getZ() / 2);
+                effect.getUniformByNameOrDummy("WindDirection").set(vec.getX() / 8 + 2, vec.getY(), vec.getZ() / 8 - 2);
                 effect.getUniformByNameOrDummy("HeightmapCorner").set(cornerX, cornerZ);
                 effect.bindSampler("NoiseVolume", () -> IzzyTextures.INSTANCE.noiseVolume.getId());
                 effect.bindSampler("HeightmapTexture", () -> IzzyTextures.INSTANCE.heightmapTexture.getId());
