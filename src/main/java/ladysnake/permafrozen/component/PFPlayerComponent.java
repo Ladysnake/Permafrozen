@@ -64,7 +64,7 @@ public class PFPlayerComponent implements AutoSyncedComponent {
 
         }
         prevFenTicks = fenTicks;
-        if(obj.getWorld().getBiomeKey(obj.getBlockPos()).isPresent() && obj.getWorld().getBiomeKey(obj.getBlockPos()).get() == PermafrozenBiomes.FRIGID_FEN) {
+        if(obj.getWorld().getBiome(obj.getBlockPos()).getKey().isPresent() && obj.getWorld().getBiome(obj.getBlockPos()).getKey().get() == PermafrozenBiomes.FRIGID_FEN) {
             fenTicks++;
         } else {
             fenTicks--;

@@ -27,7 +27,7 @@ public class MinecraftClientMixin {
     @Inject(method = "getMusicType", at = @At("HEAD"), cancellable = true)
     private void musimcType(CallbackInfoReturnable<MusicSound> ci) {
         if (this.player != null) {
-            if (this.world.getBiomeKey(player.getBlockPos()).get().equals(PermafrozenBiomes.SHRUMAL_SPIRES)) {
+            if (this.world.getBiome(player.getBlockPos()).getKey().get().equals(PermafrozenBiomes.SHRUMAL_SPIRES)) {
                 ci.setReturnValue(new MusicSound(PermafrozenSoundEvents.MUSIC_SHRUMAL_SPIRES, 3000, 8000, true));
             }
         }

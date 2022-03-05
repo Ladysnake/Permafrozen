@@ -6,16 +6,19 @@ import ladysnake.permafrozen.registry.PermafrozenBlocks;
 import ladysnake.permafrozen.util.GridPoint;
 import ladysnake.permafrozen.util.JitteredGrid;
 import ladysnake.permafrozen.util.SimpleIntCache;
-import ladysnake.permafrozen.worldgen.terrain.TerrainSampler;
 import ladysnake.permafrozen.worldgen.terrain.Terrain;
+import ladysnake.permafrozen.worldgen.terrain.TerrainSampler;
+import net.fabricmc.fabric.mixin.structure.StructureFeatureAccessor;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.util.dynamic.RegistryLookupCodec;
+import net.minecraft.structure.StructureSet;
+import net.minecraft.util.dynamic.RegistryOps;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.ChunkRegion;
 import net.minecraft.world.HeightLimitView;
 import net.minecraft.world.Heightmap;
@@ -34,28 +37,24 @@ import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.carver.CarverContext;
 import net.minecraft.world.gen.carver.CarvingMask;
 import net.minecraft.world.gen.carver.ConfiguredCarver;
-import net.minecraft.world.gen.chunk.AquiferSampler;
-import net.minecraft.world.gen.chunk.Blender;
-import net.minecraft.world.gen.chunk.ChunkGenerator;
-import net.minecraft.world.gen.chunk.ChunkGeneratorSettings;
-import net.minecraft.world.gen.chunk.NoiseChunkGenerator;
-import net.minecraft.world.gen.chunk.VerticalBlockSample;
+import net.minecraft.world.gen.chunk.*;
 import net.minecraft.world.gen.random.AbstractRandom;
 import net.minecraft.world.gen.random.AtomicSimpleRandom;
 import net.minecraft.world.gen.random.ChunkRandom;
 import net.minecraft.world.gen.random.RandomSeed;
 
+import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.function.Supplier;
 
 // TODO noise caves
 public class PermafrozenChunkGenerator extends ChunkGenerator {
-	public PermafrozenChunkGenerator(Registry<Biome> biomeRegistry, BiomeSource biomeSource, long seed, Supplier<ChunkGeneratorSettings> settings) {
-		super(biomeSource, biomeSource, settings.get().getStructuresConfig(), seed);
+	public PermafrozenChunkGenerator(Registry<StructureSet> structureSetRegistry, Registry<Biome> biomeRegistry, BiomeSource biomeSource, long seed, RegistryEntry<ChunkGeneratorSettings> settings) {
+		super(structureSetRegistry, Optional.empty(), biomeSource, biomeSource, seed);
 
 		this.biomeRegistry = biomeRegistry;
 		this.seed = seed;
@@ -63,13 +62,13 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 		this.settings = settings;
 		this.terrainSampler = biomeSource instanceof PermafrozenBiomeSource pbs ? pbs.terrainSampler : new TerrainSampler(biomeRegistry, seed);
 		this.terrainHeightSampler = new SimpleIntCache(512, this::calculateTerrainHeight);
-		this.fakeNoiseCGForCarving = new NoiseChunkGenerator(BuiltinRegistries.NOISE_PARAMETERS, biomeSource, seed, settings);
+		this.fakeNoiseCGForCarving = new NoiseChunkGenerator(BuiltinRegistries.STRUCTURE_SET, BuiltinRegistries.NOISE_PARAMETERS, biomeSource, seed, settings);
 	}
 
 	private final Registry<Biome> biomeRegistry;
 	private final long seed;
 	private final int voronoiSeed;
-	private final Supplier<ChunkGeneratorSettings> settings;
+	private final RegistryEntry<ChunkGeneratorSettings> settings;
 	private final TerrainSampler terrainSampler;
 	private final SimpleIntCache terrainHeightSampler;
 	private final NoiseChunkGenerator fakeNoiseCGForCarving; // because 1.18's carvers depend on this
@@ -81,7 +80,7 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 
 	@Override
 	public ChunkGenerator withSeed(long seed) {
-		return new PermafrozenChunkGenerator(this.biomeRegistry, this.populationSource.withSeed(seed), seed, this.settings);
+		return new PermafrozenChunkGenerator(this.field_37053, this.biomeRegistry, this.populationSource.withSeed(seed), seed, this.settings);
 	}
 
 	@Override
@@ -278,9 +277,12 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 	}
 
 	@Override
+	public void getDebugHudText(List<String> text, BlockPos pos) {}
+
+	@Override
 	public void populateEntities(ChunkRegion region) {
 		ChunkPos chunkPos = region.getCenterPos();
-		Biome biome = region.getBiome(chunkPos.getStartPos());
+		RegistryEntry<Biome> biome = region.getBiome(chunkPos.getStartPos());
 		ChunkRandom chunkRandom = new ChunkRandom(new AtomicSimpleRandom(region.getSeed()));
 		chunkRandom.setPopulationSeed(region.getSeed(), chunkPos.getStartX(), chunkPos.getStartZ());
 		SpawnHelper.populateEntities(region, biome, chunkPos, chunkRandom);
@@ -306,15 +308,15 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 			for (int zOffset = -radius; zOffset <= radius; ++zOffset) {
 				ChunkPos carverChunkPos = new ChunkPos(chunkPos.x + xOffset, chunkPos.z + zOffset);
 				Chunk carverChunk = chunkRegion.getChunk(carverChunkPos.x, carverChunkPos.z);
-				GenerationSettings settings = carverChunk.setBiomeIfAbsent(() -> this.populationSource.getBiome(BiomeCoords.fromBlock(carverChunkPos.getStartX()), 0, BiomeCoords.fromBlock(carverChunkPos.getStartZ()), this.getMultiNoiseSampler())).getGenerationSettings();
-				List<Supplier<ConfiguredCarver<?>>> list = settings.getCarversForStep(generationStep);
-				ListIterator listIterator = list.listIterator();
+				GenerationSettings settings = carverChunk.setBiomeIfAbsent(() -> this.populationSource.getBiome(BiomeCoords.fromBlock(carverChunkPos.getStartX()), 0, BiomeCoords.fromBlock(carverChunkPos.getStartZ()), this.getMultiNoiseSampler())).value().getGenerationSettings();
+				Iterable<RegistryEntry<ConfiguredCarver<?>>> list = settings.getCarversForStep(generationStep);
+				Iterator listIterator = list.iterator();
 				// TODO height level aquifers -- "fluid" as ice, or water? should the carvers carve air in ice in this dimension?
 				// This controls aquifers. Currently this will basically ignore them
 				AquiferSampler caveFloodLevelSampler = AquiferSampler.seaLevel((x, y, z) -> new AquiferSampler.FluidLevel(this.getMinimumY(), ICE));
-
+				int l = 0;
 				while (listIterator.hasNext()) {
-					int l = listIterator.nextIndex();
+					l++;
 					ConfiguredCarver<?> configuredCarver = (ConfiguredCarver) ((Supplier) listIterator.next()).get();
 					rand.setCarverSeed(seed + (long) l, carverChunkPos.x, carverChunkPos.z);
 					if (configuredCarver.shouldCarve(rand)) {
@@ -335,35 +337,36 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 
 	@Override
 	public int getWorldHeight() {
-		return this.settings.get().getGenerationShapeConfig().height();
+		return this.settings.value().generationShapeConfig().height();
 	}
 
 	@Override
 	public int getSeaLevel() {
-		return this.settings.get().getSeaLevel();
+		return this.settings.value().seaLevel();
 	}
 
 	@Override
 	public int getMinimumY() {
-		return this.settings.get().getGenerationShapeConfig().minimumY();
+		return this.settings.value().generationShapeConfig().minimumY();
 	}
 
 	@Override
 	public MultiNoiseUtil.MultiNoiseSampler getMultiNoiseSampler() {
-		return (i, j, k) -> NO_MULTI_NOISE;
+		return NO_MULTI_NOISE;
 	}
 
 	public static long trueWorldSeed; // hack for json dimensions
 
-	private static final MultiNoiseUtil.NoiseValuePoint NO_MULTI_NOISE = MultiNoiseUtil.createNoiseValuePoint(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+	private static final MultiNoiseUtil.MultiNoiseSampler NO_MULTI_NOISE = MultiNoiseUtil.method_40443();
 
 	public static final Codec<PermafrozenChunkGenerator> CODEC = RecordCodecBuilder.create(instance ->
 			instance.group(
-					RegistryLookupCodec.of(Registry.BIOME_KEY).forGetter(chunkGenerator -> chunkGenerator.biomeRegistry),
+					RegistryOps.createRegistryCodec(Registry.STRUCTURE_SET_KEY).forGetter(chunkGenerator -> chunkGenerator.field_37053),
+					RegistryOps.createRegistryCodec((Registry.BIOME_KEY)).forGetter(chunkGenerator -> chunkGenerator.biomeRegistry),
 					BiomeSource.CODEC.fieldOf("biome_source").forGetter(chunkGenerator -> chunkGenerator.populationSource),
 					Codec.LONG.fieldOf("seed").orElseGet(() -> trueWorldSeed).stable().forGetter(chunkGenerator -> chunkGenerator.seed),
 					ChunkGeneratorSettings.REGISTRY_CODEC.fieldOf("settings").forGetter(chunkGenerator -> chunkGenerator.settings))
-				.apply(instance, PermafrozenChunkGenerator::new));
+				.apply(instance, instance.stable(PermafrozenChunkGenerator::new)));
 
 	public static final BlockState DEEPSLATE = Blocks.DEEPSLATE.getDefaultState();
 	public static final BlockState SHIVERSLATE = PermafrozenBlocks.SHIVERSLATE.getDefaultState();

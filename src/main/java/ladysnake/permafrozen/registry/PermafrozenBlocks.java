@@ -51,7 +51,7 @@ public class PermafrozenBlocks {
 	public static final Block DEADWOOD_PLANKS = create("deadwood_planks", new Block(copyOf(Blocks.OAK_PLANKS)), true);
 	public static final Block DEADWOOD_STAIRS = create("deadwood_stairs", new TerraformStairsBlock(DEADWOOD_PLANKS, copyOf(Blocks.OAK_STAIRS)), true);
 	public static final Block DEADWOOD_SLAB = create("deadwood_slab", new SlabBlock(copyOf(Blocks.OAK_SLAB)), true);
-	public static final Block DEADWOOD_THORN = create("deadwood_thorn", new PrismarineCrystalClusterBlock(7, 3, FabricBlockSettings.of(Material.WOOD, MapColor.TERRACOTTA_WHITE).nonOpaque().breakByTool(FabricToolTags.AXES).requiresTool().ticksRandomly().sounds(BlockSoundGroup.WOOD).strength(1.5f)), true);
+	public static final Block DEADWOOD_THORN = create("deadwood_thorn", new PrismarineCrystalClusterBlock(7, 3, FabricBlockSettings.of(Material.WOOD, MapColor.TERRACOTTA_WHITE).nonOpaque().requiresTool().ticksRandomly().sounds(BlockSoundGroup.WOOD).strength(1.5f)), true);
 	public static final Block DEADWOOD_FENCE = create("deadwood_fence", new FenceBlock(copyOf(Blocks.OAK_FENCE)), true);
 	public static final Block DEADWOOD_FENCE_GATE = create("deadwood_fence_gate", new FenceGateBlock(copyOf(Blocks.OAK_FENCE_GATE)), true);
 	public static final Block DEADWOOD_PRESSURE_PLATE = create("deadwood_pressure_plate", new TerraformPressurePlateBlock(copyOf(Blocks.OAK_PRESSURE_PLATE)), true);
@@ -118,10 +118,10 @@ public class PermafrozenBlocks {
 	public static final Block GLAUCA_GRASS = create("glauca_grass", new PermafrozenPlantBlock(copyOf(Blocks.GRASS)), true);
 
 //crymstals
-	public static final Block PRISMARINE_CLUSTER = create("prismarine_cluster", new PrismarineCrystalClusterBlock(7, 3, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().breakByTool(FabricToolTags.PICKAXES).requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 12)), true);
-	public static final Block LARGE_PRISMARINE_BUD = create("large_prismarine_bud", new PrismarineCrystalClusterBlock(5, 3, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().breakByTool(FabricToolTags.PICKAXES).requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 9)), true);
-	public static final Block MEDIUM_PRISMARINE_BUD = create("medium_prismarine_bud", new PrismarineCrystalClusterBlock(4, 3, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().breakByTool(FabricToolTags.PICKAXES).requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 7)), true);
-	public static final Block SMALL_PRISMARINE_BUD = create("small_prismarine_bud", new PrismarineCrystalClusterBlock(3, 4, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().breakByTool(FabricToolTags.PICKAXES).requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 5)), true);
+	public static final Block PRISMARINE_CLUSTER = create("prismarine_cluster", new PrismarineCrystalClusterBlock(7, 3, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 12)), true);
+	public static final Block LARGE_PRISMARINE_BUD = create("large_prismarine_bud", new PrismarineCrystalClusterBlock(5, 3, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 9)), true);
+	public static final Block MEDIUM_PRISMARINE_BUD = create("medium_prismarine_bud", new PrismarineCrystalClusterBlock(4, 3, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 7)), true);
+	public static final Block SMALL_PRISMARINE_BUD = create("small_prismarine_bud", new PrismarineCrystalClusterBlock(3, 4, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 5)), true);
 	public static final Block BUDDING_PRISMARINE = create("budding_prismarine", new PrismarineCrystalBlock(AbstractBlock.Settings.of(Material.AMETHYST).ticksRandomly().strength(1.5F).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().luminance((blockState) -> 14)), true);
 
 //spectral cap

@@ -1,6 +1,7 @@
 package ladysnake.permafrozen.block;
 
 import ladysnake.permafrozen.block.util.PermafrozenSpreadableBlock;
+import ladysnake.permafrozen.worldgen.PermafrozenPlacedFeatures;
 import net.minecraft.block.*;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.tag.BlockTags;
@@ -50,11 +51,11 @@ public class MossyPermafrostBlock extends PermafrozenSpreadableBlock implements 
             }
             if (!j.isAir()) continue;
             if (random.nextInt(8) == 0) {
-                List<ConfiguredFeature<?, ?>> list = world.getBiome(blockPos2).getGenerationSettings().getFlowerFeatures();
+                List<ConfiguredFeature<?, ?>> list = world.getBiome(blockPos2).value().getGenerationSettings().getFlowerFeatures();
                 if (list.isEmpty()) continue;
-                placedFeature = ((RandomPatchFeatureConfig)list.get(0).getConfig()).feature().get();
+                placedFeature = ((RandomPatchFeatureConfig)list.get(0).config()).feature().value();
             } else {
-                placedFeature = VegetationPlacedFeatures.GRASS_BONEMEAL;
+                placedFeature = PermafrozenPlacedFeatures.GLAUCA_PATCHES.value();
             }
             placedFeature.generateUnregistered(world, world.getChunkManager().getChunkGenerator(), random, blockPos2);
         }

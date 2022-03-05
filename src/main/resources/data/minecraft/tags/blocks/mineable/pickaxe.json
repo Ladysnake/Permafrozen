@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
+    "permafrozen:prismarine_cluster",
+    "permafrozen:small_prismarine_bud",
+    "permafrozen:medium_prismarine_bud",
+    "permafrozen:large_prismarine_bud",
     "permafrozen:shiverslate",
     "permafrozen:shiverslate_button",
     "permafrozen:shiverslate_pressure_plate",

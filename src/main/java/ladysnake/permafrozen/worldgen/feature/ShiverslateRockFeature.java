@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import ladysnake.permafrozen.registry.PermafrozenBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.tag.BiomeTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.biome.Biome;
@@ -38,7 +39,7 @@ public class ShiverslateRockFeature extends Feature<DefaultFeatureConfig> {
             float f = (float)(i + j + k) * 0.333f + 0.5f;
             for (BlockPos blockPos2 : BlockPos.iterate(blockPos.add(-i, -j, -k), blockPos.add(i, j, k))) {
                 if (!(blockPos2.getSquaredDistance(blockPos) <= (double)(f * f))) continue;
-                structureWorldAccess.setBlockState(blockPos2, structureWorldAccess.getBiome(blockPos2).getCategory() == Biome.Category.FOREST ? PermafrozenBlocks.MOSSY_COBBLED_SHIVERSLATE.getDefaultState() : PermafrozenBlocks.COBBLED_SHIVERSLATE.getDefaultState(), Block.NO_REDRAW);
+                structureWorldAccess.setBlockState(blockPos2, structureWorldAccess.getBiome(blockPos2).isIn(BiomeTags.IS_FOREST) ? PermafrozenBlocks.MOSSY_COBBLED_SHIVERSLATE.getDefaultState() : PermafrozenBlocks.COBBLED_SHIVERSLATE.getDefaultState(), Block.NO_REDRAW);
             }
             blockPos = blockPos.add(-1 + random.nextInt(2), -random.nextInt(2), -1 + random.nextInt(2));
         }

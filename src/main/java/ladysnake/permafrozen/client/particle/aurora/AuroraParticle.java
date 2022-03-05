@@ -23,9 +23,9 @@ public class AuroraParticle extends SpriteBillboardParticle {
     private AuroraParticle(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, AuroraParticleEffect wispTrailParticleEffect, SpriteProvider spriteProvider) {
         super(world, x, y, z, velocityX, velocityY, velocityZ);
         this.spriteProvider = spriteProvider;
-        this.colorRed = wispTrailParticleEffect.getRed();
-        this.colorGreen = wispTrailParticleEffect.getGreen();
-        this.colorBlue = wispTrailParticleEffect.getBlue();
+        this.red = wispTrailParticleEffect.getRed();
+        this.green = wispTrailParticleEffect.getGreen();
+        this.blue = wispTrailParticleEffect.getBlue();
         this.redEvolution = wispTrailParticleEffect.getRedEvolution();
         this.greenEvolution = wispTrailParticleEffect.getGreenEvolution();
         this.blueEvolution = wispTrailParticleEffect.getBlueEvolution();
@@ -47,22 +47,22 @@ public class AuroraParticle extends SpriteBillboardParticle {
 
         // fade and die
         if (this.age++ >= this.maxAge) {
-            colorAlpha -= 0.05f;
+            alpha -= 0.05f;
         }
-        if (colorAlpha < 0f || this.scale <= 0f) {
+        if (alpha < 0f || this.scale <= 0f) {
             this.markDead();
         }
 
 //        float redEv = -0.03f;
 //        float greenEv = 0.0f;
 //        float blueEv = -0.01f;
-//        colorRed = MathHelper.clamp(colorRed+redEv, 0, 1);
-//        colorGreen = MathHelper.clamp(colorGreen+greenEv, 0, 1);
-//        colorBlue = MathHelper.clamp(colorBlue+blueEv, 0, 1);
+//        red = MathHelper.clamp(red+redEv, 0, 1);
+//        green = MathHelper.clamp(green+greenEv, 0, 1);
+//        blue = MathHelper.clamp(blue+blueEv, 0, 1);
 
-        colorRed = MathHelper.clamp(colorRed + redEvolution, 0, 1);
-        colorGreen = MathHelper.clamp(colorGreen + greenEvolution, 0, 1);
-        colorBlue = MathHelper.clamp(colorBlue + blueEvolution, 0, 1);
+        red = MathHelper.clamp(red + redEvolution, 0, 1);
+        green = MathHelper.clamp(green + greenEvolution, 0, 1);
+        blue = MathHelper.clamp(blue + blueEvolution, 0, 1);
 
         this.velocityY = 0.08;
         this.velocityX = 0;
@@ -104,10 +104,10 @@ public class AuroraParticle extends SpriteBillboardParticle {
         float maxV = this.getMaxV();
         int l = 15728880;
 
-        vertexConsumer.vertex(vector3fs[0].getX(), vector3fs[0].getY(), vector3fs[0].getZ()).texture(maxU, maxV).color(colorRed, colorGreen, colorBlue, colorAlpha).light(l).next();
-        vertexConsumer.vertex(vector3fs[1].getX(), vector3fs[1].getY(), vector3fs[1].getZ()).texture(maxU, minV).color(colorRed, colorGreen, colorBlue, colorAlpha).light(l).next();
-        vertexConsumer.vertex(vector3fs[2].getX(), vector3fs[2].getY(), vector3fs[2].getZ()).texture(minU, minV).color(colorRed, colorGreen, colorBlue, colorAlpha).light(l).next();
-        vertexConsumer.vertex(vector3fs[3].getX(), vector3fs[3].getY(), vector3fs[3].getZ()).texture(minU, maxV).color(colorRed, colorGreen, colorBlue, colorAlpha).light(l).next();
+        vertexConsumer.vertex(vector3fs[0].getX(), vector3fs[0].getY(), vector3fs[0].getZ()).texture(maxU, maxV).color(red, green, blue, alpha).light(l).next();
+        vertexConsumer.vertex(vector3fs[1].getX(), vector3fs[1].getY(), vector3fs[1].getZ()).texture(maxU, minV).color(red, green, blue, alpha).light(l).next();
+        vertexConsumer.vertex(vector3fs[2].getX(), vector3fs[2].getY(), vector3fs[2].getZ()).texture(minU, minV).color(red, green, blue, alpha).light(l).next();
+        vertexConsumer.vertex(vector3fs[3].getX(), vector3fs[3].getY(), vector3fs[3].getZ()).texture(minU, maxV).color(red, green, blue, alpha).light(l).next();
     }
 
     @Environment(EnvType.CLIENT)

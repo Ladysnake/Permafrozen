@@ -56,7 +56,7 @@ public class SnowflakeParticle extends SpriteBillboardParticle {
 
         // fade-out animation
         if (this.age >= this.maxAge + 1 - FADE_DURATION) {
-            this.colorAlpha -= 1F / FADE_DURATION;
+            this.alpha -= 1F / FADE_DURATION;
         }
 
         if (this.age >= this.maxAge) {

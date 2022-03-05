@@ -27,6 +27,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.tag.Tag;
+import net.minecraft.tag.TagKey;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Util;
@@ -223,7 +224,7 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucket
 	
 	@Override
 	public boolean isBreedingItem(ItemStack stack) {
-		return BlockTags.CORAL_BLOCKS.contains(Block.getBlockFromItem(stack.getItem()));
+		return Block.getBlockFromItem(stack.getItem()).getDefaultState().isIn(BlockTags.CORAL_BLOCKS);
 	}
 	
 	@Override
@@ -325,7 +326,7 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucket
 		private final NudifaeEntity nudifaeEntity;
 		private final double speed;
 		private PlayerEntity tempter;
-		private final Tag<Block> temptItems;
+		private final TagKey<Block> temptItems;
 		
 		PlayerTemptGoal(NudifaeEntity nudifaeEntity, double speedIn) {
 			this.nudifaeEntity = nudifaeEntity;
@@ -361,7 +362,7 @@ public class NudifaeEntity extends TameableEntity implements IAnimatable, Bucket
 		}
 
 		private boolean isTemptedBy(ItemStack item) {
-			return this.temptItems.contains(Block.getBlockFromItem(item.getItem()));
+			return Block.getBlockFromItem(item.getItem()).getDefaultState().isIn(this.temptItems);
 		}
 	}
 

@@ -43,12 +43,8 @@ public class SnowUnderTreeFeature extends Feature<DefaultFeatureConfig> {
 
                 if(world.getBlockState(mPos).getBlock() instanceof LeavesBlock || world.getBlockState(mPos).getBlock() instanceof StrippableDeadwoodBlock || world.getBlockState(mPos).getBlock().equals(PermafrozenBlocks.SPIRESHROOM_LOG) || world.getBlockState(mPos).getBlock().equals(PermafrozenBlocks.SPIRESHROOM_WOOD)) {
                     mPos.set(x, getTopY(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, x, z, world) + 1, z);
-//                    System.out.println("my shit:");
-//                    System.out.println(mPos.getY());
-//                    System.out.println("vanilla:");
-//                    System.out.println(world.getTopY(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, x, z));
 
-                    if(world.getBiome(mPos).canSetSnow(world, mPos)) {
+                    //if(world.getBiome(mPos)) {
                         BlockState stateBelow;
 
                         world.setBlockState(mPos, Blocks.SNOW.getDefaultState(), 2);
@@ -57,7 +53,7 @@ public class SnowUnderTreeFeature extends Feature<DefaultFeatureConfig> {
 
                         if(stateBelow.contains(SnowyBlock.SNOWY))
                             world.setBlockState(mPos, stateBelow.with(SnowyBlock.SNOWY, true), 2);
-                    }
+                    //}
                 }
             }
         }
