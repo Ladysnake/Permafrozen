@@ -116,6 +116,7 @@ public class PermafrozenBlocks {
 
 //vegetation
 	public static final Block GLAUCA_GRASS = create("glauca_grass", new PermafrozenPlantBlock(copyOf(Blocks.GRASS)), true);
+	public static final Block WRAITHBERRY = create("wraithberry", new WraithberryBlock(copyOf(Blocks.GRASS)), false);
 
 //crymstals
 	public static final Block PRISMARINE_CLUSTER = create("prismarine_cluster", new PrismarineCrystalClusterBlock(7, 3, FabricBlockSettings.of(Material.AMETHYST, MapColor.LIGHT_BLUE_GRAY).nonOpaque().breakByTool(FabricToolTags.PICKAXES).requiresTool().ticksRandomly().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).luminance((blockState) -> 12)), true);

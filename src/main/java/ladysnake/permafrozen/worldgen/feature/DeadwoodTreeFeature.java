@@ -1,6 +1,7 @@
 package ladysnake.permafrozen.worldgen.feature;
 
 import com.mojang.serialization.Codec;
+import ladysnake.permafrozen.block.WraithberryBlock;
 import ladysnake.permafrozen.util.MutableVec3d;
 import ladysnake.permafrozen.block.PrismarineCrystalClusterBlock;
 import ladysnake.permafrozen.block.StrippableDeadwoodBlock;
@@ -83,9 +84,13 @@ public class DeadwoodTreeFeature extends Feature<DefaultFeatureConfig> {
 
 			// chance to grow an extra block up or down at any point along
 			if (rand.nextDouble() < Math.abs(pos.getY()) && rand.nextInt(3) == 1) {
-				BlockPos pos2 = blockpos.offset(pos.getY() > 0 ? Direction.UP : Direction.DOWN);
+				boolean bl = rand.nextBoolean();
+				BlockPos pos2 = blockpos.offset(bl ? Direction.UP : Direction.DOWN);
 				this.setBlockState(world, pos2, LOG);
-				this.setBlockState(world, pos2.offset(pos.getY() > 0 ? Direction.UP : Direction.DOWN), PermafrozenBlocks.DEADWOOD_THORN.getDefaultState().with(PrismarineCrystalClusterBlock.FACING, pos.getY() > 0 ? Direction.UP : Direction.DOWN));
+				this.setBlockState(world, pos2.offset(bl ? Direction.UP : Direction.DOWN), PermafrozenBlocks.DEADWOOD_THORN.getDefaultState().with(PrismarineCrystalClusterBlock.FACING, bl ? Direction.UP : Direction.DOWN));
+				if(rand.nextFloat() < 0.2 && !bl) {
+					this.setBlockState(world, pos2.offset(Direction.DOWN), PermafrozenBlocks.WRAITHBERRY.getDefaultState());
+				}
 			}
 
 			if (i == requestedResult) {
