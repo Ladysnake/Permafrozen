@@ -69,6 +69,7 @@ public class AuroraAltarBlockEntity extends BlockEntity implements IAnimatable {
                 double g = Math.sqrt(targetVec.x * targetVec.x + targetVec.z * targetVec.z);
                 player.setYaw(MathHelper.wrapDegrees((float)(MathHelper.atan2(targetVec.z, targetVec.x) * 57.2957763671875) - 90.0f));
                 player.setPitch(MathHelper.wrapDegrees((float)(-(MathHelper.atan2(targetVec.y, g) * 57.2957763671875))));
+                player.prevPitch = MathHelper.wrapDegrees((float)(-(MathHelper.atan2(targetVec.y, g) * 57.2957763671875)));
                 if(player.canUsePortals() && !player.hasVehicle() && !player.hasPassengers()&& player.getServer() != null && player.getServer().getWorld(Permafrozen.WORLD_KEY) != null) {
                     ServerWorld world = player.world.getRegistryKey().equals(Permafrozen.WORLD_KEY) ? player.getServer().getOverworld() : player.getServer().getWorld(Permafrozen.WORLD_KEY);
                     ServerWorld current = player.world.getRegistryKey().equals(Permafrozen.WORLD_KEY) ? player.getServer().getWorld(Permafrozen.WORLD_KEY) : player.getServer().getOverworld();

@@ -21,6 +21,7 @@ public class PermafrozenPlacedFeatures {
 	public static final PlacedFeature SPECTRAL_CAP_PATCHES = register("spectral_cap_patches", PermafrozenConfiguredFeatures.SPECTRAL_CAP.withPlacement(modifiersWithChance(3, null)));
 	public static final PlacedFeature SHIVERSLATE_ROCK = register("shiverslate_rock", PermafrozenConfiguredFeatures.SHIVERSLATE_ROCK.withPlacement(CountPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of()));
 	public static final PlacedFeature PRISMARINE_GEODE = register("prismarine_geode", PermafrozenConfiguredFeatures.PRISMARINE_GEODE.withPlacement(RarityFilterPlacementModifier.of(24), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.aboveBottom(6), YOffset.fixed(30)), BiomePlacementModifier.of()));
+	public static final PlacedFeature FREEZE_TOP_FEN_LAYER = PlacedFeatures.register("freeze_top_fen_layer", PermafrozenConfiguredFeatures.FREEZE_TOP_FEN_LAYER.withPlacement(BiomePlacementModifier.of()));
 
 	//ores
 	public static final PlacedFeature ORE_COAL_UPPER = register("ore_coal_upper", PermafrozenConfiguredFeatures.ORE_COAL.withPlacement(modifiersWithCount(70, HeightRangePlacementModifier.uniform(YOffset.fixed(136), YOffset.getTop()))));

@@ -32,6 +32,7 @@ public class PermafrozenConfiguredFeatures {
     		BlockStateProvider.of(PermafrozenBlocks.SPECTRAL_CAP_BLOCK.getDefaultState().with(MushroomBlock.DOWN, false)),
 		    BlockStateProvider.of(PermafrozenBlocks.SPECTRAL_CAP_STEM.getDefaultState()),
 		    3)));
+	public static final ConfiguredFeature<?, ?> FREEZE_TOP_FEN_LAYER = register("freeze_top_fen_layer", PermafrozenFeatures.FREEZE_TOP_FEN_LAYER.configure(FeatureConfig.DEFAULT));
 
     public static final ConfiguredFeature<RandomPatchFeatureConfig, ?> GLAUCA_PATCH = register("glauca_patch", Feature.RANDOM_PATCH.configure(randomPatchConfig(BlockStateProvider.of(PermafrozenBlocks.GLAUCA_GRASS.getDefaultState().with(PermafrozenPlantBlock.SNOWY, true)), 32)));
     public static final ConfiguredFeature<SimpleBlockFeatureConfig, ?> SPECTRAL_CAP = register("spectral_cap", Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(BlockStateProvider.of(PermafrozenBlocks.SPECTRAL_CAP))));

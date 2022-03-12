@@ -122,8 +122,9 @@ public class Wind {
             this.stateDuration = 6 * 60 * 20; // Change state every 6 minutes.
         }
 
-        this.wasRaining = raining;
-        this.wasThundering = thundering;
+        this.wasRaining = false;
+        this.wasThundering = false;
+        this.state = State.CALM;
     }
 
     public void tick(World world) {

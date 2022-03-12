@@ -34,7 +34,7 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 	public static final ConfiguredFeature<?, ?> SNOWY_TREES_CONFIGURED = SNOWY_TREES_FEATURE.configure(FeatureConfig.DEFAULT);
 
 	private static List<Identifier> biomesToAddTo = new ArrayList<>();
-	private static final int DEFAULT_PERMAROZEN_FOG_COLOUR = 0xEFFFFF; // change this to whatever you want. Overworld is 0xC0D8FF
+	private static final int DEFAULT_PERMAROZEN_FOG_COLOUR = 0xEFFFFF;
 
 	public static final RegistryKey<Biome> TUNDRA = createKey("tundra");
 	public static final RegistryKey<Biome> SHRUMAL_SPIRES = createKey("shrumal_spires");
@@ -80,11 +80,9 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 				Biome.Category.PLAINS,
 				generationSettings,
 				new SpawnSettings.Builder()
-						.creatureSpawnProbability(0.07f) // default is 0.1f, snowy plains uses 0.07f
+						//.creatureSpawnProbability(0.07f)
 						.spawn(SpawnGroup.UNDERGROUND_WATER_CREATURE, new SpawnSettings.SpawnEntry(PermafrozenEntities.NUDIFAE, 1, 1, 3))
 						.spawn(SpawnGroup.UNDERGROUND_WATER_CREATURE, new SpawnSettings.SpawnEntry(PermafrozenEntities.LUNAR_KOI, 1, 1, 3))
-						.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.FOX, 10, 5, 7))
-						.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.POLAR_BEAR, 1, 1, 3))
 						.build(),
 				DEFAULT_PERMAROZEN_FOG_COLOUR);
 	}
@@ -112,7 +110,8 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 		GenerationSettings.Builder generationSettings = new GenerationSettings.Builder()
 				.feature(GenerationStep.Feature.VEGETAL_DECORATION, PermafrozenPlacedFeatures.FRIGID_FEN_VEGETATION)
 				.feature(GenerationStep.Feature.VEGETAL_DECORATION, PermafrozenPlacedFeatures.GLAUCA_PATCHES)
-				.feature(GenerationStep.Feature.SURFACE_STRUCTURES, PermafrozenPlacedFeatures.SHIVERSLATE_ROCK);
+				.feature(GenerationStep.Feature.SURFACE_STRUCTURES, PermafrozenPlacedFeatures.SHIVERSLATE_ROCK)
+				.feature(GenerationStep.Feature.TOP_LAYER_MODIFICATION, PermafrozenPlacedFeatures.FREEZE_TOP_FEN_LAYER);
 
 		return createPermafrozenBiome(
 				Biome.Category.SWAMP,
@@ -153,7 +152,7 @@ public class PermafrozenBiomes extends OverworldBiomeCreator {
 		generationSettings.feature(GenerationStep.Feature.UNDERGROUND_ORES, PermafrozenPlacedFeatures.ORE_DIAMOND);
 		generationSettings.feature(GenerationStep.Feature.UNDERGROUND_ORES, PermafrozenPlacedFeatures.ORE_DIAMOND_LARGE);
 		generationSettings.feature(GenerationStep.Feature.UNDERGROUND_ORES, PermafrozenPlacedFeatures.ORE_DIAMOND_BURIED);
-		DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);
+		if(!category.equals(Biome.Category.SWAMP)) DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);
 
 		return new Biome.Builder()
 				.category(category)

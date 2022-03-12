@@ -11,6 +11,7 @@ public class PermafrozenFeatures {
     public static final Feature<DefaultFeatureConfig> SPIRESHROOM = register("spireshroom", new SpireshroomFeature(DefaultFeatureConfig.CODEC));
     public static final Feature<DefaultFeatureConfig> DEADWOOD_TREE = register("deadwood_tree", new DeadwoodTreeFeature(DefaultFeatureConfig.CODEC));
     public static final Feature<DefaultFeatureConfig> SHIVERSLATE_ROCK = register("shiverslate_rock", new ShiverslateRockFeature(DefaultFeatureConfig.CODEC));
+    public static final Feature<DefaultFeatureConfig> FREEZE_TOP_FEN_LAYER = register("freeze_top_fen_layer", new FreezeTopFenLayerFeature(DefaultFeatureConfig.CODEC));
 
     private static <C extends FeatureConfig, F extends Feature<C>> F register(String name, F feature) {
         return (F) Registry.register(Registry.FEATURE, new Identifier(Permafrozen.MOD_ID, name), feature);

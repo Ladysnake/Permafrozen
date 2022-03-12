@@ -184,12 +184,12 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 
 					for (int y = height; y < cap; ++y) {
 						setPos.setY(y);
-						chunk.setBlockState(setPos, ICE, false);
+						chunk.setBlockState(setPos, chunk.getBiomeForNoiseGen(x, y, z).getCategory().equals(Biome.Category.SWAMP) ? FEN_ICE : ICE, false);
 					}
 				}
 
-				oceanFloor.trackUpdate(x, seaLevel - 1, z, ICE); // for oceanFloor probably not necessary
-				surface.trackUpdate(x, seaLevel - 1, z, ICE);
+				oceanFloor.trackUpdate(x, seaLevel - 1, z, chunk.getBiomeForNoiseGen(x, seaLevel - 1, z).getCategory().equals(Biome.Category.SWAMP) ? FEN_ICE : ICE); // for oceanFloor probably not necessary
+				surface.trackUpdate(x, seaLevel - 1, z, chunk.getBiomeForNoiseGen(x, seaLevel - 1, z).getCategory().equals(Biome.Category.SWAMP) ? FEN_ICE : ICE);
 			}
 		}
 
@@ -370,4 +370,5 @@ public class PermafrozenChunkGenerator extends ChunkGenerator {
 	public static final BlockState AIR = Blocks.AIR.getDefaultState();
 	public static final BlockState CAVE_AIR = Blocks.CAVE_AIR.getDefaultState();
 	public static final BlockState ICE = Blocks.ICE.getDefaultState();
+	public static final BlockState FEN_ICE = PermafrozenBlocks.FEN_ICE.getDefaultState();
 }

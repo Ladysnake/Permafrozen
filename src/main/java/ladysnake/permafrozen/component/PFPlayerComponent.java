@@ -76,7 +76,7 @@ public class PFPlayerComponent implements AutoSyncedComponent {
             outsideTicks--;
         }
         outsideTicks = MathHelper.clamp(outsideTicks, 0, 80);
-        fenTicks = MathHelper.clamp(fenTicks, 0, 100);
+        fenTicks = MathHelper.clamp(fenTicks, 0, 100 - MathHelper.clamp(MathHelper.square(obj.getBlockPos().getY() - 60) / 72, 0, 100));
         PermafrozenComponents.PLAYER.sync(obj);
     }
 

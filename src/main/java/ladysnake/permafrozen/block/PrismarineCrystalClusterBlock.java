@@ -65,15 +65,6 @@ public class PrismarineCrystalClusterBlock extends Block implements Waterloggabl
                 return this.UP_SHAPE;
         }
     }
-    @Override
-    public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
-        if (state.get(FACING) == Direction.UP) {
-            entity.handleFallDamage(fallDistance + 2.0f, 2.0f, DamageSource.STALAGMITE);
-        } else {
-            super.onLandedUpon(world, state, pos, entity, fallDistance);
-        }
-    }
-
 
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         Direction direction = state.get(FACING);
