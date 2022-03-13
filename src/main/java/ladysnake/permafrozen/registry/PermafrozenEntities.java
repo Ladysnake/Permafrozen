@@ -29,6 +29,7 @@ public class PermafrozenEntities {
 	public static final EntityType<PuffbooEntity> PUFFBOO = createEntity("puffboo", PuffbooEntity.createBooAttributes(), FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, PuffbooEntity::new).dimensions(EntityDimensions.fixed(0.5f, 0.4f)).build());
 	public static final EntityType<LesserFiddlesnoutEntity> LESSER_FIDDLESNOUT = createEntity("fiddlesnout", LesserFiddlesnoutEntity.createFiddlesnoutAttributes(), FabricEntityTypeBuilder.create(SpawnGroup.WATER_CREATURE, LesserFiddlesnoutEntity::new).dimensions(EntityDimensions.changing(0.8f, 0.5f)).build());
 	public static final EntityType<BurrowGrubEntity> BURROW_GRUB = createEntity("burrow_grub", BurrowGrubEntity.createBurrowGrubAttributes(), FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, BurrowGrubEntity::new).dimensions(EntityDimensions.fixed(0.4F, 0.2F)).build());
+	public static final EntityType<BeakfoxEntity> BEAKFOX = createEntity("beakfox", BeakfoxEntity.createBeakfoxAttributes(), FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, BeakfoxEntity::new).dimensions(EntityDimensions.fixed(1.2F, 1.2F)).build());
 	public static       BlockEntityType<SpectralCapBlockEntity> SPECTRAL_CAP_TYPE;
 	public static       BlockEntityType<AuroraAltarBlockEntity> AURORA_ALTAR_TYPE;
 	public static       BlockEntityType<DistilleryBlockEntity> DISTILLERY_TYPE;

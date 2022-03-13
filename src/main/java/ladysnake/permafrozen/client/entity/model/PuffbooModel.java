@@ -35,7 +35,7 @@ public class PuffbooModel extends AnimatedGeoModel<PuffbooEntity> {
         super.setLivingAnimations(entity, uniqueID, customPredicate);
         IBone head = this.getAnimationProcessor().getBone("head");
         EntityModelData extraData = (EntityModelData) customPredicate.getExtraDataOfType(EntityModelData.class).get(0);
-        head.setRotationX((extraData.headPitch + 30) * ((float) Math.PI / 360F));
-        head.setRotationY((extraData.netHeadYaw) * ((float) Math.PI / 500F));
+        head.setRotationX((extraData.headPitch) * ((float) Math.PI / 180F));
+        head.setRotationY((extraData.netHeadYaw) * ((float) Math.PI / 180F));
     }
 }
