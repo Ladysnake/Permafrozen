@@ -1,7 +1,8 @@
 package ladysnake.permafrozen.registry;
 
 import ladysnake.permafrozen.Permafrozen;
-import ladysnake.permafrozen.item.PermafrozenBottleItem;
+import ladysnake.permafrozen.client.entity.render.AuroraArmourRenderer;
+import ladysnake.permafrozen.item.*;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -11,9 +12,9 @@ import net.minecraft.item.*;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import ladysnake.permafrozen.item.PermafrozenAxeItem;
-import ladysnake.permafrozen.item.PermafrozenHoeItem;
-import ladysnake.permafrozen.item.PermafrozenPickaxeItem;
+import software.bernie.example.client.renderer.armor.PotatoArmorRenderer;
+import software.bernie.example.registry.ItemRegistry;
+import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -50,6 +51,10 @@ public class PermafrozenItems {
 	public static final Item WULFRAM_CHESTPLATE = create("wulfram_chestplate", new ArmorItem(PermafrozenArmorMaterials.WULFRAM_ARMOR_MATERIAL, EquipmentSlot.CHEST, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
 	public static final Item WULFRAM_LEGGINGS = create("wulfram_leggings", new ArmorItem(PermafrozenArmorMaterials.WULFRAM_ARMOR_MATERIAL, EquipmentSlot.LEGS, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
 	public static final Item WULFRAM_BOOTS = create("wulfram_boots", new ArmorItem(PermafrozenArmorMaterials.WULFRAM_ARMOR_MATERIAL, EquipmentSlot.FEET, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
+	public static final Item AURORA_HELMET = create("aurora_helmet", new AuroraArmourItem(PermafrozenArmorMaterials.AURORA_ARMOR_MATERIAL, EquipmentSlot.HEAD, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
+	public static final Item AURORA_CHESTPLATE = create("aurora_chestplate", new AuroraArmourItem(PermafrozenArmorMaterials.AURORA_ARMOR_MATERIAL, EquipmentSlot.CHEST, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
+	public static final Item AURORA_LEGGINGS = create("aurora_leggings", new AuroraArmourItem(PermafrozenArmorMaterials.AURORA_ARMOR_MATERIAL, EquipmentSlot.LEGS, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
+	public static final Item AURORA_BOOTS = create("aurora_boots", new AuroraArmourItem(PermafrozenArmorMaterials.AURORA_ARMOR_MATERIAL, EquipmentSlot.FEET, new Item.Settings().group(Permafrozen.PERMAFROZEN_GROUP)));
 	public static final Item PUFFBOO_FEATHER = create("puffboo_feather", new Item((new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP)));
 	public static final Item PUFFBOO_MEAT = create("raw_puffboo", new Item((new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP).food(FoodComponents.CHICKEN)));
 	public static final Item COOKED_PUFFBOO_MEAT = create("cooked_puffboo", new Item((new Item.Settings()).group(Permafrozen.PERMAFROZEN_GROUP).food(FoodComponents.COOKED_CHICKEN)));
@@ -67,6 +72,8 @@ public class PermafrozenItems {
 	}
 	
 	public static void init() {
+		GeoArmorRenderer.registerArmorRenderer(new AuroraArmourRenderer(), AURORA_HELMET,
+				AURORA_CHESTPLATE, AURORA_LEGGINGS, AURORA_BOOTS);
 		CompostingChanceRegistry compostRegistry = CompostingChanceRegistry.INSTANCE;
 		compostRegistry.add(FIR_PINECONE, 0.6f);
 		ITEMS.keySet().forEach(item -> Registry.register(Registry.ITEM, ITEMS.get(item), item));

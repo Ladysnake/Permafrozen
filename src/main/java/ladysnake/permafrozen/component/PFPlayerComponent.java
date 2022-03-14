@@ -11,7 +11,10 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.tag.ItemTags;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.Heightmap;
+import net.minecraft.world.LightType;
 import net.minecraft.world.World;
 
 import java.util.Objects;
@@ -47,10 +50,13 @@ public class PFPlayerComponent implements AutoSyncedComponent {
                 if (ticks >= 20) {
                     if ((PlayerUtil.isWarmBlockNearby(obj) || obj.isOnFire()) && temperature < 36) {
                         temperature++;
-                    } else if (outsideTicks >= 10) {
+                    } else if (outsideTicks >= 10 && obj.getRandom().nextBoolean()) {
                         temperature--;
+                        if(PermafrozenComponents.SNOWSTORM.get(obj.world).isSnowstorming()) {
+                            temperature--;
+                        }
                     } else {
-                        if (obj.getRandom().nextInt(200) == 69) {
+                        if (obj.getRandom().nextInt(200) == 69 && obj.getY() >= 0) {
                             temperature--;
                         }
                     }
@@ -93,7 +99,6 @@ public class PFPlayerComponent implements AutoSyncedComponent {
         }
         return canSeeSky;
     }
-
     public float getFenTicks(float tickDelta) {
         return MathHelper.lerp(tickDelta, prevFenTicks, fenTicks);
     }
