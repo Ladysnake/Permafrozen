@@ -10,9 +10,6 @@ import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import software.bernie.example.item.JackInTheBoxItem;
-import software.bernie.example.item.PotatoArmorItem;
-import software.bernie.example.registry.ItemRegistry;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -20,10 +17,6 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class AuroraArmourItem extends ArmorItem implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
@@ -44,7 +37,7 @@ public class AuroraArmourItem extends ArmorItem implements IAnimatable {
         openTicks = stack.getOrCreateNbt().getInt("openTicks");
         shouldSwitch = stack.getOrCreateNbt().getBoolean("shouldSwitch");
         closed = stack.getOrCreateNbt().getBoolean("closed");
-        if(entity.isSneaking() && openTicks == 0) {
+        if(entity.isSneaking() && !entity.isOnGround() && openTicks == 0) {
             shouldSwitch = true;
         }
         if(shouldSwitch) {
@@ -74,13 +67,22 @@ public class AuroraArmourItem extends ArmorItem implements IAnimatable {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("idleClosed", true));
             return PlayState.CONTINUE;
         } else if (livingEntity instanceof PlayerEntity player) {
-            if(player.getEquippedStack(EquipmentSlot.HEAD).getOrCreateNbt().getInt("openTicks") > 0) {
-                boolean closed = player.getEquippedStack(EquipmentSlot.HEAD).getOrCreateNbt().getBoolean("closed");
-                System.out.println(player.getEquippedStack(EquipmentSlot.HEAD).getOrCreateNbt().getInt("openTicks"));
-                event.getController().setAnimation(new AnimationBuilder().addAnimation(closed ? "open" : "close", true));
+            if(player.getEquippedStack(EquipmentSlot.HEAD).getOrCreateNbt().getBoolean("closed")) {
+                if(player.getEquippedStack(EquipmentSlot.HEAD).getOrCreateNbt().getInt("openTicks") > 0) {
+                    System.out.println(player.getEquippedStack(EquipmentSlot.HEAD).getOrCreateNbt().getInt("openTicks"));
+                    event.getController().markNeedsReload();
+                    event.getController().setAnimation(new AnimationBuilder().addAnimation("open", true));
+                } else {
+                    event.getController().setAnimation(new AnimationBuilder().addAnimation("idleClosed", true));
+                }
             } else {
-                boolean closed = player.getEquippedStack(EquipmentSlot.HEAD).getOrCreateNbt().getBoolean("closed");
-                event.getController().setAnimation(new AnimationBuilder().addAnimation(closed ? "idleClosed" : "idleOpen", true));
+                if(player.getEquippedStack(EquipmentSlot.HEAD).getOrCreateNbt().getInt("openTicks") > 0) {
+                    System.out.println(player.getEquippedStack(EquipmentSlot.HEAD).getOrCreateNbt().getInt("openTicks"));
+                    event.getController().markNeedsReload();
+                    event.getController().setAnimation(new AnimationBuilder().addAnimation("close", true));
+                } else {
+                    event.getController().setAnimation(new AnimationBuilder().addAnimation("idleOpen", true));
+                }
             }
             return PlayState.CONTINUE;
         }
@@ -89,7 +91,7 @@ public class AuroraArmourItem extends ArmorItem implements IAnimatable {
 
     @Override
     public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, "controller", 3, this::predicate));
+        data.addAnimationController(new AnimationController(this, "controller", 20, this::predicate));
     }
 
     @Override
