@@ -8,7 +8,6 @@ import ladysnake.permafrozen.util.JitteredGrid;
 import ladysnake.permafrozen.util.SimpleIntCache;
 import ladysnake.permafrozen.worldgen.terrain.Terrain;
 import ladysnake.permafrozen.worldgen.terrain.TerrainSampler;
-import net.fabricmc.fabric.mixin.structure.StructureFeatureAccessor;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.structure.StructureSet;

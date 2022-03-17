@@ -13,13 +13,13 @@ import java.util.Optional;
 
 @Mixin(GeneratorOptions.class)
 public class GeneratorOptionsMixin {
-	/**
-	 * World seed for worldgen when not specified by JSON by Haven King
-	 * https://github.com/Hephaestus-Dev/seedy-behavior/blob/master/src/main/java/dev/hephaestus/seedy/mixin/world/gen/GeneratorOptionsMixin.java
-	 */
-	@Inject(method = "<init>(JZZLnet/minecraft/util/registry/SimpleRegistry;Ljava/util/Optional;)V",
-			at = @At(value = "RETURN"))
-	private void permafrozen_giveUsTrueWorldSeed(long seed, boolean generateStructures, boolean bonusChest, SimpleRegistry<DimensionOptions> simpleRegistry, Optional<String> legacyCustomOptions, CallbackInfo ci) {
-		PermafrozenChunkGenerator.trueWorldSeed = seed;
-	}
+//	/**
+//	 * World seed for worldgen when not specified by JSON by Haven King
+//	 * https://github.com/Hephaestus-Dev/seedy-behavior/blob/master/src/main/java/dev/hephaestus/seedy/mixin/world/gen/GeneratorOptionsMixin.java
+//	 */
+//	@Inject(method = "<init>(JZZLnet/minecraft/util/registry/SimpleRegistry;Ljava/util/Optional;)V",
+//			at = @At(value = "RETURN"))
+//	private void permafrozen_giveUsTrueWorldSeed(long seed, boolean generateStructures, boolean bonusChest, SimpleRegistry<DimensionOptions> simpleRegistry, Optional<String> legacyCustomOptions, CallbackInfo ci) {
+//		PermafrozenChunkGenerator.trueWorldSeed = seed;
+//	}
 }
